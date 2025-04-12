@@ -1,0 +1,13 @@
+.container {
+  background: beige;
+  display: grid;
+}
+
+.test {
+  background: red;
+  justify-self: right;
+  align-self:stretch;
+  border-color: blue;
+  border-width: 10px;
+  border-style: solid;
+}
