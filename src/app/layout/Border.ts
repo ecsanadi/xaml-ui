@@ -17,7 +17,7 @@ export class Border extends FrameworkElement {
   @Input() @HostBinding('style.border-color') BorderBrush?: string;
   
   @HostBinding('style.border-style')
-  get borderStyle() {
-    return this.BorderThickness ? 'solid' : undefined;
+  private get borderStyle() {
+    return this.BorderThickness !== undefined ? 'solid' : undefined;
   }
 }

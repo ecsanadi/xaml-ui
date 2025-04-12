@@ -1,27 +1,24 @@
-import { Component, HostBinding, Input } from "@angular/core";
-
-export type HorizontalAlignment = 'Left' | 'Center' | 'Right' | 'Stretch';
-export type VerticalAlignment = 'Top' | 'Center' | 'Bottom' | 'Stretch';
+import { Component, Host, HostBinding, Input } from "@angular/core";
+import { HorizontalAlignment, VerticalAlignment } from "./Common";
 
 @Component({
   selector: 'FrameworkElement',
   template: `<ng-container/>`
 })
-export class FrameworkElement {
+export abstract class FrameworkElement {
   @Input() @HostBinding('style.width') Width?: string;
   @Input() @HostBinding('style.height') Height?: string;
   @Input() HorizontalAlignment: HorizontalAlignment = 'Stretch';
   @Input() VerticalAlignment: VerticalAlignment = 'Stretch';
   @Input() @HostBinding('style.margin') Margin?: string;
   @Input() @HostBinding('style.padding') Padding?: string;
-
-  @HostBinding('style.justify-self')
-  get justifySelf() {
+  
+  private get justifySelf() {
     return this.HorizontalAlignment.toLowerCase();
   }
 
   @HostBinding('style.align-self')
-  get alignSelf() {
+  private get alignSelf() {
     switch (this.VerticalAlignment) {
       case 'Top':
         return 'flex-start';
@@ -32,5 +29,10 @@ export class FrameworkElement {
       case 'Stretch':
         return 'stretch';
     }
+  }
+
+  @HostBinding('style.overflow')
+  private get overflow() {
+    return 'clip';
   }
 }

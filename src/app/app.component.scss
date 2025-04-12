@@ -1,3 +1,9 @@
+:host {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+}
+
 .container {
   background: beige;
   display: grid;
@@ -6,7 +12,7 @@
 .test {
   background: red;
   justify-self: right;
-  align-self:stretch;
+  align-self: stretch;
   border-color: blue;
   border-width: 10px;
   border-style: solid;
