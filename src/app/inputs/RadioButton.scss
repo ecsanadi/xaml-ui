@@ -92,7 +92,6 @@ input[type="radio"]:not(:checked):disabled + .radioButton {
   }
 }
 
-
 input[type="radio"]:checked:disabled + .radioButton {
   background-color: common.$AccentFillColorDisabledLight;
   border-color: common.$ControlStrongStrokeColorDisabledLight;

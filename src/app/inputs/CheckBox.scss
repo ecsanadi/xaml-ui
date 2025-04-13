@@ -92,7 +92,6 @@ input[type="checkbox"]:not(:checked):disabled + .checkBox {
   }
 }
 
-
 input[type="checkbox"]:checked:disabled + .checkBox {
   background-color: common.$AccentFillColorDisabledLight;
   border-color: common.$ControlStrongStrokeColorDisabledLight;
