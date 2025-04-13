@@ -1,3 +1,4 @@
+$ControlBorderThickness: 1px;
 $ControlCornerRadius: 4px;
 
 $ControlFillColorDefaultLight: #FFFFFFB3;
@@ -5,19 +6,57 @@ $ControlFillColorSecondaryLight: #F9F9F980;
 $ControlFillColorTertiaryLight: #F9F9F94D;
 $ControlFillColorDisabledLight: #F9F9F94D;
 
+$ControlAltFillColorSecondaryLight: #00000006;
+$ControlAltFillColorTertiaryLight: #0000000F;
+$ControlAltFillColorQuarternaryLight: #00000018;
+$ControlAltFillColorDisabledLight: #FFFFFF00;
+
+$SubtleFillColorTransparentLight: #FFFFFF00;
+
+$AccentFillColorDefaultLight: #0067C0FF;
+$AccentFillColorSecondaryColorLight: rgba($AccentFillColorDefaultLight, 0.9);
+$AccentFillColorTertiaryColorLight: rgba($AccentFillColorDefaultLight, 0.8);
+$AccentFillColorDisabledLight: #FFFFFF37;
+
 $ControlStrokeColorDefaultLight: #0000000F;
+$ControlStrongStrokeColorDefaultLight: #00000072;
+$ControlStrongStrokeColorDisabledLight: #00000037;
 
 $TextFillColorPrimaryLight: #000000E4;
 $TextFillColorSecondaryLight: #0000009E;
 $TextFillColorDisabledLight: #0000005C;
+
+$TextOnAccentFillColorPrimaryLight: #FFFFFF;
+$TextOnAccentFillColorSecondaryLight: #FFFFFFB3;
+$TextOnAccentFillColorDisabledLight: #FFFFFF;
 
 $ControlFillColorDefaultDark: #FFFFFF0F;
 $ControlFillColorSecondaryDark: #FFFFFF15;
 $ControlFillColorTertiaryDark: #FFFFFF08;
 $ControlFillColorDisabledDark: #FFFFFF0B;
 
+$ControlAltFillColorSecondaryDark: #00000019;
+$ControlAltFillColorTertiaryDark: #FFFFFF0B;
+$ControlAltFillColorQuarternaryDark: #FFFFFF12;
+$ControlAltFillColorDisabledDark: #FFFFFF00;
+
+$SubtleFillColorTransparentDark: #FFFFFF00;
+
+$AccentFillColorDefaultDark: #4CC2FFFF;
+$AccentFillColorSecondaryColorDark: rgba($AccentFillColorDefaultDark, 0.9);
+$AccentFillColorTertiaryColorDark: rgba($AccentFillColorDefaultDark, 0.8);
+$AccentFillColorDisabledDark: #FFFFFF28;
+
 $ControlStrokeColorDefaultDark: #FFFFFF12;
+$ControlStrongStrokeColorDefaultDark: #FFFFFF8B;
+$ControlStrongStrokeColorDisabledDark: #FFFFFF28;
 
 $TextFillColorPrimaryDark: #FFFFFFFF;
 $TextFillColorSecondaryDark: #FFFFFFC5;
 $TextFillColorDisabledDark: #FFFFFF5D;
+
+$TextOnAccentFillColorPrimaryDark: #000000;
+$TextOnAccentFillColorSecondaryDark: #00000080;
+$TextOnAccentFillColorDisabledDark: #FFFFFF87;
+
+$SymbolFontFamily: 'Segoe Fluent Icons', 'Segoe MDL2 Assets';

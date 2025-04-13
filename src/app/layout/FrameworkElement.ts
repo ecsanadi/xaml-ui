@@ -13,6 +13,7 @@ export abstract class FrameworkElement {
   @Input() @HostBinding('style.margin') Margin?: string;
   @Input() @HostBinding('style.padding') Padding?: string;
   
+  @HostBinding('style.justify-self')
   private get justifySelf() {
     return this.HorizontalAlignment.toLowerCase();
   }

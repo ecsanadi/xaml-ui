@@ -3,7 +3,7 @@
 :host {
   display: grid;
   padding: 5px 11px;
-  border-width: 1pt;
+  border-width: common.$ControlBorderThickness;
   border-style: solid;
   border-radius: common.$ControlCornerRadius;
 
