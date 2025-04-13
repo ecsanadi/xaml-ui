@@ -1,17 +1,16 @@
-import { Component, Directive, HostBinding, Input } from "@angular/core";
+import { Component, Directive, HostBinding, Input, NgModule } from "@angular/core";
 import { Border } from "./Border";
-import { CommonModule } from "@angular/common";
 import { Orientation } from "./Common";
 
 @Component({
   selector: 'Grid',
-  imports: [CommonModule],
   template: `<ng-container><ng-content/></ng-container>`,
   styles: `:host { 
     display: grid;
-  }`
+  }`,
+  standalone: false
 })
-export class Grid extends Border {
+export class GridControl extends Border {
   @Input() @HostBinding('style.grid-template-columns') ColumnDefinitions?: string;
   @Input() @HostBinding('style.grid-template-rows') RowDefinitions?: string;
   @Input() @HostBinding('style.column-gap') ColumnSpacing?: string;
@@ -32,7 +31,8 @@ export class GridProperty {
 }
 
 @Directive ({
-  selector: '[Grid]'  
+  selector: '[Grid]',
+  standalone: false
 })
 export class GridDirective {
   @Input() Grid: GridProperty = new GridProperty();
@@ -59,9 +59,10 @@ export class GridDirective {
 }
 
 @Directive ({
-  selector: '[Grid-Row]'
+  selector: '[Grid-Row]',
+  standalone: false
 })
-export class GridRowProperty {
+export class GridRowDirective {
   @Input('Grid-Row') Row?: string;
 
   @HostBinding('style.grid-row-start')
@@ -71,9 +72,10 @@ export class GridRowProperty {
 }
 
 @Directive ({
-  selector: '[Grid-Column]'
+  selector: '[Grid-Column]',
+  standalone: false
 })
-export class GridColumnProperty {
+export class GridColumnDirective {
   @Input('Grid-Column') Column?: string;
 
   @HostBinding('style.grid-column-start')
@@ -83,9 +85,10 @@ export class GridColumnProperty {
 }
 
 @Directive({
-  selector: '[Grid-RowSpan]'
+  selector: '[Grid-RowSpan]',
+  standalone: false
 })
-export class GridRowSpanProperty {
+export class GridRowSpanDirective {
   @Input('Grid-RowSpan') RowSpan?: string;
 
   @HostBinding('style.grid-row-end')
@@ -95,9 +98,10 @@ export class GridRowSpanProperty {
 }
 
 @Directive({
-  selector: '[Grid-ColumnSpan]'
+  selector: '[Grid-ColumnSpan]',
+  standalone: false
 })
-export class GridColumnSpanProperty {
+export class GridColumnSpanDirective {
   @Input('Grid-ColumnSpan') ColumnSpan?: string;
 
   @HostBinding('style.grid-column-end')
@@ -105,3 +109,18 @@ export class GridColumnSpanProperty {
     return this.ColumnSpan !== undefined ? ('span ' + this.ColumnSpan) : undefined;
   }
 }
+
+const GridComponents : any[] = [
+  GridControl,
+  GridDirective,
+  GridRowDirective,
+  GridRowSpanDirective,
+  GridColumnDirective,
+  GridColumnSpanDirective
+]
+
+@NgModule({
+  declarations: GridComponents,
+  exports: GridComponents
+})
+export class Grid { }
