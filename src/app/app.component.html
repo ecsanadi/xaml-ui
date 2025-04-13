@@ -15,7 +15,24 @@
     </Button>
 
     <CheckBox Margin="3px" [IsChecked]="false" [IsEnabled]="false">Test a</CheckBox>
-    <CheckBox Margin="3px">Test b</CheckBox>
+    <CheckBox Margin="3px" [IsChecked]="true" [IsEnabled]="false">Test b</CheckBox>
+    <CheckBox Margin="3px" [IsChecked]="true">Test c</CheckBox>
+    <CheckBox Margin="3px">Test d</CheckBox>
+
+    <TextBlock Text="Group A"/>
+    <RadioButtonGroup Spacing="3px" Padding="3px" (ValueChange)="onRadioButtonChange($event)">
+      <RadioButton [IsChecked]="false" [IsEnabled]="false">Test a</RadioButton>
+      <RadioButton [IsChecked]="true" [IsEnabled]="false">Test b</RadioButton>
+      <RadioButton>Test c</RadioButton>
+      <RadioButton>Test d</RadioButton>
+    </RadioButtonGroup>
+
+    <TextBlock Text="Group B"/>
+    <RadioButtonGroup Spacing="3px" Padding="3px" Value="B" (ValueChange)="onRadioButtonChange($event)">
+      <RadioButton Value="A">Test a</RadioButton>
+      <RadioButton Value="B">Test b</RadioButton>
+      <RadioButton Value="C">Test c</RadioButton>
+    </RadioButtonGroup>
 
     <Grid ColumnDefinitions="1fr 1fr" RowDefinitions="1fr 1fr" Orientation="Horizontal" RowSpacing="5px"
       Background="Aqua">

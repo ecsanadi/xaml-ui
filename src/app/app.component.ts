@@ -8,13 +8,18 @@ import { TextBlock } from './indicators/TextBlock';
 import { Button } from "./inputs/Button";
 import { CheckBox } from './inputs/CheckBox';
 import { ToolTipService } from './layout/ToolTipService';
+import { RadioButton, RadioButtonGroup } from './inputs/RadioButton';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  imports: [Border, StackPanel, Grid, Button, ScrollViewer, XamlRoot, TextBlock, Button, CheckBox, ToolTipService]
+  imports: [Border, StackPanel, Grid, Button, ScrollViewer, XamlRoot, TextBlock, Button, CheckBox, ToolTipService, RadioButton, RadioButtonGroup]
 })
 export class AppComponent {
   title = 'xaml-ui';
+
+  onRadioButtonChange(value: any) {
+    console.log(value);
+  }
 }

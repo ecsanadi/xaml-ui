@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { Border } from "../layout/Border";
-import { FormsModule } from "@angular/forms";
 
 @Component({
   selector: 'CheckBox',

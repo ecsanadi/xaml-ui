@@ -1,0 +1,139 @@
+@use 'Common.scss' as common;
+
+.container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 6px;
+}
+
+input {
+  display: none;
+}
+
+input[type="radio"]:checked + .radioButton > .circle {
+  display: grid;
+}
+
+input[type="radio"]:not(:checked):not(:hover):not(:active):not(:disabled) + .radioButton {
+  background-color: common.$ControlAltFillColorSecondaryLight;
+  border-color: common.$ControlStrongStrokeColorDefaultLight;
+  
+  @media (prefers-color-scheme: dark) {
+    background-color: common.$ControlAltFillColorSecondaryDark;
+    border-color: common.$ControlStrongStrokeColorDefaultDark;
+  }
+}
+
+input[type="radio"]:not(:checked):hover:not(:active):not(:disabled) + .radioButton {
+  background-color: common.$ControlAltFillColorTertiaryLight;
+  border-color: common.$ControlStrongStrokeColorDefaultLight;
+  
+  @media (prefers-color-scheme: dark) {
+    background-color: common.$ControlAltFillColorTertiaryDark;
+    border-color: common.$ControlStrongStrokeColorDefaultDark;
+  }
+}
+
+input[type="radio"]:not(:checked):active + .radioButton {
+  background-color: common.$SubtleFillColorTransparentLight;
+  border-color: common.$ControlStrongStrokeColorDisabledLight;
+  
+  @media (prefers-color-scheme: dark) {
+    background-color: common.$SubtleFillColorTransparentDark;
+    border-color: common.$ControlStrongStrokeColorDisabledDark;
+  }
+}
+
+input[type="radio"]:checked:not(:hover):not(:disabled) + .radioButton {
+  background-color: common.$AccentFillColorDefaultLight;
+  border-color: common.$AccentFillColorDefaultLight;
+  
+  @media (prefers-color-scheme: dark) {
+    background-color: common.$AccentFillColorDefaultDark;
+    border-color: common.$AccentFillColorDefaultDark;
+  }
+}
+
+input[type="radio"]:checked:hover:not(:disabled) + .radioButton {
+  background-color: common.$AccentFillColorSecondaryColorLight;
+  border-color: common.$AccentFillColorSecondaryColorLight;
+  
+  @media (prefers-color-scheme: dark) {
+    background-color: common.$AccentFillColorSecondaryColorDark;
+    border-color: common.$AccentFillColorSecondaryColorDark;
+  }
+}
+
+input[type="radio"]:checked:active:not(:disabled) + .radioButton {
+  background-color: common.$AccentFillColorTertiaryColorLight;
+  border-color: common.$AccentFillColorTertiaryColorLight;
+
+  & > .circle {
+    background-color: common.$TextOnAccentFillColorSecondaryLight;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    background-color: common.$AccentFillColorTertiaryColorDark;
+    border-color: common.$AccentFillColorTertiaryColorDark;
+
+    & > .circle {
+      background-color: common.$TextOnAccentFillColorSecondaryDark;
+    }
+  }
+}
+
+input[type="radio"]:not(:checked):disabled + .radioButton {
+  background-color: common.$ControlAltFillColorDisabledLight;
+  border-color: common.$ControlStrongStrokeColorDisabledLight;
+  
+  @media (prefers-color-scheme: dark) {
+    background-color: common.$ControlAltFillColorDisabledDark;
+    border-color: common.$ControlStrongStrokeColorDisabledDark;
+  }
+}
+
+
+input[type="radio"]:checked:disabled + .radioButton {
+  background-color: common.$AccentFillColorDisabledLight;
+  border-color: common.$ControlStrongStrokeColorDisabledLight;
+
+  & > .circle {
+    background-color: common.$TextOnAccentFillColorDisabledLight;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    background-color: common.$AccentFillColorDisabledDark;
+    border-color: common.$ControlStrongStrokeColorDisabledDark;
+
+    & > .circle {
+      background-color: common.$TextOnAccentFillColorDisabledDark;
+    }
+  }
+}
+  
+.radioButton {
+  display: grid;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: common.$ControlBorderThickness;  
+}
+
+.circle {
+  display: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 6px;
+  align-self: center;
+  justify-self: center;
+  background-color: common.$TextOnAccentFillColorPrimaryLight;
+  
+  @media (prefers-color-scheme: dark) {
+    background-color: common.$TextOnAccentFillColorPrimaryDark;
+  }
+}
+
+.content {
+  align-self: center;
+}
