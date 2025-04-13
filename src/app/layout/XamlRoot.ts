@@ -7,17 +7,23 @@ import { Component } from "@angular/core";
   template: `<ng-container><ng-content/></ng-container>`,
   styles: `:host { 
     display: grid;    
-    font-family: 'Segoe UI', Arial, sans-serif;
-    font-size: 10pt;
     background-color: #f3f3f3;
-    color: #000000;
+
+    &::ng-deep * {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 10pt;
+      color: #000000;
+    }
 
     @media (prefers-color-scheme: dark) {
       background-color: #202020;
-      color: #ffffff;
+
+      &::ng-deep * {
+        color: #ffffff;
+      }
     }
   }`
 })
 export class XamlRoot {
-  
+
 }

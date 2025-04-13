@@ -1,0 +1,47 @@
+@use 'Common' as common;
+
+:host {
+  display: grid;
+  padding: 5px 11px;
+  border-width: 1pt;
+  border-style: solid;
+  border-radius: common.$ControlCornerRadius;
+
+  background: common.$ControlFillColorDefaultLight;
+  border-color: common.$ControlStrokeColorDefaultLight;
+  color: common.$TextFillColorPrimaryLight;
+  
+  @media (prefers-color-scheme: dark) {
+    background: common.$ControlFillColorDefaultDark;
+    border-color: common.$ControlStrokeColorDefaultDark;
+    color: common.$TextFillColorPrimaryDark;
+  }
+
+  &:hover {
+    background: common.$ControlFillColorSecondaryLight;
+
+    @media (prefers-color-scheme: dark) {
+      background: common.$ControlFillColorSecondaryDark;
+    }
+  }
+
+  &:active {
+    background: common.$ControlFillColorTertiaryLight;
+    color: common.$TextFillColorSecondaryLight;
+    
+    @media (prefers-color-scheme: dark) {
+      background: common.$ControlFillColorTertiaryDark;
+      color: common.$TextFillColorSecondaryDark;
+    }
+  }
+  
+  &:disabled {
+    background: common.$ControlFillColorDisabledLight;
+    color: common.$TextFillColorDisabledLight;
+    
+    @media (prefers-color-scheme: dark) {
+      background: common.$ControlFillColorDisabledDark;
+      color: common.$TextFillColorDisabledDark;
+    }
+  }
+}

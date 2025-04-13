@@ -57,3 +57,51 @@ export class GridDirective {
     return this.Grid.RowSpan !== undefined ? ('span ' + this.Grid.RowSpan) : undefined;
   }
 }
+
+@Directive ({
+  selector: '[Grid-Row]'
+})
+export class GridRowProperty {
+  @Input('Grid-Row') Row?: string;
+
+  @HostBinding('style.grid-row-start')
+  private get gridRowStart() {
+    return this.Row !== undefined ? parseInt(this.Row) + 1 : undefined;
+  }
+}
+
+@Directive ({
+  selector: '[Grid-Column]'
+})
+export class GridColumnProperty {
+  @Input('Grid-Column') Column?: string;
+
+  @HostBinding('style.grid-column-start')
+  private get gridColumnStart() {
+    return this.Column !== undefined ? parseInt(this.Column) + 1 : undefined;
+  }
+}
+
+@Directive({
+  selector: '[Grid-RowSpan]'
+})
+export class GridRowSpanProperty {
+  @Input('Grid-RowSpan') RowSpan?: string;
+
+  @HostBinding('style.grid-row-end')
+  private get gridRowEnd() {
+    return this.RowSpan !== undefined ? ('span ' + this.RowSpan) : undefined;
+  }
+}
+
+@Directive({
+  selector: '[Grid-ColumnSpan]'
+})
+export class GridColumnSpanProperty {
+  @Input('Grid-ColumnSpan') ColumnSpan?: string;
+
+  @HostBinding('style.grid-column-end')
+  private get gridColumnEnd() {
+    return this.ColumnSpan !== undefined ? ('span ' + this.ColumnSpan) : undefined;
+  }
+}

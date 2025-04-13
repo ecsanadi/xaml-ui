@@ -10,9 +10,13 @@
       voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
       in culpa qui officia deserunt mollit anim id est laborum.</TextBlock>
 
+    <Button Margin="3px">
+      Click me!
+    </Button>
+
     <Grid ColumnDefinitions="1fr 1fr" RowDefinitions="1fr 1fr" Orientation="Horizontal" RowSpacing="5px"
       Background="Aqua">
-      <Border [Grid]="{Row: 0, Column:0, RowSpan: 2}" Background="Red">1</Border>
+      <Border Grid-Row="0" Grid-Column="0" Background="Red">1</Border>
       <Border [Grid]="{Row: 1, Column:1}" Background="Green">2</Border>
     </Grid>
 
@@ -30,7 +34,7 @@
 
     <Border Width="300px" Height="300px" Background="Aqua" CornerRadius="6px" BorderThickness="2px">
 
-      <StackPanel Orientation="Horizontal" Background="Red" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+      <StackPanel Orientation="Horizontal" Background="Magenta" HorizontalAlignment="Center" VerticalAlignment="Bottom"
         Width="200px" Margin="6px 12px" Padding="3px" BorderThickness="5px" BorderBrush="Green" Spacing="12px">
         <Border Background="Aqua">
           test A
