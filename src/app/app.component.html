@@ -10,8 +10,14 @@
       voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
       in culpa qui officia deserunt mollit anim id est laborum.</TextBlock>
 
-    <Slider/>
-    <Slider Orientation="Vertical"/>
+    <Slider />
+    <Slider Orientation="Vertical" />
+
+    <StackPanel Orientation="Vertical" Spacing="3px" Padding="3px">
+      <ToggleSwitch>Switch me on!</ToggleSwitch>
+      <ToggleSwitch [IsChecked]="false" [IsEnabled]="false">Switch me on!</ToggleSwitch>
+      <ToggleSwitch [IsChecked]="true" [IsEnabled]="false">Switch me on!</ToggleSwitch>
+    </StackPanel>
 
     <Button Margin="3px" ToolTipService-ToolTip="This is a tooltip!">
       Click me!
@@ -22,7 +28,7 @@
     </ToggleButton>
 
     <ToggleButton Margin="3px">
-      <FontIcon Glyph="&#xED5F;" FontSize="22pt"/>
+      <FontIcon Glyph="&#xED5F;" FontSize="22pt" />
     </ToggleButton>
 
     <CheckBox Margin="3px" [IsChecked]="false" [IsEnabled]="false">Test a</CheckBox>
@@ -30,7 +36,7 @@
     <CheckBox Margin="3px" [IsChecked]="true">Test c</CheckBox>
     <CheckBox Margin="3px">Test d</CheckBox>
 
-    <TextBlock Text="Group A"/>
+    <TextBlock Text="Group A" />
     <RadioButtonGroup Spacing="3px" Padding="3px" (ValueChange)="onRadioButtonChange($event)">
       <RadioButton [IsChecked]="false" [IsEnabled]="false">Test a</RadioButton>
       <RadioButton [IsChecked]="true" [IsEnabled]="false">Test b</RadioButton>
@@ -38,7 +44,7 @@
       <RadioButton>Test d</RadioButton>
     </RadioButtonGroup>
 
-    <TextBlock Text="Group B"/>
+    <TextBlock Text="Group B" />
     <RadioButtonGroup Spacing="3px" Padding="3px" Value="B" (ValueChange)="onRadioButtonChange($event)">
       <RadioButton Value="A">Test a</RadioButton>
       <RadioButton Value="B">Test b</RadioButton>

@@ -1,0 +1,206 @@
+@use 'Common.scss' as common;
+
+.container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 6px;
+}
+
+input {
+  display: none;
+
+  &:not(:checked):not(:active):not(:disabled)+.slider:not(:hover) {
+    background-color: common.$ControlAltFillColorSecondaryLight;
+    border-color: common.$ControlStrongStrokeColorDefaultLight;
+
+    @media (prefers-color-scheme: dark) {
+      background-color: common.$ControlAltFillColorSecondaryDark;
+      border-color: common.$ControlStrongStrokeColorDefaultDark;
+    }
+
+    &>.thumb {
+      background-color: common.$TextFillColorSecondaryLight;
+
+      @media (prefers-color-scheme: dark) {
+        background-color: common.$TextFillColorSecondaryDark;
+      }
+    }
+  }
+
+  &:not(:checked):not(:active):not(:disabled)+.slider:hover {
+    background-color: common.$ControlAltFillColorTertiaryLight;
+    border-color: common.$ControlStrongStrokeColorDefaultLight;
+
+    @media (prefers-color-scheme: dark) {
+      background-color: common.$ControlAltFillColorTertiaryDark;
+      border-color: common.$ControlStrongStrokeColorDefaultDark;
+    }
+
+    &>.thumb {
+      background-color: common.$TextFillColorSecondaryLight;
+
+      @media (prefers-color-scheme: dark) {
+        background-color: common.$TextFillColorSecondaryDark;
+      }
+    }
+  }
+
+  &:not(:checked):active:not(:disabled)+.slider {
+    background-color: common.$ControlAltFillColorQuarternaryLight;
+    border-color: common.$ControlStrongStrokeColorDefaultLight;
+
+    @media (prefers-color-scheme: dark) {
+      background-color: common.$ControlAltFillColorQuarternaryDark;
+      border-color: common.$ControlStrongStrokeColorDefaultDark;
+    }
+
+    &>.thumb {
+      background-color: common.$TextFillColorSecondaryLight;
+
+      @media (prefers-color-scheme: dark) {
+        background-color: common.$TextFillColorSecondaryDark;
+      }
+    }
+  }
+
+  &:not(:checked):disabled+.slider {
+    background-color: common.$ControlAltFillColorDisabledLight;
+    border-color: common.$ControlStrongStrokeColorDisabledLight;
+
+    @media (prefers-color-scheme: dark) {
+      background-color: common.$ControlAltFillColorDisabledDark;
+      border-color: common.$ControlStrongStrokeColorDisabledDark;
+    }
+
+    &>.thumb {
+      background-color: common.$TextFillColorDisabledLight;
+
+      @media (prefers-color-scheme: dark) {
+        background-color: common.$TextFillColorDisabledDark;
+      }
+    }
+  }
+
+  &:checked:not(:active):not(:disabled)+.slider:not(:hover) {
+    background-color: common.$AccentFillColorDefaultLight;
+    border-color: common.$AccentFillColorDefaultLight;
+
+    @media (prefers-color-scheme: dark) {
+      background-color: common.$AccentFillColorDefaultDark;
+      border-color: common.$AccentFillColorDefaultDark;
+    }
+
+    &>.thumb {
+      background-color: common.$TextOnAccentFillColorPrimaryLight;
+
+      @media (prefers-color-scheme: dark) {
+        background-color: common.$TextOnAccentFillColorPrimaryDark;
+      }
+    }
+  }
+
+  &:checked:not(:active):not(:disabled)+.slider:hover {
+    background-color: common.$AccentFillColorSecondaryLight;
+    border-color: common.$AccentFillColorSecondaryLight;
+
+    @media (prefers-color-scheme: dark) {
+      background-color: common.$AccentFillColorSecondaryDark;
+      border-color: common.$AccentFillColorSecondaryDark;
+    }
+
+    &>.thumb {
+      background-color: common.$TextOnAccentFillColorPrimaryLight;
+
+      @media (prefers-color-scheme: dark) {
+        background-color: common.$TextOnAccentFillColorPrimaryDark;
+      }
+    }
+  }
+
+  &:checked:active:not(:disabled)+.slider {
+    background-color: common.$AccentFillColorTertiaryLight;
+    border-color: common.$AccentFillColorTertiaryLight;
+
+    @media (prefers-color-scheme: dark) {
+      background-color: common.$AccentFillColorTertiaryDark;
+      border-color: common.$AccentFillColorTertiaryDark;
+    }
+
+    &>.thumb {
+      background-color: common.$TextOnAccentFillColorPrimaryLight;
+
+      @media (prefers-color-scheme: dark) {
+        background-color: common.$TextOnAccentFillColorPrimaryDark;
+      }
+    }
+  }
+
+  &:checked:disabled+.slider {
+    background-color: common.$AccentFillColorDisabledLight;
+    border-color: common.$AccentFillColorDisabledLight;
+
+    @media (prefers-color-scheme: dark) {
+      background-color: common.$AccentFillColorDisabledDark;
+      border-color: common.$AccentFillColorDisabledDark;
+    }
+
+    &>.thumb {
+      background-color: common.$TextOnAccentFillColorDisabledLight;
+
+      @media (prefers-color-scheme: dark) {
+        background-color: common.$TextOnAccentFillColorDisabledDark;
+      }
+    }
+  }
+
+  &:checked+.slider>.thumb {
+    transform: translateX(20px);
+  }
+
+  &:not(:disabled):active+.slider>.thumb {
+    width: 17px;
+    height: 14px;
+  }
+
+  &:not(:disabled):not(:active):hover+.slider>.thumb {
+    width: 14px;
+    height: 14px;
+  }
+
+  &:not(:disabled):not(:active):checked:hover+.slider>.thumb {
+    transform: translateX(18px);
+  }
+
+  &:not(:disabled):checked:active+.slider>.thumb {
+    transform: translateX(15px);
+    width: 17px;
+    height: 14px;
+  }
+}
+
+.slider {
+  display: grid;
+  width: 40px;
+  height: 20px;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 1px;
+  transition: background-color common.$ControlNormalAnimationDuration;
+  background-color: common.$ControlAltFillColorSecondaryLight;
+
+  @media (prefers-color-scheme: dark) {
+    background-color: common.$ControlAltFillColorSecondaryDark;
+  }
+}
+
+.thumb {
+  display: grid;
+  width: 12px;
+  height: 12px;
+  border-radius: 7px;
+  align-self: center;
+  margin: 0px 4px;
+  transition: transform common.$ControlNormalAnimationDuration;
+  transition: width common.$ControlFastAnimationDuration;
+  transition: margin-left common.$ControlFastAnimationDuration;
+}
