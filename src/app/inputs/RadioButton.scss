@@ -55,26 +55,26 @@ input[type="radio"]:checked:not(:hover):not(:disabled) + .radioButton {
 }
 
 input[type="radio"]:checked:hover:not(:disabled) + .radioButton {
-  background-color: common.$AccentFillColorSecondaryColorLight;
-  border-color: common.$AccentFillColorSecondaryColorLight;
+  background-color: common.$AccentFillColorSecondaryLight;
+  border-color: common.$AccentFillColorSecondaryLight;
   
   @media (prefers-color-scheme: dark) {
-    background-color: common.$AccentFillColorSecondaryColorDark;
-    border-color: common.$AccentFillColorSecondaryColorDark;
+    background-color: common.$AccentFillColorSecondaryDark;
+    border-color: common.$AccentFillColorSecondaryDark;
   }
 }
 
 input[type="radio"]:checked:active:not(:disabled) + .radioButton {
-  background-color: common.$AccentFillColorTertiaryColorLight;
-  border-color: common.$AccentFillColorTertiaryColorLight;
+  background-color: common.$AccentFillColorTertiaryLight;
+  border-color: common.$AccentFillColorTertiaryLight;
 
   & > .circle {
     background-color: common.$TextOnAccentFillColorSecondaryLight;
   }
   
   @media (prefers-color-scheme: dark) {
-    background-color: common.$AccentFillColorTertiaryColorDark;
-    border-color: common.$AccentFillColorTertiaryColorDark;
+    background-color: common.$AccentFillColorTertiaryDark;
+    border-color: common.$AccentFillColorTertiaryDark;
 
     & > .circle {
       background-color: common.$TextOnAccentFillColorSecondaryDark;

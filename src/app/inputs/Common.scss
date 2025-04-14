@@ -11,11 +11,12 @@ $ControlAltFillColorTertiaryLight: #0000000F;
 $ControlAltFillColorQuarternaryLight: #00000018;
 $ControlAltFillColorDisabledLight: #FFFFFF00;
 
+$ControlFillColorTransparentLight: #FFFFFF00;
 $SubtleFillColorTransparentLight: #FFFFFF00;
 
 $AccentFillColorDefaultLight: #0067C0FF;
-$AccentFillColorSecondaryColorLight: rgba($AccentFillColorDefaultLight, 0.9);
-$AccentFillColorTertiaryColorLight: rgba($AccentFillColorDefaultLight, 0.8);
+$AccentFillColorSecondaryLight: rgba($AccentFillColorDefaultLight, 0.9);
+$AccentFillColorTertiaryLight: rgba($AccentFillColorDefaultLight, 0.8);
 $AccentFillColorDisabledLight: #FFFFFF37;
 
 $ControlStrokeColorDefaultLight: #0000000F;
@@ -40,11 +41,12 @@ $ControlAltFillColorTertiaryDark: #FFFFFF0B;
 $ControlAltFillColorQuarternaryDark: #FFFFFF12;
 $ControlAltFillColorDisabledDark: #FFFFFF00;
 
+$ControlFillColorTransparentDark: #FFFFFF00;
 $SubtleFillColorTransparentDark: #FFFFFF00;
 
 $AccentFillColorDefaultDark: #4CC2FFFF;
-$AccentFillColorSecondaryColorDark: rgba($AccentFillColorDefaultDark, 0.9);
-$AccentFillColorTertiaryColorDark: rgba($AccentFillColorDefaultDark, 0.8);
+$AccentFillColorSecondaryDark: rgba($AccentFillColorDefaultDark, 0.9);
+$AccentFillColorTertiaryDark: rgba($AccentFillColorDefaultDark, 0.8);
 $AccentFillColorDisabledDark: #FFFFFF28;
 
 $ControlStrokeColorDefaultDark: #FFFFFF12;

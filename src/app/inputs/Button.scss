@@ -2,6 +2,8 @@
 
 :host {
   display: grid;
+  align-content: center;
+  justify-content: center;
   padding: 5px 11px;
   border-width: common.$ControlBorderThickness;
   border-style: solid;
@@ -17,7 +19,7 @@
     color: common.$TextFillColorPrimaryDark;
   }
 
-  &:hover {
+  &:hover:not(.checked) {
     background: common.$ControlFillColorSecondaryLight;
 
     @media (prefers-color-scheme: dark) {
@@ -25,7 +27,7 @@
     }
   }
 
-  &:active {
+  &:active:not(.checked) {
     background: common.$ControlFillColorTertiaryLight;
     color: common.$TextFillColorSecondaryLight;
     
@@ -35,13 +37,49 @@
     }
   }
   
-  &:disabled {
+  &:disabled:not(.checked) {
     background: common.$ControlFillColorDisabledLight;
     color: common.$TextFillColorDisabledLight;
     
     @media (prefers-color-scheme: dark) {
       background: common.$ControlFillColorDisabledDark;
       color: common.$TextFillColorDisabledDark;
+    }
+  }
+
+  &.checked {
+    background: common.$AccentFillColorDefaultLight;
+    border-color: common.$AccentFillColorDefaultLight;
+    color: common.$TextOnAccentFillColorPrimaryLight;
+    
+    @media (prefers-color-scheme: dark) {
+      background: common.$AccentFillColorDefaultDark;
+      border-color: common.$AccentFillColorDefaultDark;
+      color: common.$TextOnAccentFillColorPrimaryDark;
+    }
+  }
+
+  &:hover.checked {
+    background: common.$AccentFillColorSecondaryLight;
+    border-color: common.$AccentFillColorSecondaryLight;
+    color: common.$TextOnAccentFillColorPrimaryLight;
+    
+    @media (prefers-color-scheme: dark) {
+      background: common.$AccentFillColorSecondaryDark;
+      border-color: common.$AccentFillColorSecondaryDark;
+      color: common.$TextOnAccentFillColorPrimaryDark;
+    }
+  }
+
+  &:active.checked {
+    background: common.$AccentFillColorTertiaryLight;
+    border-color: common.$ControlFillColorTransparentLight;
+    color: common.$TextOnAccentFillColorSecondaryLight;
+    
+    @media (prefers-color-scheme: dark) {
+      background: common.$AccentFillColorTertiaryDark;
+      border-color: common.$ControlFillColorTransparentDark;
+      color: common.$TextOnAccentFillColorSecondaryDark;
     }
   }
 }

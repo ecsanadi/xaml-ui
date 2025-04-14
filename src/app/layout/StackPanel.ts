@@ -4,7 +4,7 @@ import { Orientation } from "./Common";
 
 @Component({
   selector: 'StackPanel',
-  template: `<ng-container><ng-content/></ng-container>`,
+  template: `<ng-content/>`,
   styles: `:host { 
     display: flex;
   }`

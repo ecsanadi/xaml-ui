@@ -3,7 +3,7 @@ import { Border } from "../layout/Border";
 
 @Component({
   selector: 'Button',
-  template: `<ng-container><ng-content/></ng-container>`,
+  template: `<ng-content/>`,
   styleUrl: 'Button.scss'
 })
 export class Button extends Border {

@@ -4,7 +4,7 @@ import { Orientation } from "./Common";
 
 @Component({
   selector: 'Grid',
-  template: `<ng-container><ng-content/></ng-container>`,
+  template: `<ng-content/>`,
   styles: `:host { 
     display: grid;
   }`,

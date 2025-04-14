@@ -4,7 +4,7 @@ import { Component } from "@angular/core";
 @Component({
   selector: 'XamlRoot',
   imports: [CommonModule],
-  template: `<ng-container><ng-content/></ng-container>`,
+  template: `<ng-content/>`,
   styles: `:host { 
     display: grid;    
     background-color: #f3f3f3;

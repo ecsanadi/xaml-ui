@@ -5,8 +5,7 @@ import { ScrollMode } from "./Common";
 
 @Component({
   selector: 'ScrollViewer',
-  imports: [CommonModule],
-  template: `<ng-container><ng-content/></ng-container>`,
+  template: `<ng-content/>`,
   styles: `:host { 
     display: grid;
   }`

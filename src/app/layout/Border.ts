@@ -5,7 +5,7 @@ import { FrameworkElement } from "./FrameworkElement";
 @Component({
   selector: 'Border',
   imports: [CommonModule],
-  template: `<ng-container><ng-content/></ng-container>`,
+  template: `<ng-content/>`,
   styles: `:host { 
     display: grid;
   }`

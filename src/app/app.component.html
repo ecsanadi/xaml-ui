@@ -1,6 +1,6 @@
 <XamlRoot>
 
-  <ScrollViewer HorizontalScrollMode="Disabled" Height="300px">
+  <ScrollViewer HorizontalScrollMode="Disabled">
     <TextBlock Text="Test 3:" FontFamily="Consolas" FontSize="24pt" FontStyle="Italic" FontWeight="Bold"
       Foreground="Green" TextAlignment="Center" IsTextSelectionEnabled="True" TextDecorations="Underline" />
 
@@ -13,6 +13,10 @@
     <Button Margin="3px" ToolTipService-ToolTip="This is a tooltip!">
       Click me!
     </Button>
+
+    <ToggleButton Margin="3px" [IsChecked]="false">
+      Check this!
+    </ToggleButton>
 
     <CheckBox Margin="3px" [IsChecked]="false" [IsEnabled]="false">Test a</CheckBox>
     <CheckBox Margin="3px" [IsChecked]="true" [IsEnabled]="false">Test b</CheckBox>
