@@ -1,0 +1,92 @@
+@use 'Common.scss' as common;
+
+:host {
+  display: grid;
+}
+
+input {
+  display: grid;
+  -webkit-appearance: none;
+  appearance: none;
+
+  background-color: common.$ControlStrongFillColorDefaultLight;
+  border-radius: 2px;
+
+  outline: none;
+
+  &.horizontal {
+    height: 4px;
+    margin: 6px 0px;
+  }
+
+  &.vertical {
+    width: 4px;
+    margin: 0px 6px;
+
+    writing-mode: vertical-lr;
+    direction: rtl;
+    vertical-align: middle;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    background-color: common.$ControlStrongFillColorDefaultDark;
+  }
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    border-style: solid;
+    border-width: 4px;
+
+    outline: 1px solid common.$ControlStrokeColorOnAccentDefaultDark;
+    border-color: common.$ControlSolidFillColorDefaultLight;
+    background-color: common.$AccentFillColorDefaultLight;
+    transition: border-width common.$ControlFastAnimationDuration;
+
+    @media (prefers-color-scheme: dark) {
+      border-color: common.$ControlSolidFillColorDefaultDark;
+      background-color: common.$AccentFillColorDefaultDark;
+    }
+  }
+
+  &:not(:disabled)::-webkit-slider-thumb {
+    &:hover {
+      border-width: 3px;
+      background-color: common.$AccentFillColorSecondaryLight;
+
+      @media (prefers-color-scheme: dark) {
+        background-color: common.$AccentFillColorSecondaryDark;
+      }
+    }
+
+    &:active {
+      border-width: 5px;
+      background-color: common.$AccentFillColorTertiaryLight;
+
+      @media (prefers-color-scheme: dark) {
+        background-color: common.$AccentFillColorTertiaryDark;
+      }
+    }
+  }
+
+  &:disabled {
+    background-color: common.$ControlStrongFillColorDisabledLight;
+
+    @media (prefers-color-scheme: dark) {
+      background-color: common.$ControlStrongFillColorDisabledDark;
+    }
+    
+    &::-webkit-slider-thumb {
+      border-width: 2px;
+      background-color: common.$AccentFillColorDisabledLight;
+
+      @media (prefers-color-scheme: dark) {
+        background-color: common.$AccentFillColorDisabledDark;
+      }
+    }
+  }
+}

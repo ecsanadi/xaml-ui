@@ -1,15 +1,21 @@
 $ControlBorderThickness: 1px;
 $ControlCornerRadius: 4px;
+$ControlFastAnimationDuration: 0.167s;
 
 $ControlFillColorDefaultLight: #FFFFFFB3;
 $ControlFillColorSecondaryLight: #F9F9F980;
 $ControlFillColorTertiaryLight: #F9F9F94D;
 $ControlFillColorDisabledLight: #F9F9F94D;
 
+$ControlSolidFillColorDefaultLight: #FFFFFFFF;
+
 $ControlAltFillColorSecondaryLight: #00000006;
 $ControlAltFillColorTertiaryLight: #0000000F;
 $ControlAltFillColorQuarternaryLight: #00000018;
 $ControlAltFillColorDisabledLight: #FFFFFF00;
+
+$ControlStrongFillColorDefaultLight: #00000072;
+$ControlStrongFillColorDisabledLight: #00000051;
 
 $ControlFillColorTransparentLight: #FFFFFF00;
 $SubtleFillColorTransparentLight: #FFFFFF00;
@@ -22,6 +28,7 @@ $AccentFillColorDisabledLight: #FFFFFF37;
 $ControlStrokeColorDefaultLight: #0000000F;
 $ControlStrongStrokeColorDefaultLight: #00000072;
 $ControlStrongStrokeColorDisabledLight: #00000037;
+$ControlStrokeColorOnAccentDefaultLight: #FFFFFF14;
 
 $TextFillColorPrimaryLight: #000000E4;
 $TextFillColorSecondaryLight: #0000009E;
@@ -36,10 +43,15 @@ $ControlFillColorSecondaryDark: #FFFFFF15;
 $ControlFillColorTertiaryDark: #FFFFFF08;
 $ControlFillColorDisabledDark: #FFFFFF0B;
 
+$ControlSolidFillColorDefaultDark: #454545FF;
+
 $ControlAltFillColorSecondaryDark: #00000019;
 $ControlAltFillColorTertiaryDark: #FFFFFF0B;
 $ControlAltFillColorQuarternaryDark: #FFFFFF12;
 $ControlAltFillColorDisabledDark: #FFFFFF00;
+
+$ControlStrongFillColorDefaultDark: #FFFFFF8B;
+$ControlStrongFillColorDisabledDark: #FFFFFF3F;
 
 $ControlFillColorTransparentDark: #FFFFFF00;
 $SubtleFillColorTransparentDark: #FFFFFF00;
@@ -52,6 +64,7 @@ $AccentFillColorDisabledDark: #FFFFFF28;
 $ControlStrokeColorDefaultDark: #FFFFFF12;
 $ControlStrongStrokeColorDefaultDark: #FFFFFF8B;
 $ControlStrongStrokeColorDisabledDark: #FFFFFF28;
+$ControlStrokeColorOnAccentDefaultDark: #FFFFFF14;
 
 $TextFillColorPrimaryDark: #FFFFFFFF;
 $TextFillColorSecondaryDark: #FFFFFFC5;
