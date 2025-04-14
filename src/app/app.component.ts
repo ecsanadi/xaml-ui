@@ -10,12 +10,13 @@ import { CheckBox } from './inputs/CheckBox';
 import { ToolTipService } from './layout/ToolTipService';
 import { RadioButton, RadioButtonGroup } from './inputs/RadioButton';
 import { ToggleButton } from "./inputs/ToggleButton";
+import { FontIcon } from "./indicators/FontIcon";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  imports: [Border, StackPanel, Grid, Button, ScrollViewer, XamlRoot, TextBlock, Button, CheckBox, ToolTipService, RadioButton, RadioButtonGroup, ToggleButton]
+  imports: [Border, StackPanel, Grid, Button, ScrollViewer, XamlRoot, TextBlock, Button, CheckBox, ToolTipService, RadioButton, RadioButtonGroup, ToggleButton, FontIcon]
 })
 export class AppComponent {
   title = 'xaml-ui';

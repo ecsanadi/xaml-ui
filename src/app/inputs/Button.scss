@@ -12,11 +12,19 @@
   background: common.$ControlFillColorDefaultLight;
   border-color: common.$ControlStrokeColorDefaultLight;
   color: common.$TextFillColorPrimaryLight;
-  
+
+  &::ng-deep * {
+    color: common.$TextFillColorPrimaryLight;
+  }
+
   @media (prefers-color-scheme: dark) {
     background: common.$ControlFillColorDefaultDark;
     border-color: common.$ControlStrokeColorDefaultDark;
     color: common.$TextFillColorPrimaryDark;
+
+    &::ng-deep * {
+      color: common.$TextFillColorPrimaryDark;
+    }
   }
 
   &:hover:not(.checked) {
@@ -30,20 +38,36 @@
   &:active:not(.checked) {
     background: common.$ControlFillColorTertiaryLight;
     color: common.$TextFillColorSecondaryLight;
-    
+
+    &::ng-deep * {
+      color: common.$TextFillColorSecondaryLight;
+    }
+
     @media (prefers-color-scheme: dark) {
       background: common.$ControlFillColorTertiaryDark;
       color: common.$TextFillColorSecondaryDark;
+
+      &::ng-deep * {
+        color: common.$TextFillColorSecondaryDark;
+      }
     }
   }
-  
+
   &:disabled:not(.checked) {
     background: common.$ControlFillColorDisabledLight;
     color: common.$TextFillColorDisabledLight;
-    
+
+    &::ng-deep * {
+      color: common.$TextFillColorDisabledLight;
+    }
+
     @media (prefers-color-scheme: dark) {
       background: common.$ControlFillColorDisabledDark;
       color: common.$TextFillColorDisabledDark;
+
+      &::ng-deep * {
+        color: common.$TextFillColorDisabledDark;
+      }
     }
   }
 
@@ -51,11 +75,19 @@
     background: common.$AccentFillColorDefaultLight;
     border-color: common.$AccentFillColorDefaultLight;
     color: common.$TextOnAccentFillColorPrimaryLight;
-    
+
+    &::ng-deep * {
+      color: common.$TextOnAccentFillColorPrimaryLight;
+    }
+
     @media (prefers-color-scheme: dark) {
       background: common.$AccentFillColorDefaultDark;
       border-color: common.$AccentFillColorDefaultDark;
       color: common.$TextOnAccentFillColorPrimaryDark;
+
+      &::ng-deep * {
+        color: common.$TextOnAccentFillColorPrimaryDark;
+      }
     }
   }
 
@@ -63,11 +95,19 @@
     background: common.$AccentFillColorSecondaryLight;
     border-color: common.$AccentFillColorSecondaryLight;
     color: common.$TextOnAccentFillColorPrimaryLight;
-    
+
+    &::ng-deep * {
+      color: common.$TextOnAccentFillColorPrimaryLight;
+    }
+
     @media (prefers-color-scheme: dark) {
       background: common.$AccentFillColorSecondaryDark;
       border-color: common.$AccentFillColorSecondaryDark;
       color: common.$TextOnAccentFillColorPrimaryDark;
+
+      &::ng-deep * {
+        color: common.$TextOnAccentFillColorPrimaryDark;
+      }
     }
   }
 
@@ -75,11 +115,19 @@
     background: common.$AccentFillColorTertiaryLight;
     border-color: common.$ControlFillColorTransparentLight;
     color: common.$TextOnAccentFillColorSecondaryLight;
-    
+
+    &::ng-deep * {
+      color: common.$TextOnAccentFillColorSecondaryLight;
+    }
+
     @media (prefers-color-scheme: dark) {
       background: common.$AccentFillColorTertiaryDark;
       border-color: common.$ControlFillColorTransparentDark;
       color: common.$TextOnAccentFillColorSecondaryDark;
+
+      &::ng-deep * {
+        color: common.$TextOnAccentFillColorSecondaryDark;
+      }
     }
   }
 }

@@ -26,7 +26,11 @@ export class TextBlock extends FrameworkElement {
 
   @HostBinding('style.font-weight')
   private get fontWeight() {
-    switch (this.FontWeight) {
+    return TextBlock.ToFontWeight(this.FontWeight);
+  }
+
+  static ToFontWeight(value: FontWeights) {
+    switch (value) {
       case 'Black':
         return 900;
       case 'Bold':
