@@ -32,10 +32,11 @@ input {
     background-color: common.$ControlStrongFillColorDefaultDark;
   }
 
-  &::-webkit-slider-thumb {
+  @mixin slider-thumb {
     -webkit-appearance: none;
     appearance: none;
 
+    box-sizing: border-box;
     border-radius: 50%;
     width: 16px;
     height: 16px;
@@ -53,7 +54,15 @@ input {
     }
   }
 
-  &:not(:disabled)::-webkit-slider-thumb {
+  &::-webkit-slider-thumb {
+    @include slider-thumb;
+  }
+
+  &::-moz-range-thumb {
+    @include slider-thumb;
+  }
+
+  @mixin enabled-thumb {
     &:hover {
       border-width: 3px;
       background-color: common.$AccentFillColorSecondaryLight;
@@ -73,20 +82,36 @@ input {
     }
   }
 
+  &:not(:disabled)::-webkit-slider-thumb {
+    @include enabled-thumb;
+  }
+
+  &:not(:disabled)::-moz-range-thumb {
+    @include enabled-thumb;
+  }
+
   &:disabled {
     background-color: common.$ControlStrongFillColorDisabledLight;
 
     @media (prefers-color-scheme: dark) {
       background-color: common.$ControlStrongFillColorDisabledDark;
     }
-    
-    &::-webkit-slider-thumb {
+
+    @mixin disabled-thumb {
       border-width: 2px;
       background-color: common.$AccentFillColorDisabledLight;
 
       @media (prefers-color-scheme: dark) {
         background-color: common.$AccentFillColorDisabledDark;
       }
+    }
+
+    &::-webkit-slider-thumb {
+      @include disabled-thumb;
+    }
+
+    &::-moz-range-thumb {
+      @include disabled-thumb;
     }
   }
 }
