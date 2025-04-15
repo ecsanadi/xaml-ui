@@ -154,25 +154,27 @@ input {
   }
 
   &:checked+.slider>.thumb {
-    transform: translateX(20px);
+    transform: translateX(22px);
   }
 
   &:not(:disabled):active+.slider>.thumb {
     width: 17px;
     height: 14px;
+    transform: translateX(-1px);
   }
 
   &:not(:disabled):not(:active):hover+.slider>.thumb {
     width: 14px;
     height: 14px;
+    transform: translateX(-1px);    
   }
 
   &:not(:disabled):not(:active):checked:hover+.slider>.thumb {
-    transform: translateX(18px);
+    transform: translateX(21px);
   }
 
   &:not(:disabled):checked:active+.slider>.thumb {
-    transform: translateX(15px);
+    transform: translateX(18px);
     width: 17px;
     height: 14px;
   }
@@ -181,10 +183,10 @@ input {
 .slider {
   display: grid;
   width: 40px;
-  height: 20px;
+  height: 18px;
   border-radius: 10px;
   border-style: solid;
-  border-width: 1px;
+  border-width: 1.5px;
   transition: background-color common.$ControlNormalAnimationDuration;
   background-color: common.$ControlAltFillColorSecondaryLight;
 
@@ -199,7 +201,7 @@ input {
   height: 12px;
   border-radius: 7px;
   align-self: center;
-  margin: 0px 4px;
+  margin: 0px 3px;
   transition: transform common.$ControlNormalAnimationDuration;
   transition: width common.$ControlFastAnimationDuration;
   transition: margin-left common.$ControlFastAnimationDuration;

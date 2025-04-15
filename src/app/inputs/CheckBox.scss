@@ -116,7 +116,10 @@ input[type="checkbox"]:checked:disabled + .checkBox {
   height: 20px;
   border-radius: common.$ControlCornerRadius;
   border-style: solid;
-  border-width: common.$ControlBorderThickness;  
+  border-width: common.$ControlBorderThickness;
+
+  //transition: border-color common.$ControlNormalAnimationDuration;
+  //transition: background-color common.$ControlNormalAnimationDuration;
 }
 
 .checkMark {
@@ -126,6 +129,7 @@ input[type="checkbox"]:checked:disabled + .checkBox {
   align-self: center;
   justify-self: center;
   color: common.$TextOnAccentFillColorPrimaryLight;
+  //transition: color common.$ControlNormalAnimationDuration;
   
   @media (prefers-color-scheme: dark) {
     color: common.$TextOnAccentFillColorPrimaryDark;
