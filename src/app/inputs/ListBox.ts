@@ -20,7 +20,7 @@ export class ListBox extends FrameworkElement {
   @Input() SelectedIndex: number = -1;
   @Output() SelectedIndexChange = new EventEmitter<number>();
 
-  @Input() SelectedValue: any = null;  
+  @Input() SelectedValue: any = null;
   @Output() SelectedValueChange = new EventEmitter<any>();
 
   @Input() DisplayMemberPath?: string;

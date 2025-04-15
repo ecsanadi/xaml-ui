@@ -25,6 +25,13 @@
       <ToggleSwitch [IsChecked]="true" [IsEnabled]="false">Switch me on!</ToggleSwitch>
     </StackPanel>
 
+    <StackPanel Orientation="Vertical" Spacing="3px" Padding="3px">
+      <TextBox Text="Type here..." TextAlignment="Center" />
+      <TextBox Text="Multiline" TextWrapping="Wrap"/>
+      <TextBox PlaceholderText="This is a placeholder" />
+      <TextBox [IsEnabled]="false" Text="This is disabled..." />
+    </StackPanel>
+
     <Button Margin="3px" ToolTipService-ToolTip="This is a tooltip!">
       Click me!
     </Button>
