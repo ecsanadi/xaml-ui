@@ -12,6 +12,7 @@
   background: common.$ControlFillColorDefaultLight;
   border-color: common.$ControlStrokeColorDefaultLight;
   color: common.$TextFillColorPrimaryLight;
+  transition: all common.$ControlFastAnimationDuration;
   
   &::ng-deep * {
     color: common.$TextFillColorPrimaryLight;
