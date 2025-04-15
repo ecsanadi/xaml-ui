@@ -18,7 +18,7 @@ export class TextBlock extends FrameworkElement {
   @Input() @HostBinding('style.font-style') FontStyle?: FontStyle;
   @Input() FontWeight: FontWeights = 'Normal';
   @Input() @HostBinding('style.color') Foreground?: string;
-  @Input() @HostBinding('style.text-align') TextAlignment?: TextAlignment;
+  @Input() @HostBinding('style.text-align') TextAlignment?: TextAlignment = 'Left';
   @Input() IsTextSelectionEnabled?: XamlBoolean;
   @Input() TextDecorations?: TextDecorations;
   @Input() TextTrimming?: TextTrimming;

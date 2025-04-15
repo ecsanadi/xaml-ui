@@ -68,8 +68,8 @@ export class RadioButtonGroup extends StackPanel implements AfterContentInit {
 
   ngAfterContentInit() {
     let index = 0;
-    for (let item of this._children.toArray()) {
-      item.Group = 'xaml-radio-group-' + this._id;
+    for (let item of this._children) {
+      item.Group = 'xaml-radio-button-group-' + this._id;
 
       if (item.Value === undefined) item.Value = index++;
       if (item.Value === this.Value) item.IsChecked = true;

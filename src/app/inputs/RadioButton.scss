@@ -118,8 +118,8 @@ input[type="radio"]:checked:disabled+.radioButton {
   border-style: solid;
   border-width: common.$ControlBorderThickness;
 
-  transition: border-color common.$ControlNormalAnimationDuration;
-  transition: background-color common.$ControlNormalAnimationDuration;
+  transition: border-color common.$ControlFastAnimationDuration;
+  transition: background-color common.$ControlFastAnimationDuration;
 }
 
 .circle {

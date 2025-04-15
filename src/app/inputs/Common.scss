@@ -1,5 +1,10 @@
 $ControlBorderThickness: 1px;
 $ControlCornerRadius: 4px;
+$OverlayCornerRadius: 8px;
+$AcrylicBlur: blur(12px);
+
+$SymbolFontFamily: 'Segoe Fluent Icons', 'Segoe MDL2 Assets';
+//Light
 $ControlNormalAnimationDuration: 0.25s;
 $ControlFastAnimationDuration: 0.167s;
 $ControlFasterAnimationDuration: 0.083s;
@@ -40,6 +45,10 @@ $TextOnAccentFillColorPrimaryLight: #FFFFFF;
 $TextOnAccentFillColorSecondaryLight: #FFFFFFB3;
 $TextOnAccentFillColorDisabledLight: #FFFFFF;
 
+$SurfaceStrokeColorFlyoutLight: #0000000F;
+$AcrylicInAppFillColorDefaultLight: rgba(#FCFCFC, 0.15);
+
+//Dark
 $ControlFillColorDefaultDark: #FFFFFF0F;
 $ControlFillColorSecondaryDark: #FFFFFF15;
 $ControlFillColorTertiaryDark: #FFFFFF08;
@@ -76,4 +85,5 @@ $TextOnAccentFillColorPrimaryDark: #000000;
 $TextOnAccentFillColorSecondaryDark: #00000080;
 $TextOnAccentFillColorDisabledDark: #FFFFFF87;
 
-$SymbolFontFamily: 'Segoe Fluent Icons', 'Segoe MDL2 Assets';
+$SurfaceStrokeColorFlyoutDark: #00000033;
+$AcrylicInAppFillColorDefaultDark: rgba(#2C2C2C, 0.15);

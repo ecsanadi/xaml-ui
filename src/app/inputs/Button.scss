@@ -12,7 +12,7 @@
   background: common.$ControlFillColorDefaultLight;
   border-color: common.$ControlStrokeColorDefaultLight;
   color: common.$TextFillColorPrimaryLight;
-
+  
   &::ng-deep * {
     color: common.$TextFillColorPrimaryLight;
   }
@@ -27,7 +27,7 @@
     }
   }
 
-  &:hover:not(.checked) {
+  &:hover:not(.checked):not(.flyout-open) {
     background: common.$ControlFillColorSecondaryLight;
 
     @media (prefers-color-scheme: dark) {
@@ -35,7 +35,7 @@
     }
   }
 
-  &:active:not(.checked) {
+  &:active:not(.checked):not(.flyout-open) {
     background: common.$ControlFillColorTertiaryLight;
     color: common.$TextFillColorSecondaryLight;
 
@@ -91,7 +91,7 @@
     }
   }
 
-  &:hover.checked {
+  &:hover.checked:not(.flyout-open) {
     background: common.$AccentFillColorSecondaryLight;
     border-color: common.$AccentFillColorSecondaryLight;
     color: common.$TextOnAccentFillColorPrimaryLight;
@@ -111,7 +111,7 @@
     }
   }
 
-  &:active.checked {
+  &:active.checked:not(.flyout-open) {
     background: common.$AccentFillColorTertiaryLight;
     border-color: common.$ControlFillColorTransparentLight;
     color: common.$TextOnAccentFillColorSecondaryLight;
