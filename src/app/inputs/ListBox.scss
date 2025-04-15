@@ -1,0 +1,66 @@
+@use 'Common.scss' as common;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  background-color: common.$SystemChromeMediumLowColorLight;
+
+  @media (prefers-color-scheme: dark) {
+    background-color: common.$SystemChromeMediumLowColorDark;
+  }
+}
+
+.item {
+  display: grid;
+  padding: 12px;
+  margin: 0;
+
+  &:not(:hover):not(:active):not(.selected) {
+    background-color: transparent;
+    color: common.$TextFillColorPrimaryLight;
+
+    @media (prefers-color-scheme: dark) {
+      color: common.$TextFillColorPrimaryDark;
+    }
+  }
+
+  &:hover:not(.active):not(.selected) {
+    background-color: common.$SubtleFillColorSecondaryLight;
+
+    @media (prefers-color-scheme: dark) {
+      background-color: common.$SubtleFillColorSecondaryDark;
+    }
+  }
+
+  &:active:not(.selected) {
+    background-color: common.$SubtleFillColorTertiaryLight;
+
+    @media (prefers-color-scheme: dark) {
+      background-color: common.$SubtleFillColorTertiaryDark;
+    }
+  }
+
+  &:not(:hover):not(:active).selected {
+    background-color: common.$SystemControlHighlightListAccentLowLight;
+
+    @media (prefers-color-scheme: dark) {
+      background-color: common.$SystemControlHighlightListAccentLowDark;
+    }
+  }
+
+  &:hover:not(:active).selected {
+    background-color: common.$SystemControlHighlightListAccentMediumLight;
+
+    @media (prefers-color-scheme: dark) {
+      background-color: common.$SystemControlHighlightListAccentMediumDark;
+    }
+  }
+
+  &:active.selected {
+    background-color: common.$SystemControlHighlightListAccentHighLight;
+
+    @media (prefers-color-scheme: dark) {
+      background-color: common.$SystemControlHighlightListAccentHighDark;
+    }
+  }
+}

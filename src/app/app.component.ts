@@ -14,12 +14,13 @@ import { FontIcon } from "./indicators/FontIcon";
 import { Slider } from "./inputs/Slider";
 import { ToggleSwitch } from "./inputs/ToggleSwitch";
 import { Flyout } from './overlays/Flyout';
+import { ListBox } from './inputs/ListBox';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  imports: [Border, StackPanel, Grid, Button, ScrollViewer, XamlRoot, TextBlock, Button, CheckBox, ToolTipService, RadioButton, RadioButtonGroup, ToggleButton, FontIcon, Slider, ToggleSwitch, Flyout]
+  imports: [Border, StackPanel, Grid, Button, ScrollViewer, XamlRoot, TextBlock, Button, CheckBox, ToolTipService, RadioButton, RadioButtonGroup, ToggleButton, FontIcon, Slider, ToggleSwitch, Flyout, ListBox]
 })
 export class AppComponent {
   title = 'xaml-ui';

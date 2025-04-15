@@ -3,4 +3,49 @@ body {
   margin: 0;
   padding: 0;
   user-select: none;
+  scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: #f3f3f3;
+  
+  @media (prefers-color-scheme: dark) {
+    background-color: #202020;
+  }
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: #7A7A7AFF;
+  
+  @media (prefers-color-scheme: dark) {
+    background-color: #858585FF; 
+  }
+
+  &:hover {
+    background-color: #00000066;
+
+    @media (prefers-color-scheme: dark) {
+      background-color: #FFFFFF66;
+    }    
+  }
+
+  &:active {
+    background-color: #00000099;
+
+    @media (prefers-color-scheme: dark) {
+      background-color: #FFFFFF99;
+    }    
+  }
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
 }

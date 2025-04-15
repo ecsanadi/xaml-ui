@@ -13,6 +13,12 @@
     <Slider />
     <Slider Orientation="Vertical" />
 
+    <ListBox [ItemSource]="[0,1,2,3,4,5,7,8,9]" Height="200px">
+      <ng-template let-item>
+        <span style="font-style: italic;">This is an {{item}}.</span>
+      </ng-template>
+    </ListBox>
+
     <StackPanel Orientation="Vertical" Spacing="3px" Padding="3px">
       <ToggleSwitch>Switch me on!</ToggleSwitch>
       <ToggleSwitch [IsChecked]="false" [IsEnabled]="false">Switch me on!</ToggleSwitch>
@@ -25,7 +31,7 @@
 
     <Button Margin="3px" HorizontalAlignment="Center">
       This triggers a flyout!
-      <Flyout Slot="Flyout" PlacementMode="Bottom">
+      <Flyout PlacementMode="Bottom">
         <TextBlock Width="300px" TextWrapping="Wrap">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit,
           sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud

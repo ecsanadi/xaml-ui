@@ -4,6 +4,16 @@ $OverlayCornerRadius: 8px;
 $AcrylicBlur: blur(12px);
 
 $SymbolFontFamily: 'Segoe Fluent Icons', 'Segoe MDL2 Assets';
+$SystemAccentColor: #0078d4;
+
+//accent +3: #FF99EBFF
+//accent +2: #FF4CC2FF
+//accent +1: #FF0091F8
+//accent: #FF0078D4
+//accent -1: #FF0067C0
+//accent -2: #FF003E92
+//accent -3: #FF001A68
+
 //Light
 $ControlNormalAnimationDuration: 0.25s;
 $ControlFastAnimationDuration: 0.167s;
@@ -26,11 +36,17 @@ $ControlStrongFillColorDisabledLight: #00000051;
 
 $ControlFillColorTransparentLight: #FFFFFF00;
 $SubtleFillColorTransparentLight: #FFFFFF00;
+$SubtleFillColorSecondaryLight: #00000009;
+$SubtleFillColorTertiaryLight: #00000006;
 
-$AccentFillColorDefaultLight: #0067C0FF;
+$AccentFillColorDefaultLight: #0067C0FF; //-1
 $AccentFillColorSecondaryLight: rgba($AccentFillColorDefaultLight, 0.9);
 $AccentFillColorTertiaryLight: rgba($AccentFillColorDefaultLight, 0.8);
 $AccentFillColorDisabledLight: #FFFFFF37;
+
+$SystemControlHighlightListAccentLowLight: rgba($SystemAccentColor, 0.4);
+$SystemControlHighlightListAccentMediumLight: rgba($SystemAccentColor, 0.6);
+$SystemControlHighlightListAccentHighLight: rgba($SystemAccentColor, 0.7);
 
 $ControlStrokeColorDefaultLight: #0000000F;
 $ControlStrongStrokeColorDefaultLight: #00000072;
@@ -47,6 +63,7 @@ $TextOnAccentFillColorDisabledLight: #FFFFFF;
 
 $SurfaceStrokeColorFlyoutLight: #0000000F;
 $AcrylicInAppFillColorDefaultLight: rgba(#FCFCFC, 0.15);
+$SystemChromeMediumLowColorLight: #F2F2F2FF;
 
 //Dark
 $ControlFillColorDefaultDark: #FFFFFF0F;
@@ -66,11 +83,17 @@ $ControlStrongFillColorDisabledDark: #FFFFFF3F;
 
 $ControlFillColorTransparentDark: #FFFFFF00;
 $SubtleFillColorTransparentDark: #FFFFFF00;
+$SubtleFillColorSecondaryDark: #FFFFFF0F;
+$SubtleFillColorTertiaryDark: #FFFFFF0A;
 
-$AccentFillColorDefaultDark: #4CC2FFFF;
+$AccentFillColorDefaultDark: #4CC2FFFF; //+2
 $AccentFillColorSecondaryDark: rgba($AccentFillColorDefaultDark, 0.9);
 $AccentFillColorTertiaryDark: rgba($AccentFillColorDefaultDark, 0.8);
 $AccentFillColorDisabledDark: #FFFFFF28;
+
+$SystemControlHighlightListAccentLowDark: rgba($SystemAccentColor, 0.6);
+$SystemControlHighlightListAccentMediumDark: rgba($SystemAccentColor, 0.8);
+$SystemControlHighlightListAccentHighDark: rgba($SystemAccentColor, 0.9);
 
 $ControlStrokeColorDefaultDark: #FFFFFF12;
 $ControlStrongStrokeColorDefaultDark: #FFFFFF8B;
@@ -87,3 +110,4 @@ $TextOnAccentFillColorDisabledDark: #FFFFFF87;
 
 $SurfaceStrokeColorFlyoutDark: #00000033;
 $AcrylicInAppFillColorDefaultDark: rgba(#2C2C2C, 0.15);
+$SystemChromeMediumLowColorDark: #2B2B2BFF;

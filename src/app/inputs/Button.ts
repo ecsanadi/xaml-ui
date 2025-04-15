@@ -4,7 +4,7 @@ import { Flyout } from "../overlays/Flyout";
 
 @Component({
   selector: 'Button',
-  template: `<ng-content/><ng-content select="[slot=flyout]"/>`,
+  template: `<ng-content/><ng-content select="flyout"/>`,
   styleUrl: 'Button.scss'
 })
 export class Button extends Border implements AfterContentInit, AfterViewInit {

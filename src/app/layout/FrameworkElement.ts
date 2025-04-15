@@ -33,7 +33,7 @@ export abstract class FrameworkElement {
   }
 
   @HostBinding('style.overflow')
-  private get overflow() {
+  protected get overflow() {
     return 'clip';
   }
 }
