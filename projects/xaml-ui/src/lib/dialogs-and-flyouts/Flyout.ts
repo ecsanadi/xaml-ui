@@ -1,5 +1,5 @@
 import { Component, HostBinding, Input } from "@angular/core";
-import { FlyoutPlacementMode } from "../layout/Common";
+import { FlyoutPlacementMode } from "../Common";
 
 @Component({
   selector: 'Flyout',

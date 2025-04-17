@@ -1,12 +1,12 @@
 import { Component, EventEmitter, HostBinding, HostListener, Input, Output } from "@angular/core";
-import { Button } from "./Button";
+import { ButtonComponent } from "./Button";
 
 @Component({
   selector: 'ToggleButton',
   template: `<ng-content/>`,
   styleUrl: 'Button.scss'
 })
-export class ToggleButton extends Button {
+export class ToggleButtonComponent extends ButtonComponent {
   @Input() @HostBinding('class.checked') IsChecked: boolean = false;
   @Output() IsCheckedChange = new EventEmitter<boolean>();
 

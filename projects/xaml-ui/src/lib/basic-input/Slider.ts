@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
-import { FrameworkElement } from "../layout/FrameworkElement";
-import { Orientation } from "../layout/Common";
+import { FrameworkElementComponent } from "../FrameworkElement";
+import { Orientation } from "../Common";
 
 @Component({
   selector: 'Slider',
@@ -14,7 +14,7 @@ import { Orientation } from "../layout/Common";
     [className]="Orientation.toLowerCase()">`,
   styleUrl: 'Slider.scss'
 })
-export class Slider extends FrameworkElement {
+export class SliderComponent extends FrameworkElementComponent {
   @Input() Minimum: number = 0.0;
   @Input() Maximum: number = 1.0;
   @Input() StepFrequency: number = 0.01;

@@ -1,7 +1,7 @@
 import { CommonModule } from "@angular/common";
-import { FrameworkElement } from "./FrameworkElement";
+import { FrameworkElementComponent } from "../FrameworkElement";
 import { Component, HostBinding, Input } from "@angular/core";
-import { ScrollMode } from "./Common";
+import { ScrollMode } from "../Common";
 
 @Component({
   selector: 'ScrollViewer',
@@ -10,7 +10,7 @@ import { ScrollMode } from "./Common";
     display: grid;
   }`
 })
-export class ScrollViewer extends FrameworkElement {
+export class ScrollViewerComponent extends FrameworkElementComponent {
   @Input() HorizontalScrollMode: ScrollMode = 'Enabled';
   @Input() VerticalScrollMode: ScrollMode = 'Enabled';
 
@@ -27,11 +27,11 @@ export class ScrollViewer extends FrameworkElement {
 
   @HostBinding('style.overflow-x')
   private get overflowX() {
-    return ScrollViewer.toOverflow(this.HorizontalScrollMode);
+    return ScrollViewerComponent.toOverflow(this.HorizontalScrollMode);
   }
 
   @HostBinding('style.overflow-y')
   private get overflowY() {
-    return ScrollViewer.toOverflow(this.VerticalScrollMode);
+    return ScrollViewerComponent.toOverflow(this.VerticalScrollMode);
   }
 }

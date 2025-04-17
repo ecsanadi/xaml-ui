@@ -1,7 +1,7 @@
 import { Component, HostBinding, Input } from "@angular/core";
-import { FrameworkElement } from "../layout/FrameworkElement";
+import { FrameworkElementComponent } from "../FrameworkElement";
 import { CommonModule } from "@angular/common";
-import { FontStyle, FontWeights, TextAlignment, TextDecorations, TextTrimming, TextWrapping, XamlBoolean } from "../layout/Common";
+import { FontStyle, FontWeights, TextAlignment, TextDecorations, TextTrimming, TextWrapping, XamlBoolean } from "../Common";
 
 @Component({
   selector: 'TextBlock',
@@ -11,7 +11,7 @@ import { FontStyle, FontWeights, TextAlignment, TextDecorations, TextTrimming, T
     <ng-container *ngIf="Text !== undefined">{{Text}}</ng-container>
   </ng-container>`
 })
-export class TextBlock extends FrameworkElement {
+export class TextBlockComponent extends FrameworkElementComponent {
   @Input() @HostBinding('style.font-family') FontFamily?: string;
   @Input() Text?: string;
   @Input() @HostBinding('style.font-size') FontSize?: string;
@@ -26,7 +26,7 @@ export class TextBlock extends FrameworkElement {
 
   @HostBinding('style.font-weight')
   private get fontWeight() {
-    return TextBlock.ToFontWeight(this.FontWeight);
+    return TextBlockComponent.ToFontWeight(this.FontWeight);
   }
 
   static ToFontWeight(value: FontWeights) {

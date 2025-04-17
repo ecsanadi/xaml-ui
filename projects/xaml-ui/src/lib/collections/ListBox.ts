@@ -1,5 +1,5 @@
 import { Component, ContentChild, EventEmitter, Input, Output, TemplateRef } from "@angular/core";
-import { FrameworkElement } from "../layout/FrameworkElement";
+import { FrameworkElementComponent } from "../FrameworkElement";
 import { CommonModule } from "@angular/common";
 
 @Component({
@@ -13,7 +13,7 @@ import { CommonModule } from "@angular/common";
   </div>`,
   styleUrl: 'ListBox.scss'
 })
-export class ListBox extends FrameworkElement {
+export class ListBoxComponent extends FrameworkElementComponent {
   @Input() ItemSource?: any[];
   @ContentChild(TemplateRef) ItemTemplate!: TemplateRef<any>;
 

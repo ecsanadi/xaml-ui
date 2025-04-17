@@ -1,7 +1,7 @@
 import { Component, HostBinding, Input } from "@angular/core";
-import { FrameworkElement } from "../layout/FrameworkElement";
-import { FontStyle, FontWeights } from "../layout/Common";
-import { TextBlock } from "./TextBlock";
+import { FrameworkElementComponent } from "../FrameworkElement";
+import { FontStyle, FontWeights } from "../Common";
+import { TextBlockComponent } from "../text/TextBlock";
 
 @Component({
   selector: 'FontIcon',
@@ -10,7 +10,7 @@ import { TextBlock } from "./TextBlock";
     font-family: 'Segoe Fluent Icons', 'Segoe MDL2 Assets';
   }`
 })
-export class FontIcon extends FrameworkElement {
+export class FontIconComponent extends FrameworkElementComponent {
   @Input() @HostBinding('style.font-family') FontFamily?: string;
   @Input() @HostBinding('style.font-size') FontSize?: string;
   @Input() @HostBinding('style.font-style') FontStyle?: FontStyle;  
@@ -19,6 +19,6 @@ export class FontIcon extends FrameworkElement {
   
   @HostBinding('style.font-weight')
   private get fontWeight() {
-    return TextBlock.ToFontWeight(this.FontWeight);
+    return TextBlockComponent.ToFontWeight(this.FontWeight);
   }
 }
