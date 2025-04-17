@@ -1,6 +1,6 @@
 import { Component, HostBinding, Input } from "@angular/core";
-import { BorderComponent } from "./Border";
 import { Orientation } from "../Common";
+import { PanelComponent } from "./Panel";
 
 @Component({
   selector: 'StackPanel',
@@ -9,7 +9,7 @@ import { Orientation } from "../Common";
     display: flex;
   }`
 })
-export class StackPanelComponent extends BorderComponent {
+export class StackPanelComponent extends PanelComponent {
   @Input() Orientation: Orientation = 'Vertical';
   @Input() @HostBinding('style.gap') Spacing : number | string = 0;
 
