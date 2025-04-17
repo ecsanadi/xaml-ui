@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
-import { FrameworkElementComponent } from "../layout/FrameworkElement";
-import { Orientation } from "../layout/Common";
+import { FrameworkElementComponent } from "../FrameworkElement";
+import { Orientation } from "../Common";
 
 @Component({
   selector: 'Slider',

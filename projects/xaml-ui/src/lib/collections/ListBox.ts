@@ -1,5 +1,5 @@
 import { Component, ContentChild, EventEmitter, Input, Output, TemplateRef } from "@angular/core";
-import { FrameworkElementComponent } from "../layout/FrameworkElement";
+import { FrameworkElementComponent } from "../FrameworkElement";
 import { CommonModule } from "@angular/common";
 
 @Component({

@@ -1,7 +1,7 @@
 import { Component, HostBinding, Input } from "@angular/core";
-import { FrameworkElementComponent } from "../layout/FrameworkElement";
+import { FrameworkElementComponent } from "../FrameworkElement";
 import { CommonModule } from "@angular/common";
-import { FontStyle, FontWeights, TextAlignment, TextDecorations, TextTrimming, TextWrapping, XamlBoolean } from "../layout/Common";
+import { FontStyle, FontWeights, TextAlignment, TextDecorations, TextTrimming, TextWrapping, XamlBoolean } from "../Common";
 
 @Component({
   selector: 'TextBlock',

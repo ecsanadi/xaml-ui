@@ -1,7 +1,7 @@
 import { Component, HostBinding, Input } from "@angular/core";
-import { FrameworkElementComponent } from "../layout/FrameworkElement";
-import { FontStyle, FontWeights } from "../layout/Common";
-import { TextBlockComponent } from "./TextBlock";
+import { FrameworkElementComponent } from "../FrameworkElement";
+import { FontStyle, FontWeights } from "../Common";
+import { TextBlockComponent } from "../text/TextBlock";
 
 @Component({
   selector: 'FontIcon',

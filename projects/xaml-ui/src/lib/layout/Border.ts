@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { Component, HostBinding, Input } from "@angular/core";
-import { FrameworkElementComponent } from "./FrameworkElement";
+import { FrameworkElementComponent } from "../FrameworkElement";
 
 @Component({
   selector: 'Border',

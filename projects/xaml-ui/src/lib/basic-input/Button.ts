@@ -1,6 +1,6 @@
 import { AfterContentInit, AfterViewInit, Component, ContentChildren, HostBinding, HostListener, Input, QueryList } from "@angular/core";
 import { BorderComponent } from "../layout/Border";
-import { Flyout } from "../overlays/Flyout";
+import { Flyout } from "../dialogs-and-flyouts/Flyout";
 
 @Component({
   selector: 'Button',

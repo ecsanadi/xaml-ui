@@ -1,7 +1,7 @@
 import { CommonModule } from "@angular/common";
-import { FrameworkElementComponent } from "./FrameworkElement";
+import { FrameworkElementComponent } from "../FrameworkElement";
 import { Component, HostBinding, Input } from "@angular/core";
-import { ScrollMode } from "./Common";
+import { ScrollMode } from "../Common";
 
 @Component({
   selector: 'ScrollViewer',

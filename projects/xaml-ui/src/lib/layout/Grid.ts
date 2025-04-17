@@ -1,6 +1,6 @@
 import { Component, Directive, HostBinding, Input, NgModule } from "@angular/core";
 import { BorderComponent } from "./Border";
-import { Orientation } from "./Common";
+import { Orientation } from "../Common";
 
 @Component({
   selector: 'Grid',

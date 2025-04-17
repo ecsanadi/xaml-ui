@@ -1,6 +1,6 @@
 import { Component, EventEmitter, HostBinding, Input, Output, output } from "@angular/core";
-import { FrameworkElementComponent } from "../layout/FrameworkElement";
-import { TextAlignment, TextWrapping } from "../layout/Common";
+import { FrameworkElementComponent } from "../FrameworkElement";
+import { TextAlignment, TextWrapping } from "../Common";
 import { CommonModule } from "@angular/common";
 
 @Component({

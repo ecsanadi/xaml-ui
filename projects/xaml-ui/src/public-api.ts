@@ -3,23 +3,23 @@
  */
 
 export * from './lib/indicators/FontIcon';
-export * from './lib/indicators/TextBlock';
+export * from './lib/text/TextBlock';
 
-export * from './lib/inputs/Button';
-export * from './lib/inputs/CheckBox';
-export * from './lib/inputs/ListBox';
-export * from './lib/inputs/RadioButton';
-export * from './lib/inputs/Slider';
-export * from './lib/inputs/TextBox';
-export * from './lib/inputs/ToggleButton';
-export * from './lib/inputs/ToggleSwitch';
+export * from './lib/basic-input/Button';
+export * from './lib/basic-input/CheckBox';
+export * from './lib/collections/ListBox';
+export * from './lib/basic-input/RadioButton';
+export * from './lib/basic-input/Slider';
+export * from './lib/text/TextBox';
+export * from './lib/basic-input/ToggleButton';
+export * from './lib/basic-input/ToggleSwitch';
 
 export * from './lib/layout/Border';
-export * from './lib/layout/Common';
-export * from './lib/layout/FrameworkElement';
-export * from './lib/layout/ScrollViewer';
+export * from './lib/Common';
+export * from './lib/FrameworkElement';
+export * from './lib/scrolling/ScrollViewer';
 export * from './lib/layout/StackPanel';
-export * from './lib/layout/ToolTipService';
-export * from './lib/layout/XamlRoot';
+export * from './lib/status-and-info/ToolTipService';
+export * from './lib/XamlRoot';
 
-export * from './lib/overlays/Flyout';
+export * from './lib/dialogs-and-flyouts/Flyout';
