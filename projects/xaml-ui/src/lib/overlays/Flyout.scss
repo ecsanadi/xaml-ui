@@ -1,0 +1,55 @@
+@use '../inputs/Common.scss' as common;
+
+:host {
+  background-color: transparent;
+  display: grid;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  overflow: hidden;
+  pointer-events: none;
+
+  &>.content {
+    display: grid;
+    padding: 16px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: common.$OverlayCornerRadius;
+    opacity: 0.0;
+    backdrop-filter: common.$AcrylicBlur;
+    transition: transform common.$ControlNormalAnimationDuration, opacity common.$ControlNormalAnimationDuration;
+
+    border-color: common.$SurfaceStrokeColorFlyoutLight;
+    background-color: common.$AcrylicInAppFillColorDefaultLight;
+    
+    @media (prefers-color-scheme: dark) {
+      border-color: common.$SurfaceStrokeColorFlyoutDark;      
+      background-color: common.$AcrylicInAppFillColorDefaultDark;
+    }
+  }
+
+  &.roll-up>.content {
+    transform: translateY(25%);
+  }
+
+  &.roll-down>.content {
+    transform: translateY(-25%);
+  }
+
+  &.roll-left>.content {
+    transform: translateX(25%);
+  }
+
+  &.roll-right>.content {
+    transform: translateX(-25%);
+  }
+
+  &:popover-open {
+    pointer-events: all;
+
+    &>.content {
+      transform: translate(0, 0);
+      opacity: 1.0;
+    }
+  }
+}
