@@ -123,4 +123,4 @@ const GridComponents : any[] = [
   declarations: GridComponents,
   exports: GridComponents
 })
-export class Grid { }
+export class GridModule { }
