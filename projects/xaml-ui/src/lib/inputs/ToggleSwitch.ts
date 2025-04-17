@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { CheckBox } from "./CheckBox";
+import { CheckBoxComponent } from "./CheckBox";
 
 @Component({
   selector: 'ToggleSwitch',
@@ -12,6 +12,6 @@ import { CheckBox } from "./CheckBox";
   </label>`,
   styleUrl: 'ToggleSwitch.scss'
 })
-export class ToggleSwitch extends CheckBox {
+export class ToggleSwitchComponent extends CheckBoxComponent {
   
 }

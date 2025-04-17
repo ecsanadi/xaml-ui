@@ -22,6 +22,6 @@ import { Component } from "@angular/core";
     }
   }`
 })
-export class XamlRoot {
+export class XamlRootComponent {
 
 }

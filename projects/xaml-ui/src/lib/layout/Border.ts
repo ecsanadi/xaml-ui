@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { Component, HostBinding, Input } from "@angular/core";
-import { FrameworkElement } from "./FrameworkElement";
+import { FrameworkElementComponent } from "./FrameworkElement";
 
 @Component({
   selector: 'Border',
@@ -10,7 +10,7 @@ import { FrameworkElement } from "./FrameworkElement";
     display: grid;
   }`
 })
-export class Border extends FrameworkElement {
+export class BorderComponent extends FrameworkElementComponent {
   @Input() @HostBinding('style.background') Background?: string;
   @Input() @HostBinding('style.border-radius') CornerRadius?: string;
   @Input() @HostBinding('style.border-width') BorderThickness?: string;

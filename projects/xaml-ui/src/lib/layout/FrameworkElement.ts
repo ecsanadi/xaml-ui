@@ -5,7 +5,7 @@ import { HorizontalAlignment, VerticalAlignment } from "./Common";
   selector: 'FrameworkElement',
   template: `<ng-container/>`
 })
-export abstract class FrameworkElement {
+export abstract class FrameworkElementComponent {
   @Input() @HostBinding('style.width') Width?: string;
   @Input() @HostBinding('style.height') Height?: string;
   @Input() HorizontalAlignment: HorizontalAlignment = 'Stretch';

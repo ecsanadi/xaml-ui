@@ -1,5 +1,5 @@
 import { Component, EventEmitter, HostBinding, Input, Output, output } from "@angular/core";
-import { FrameworkElement } from "../layout/FrameworkElement";
+import { FrameworkElementComponent } from "../layout/FrameworkElement";
 import { TextAlignment, TextWrapping } from "../layout/Common";
 import { CommonModule } from "@angular/common";
 
@@ -11,7 +11,7 @@ import { CommonModule } from "@angular/common";
   <textarea *ngIf="TextWrapping === 'Wrap'" [disabled]="!IsEnabled" [value]="Text" (change)="onChange($event)" [placeholder]="PlaceholderText" [style]="{'text-align': TextAlignment}"></textarea>`,
   styleUrl: 'TextBox.scss'
 })
-export class TextBox extends FrameworkElement {
+export class TextBoxComponent extends FrameworkElementComponent {
   @Input() IsEnabled: boolean = true;
   @Input() PlaceholderText: string = '';
   @Input() Text: string = '';

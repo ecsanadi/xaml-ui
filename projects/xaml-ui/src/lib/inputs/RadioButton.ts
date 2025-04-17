@@ -1,6 +1,6 @@
 import { AfterContentInit, Component, ContentChildren, EventEmitter, Input, Output, QueryList } from "@angular/core";
-import { Border } from "../layout/Border";
-import { StackPanel } from "../layout/StackPanel";
+import { BorderComponent } from "../layout/Border";
+import { StackPanelComponent } from "../layout/StackPanel";
 
 @Component({
   selector: 'RadioButton',
@@ -15,7 +15,7 @@ import { StackPanel } from "../layout/StackPanel";
   </label>`,
   styleUrl: 'RadioButton.scss'
 })
-export class RadioButton extends Border {
+export class RadioButtonComponent extends BorderComponent {
   @Input() IsEnabled = true;
 
   @Input() IsChecked = false;
@@ -37,7 +37,7 @@ export class RadioButton extends Border {
     display: flex;
   }`
 })
-export class RadioButtonGroup extends StackPanel implements AfterContentInit {
+export class RadioButtonGroup extends StackPanelComponent implements AfterContentInit {
   private _value: any;
 
   @Input()
@@ -60,8 +60,8 @@ export class RadioButtonGroup extends StackPanel implements AfterContentInit {
 
   @Output() ValueChange = new EventEmitter<boolean>();
 
-  @ContentChildren(RadioButton)
-  private _children!: QueryList<RadioButton>;
+  @ContentChildren(RadioButtonComponent)
+  private _children!: QueryList<RadioButtonComponent>;
 
   private static _nextId = 1;
   private readonly _id = RadioButtonGroup._nextId++;

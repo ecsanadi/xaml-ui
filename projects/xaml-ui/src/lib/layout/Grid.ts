@@ -1,5 +1,5 @@
 import { Component, Directive, HostBinding, Input, NgModule } from "@angular/core";
-import { Border } from "./Border";
+import { BorderComponent } from "./Border";
 import { Orientation } from "./Common";
 
 @Component({
@@ -10,7 +10,7 @@ import { Orientation } from "./Common";
   }`,
   standalone: false
 })
-export class GridControl extends Border {
+export class GridComponent extends BorderComponent {
   @Input() @HostBinding('style.grid-template-columns') ColumnDefinitions?: string;
   @Input() @HostBinding('style.grid-template-rows') RowDefinitions?: string;
   @Input() @HostBinding('style.column-gap') ColumnSpacing?: string;
@@ -111,7 +111,7 @@ export class GridColumnSpanDirective {
 }
 
 const GridComponents : any[] = [
-  GridControl,
+  GridComponent,
   GridDirective,
   GridRowDirective,
   GridRowSpanDirective,

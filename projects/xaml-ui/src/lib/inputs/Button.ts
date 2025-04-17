@@ -1,5 +1,5 @@
 import { AfterContentInit, AfterViewInit, Component, ContentChildren, HostBinding, HostListener, Input, QueryList } from "@angular/core";
-import { Border } from "../layout/Border";
+import { BorderComponent } from "../layout/Border";
 import { Flyout } from "../overlays/Flyout";
 
 @Component({
@@ -7,7 +7,7 @@ import { Flyout } from "../overlays/Flyout";
   template: `<ng-content/><ng-content select="flyout"/>`,
   styleUrl: 'Button.scss'
 })
-export class Button extends Border implements AfterContentInit, AfterViewInit {
+export class ButtonComponent extends BorderComponent implements AfterContentInit, AfterViewInit {
   @Input() IsEnabled: boolean = true;
 
   @HostBinding('attr.type')

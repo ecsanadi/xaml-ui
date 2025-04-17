@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
-import { Border } from "../layout/Border";
+import { BorderComponent } from "../layout/Border";
 
 @Component({
   selector: 'CheckBox',
@@ -14,7 +14,7 @@ import { Border } from "../layout/Border";
   </label>`,
   styleUrl: 'CheckBox.scss'
 })
-export class CheckBox extends Border {
+export class CheckBoxComponent extends BorderComponent {
   @Input() IsEnabled = true;
   @Input() IsChecked = false;
   @Output() IsCheckedChange = new EventEmitter<boolean>();
