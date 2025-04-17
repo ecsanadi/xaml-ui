@@ -1,0 +1,11 @@
+version: 1.0.{build}
+branches:
+  only:
+  - main
+image: Visual Studio 2022
+environment:
+  NPM_TOKEN:
+    secure: yLnaj+JlQXaOkOR5dBvXnxPcZCeyphHMaS2c4jI0DbgYcvbrzmhAuQTNLYQDdWVM
+build_script:
+- ps: >-
+    .\build_npm.ps1
