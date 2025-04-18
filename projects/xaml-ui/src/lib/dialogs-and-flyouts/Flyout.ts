@@ -1,92 +1,60 @@
-import { Component, HostBinding, Input } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { FlyoutPlacementMode } from "../Common";
+import { CommonModule } from "@angular/common";
 
 @Component({
   selector: 'Flyout',
-  template: `<div class="content"><ng-content/></div>`,
+  imports: [CommonModule],
+  template: `<div class="backdrop" (click)="onBackdropClick($event)" *ngIf="IsOpen"></div>
+      <div class="container" [ngStyle]="containerStyle" [ngClass]="containerClass">
+      <div class="content" [ngStyle]="contentStyle"><ng-content/></div>
+    </div>`,
   styleUrl: 'Flyout.scss'
 })
 export class Flyout {
-  private static _nextId = 1;
-
   @Input() PlacementMode: FlyoutPlacementMode = 'Top';
 
-  @HostBinding('attr.id')
-  readonly Id = 'xaml-flyout-' + Flyout._nextId++;
+  private _isOpen = false;
+  @Input() get IsOpen() {
+    return this._isOpen;
+  };
+  set IsOpen(value: boolean) {
+    this._isOpen = value;
+  };
 
-  @HostBinding('attr.popover')
-  private readonly _popover = '';
+  @Output() IsOpenChange = new EventEmitter<boolean>();
 
-  @HostBinding('style')
-  private get styles() {
-    let anchor = `--${this.Id}-host`;
-    let top: string | undefined;
-    let left: string | undefined;
-    let right: string | undefined;
-    let bottom: string | undefined;
+  Show() {
+    this.IsOpen = true;
+  }
+
+  Hide() {
+    this.IsOpen = false;
+  }
+
+  get contentStyle() {
     let alignSelf: string | undefined;
     let justifySelf: string | undefined;
-    let margin: string | undefined;
-
-    switch (this.PlacementMode) {
-      case 'Top':
-      case 'TopEdgeAlignedLeft':
-      case 'TopEdgeAlignedRight':
-        bottom = `anchor(${anchor} top)`;
-        left = `anchor(${anchor} left)`;
-        right = `anchor(${anchor} right)`;
-        alignSelf = 'flex-end';
-        break;
-
-      case 'Bottom':
-      case 'BottomEdgeAlignedLeft':
-      case 'BottomEdgeAlignedRight':
-        top = `anchor(${anchor} bottom)`;
-        left = `anchor(${anchor} left)`;
-        right = `anchor(${anchor} right)`;
-        alignSelf = 'flex-start';
-        break;
-      case 'Left':
-      case 'LeftEdgeAlignedBottom':
-      case 'LeftEdgeAlignedTop':
-        right = `anchor(${anchor} left)`;
-        top = `anchor(${anchor} top)`;
-        bottom = `anchor(${anchor} bottom)`;
-        justifySelf = 'right';
-        break;
-      case 'Right':
-      case 'RightEdgeAlignedBottom':
-      case 'RightEdgeAlignedTop':
-        left = `anchor(${anchor} right)`;
-        top = `anchor(${anchor} top)`;
-        bottom = `anchor(${anchor} bottom)`;
-        justifySelf = 'left';
-        break;
-    }
 
     switch (this.PlacementMode) {
       case 'Top':
       case 'Bottom':
         justifySelf = 'center';
-        margin = '0 -100% 0 -100%';
         break;
 
       case 'TopEdgeAlignedLeft':
       case 'BottomEdgeAlignedLeft':
         justifySelf = 'left';
-        margin = '0 -100% 0 0';
         break;
 
       case 'TopEdgeAlignedRight':
       case 'BottomEdgeAlignedRight':
         justifySelf = 'right';
-        margin = '0 0 0 -100%';
         break;
 
       case 'Left':
       case 'Right':
         alignSelf = 'center';
-        margin = '-100% 0 -100% 0';
         break;
 
       case 'LeftEdgeAlignedTop':
@@ -98,41 +66,132 @@ export class Flyout {
         alignSelf = 'flex-end';
         break;
     }
-
     return {
-      'position-anchor': anchor,
-      'top': top,
-      'left': left,
-      'right': right,
-      'bottom': bottom,
       'align-self': alignSelf,
       'justify-self': justifySelf,
-      'margin': margin
     };
   }
 
-  @HostBinding('class')
-  private get class() {
+  get containerStyle() {
+    let top: string | undefined = '0';
+    let left: string | undefined = '0';
+    let right: string | undefined = '0';
+    let bottom: string | undefined = '0';
+    let transform: string | undefined;
+
+    function translate(x: number, y: number, isOpen: boolean) {
+      let result = '';
+      if (x !== 0) {
+        result += `translateX(${x > 0 ? '' : '-'}100%)`
+        if (!isOpen) { result += `translateX(${x > 0 ? '-' : ''}10px)`; }
+      }
+
+      if (y !== 0) {
+        result += `translateY(${y > 0 ? '' : '-'}100%)`;
+        if (!isOpen) { result += `translateY(${y > 0 ? '-' : ''}10px)`; }
+      }
+
+      return result;
+    }
+
     switch (this.PlacementMode) {
       case 'Top':
       case 'TopEdgeAlignedLeft':
       case 'TopEdgeAlignedRight':
-        return "roll-up";
+        bottom = undefined;
+        transform = translate(0, -1, this.IsOpen);
+        break;
 
       case 'Bottom':
       case 'BottomEdgeAlignedLeft':
       case 'BottomEdgeAlignedRight':
-        return "roll-down";
+        top = undefined;
+        transform = translate(0, 1, this.IsOpen);
+        break;
 
       case 'Left':
       case 'LeftEdgeAlignedBottom':
       case 'LeftEdgeAlignedTop':
-        return "roll-left";
+        right = undefined;
+        transform = translate(-1, 0, this.IsOpen);
+        break;
 
       case 'Right':
       case 'RightEdgeAlignedBottom':
       case 'RightEdgeAlignedTop':
-        return "roll-right";
+        left = undefined;
+        transform = translate(1, 0, this.IsOpen);
+        break;
     }
+
+    let margin: string | undefined;
+
+    switch (this.PlacementMode) {
+      case 'Top':
+        margin = '0 -100vw -100vh -100vw';
+        break;
+
+      case 'TopEdgeAlignedLeft':
+        margin = '0 -100vw -100vh 0';
+        break;
+
+      case 'TopEdgeAlignedRight':
+        margin = '0 0 -100vh -100vw';
+        break;
+
+      case 'Bottom':
+        margin = '-100vh -100vw 0 -100vw';
+        break;
+
+      case 'BottomEdgeAlignedLeft':
+        margin = '0 -100vw 0 0';
+        break;
+
+      case 'BottomEdgeAlignedRight':
+        margin = '0 0 0 -100vw';
+        break;
+
+      case 'Left':
+        margin = '-100vh -100vw -100vh 0';
+        break;
+
+      case 'LeftEdgeAlignedTop':
+        margin = '0 -100vw -100vh 0';
+        break;
+
+      case 'LeftEdgeAlignedBottom':
+        margin = '-100vh -100vw 0 0';
+        break;
+
+      case 'Right':
+        margin = '-100vh 0 -100vh -100vw';
+        break;
+
+      case 'RightEdgeAlignedTop':
+        margin = '0 0 -100vh -100vw';
+        break;
+
+      case 'RightEdgeAlignedBottom':
+        margin = '-100vh 0 0 -100vw';
+        break;
+    }
+
+    return {
+      'top': top,
+      'left': left,
+      'right': right,
+      'bottom': bottom,
+      'transform': transform,
+      'margin': margin
+    };
+  }
+
+  get containerClass() {
+    return this.IsOpen ? 'flyout-open' : undefined;
+  }
+
+  onBackdropClick(event: Event) {
+    this.Hide();
+    event.stopPropagation();
   }
 }

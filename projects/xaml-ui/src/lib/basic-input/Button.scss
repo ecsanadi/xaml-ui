@@ -8,6 +8,7 @@
   border-width: common.$ControlBorderThickness;
   border-style: solid;
   border-radius: common.$ControlCornerRadius;
+  position: relative;
 
   background: common.$ControlFillColorDefaultLight;
   border-color: common.$ControlStrokeColorDefaultLight;

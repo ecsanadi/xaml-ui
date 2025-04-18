@@ -6,6 +6,7 @@ import { Component } from "@angular/core";
   styles: `:host { 
     display: grid;    
     background-color: #f3f3f3;
+    overflow: hidden;
 
     &::ng-deep * {
       font-family: 'Segoe UI', Arial, sans-serif;

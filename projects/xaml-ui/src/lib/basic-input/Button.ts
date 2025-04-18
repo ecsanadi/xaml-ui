@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewInit, Component, ContentChildren, HostBinding, HostListener, Input, QueryList } from "@angular/core";
+import { Component, ContentChild, HostBinding, HostListener, Input } from "@angular/core";
 import { BorderComponent } from "../layout/Border";
 import { Flyout } from "../dialogs-and-flyouts/Flyout";
 
@@ -7,7 +7,7 @@ import { Flyout } from "../dialogs-and-flyouts/Flyout";
   template: `<ng-content/><ng-content select="flyout"/>`,
   styleUrl: 'Button.scss'
 })
-export class ButtonComponent extends BorderComponent implements AfterContentInit, AfterViewInit {
+export class ButtonComponent extends BorderComponent {
   @Input() IsEnabled: boolean = true;
 
   @HostBinding('attr.type')
@@ -18,36 +18,16 @@ export class ButtonComponent extends BorderComponent implements AfterContentInit
     return this.IsEnabled ? undefined : true;
   }
 
-  @HostBinding('attr.popovertarget')
-  private _popoverTarget?: string;
-
-  private _popover: HTMLElement | null = null;
-
   @HostBinding('class.flyout-open')
-  private _flyoutOpen = false;
-
-  @ContentChildren(Flyout)
-  private _children!: QueryList<Flyout>;
-
-  ngAfterContentInit() {
-    if (this._children.length === 0) return;
-
-    this._popoverTarget = this._children.first.Id;
+  private get flyoutOpen() {
+    return this._flyout?.IsOpen;
   }
 
-  ngAfterViewInit(): void {
-    this._popover = document.querySelector('#' + this._popoverTarget);    
-  }
+  @ContentChild(Flyout)
+  private _flyout?: Flyout;
 
-  @HostListener('pointerdown', ['$event'])
-  @HostListener('pointerenter', ['$event'])
-  @HostListener('pointerup', ['$event'])
+  @HostListener('click', ['$event'])
   private onHostPointerEvent(event: Event) {
-    this._flyoutOpen = this._popover?.matches(':popover-open') ?? false;
-  }
-
-  @HostBinding('style.anchor-name')
-  private get anchorName() {
-    return this._popoverTarget ? `--${this._popoverTarget}-host` : undefined;
+    this._flyout?.Show();
   }
 }

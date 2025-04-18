@@ -37,8 +37,4 @@ export class ListBoxComponent extends FrameworkElementComponent {
     this.SelectedValue = this.getValue(index, item);
     this.SelectedValueChange.emit(index);
   }
-
-  override get overflow() {
-    return 'auto';
-  }
 }

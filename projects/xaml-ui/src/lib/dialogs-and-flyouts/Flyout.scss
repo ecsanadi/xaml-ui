@@ -1,12 +1,14 @@
 @use '../Common.scss' as common;
 
-:host {
+.container {
   background-color: transparent;
   display: grid;
   padding: 0;
   margin: 0;
   border: 0;
-  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  transition: transform common.$ControlNormalAnimationDuration;
   pointer-events: none;
 
   &>.content {
@@ -16,8 +18,10 @@
     border-style: solid;
     border-radius: common.$OverlayCornerRadius;
     opacity: 0.0;
+    transition: opacity common.$ControlNormalAnimationDuration;
     backdrop-filter: common.$AcrylicBlur;
-    transition: transform common.$ControlNormalAnimationDuration, opacity common.$ControlNormalAnimationDuration;
+    pointer-events: all;
+    box-shadow: 0px 0px 15px 0px rgba(black, 0.1);
 
     border-color: common.$SurfaceStrokeColorFlyoutLight;
     background-color: common.$AcrylicInAppFillColorDefaultLight;
@@ -28,28 +32,15 @@
     }
   }
 
-  &.roll-up>.content {
-    transform: translateY(25%);
-  }
-
-  &.roll-down>.content {
-    transform: translateY(-25%);
-  }
-
-  &.roll-left>.content {
-    transform: translateX(25%);
-  }
-
-  &.roll-right>.content {
-    transform: translateX(-25%);
-  }
-
-  &:popover-open {
-    pointer-events: all;
-
-    &>.content {
-      transform: translate(0, 0);
+  &.flyout-open>.content {
       opacity: 1.0;
-    }
   }
+}
+
+.backdrop {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
 }

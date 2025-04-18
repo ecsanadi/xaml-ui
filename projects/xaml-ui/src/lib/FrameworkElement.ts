@@ -31,9 +31,4 @@ export abstract class FrameworkElementComponent {
         return 'stretch';
     }
   }
-
-  @HostBinding('style.overflow')
-  protected get overflow() {
-    return 'clip';
-  }
 }
