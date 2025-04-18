@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostBinding, Input, ViewChild } from "@angular/core";
+import { Component, ElementRef, EventEmitter, HostBinding, Input, Output, ViewChild } from "@angular/core";
 import { Orientation } from "../Common";
 import { FrameworkElementComponent } from "../FrameworkElement";
 import { CommonModule } from "@angular/common";
@@ -13,7 +13,7 @@ import { CommonModule } from "@angular/common";
     <div class="buttons" (pointerdown)="onButtonDown($event, true)" (pointerup)="onButtonUp($event)">{{increaseGlyph}}</div>`,
   styleUrl: 'ScrollBar.scss'
 })
-export class ScrollBar extends FrameworkElementComponent {
+export class ScrollBarComponent extends FrameworkElementComponent {  
   @Input() Orientation: Orientation = 'Vertical';
 
   @Input() ViewportSize: number = 0;
@@ -25,6 +25,8 @@ export class ScrollBar extends FrameworkElementComponent {
     return this._value;
   };
 
+  @Output() ValueChange = new EventEmitter<number>();
+
   set Value(value: number) {
     let scrollRange = this.ScrollSize - this.ViewportSize;
 
@@ -32,6 +34,7 @@ export class ScrollBar extends FrameworkElementComponent {
     if (value < 0) value = 0;
 
     this._value = value;
+    this.ValueChange.emit(value);
   }
 
   @Input() IsEnabled = true;
