@@ -6,13 +6,25 @@ import { HorizontalAlignment, VerticalAlignment } from "./Common";
   template: `<ng-container/>`
 })
 export abstract class FrameworkElementComponent {
-  @Input() @HostBinding('style.width') Width?: string;
-  @Input() @HostBinding('style.height') Height?: string;
+  @Input() Width?: string;
+  @Input() Height?: string;
   @Input() HorizontalAlignment: HorizontalAlignment = 'Stretch';
   @Input() VerticalAlignment: VerticalAlignment = 'Stretch';
   @Input() @HostBinding('style.margin') Margin?: string;
   @Input() @HostBinding('style.padding') Padding?: string;
-  
+
+  @HostBinding('style.width')
+  private get width() {
+    if (this.Width !== undefined) return this.Width;
+    return this.HorizontalAlignment === 'Stretch' ? undefined : 'min-content';
+  }
+
+  @HostBinding('style.height')
+  private get height() {
+    if (this.Height !== undefined) return this.Height;
+    return this.VerticalAlignment === 'Stretch' ? undefined : 'min-content';
+  }
+
   @HostBinding('style.justify-self')
   private get justifySelf() {
     return this.HorizontalAlignment.toLowerCase();

@@ -1,5 +1,5 @@
 <XamlRoot>
-  <ScrollViewer>
+  <!-- <ScrollViewer>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam suscipit eget libero at egestas. Nam ultrices, metus ut porta imperdiet, massa ligula tincidunt magna, et dignissim nulla magna eget magna. Ut blandit velit et tortor suscipit molestie. Quisque in velit egestas, aliquam risus eleifend, malesuada sapien. Nunc et ipsum risus. Donec sit amet mollis odio, ac blandit felis. Sed non orci risus. Etiam id ante ac tortor ultricies feugiat vulputate vel dolor. Nunc vel porttitor sem. Sed venenatis pretium neque. Maecenas maximus leo nibh, vitae porttitor orci elementum eu. Phasellus eu odio ac eros molestie vehicula. Nullam at tellus ut purus semper pulvinar.
 
 Ut lacinia nisi id turpis ultricies aliquam. Quisque vel metus pharetra, sollicitudin massa sed, suscipit metus. Nam vel diam sollicitudin, varius neque sed, porttitor metus. Nulla dapibus nec mauris sed mattis. Etiam laoreet hendrerit tellus, ac posuere felis. Donec enim diam, volutpat at cursus vel, bibendum et ligula. Sed enim neque, volutpat nec purus eu, pretium viverra est. Mauris ac commodo tellus, quis luctus mi. Donec eros purus, dapibus et erat id, rutrum sagittis risus. Proin hendrerit elit ac lacus pulvinar tristique. Phasellus nec tincidunt dui. Donec sodales nisi ac odio porttitor, et rhoncus nulla volutpat.
@@ -99,5 +99,9 @@ Ut vel velit a est gravida fringilla vel id metus. Pellentesque neque nulla, veh
 Nam accumsan massa sed magna bibendum, in ultrices nulla interdum. Maecenas a leo fermentum, sodales enim et, placerat odio. Cras in massa gravida, condimentum nisl vitae, facilisis purus. Nullam ac arcu vitae nunc lacinia gravida et et tortor. Vivamus at finibus nunc. Praesent ex turpis, aliquam vel odio sit amet, facilisis fringilla nulla. Integer feugiat ligula et pharetra varius. Morbi sed auctor nibh, quis tincidunt nisi. Nullam suscipit elementum nisl, nec ullamcorper neque vulputate sit amet. Donec a volutpat lacus. Suspendisse sed arcu eleifend, iaculis sapien id, scelerisque turpis.
 
 Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean ut mi et odio faucibus sagittis. Praesent consectetur odio auctor eleifend condimentum. Vestibulum posuere vehicula lorem, nec congue arcu accumsan sit amet. Pellentesque lobortis purus in velit laoreet convallis. Morbi in ex justo. Nam vitae elit at sapien pulvinar fringilla eu et mauris. Donec nisl leo, rhoncus vel lacinia at, ullamcorper a orci. Donec nec eros non nisl varius pharetra. Nam nec maximus dui. Duis a nunc non diam convallis cursus a vitae risus.
-  </ScrollViewer>
+  </ScrollViewer> -->
+  <StackPanel>
+    <ScrollBar Orientation="Horizontal" Width="300px" [ScrollSize]="500" [ViewportSize]="100" [Value]="200" HorizontalAlignment="Left"/>
+    <ScrollBar Orientation="Vertical" Height="300px" [ScrollSize]="500" [ViewportSize]="100" HorizontalAlignment="Left"/>
+  </StackPanel>
 </XamlRoot>

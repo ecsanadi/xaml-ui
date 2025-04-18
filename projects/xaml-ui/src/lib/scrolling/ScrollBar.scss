@@ -1,0 +1,30 @@
+@use '../Common.scss' as common;
+
+:host {
+  display: grid;
+  
+  &.horizontal {
+    grid-template-columns: auto 1fr auto;
+    height: 16px;
+  }
+
+  &.vertical {
+    grid-template-rows: auto 1fr auto;
+    width: 16px;
+  }
+
+  &>.buttons{
+    font-family: common.$SymbolFontFamily;
+  }
+
+  &>.track {
+    display: grid;
+    position: relative;
+
+    &>.thumb {
+      background-color: green;
+      position: relative;
+
+    }
+  }
+}
