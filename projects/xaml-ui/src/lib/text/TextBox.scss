@@ -1,4 +1,4 @@
-@use '../Common.scss' as common;
+@use '../Common.scss' as *;
 
 :host {
   display: grid;
@@ -12,58 +12,31 @@ input, textarea {
   outline-style: none;
   border-style: solid;
   border-width: 1px;
-  border-radius: common.$ControlCornerRadius;
+  border-radius: var(--ControlCornerRadius);
   padding: 6px;
 
-  background-color: common.$ControlFillColorDefaultLight;
-  border-color: common.$ControlStrokeColorDefaultLight;
-  border-bottom-color: common.$ControlStrongStrokeColorDefaultLight;
-  color: common.$TextFillColorPrimaryLight;
-
-  @media (prefers-color-scheme: dark) {
-    background-color: common.$ControlFillColorDefaultDark;
-    border-color: common.$ControlStrokeColorDefaultDark;
-    border-bottom-color: common.$ControlStrongStrokeColorDefaultDark;
-    color: common.$TextFillColorPrimaryDark;
-  }
+  background-color: var(--ControlFillColorDefault);
+  border-color: var(--ControlStrokeColorDefault);
+  border-bottom-color: var(--ControlStrongStrokeColorDefault);
+  color: var(--TextFillColorPrimary);
 
   &::placeholder {
-    color: common.$TextFillColorSecondaryLight;
+    color: var(--TextFillColorSecondary);
     opacity: 1;
-    /* Firefox */
-
-    @media (prefers-color-scheme: dark) {
-      color: common.$TextFillColorSecondaryDark;
-    }
   }
 
   &:hover {
-    background-color: common.$ControlFillColorSecondaryLight;
-
-    @media (prefers-color-scheme: dark) {
-      background-color: common.$ControlFillColorSecondaryDark;
-    }
+    background-color: var(--ControlFillColorSecondary);
   }
 
   &:focus {
-    background-color: common.$ControlFillColorInputActiveLight;
-    border-bottom-color: common.$AccentFillColorDefaultLight;
-
-    @media (prefers-color-scheme: dark) {
-      background-color: common.$ControlFillColorInputActiveDark;
-      border-bottom-color: common.$AccentFillColorDefaultDark;
-    }
+    background-color: var(--ControlFillColorInputActive);
+    border-bottom-color: var(--AccentFillColorDefault);
   }
 
   &:disabled {
-    background-color: common.$ControlFillColorDisabledLight;
-    border-bottom-color: common.$ControlStrokeColorDefaultLight;
-    color: common.$TextFillColorDisabledLight;
-
-    @media (prefers-color-scheme: dark) {
-      background-color: common.$ControlFillColorDisabledDark;
-      border-bottom-color: common.$ControlStrokeColorDefaultDark;
-      color: common.$TextFillColorDisabledDark;
-    }
+    background-color: var(--ControlFillColorDisabled);
+    border-bottom-color: var(--ControlStrokeColorDefault);
+    color: var(--TextFillColorDisabled);
   }
 }

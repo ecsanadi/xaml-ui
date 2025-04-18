@@ -100,8 +100,20 @@ Nam accumsan massa sed magna bibendum, in ultrices nulla interdum. Maecenas a le
 
 Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean ut mi et odio faucibus sagittis. Praesent consectetur odio auctor eleifend condimentum. Vestibulum posuere vehicula lorem, nec congue arcu accumsan sit amet. Pellentesque lobortis purus in velit laoreet convallis. Morbi in ex justo. Nam vitae elit at sapien pulvinar fringilla eu et mauris. Donec nisl leo, rhoncus vel lacinia at, ullamcorper a orci. Donec nec eros non nisl varius pharetra. Nam nec maximus dui. Duis a nunc non diam convallis cursus a vitae risus.
   </ScrollViewer> -->
-  <StackPanel>
+  <!-- <StackPanel>
     <ScrollBar Orientation="Horizontal" Width="300px" [ScrollSize]="500" [ViewportSize]="100" [Value]="200" HorizontalAlignment="Left"/>
     <ScrollBar Orientation="Vertical" Height="300px" [ScrollSize]="500" [ViewportSize]="100" HorizontalAlignment="Left"/>
+  </StackPanel> -->
+  <StackPanel>
+    
+    <CheckBox>test</CheckBox>
+    <RadioButton>test</RadioButton>
+    <Slider/>
+    <ToggleSwitch>test</ToggleSwitch>
+    <TextBox Text="test"/>
+    <Button>Test
+      <Flyout>test</Flyout>
+    </Button>
+    <ListBox [ItemSource]="[1,2,3,4,5]"/>
   </StackPanel>
 </XamlRoot>

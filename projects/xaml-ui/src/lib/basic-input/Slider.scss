@@ -1,4 +1,4 @@
-@use '../Common.scss' as common;
+@use '../Common.scss' as *;
 
 :host {
   display: grid;
@@ -9,7 +9,7 @@ input {
   -webkit-appearance: none;
   appearance: none;
 
-  background-color: common.$ControlStrongFillColorDefaultLight;
+  background-color: var(--ControlStrongFillColorDefault);
   border-radius: 2px;
 
   outline: none;
@@ -28,10 +28,6 @@ input {
     vertical-align: middle;
   }
 
-  @media (prefers-color-scheme: dark) {
-    background-color: common.$ControlStrongFillColorDefaultDark;
-  }
-
   @mixin slider-thumb {
     -webkit-appearance: none;
     appearance: none;
@@ -43,15 +39,10 @@ input {
     border-style: solid;
     border-width: 4px;
 
-    outline: 1px solid common.$ControlStrokeColorOnAccentDefaultDark;
-    border-color: common.$ControlSolidFillColorDefaultLight;
-    background-color: common.$AccentFillColorDefaultLight;
-    transition: border-width common.$ControlFastAnimationDuration;
-
-    @media (prefers-color-scheme: dark) {
-      border-color: common.$ControlSolidFillColorDefaultDark;
-      background-color: common.$AccentFillColorDefaultDark;
-    }
+    outline: 1px solid var(--ControlStrokeColorOnAccentDefaultDark);
+    border-color: var(--ControlSolidFillColorDefault);
+    background-color: var(--AccentFillColorDefault);
+    transition: border-width var(--ControlFastAnimationDuration);
   }
 
   &::-webkit-slider-thumb {
@@ -65,20 +56,12 @@ input {
   @mixin enabled-thumb {
     &:hover {
       border-width: 3px;
-      background-color: common.$AccentFillColorSecondaryLight;
-
-      @media (prefers-color-scheme: dark) {
-        background-color: common.$AccentFillColorSecondaryDark;
-      }
+      background-color: var(--AccentFillColorSecondary);
     }
 
     &:active {
       border-width: 5px;
-      background-color: common.$AccentFillColorTertiaryLight;
-
-      @media (prefers-color-scheme: dark) {
-        background-color: common.$AccentFillColorTertiaryDark;
-      }
+      background-color: var(--AccentFillColorTertiary);
     }
   }
 
@@ -91,19 +74,11 @@ input {
   }
 
   &:disabled {
-    background-color: common.$ControlStrongFillColorDisabledLight;
-
-    @media (prefers-color-scheme: dark) {
-      background-color: common.$ControlStrongFillColorDisabledDark;
-    }
+    background-color: var(--ControlStrongFillColorDisabled);
 
     @mixin disabled-thumb {
       border-width: 2px;
-      background-color: common.$AccentFillColorDisabledLight;
-
-      @media (prefers-color-scheme: dark) {
-        background-color: common.$AccentFillColorDisabledDark;
-      }
+      background-color: var(--AccentFillColorDisabled);
     }
 
     &::-webkit-slider-thumb {

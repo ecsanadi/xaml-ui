@@ -1,135 +1,73 @@
-@use '../Common' as common;
+@use '../Common.scss' as *;
 
 :host {
   display: grid;
   align-content: center;
   justify-content: center;
   padding: 5px 11px;
-  border-width: common.$ControlBorderThickness;
+  border-width: var(--ControlBorderThickness);
   border-style: solid;
-  border-radius: common.$ControlCornerRadius;
+  border-radius: var(--ControlCornerRadius);
   position: relative;
 
-  background: common.$ControlFillColorDefaultLight;
-  border-color: common.$ControlStrokeColorDefaultLight;
-  color: common.$TextFillColorPrimaryLight;
-  transition: all common.$ControlFastAnimationDuration;
+  background: var(--ControlFillColorDefault);
+  border-color: var(--ControlStrokeColorDefault);
+  color: var(--TextFillColorPrimary);
+  transition: all var(--ControlFastAnimationDuration);
   
   &::ng-deep * {
-    color: common.$TextFillColorPrimaryLight;
+    color: var(--TextFillColorPrimary);
   }
-
-  @media (prefers-color-scheme: dark) {
-    background: common.$ControlFillColorDefaultDark;
-    border-color: common.$ControlStrokeColorDefaultDark;
-    color: common.$TextFillColorPrimaryDark;
-
-    &::ng-deep * {
-      color: common.$TextFillColorPrimaryDark;
-    }
-  }
-
+  
   &:hover:not(.checked):not(.flyout-open) {
-    background: common.$ControlFillColorSecondaryLight;
-
-    @media (prefers-color-scheme: dark) {
-      background: common.$ControlFillColorSecondaryDark;
-    }
+    background: var(--ControlFillColorSecondary);
   }
 
   &:active:not(.checked):not(.flyout-open) {
-    background: common.$ControlFillColorTertiaryLight;
-    color: common.$TextFillColorSecondaryLight;
+    background: var(--ControlFillColorTertiary);
+    color: var(--TextFillColorSecondary);
 
     &::ng-deep * {
-      color: common.$TextFillColorSecondaryLight;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      background: common.$ControlFillColorTertiaryDark;
-      color: common.$TextFillColorSecondaryDark;
-
-      &::ng-deep * {
-        color: common.$TextFillColorSecondaryDark;
-      }
+      color: var(--TextFillColorSecondary);
     }
   }
 
   &:disabled:not(.checked) {
-    background: common.$ControlFillColorDisabledLight;
-    color: common.$TextFillColorDisabledLight;
+    background: var(--ControlFillColorDisabled);
+    color: var(--TextFillColorDisabled);
 
     &::ng-deep * {
-      color: common.$TextFillColorDisabledLight;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      background: common.$ControlFillColorDisabledDark;
-      color: common.$TextFillColorDisabledDark;
-
-      &::ng-deep * {
-        color: common.$TextFillColorDisabledDark;
-      }
+      color: var(--TextFillColorDisabled);
     }
   }
 
   &.checked {
-    background: common.$AccentFillColorDefaultLight;
-    border-color: common.$AccentFillColorDefaultLight;
-    color: common.$TextOnAccentFillColorPrimaryLight;
+    background: var(--AccentFillColorDefault);
+    border-color: var(--AccentFillColorDefault);
+    color: var(--TextOnAccentFillColorPrimary);
 
     &::ng-deep * {
-      color: common.$TextOnAccentFillColorPrimaryLight;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      background: common.$AccentFillColorDefaultDark;
-      border-color: common.$AccentFillColorDefaultDark;
-      color: common.$TextOnAccentFillColorPrimaryDark;
-
-      &::ng-deep * {
-        color: common.$TextOnAccentFillColorPrimaryDark;
-      }
+      color: var(--TextOnAccentFillColorPrimary);
     }
   }
 
   &:hover.checked:not(.flyout-open) {
-    background: common.$AccentFillColorSecondaryLight;
-    border-color: common.$AccentFillColorSecondaryLight;
-    color: common.$TextOnAccentFillColorPrimaryLight;
+    background: var(--AccentFillColorSecondary);
+    border-color: var(--AccentFillColorSecondary);
+    color: var(--TextOnAccentFillColorPrimary);
 
     &::ng-deep * {
-      color: common.$TextOnAccentFillColorPrimaryLight;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      background: common.$AccentFillColorSecondaryDark;
-      border-color: common.$AccentFillColorSecondaryDark;
-      color: common.$TextOnAccentFillColorPrimaryDark;
-
-      &::ng-deep * {
-        color: common.$TextOnAccentFillColorPrimaryDark;
-      }
+      color: var(--TextOnAccentFillColorPrimary);
     }
   }
 
   &:active.checked:not(.flyout-open) {
-    background: common.$AccentFillColorTertiaryLight;
-    border-color: common.$ControlFillColorTransparentLight;
-    color: common.$TextOnAccentFillColorSecondaryLight;
+    background: var(--AccentFillColorTertiary);
+    border-color: var(--ControlFillColorTransparent);
+    color: var(--TextOnAccentFillColorSecondary);
 
     &::ng-deep * {
-      color: common.$TextOnAccentFillColorSecondaryLight;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      background: common.$AccentFillColorTertiaryDark;
-      border-color: common.$ControlFillColorTransparentDark;
-      color: common.$TextOnAccentFillColorSecondaryDark;
-
-      &::ng-deep * {
-        color: common.$TextOnAccentFillColorSecondaryDark;
-      }
+      color: var(--TextOnAccentFillColorSecondary);
     }
   }
 }
