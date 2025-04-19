@@ -1,7 +1,6 @@
 import { Component, ContentChild, EventEmitter, Input, Output, TemplateRef } from "@angular/core";
 import { FrameworkElementComponent } from "../FrameworkElement";
-
-export const SelectorHeaderTemplate = `<div *ngFor="let item of ItemSource; index as index; trackBy: getValue" class="item" [ngClass]="{'selected': index == SelectedIndex}" (click)="onItemClick($event, index, item)" [id]="'xaml-selector-'+_id+'-item-'+index">`
+import { HorizontalAlignment, toAlignment, toJustification, VerticalAlignment } from "../Common";
 
 export const SelectorItemTemplate =
   `<ng-container *ngIf="ItemTemplate">
@@ -9,14 +8,23 @@ export const SelectorItemTemplate =
   </ng-container>
   <ng-container *ngIf="!ItemTemplate">{{ DisplayMemberPath ? item[DisplayMemberPath] : item }}</ng-container>`;
 
-export const SelectorFooterTemplate = `</div>`
-
 @Component({
   selector: 'Selector',
   template: '',
 })
 export abstract class SelectorComponent extends FrameworkElementComponent {
   @ContentChild(TemplateRef) ItemTemplate!: TemplateRef<any>;
+
+  @Input() HorizontalContentAlignment: HorizontalAlignment = 'Left';
+  @Input() VerticalContentAlignment: VerticalAlignment = 'Center';
+
+  get alignContent() {
+    return toAlignment(this.VerticalContentAlignment);
+  }
+
+  get justifyContent() {
+    return toJustification(this.HorizontalContentAlignment);
+  }
 
   //ItemSource
   private _itemSource: any[] = [];

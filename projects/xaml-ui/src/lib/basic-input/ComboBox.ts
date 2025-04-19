@@ -1,6 +1,6 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ViewChild } from "@angular/core";
+import { AfterViewInit, ChangeDetectorRef, Component, Input, ViewChild } from "@angular/core";
 import { ButtonComponent } from "./Button";
-import { SelectorComponent, SelectorFooterTemplate, SelectorHeaderTemplate, SelectorItemTemplate } from "../primitives/Selector";
+import { SelectorComponent, SelectorItemTemplate } from "../primitives/Selector";
 import { CommonModule } from "@angular/common";
 import { ListViewComponent } from "../collections/ListView";
 import { PopupComponent } from "../primitives/Popup";
@@ -8,10 +8,11 @@ import { PopupComponent } from "../primitives/Popup";
 @Component({
   selector: 'ComboBox',
   imports: [CommonModule, ButtonComponent, PopupComponent, ListViewComponent],
-  template: `<Button>
+  template: `<Button [HorizontalContentAlignment]="HorizontalContentAlignment" [VerticalContentAlignment]="VerticalContentAlignment">
     ${SelectorItemTemplate}
+    <div class="drop-down-glyph">&#xE70D;</div>
     <Popup #ButtonFlyout [VerticalOffset]="popupOffset">
-      <ListView [ItemSource]="ItemSource" [(SelectedIndex)]="SelectedIndex"/>
+      <ListView [ItemSource]="ItemSource" [(SelectedIndex)]="SelectedIndex"  [HorizontalContentAlignment]="HorizontalContentAlignment" [VerticalContentAlignment]="VerticalContentAlignment"/>
     </Popup>
   </Button>`,
   styleUrl: 'ComboBox.scss'

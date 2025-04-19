@@ -12,6 +12,19 @@ input {
 
 input[type="checkbox"]:checked + .checkBox > .checkMark {
   display: grid;
+
+  color: var(--TextOnAccentFillColorPrimary);
+
+  @keyframes fade-in-animation {
+    0% {
+      clip-path: inset(0 100% 0 0);
+    }
+    100% {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  animation: fade-in-animation var(--ControlNormalAnimationDuration) ease-out forwards;
 }
 
 input[type="checkbox"]:not(:checked):not(:hover):not(:active):not(:disabled) + .checkBox {
