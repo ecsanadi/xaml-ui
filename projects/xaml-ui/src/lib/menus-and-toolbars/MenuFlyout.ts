@@ -8,7 +8,7 @@ import { CommonModule } from "@angular/common";
   template: `<div class="popup-backdrop" (click)="onBackdropClick($event)" *ngIf="IsOpen"></div>
     <div class="popup-container" [ngStyle]="containerStyle" [ngClass]="containerClass">
     <div class="popup-content" [ngStyle]="contentStyle" *ngIf="isRendered">
-      <div class="menu-container">
+      <div class="menu-container" (click)="onMenuClick($event)">
         <ng-content/>
       </div>
     </div>
@@ -16,5 +16,8 @@ import { CommonModule } from "@angular/common";
   styleUrls: ['../primitives/Popup.scss', 'MenuFlyout.scss']
 })
 export class MenuFlyoutComponent extends FlyoutComponent {
-  
+  onMenuClick(event: Event) {
+    this.IsOpen = false;
+    event.stopPropagation();
+  }
 }

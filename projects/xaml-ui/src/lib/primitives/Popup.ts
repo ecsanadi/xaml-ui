@@ -16,6 +16,8 @@ import { CommonModule } from "@angular/common";
 export class PopupComponent {
   isRendered = false;
 
+  private _isRenderedTimeout: any;
+
   private _isOpen = false;
   @Input() get IsOpen() {
     return this._isOpen;
@@ -23,11 +25,15 @@ export class PopupComponent {
   set IsOpen(value: boolean) {
     this._isOpen = value;
 
+    if (this._isRenderedTimeout !== undefined) {
+      clearTimeout(this._isRenderedTimeout);
+    }
+
     if (value) {
       this.isRendered = true;
     }
     else {
-      setTimeout(() => {
+      this._isRenderedTimeout = setTimeout(() => {
         this.isRendered = false;
       }, 250);
     }
