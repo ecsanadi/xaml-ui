@@ -1,0 +1,96 @@
+@use '../Common.scss' as *;
+
+:host {
+  display: grid;
+  background-color: var(--SubtleFillColorTransparent);
+
+  &.horizontal {
+    grid-template-columns: auto 1fr auto;
+
+    &>.buttons {
+      align-self: center;
+    }
+
+    &>.track {
+      transform: translateY(-0.75px);
+      align-self: center;
+      margin: 0 -2px 0 -3px;
+
+      &>.thumb {
+        transform: translateY(3px);
+      }
+    }
+  }
+
+  &.vertical {
+    grid-template-rows: auto 1fr auto;
+
+    &>.buttons {
+      justify-self: center;
+    }
+
+    &>.track {
+      transform: translateX(-0.75px);
+      justify-self: center;
+      margin: -3px 0 -2px 0;
+
+      &>.thumb {
+        transform: translateX(3px);
+      }
+    }
+  }
+
+  &:hover {
+    background-color: var(--AcrylicInAppFillColorDefault);
+    backdrop-filter: blur(15px);
+
+    &>.buttons {
+      display: grid;
+      opacity: 1;
+    }
+
+    &>.track>.thumb {
+      min-width: 10px;
+      min-height: 10px;
+      transform: translate(0, 0);
+    }
+  }
+
+  &>.buttons {
+    display: hidden;
+    font-family: var(--SymbolFontFamily);
+    font-size: 8pt;
+    min-width: 12px;
+    min-height: 12px;
+    margin: 4px;
+    transform-origin: center;
+    opacity: 0;
+    transition: opacity var(--ControlNormalAnimationDuration);
+
+    color: var(--ControlStrongFillColorDefault);
+
+    &:hover {
+      color: var(--TextFillColorSecondary);
+    }
+
+    &:active {
+      color: var(--TextFillColorSecondary);
+      transform: scale(0.875);
+    }
+  }
+
+  &>.track {
+    display: grid;
+    position: relative;
+
+    &>.thumb {
+      background-color: var(--ControlStrongFillColorDefault);
+      position: relative;
+      border-radius: 3px;
+      transition: transform var(--ControlNormalAnimationDuration), min-width var(--ControlNormalAnimationDuration), min-height var(--ControlNormalAnimationDuration);
+
+      min-width: 2px;
+      min-height: 2px;
+    }
+  }
+}

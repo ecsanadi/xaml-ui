@@ -7,6 +7,7 @@ import { Component } from "@angular/core";
     display: grid;    
     background-color: #f3f3f3;
     overflow: hidden;
+    user-select: none;
 
     &::ng-deep * {
       font-family: 'Segoe UI', Arial, sans-serif;
@@ -23,6 +24,4 @@ import { Component } from "@angular/core";
     }
   }`
 })
-export class XamlRootComponent {
-
-}
+export class XamlRootComponent { }

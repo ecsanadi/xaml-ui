@@ -1,12 +1,18 @@
 <XamlRoot>
-  <Button HorizontalAlignment="Center" VerticalAlignment="Center" class="container">
-    Click me!
-    <Flyout PlacementMode="Right">
-      test asdasdas asd asd a sd asd a sda sd asd a sd
-      <Button>test</Button>
-    </Flyout>
-  </Button>
-  <!-- <StackPanel Orientation="Vertical">
-    
+  <!-- <StackPanel>
+    <ScrollBar Orientation="Horizontal" Width="300px" [ScrollSize]="500" [ViewportSize]="100" [Value]="200" HorizontalAlignment="Left"/>
+    <ScrollBar Orientation="Vertical" Height="300px" [ScrollSize]="500" [ViewportSize]="100" HorizontalAlignment="Left"/>
   </StackPanel> -->
+  <StackPanel>    
+    <CheckBox>test</CheckBox>
+    <RadioButton>test</RadioButton>
+    <Slider/>
+    <ToggleSwitch>test</ToggleSwitch>
+    <TextBox Text="test"/>
+    <Button>Test
+      <Flyout PlacementMode="Bottom" #ButtonFlyout>test</Flyout>
+    </Button>
+    <ListView [ItemSource]="[1,2,3,4,5]"/>
+    <ComboBox [ItemSource]="[1,2,3,4,5]" Margin="0 12px"/>
+  </StackPanel>
 </XamlRoot>

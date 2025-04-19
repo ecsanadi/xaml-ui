@@ -1,11 +1,3 @@
-$ControlBorderThickness: 1px;
-$ControlCornerRadius: 4px;
-$OverlayCornerRadius: 8px;
-$AcrylicBlur: blur(12px);
-
-$SymbolFontFamily: 'Segoe Fluent Icons', 'Segoe MDL2 Assets';
-$SystemAccentColor: #0078d4;
-
 //accent +3: #FF99EBFF
 //accent +2: #FF4CC2FF
 //accent +1: #FF0091F8
@@ -14,102 +6,115 @@ $SystemAccentColor: #0078d4;
 //accent -2: #FF003E92
 //accent -3: #FF001A68
 
-//Light
-$ControlNormalAnimationDuration: 0.25s;
-$ControlFastAnimationDuration: 0.167s;
-$ControlFasterAnimationDuration: 0.083s;
+:host {
+  //Invariant variables
+  --ControlBorderThickness: 1px;
+  --ControlCornerRadius: 4px;
+  --OverlayCornerRadius: 8px;
+  --AcrylicBlur: blur(12px);
 
-$ControlFillColorDefaultLight: #FFFFFFB3;
-$ControlFillColorSecondaryLight: #F9F9F980;
-$ControlFillColorTertiaryLight: #F9F9F94D;
-$ControlFillColorDisabledLight: #F9F9F94D;
-$ControlFillColorInputActiveLight: #FFFFFF;
+  --SymbolFontFamily: 'Segoe Fluent Icons', 'Segoe MDL2 Assets';
+  --SystemAccentColor: #0078d4;
+  
+  --ControlNormalAnimationDuration: 0.25s;
+  --ControlFastAnimationDuration: 0.167s;
+  --ControlFasterAnimationDuration: 0.083s;
 
-$ControlSolidFillColorDefaultLight: #FFFFFFFF;
+  //Dark mode
+  --ControlFillColorDefault: #FFFFFF0F;
+  --ControlFillColorSecondary: #FFFFFF15;
+  --ControlFillColorTertiary: #FFFFFF08;
+  --ControlFillColorDisabled: #FFFFFF0B;
+  --ControlFillColorInputActive: #1E1E1EB3;
 
-$ControlAltFillColorSecondaryLight: #00000006;
-$ControlAltFillColorTertiaryLight: #0000000F;
-$ControlAltFillColorQuarternaryLight: #00000018;
-$ControlAltFillColorDisabledLight: #FFFFFF00;
+  --ControlSolidFillColorDefault: #454545FF;
 
-$ControlStrongFillColorDefaultLight: #00000072;
-$ControlStrongFillColorDisabledLight: #00000051;
+  --ControlAltFillColorSecondary: #00000019;
+  --ControlAltFillColorTertiary: #FFFFFF0B;
+  --ControlAltFillColorQuarternary: #FFFFFF12;
+  --ControlAltFillColorDisabled: #FFFFFF00;
 
-$ControlFillColorTransparentLight: #FFFFFF00;
-$SubtleFillColorTransparentLight: #FFFFFF00;
-$SubtleFillColorSecondaryLight: #00000009;
-$SubtleFillColorTertiaryLight: #00000006;
+  --ControlStrongFillColorDefault: #FFFFFF8B;
+  --ControlStrongFillColorDisabled: #FFFFFF3F;
 
-$AccentFillColorDefaultLight: #0067C0FF; //-1
-$AccentFillColorSecondaryLight: rgba($AccentFillColorDefaultLight, 0.9);
-$AccentFillColorTertiaryLight: rgba($AccentFillColorDefaultLight, 0.8);
-$AccentFillColorDisabledLight: #FFFFFF37;
+  --ControlFillColorTransparent: #FFFFFF00;
+  --SubtleFillColorTransparent: #FFFFFF00;
+  --SubtleFillColorSecondary: #FFFFFF0F;
+  --SubtleFillColorTertiary: #FFFFFF0A;
+  
+  --AccentFillColorDefault: #4CC2FFFF; //+2
+  --AccentFillColorSecondary: #4CC2FFE6; //+2 90%
+  --AccentFillColorTertiary: #4CC2FFCC; //+2 80%
+  --AccentFillColorDisabled: #FFFFFF28;
 
-$SystemControlHighlightListAccentLowLight: rgba($SystemAccentColor, 0.4);
-$SystemControlHighlightListAccentMediumLight: rgba($SystemAccentColor, 0.6);
-$SystemControlHighlightListAccentHighLight: rgba($SystemAccentColor, 0.7);
+  --SystemControlHighlightListAccentLow: #0078D499; //accent 60%
+  --SystemControlHighlightListAccentMedium: #0078D4CC; //accent 80%
+  --SystemControlHighlightListAccentHigh: #0078D4E6; //accent 90%
 
-$ControlStrokeColorDefaultLight: #0000000F;
-$ControlStrongStrokeColorDefaultLight: #00000072;
-$ControlStrongStrokeColorDisabledLight: #00000037;
-$ControlStrokeColorOnAccentDefaultLight: #FFFFFF14;
+  --ControlStrokeColorDefault: #FFFFFF12;
+  --ControlStrongStrokeColorDefault: #FFFFFF8B;
+  --ControlStrongStrokeColorDisabled: #FFFFFF28;
+  --ControlStrokeColorOnAccentDefault: #FFFFFF14;
 
-$TextFillColorPrimaryLight: #000000E4;
-$TextFillColorSecondaryLight: #0000009E;
-$TextFillColorDisabledLight: #0000005C;
+  --TextFillColorPrimary: #FFFFFFFF;
+  --TextFillColorSecondary: #FFFFFFC5;
+  --TextFillColorDisabled: #FFFFFF5D;
 
-$TextOnAccentFillColorPrimaryLight: #FFFFFF;
-$TextOnAccentFillColorSecondaryLight: #FFFFFFB3;
-$TextOnAccentFillColorDisabledLight: #FFFFFF;
+  --TextOnAccentFillColorPrimary: #000000;
+  --TextOnAccentFillColorSecondary: #00000080;
+  --TextOnAccentFillColorDisabled: #FFFFFF87;
 
-$SurfaceStrokeColorFlyoutLight: #0000000F;
-$AcrylicInAppFillColorDefaultLight: rgba(#FCFCFC, 0.15);
-$SystemChromeMediumLowColorLight: #F2F2F2FF;
+  --SurfaceStrokeColorFlyout: #00000033;
+  --AcrylicInAppFillColorDefault: #2C2C2C26; //15%
+  --SystemChromeMediumLowColor: #2B2B2BFF;
 
-//Dark
-$ControlFillColorDefaultDark: #FFFFFF0F;
-$ControlFillColorSecondaryDark: #FFFFFF15;
-$ControlFillColorTertiaryDark: #FFFFFF08;
-$ControlFillColorDisabledDark: #FFFFFF0B;
-$ControlFillColorInputActiveDark: #1E1E1EB3;
+  @media (prefers-color-scheme: light) {
 
-$ControlSolidFillColorDefaultDark: #454545FF;
+    --ControlFillColorDefault: #FFFFFFB3;
+    --ControlFillColorSecondary: #F9F9F980;
+    --ControlFillColorTertiary: #F9F9F94D;
+    --ControlFillColorDisabled: #F9F9F94D;
+    --ControlFillColorInputActive: #FFFFFF;
 
-$ControlAltFillColorSecondaryDark: #00000019;
-$ControlAltFillColorTertiaryDark: #FFFFFF0B;
-$ControlAltFillColorQuarternaryDark: #FFFFFF12;
-$ControlAltFillColorDisabledDark: #FFFFFF00;
+    --ControlSolidFillColorDefault: #FFFFFFFF;
 
-$ControlStrongFillColorDefaultDark: #FFFFFF8B;
-$ControlStrongFillColorDisabledDark: #FFFFFF3F;
+    --ControlAltFillColorSecondary: #00000006;
+    --ControlAltFillColorTertiary: #0000000F;
+    --ControlAltFillColorQuarternary: #00000018;
+    --ControlAltFillColorDisabled: #FFFFFF00;
 
-$ControlFillColorTransparentDark: #FFFFFF00;
-$SubtleFillColorTransparentDark: #FFFFFF00;
-$SubtleFillColorSecondaryDark: #FFFFFF0F;
-$SubtleFillColorTertiaryDark: #FFFFFF0A;
+    --ControlStrongFillColorDefault: #00000072;
+    --ControlStrongFillColorDisabled: #00000051;
 
-$AccentFillColorDefaultDark: #4CC2FFFF; //+2
-$AccentFillColorSecondaryDark: rgba($AccentFillColorDefaultDark, 0.9);
-$AccentFillColorTertiaryDark: rgba($AccentFillColorDefaultDark, 0.8);
-$AccentFillColorDisabledDark: #FFFFFF28;
+    --ControlFillColorTransparent: #FFFFFF00;
+    --SubtleFillColorTransparent: #FFFFFF00;
+    --SubtleFillColorSecondary: #00000009;
+    --SubtleFillColorTertiary: #00000006;
 
-$SystemControlHighlightListAccentLowDark: rgba($SystemAccentColor, 0.6);
-$SystemControlHighlightListAccentMediumDark: rgba($SystemAccentColor, 0.8);
-$SystemControlHighlightListAccentHighDark: rgba($SystemAccentColor, 0.9);
+    --AccentFillColorDefault: #0067C0FF; //-1
+    --AccentFillColorSecondary: #0067C0E6; //-1 90%
+    --AccentFillColorTertiary: #0067C0CC; //-1 80%
+    --AccentFillColorDisabled: #FFFFFF37;
 
-$ControlStrokeColorDefaultDark: #FFFFFF12;
-$ControlStrongStrokeColorDefaultDark: #FFFFFF8B;
-$ControlStrongStrokeColorDisabledDark: #FFFFFF28;
-$ControlStrokeColorOnAccentDefaultDark: #FFFFFF14;
+    --SystemControlHighlightListAccentLow: #0078D466; //accent 40%
+    --SystemControlHighlightListAccentMedium: #0078D499; //accent 60%
+    --SystemControlHighlightListAccentHigh: #0078D4B3; //accent 70%
 
-$TextFillColorPrimaryDark: #FFFFFFFF;
-$TextFillColorSecondaryDark: #FFFFFFC5;
-$TextFillColorDisabledDark: #FFFFFF5D;
+    --ControlStrokeColorDefault: #0000000F;
+    --ControlStrongStrokeColorDefault: #00000072;
+    --ControlStrongStrokeColorDisabled: #00000037;
+    --ControlStrokeColorOnAccentDefault: #FFFFFF14;
 
-$TextOnAccentFillColorPrimaryDark: #000000;
-$TextOnAccentFillColorSecondaryDark: #00000080;
-$TextOnAccentFillColorDisabledDark: #FFFFFF87;
+    --TextFillColorPrimary: #000000E4;
+    --TextFillColorSecondary: #0000009E;
+    --TextFillColorDisabled: #0000005C;
 
-$SurfaceStrokeColorFlyoutDark: #00000033;
-$AcrylicInAppFillColorDefaultDark: rgba(#2C2C2C, 0.15);
-$SystemChromeMediumLowColorDark: #2B2B2BFF;
+    --TextOnAccentFillColorPrimary: #FFFFFF;
+    --TextOnAccentFillColorSecondary: #FFFFFFB3;
+    --TextOnAccentFillColorDisabled: #FFFFFF;
+
+    --SurfaceStrokeColorFlyout: #0000000F;
+    --AcrylicInAppFillColorDefault: #FCFCFC26; //15%
+    --SystemChromeMediumLowColor: #F2F2F2FF;
+  }
+}

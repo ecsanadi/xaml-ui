@@ -1,0 +1,9 @@
+:host ::ng-deep .popup > .popup-container {
+  left: 0;
+  right: 0;
+  top: 0;
+
+  &>.popup-content {
+    padding: 0 !important;
+  }
+}

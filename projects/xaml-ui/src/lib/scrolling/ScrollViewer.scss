@@ -1,0 +1,28 @@
+:host {
+  display: grid;
+  overflow: auto;
+
+  &>.content {
+    //Hide scrollbar for IE, Edge and Firefox
+    overflow: -moz-scrollbars-none;
+    -ms-overflow-style: none; //IE and Edge
+    scrollbar-width: none; //Firefox
+
+    //Hide scrollbar for Chrome, Safari and Opera
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    display: grid;
+    grid-row-start: 1;
+    grid-column-start: 1;
+    justify-self: stretch;
+    align-self: stretch;
+  }
+
+  &>.scrollbar {
+    display: grid;
+    grid-row-start: 1;
+    grid-column-start: 1;
+  }
+}

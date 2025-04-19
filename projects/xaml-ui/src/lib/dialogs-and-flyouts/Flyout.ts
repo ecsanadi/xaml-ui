@@ -1,36 +1,19 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { FlyoutPlacementMode } from "../Common";
 import { CommonModule } from "@angular/common";
+import { PopupComponent } from "../primitives/Popup";
 
 @Component({
   selector: 'Flyout',
   imports: [CommonModule],
-  template: `<div class="backdrop" (click)="onBackdropClick($event)" *ngIf="IsOpen"></div>
-      <div class="container" [ngStyle]="containerStyle" [ngClass]="containerClass">
-      <div class="content" [ngStyle]="contentStyle"><ng-content/></div>
+  template: `<div class="popup-backdrop" (click)="onBackdropClick($event)" *ngIf="IsOpen"></div>
+    <div class="popup-container" [ngStyle]="containerStyle" [ngClass]="containerClass">
+      <div class="popup-content" [ngStyle]="contentStyle"><ng-content/></div>
     </div>`,
-  styleUrl: 'Flyout.scss'
+  styleUrl: '../primitives/Popup.scss'
 })
-export class Flyout {
+export class FlyoutComponent extends PopupComponent {
   @Input() PlacementMode: FlyoutPlacementMode = 'Top';
-
-  private _isOpen = false;
-  @Input() get IsOpen() {
-    return this._isOpen;
-  };
-  set IsOpen(value: boolean) {
-    this._isOpen = value;
-  };
-
-  @Output() IsOpenChange = new EventEmitter<boolean>();
-
-  Show() {
-    this.IsOpen = true;
-  }
-
-  Hide() {
-    this.IsOpen = false;
-  }
 
   get contentStyle() {
     let alignSelf: string | undefined;
@@ -182,16 +165,8 @@ export class Flyout {
       'right': right,
       'bottom': bottom,
       'transform': transform,
-      'margin': margin
+      'margin': margin,
+      'transition': 'transform var(--ControlNormalAnimationDuration)'
     };
-  }
-
-  get containerClass() {
-    return this.IsOpen ? 'flyout-open' : undefined;
-  }
-
-  onBackdropClick(event: Event) {
-    this.Hide();
-    event.stopPropagation();
   }
 }
