@@ -6,7 +6,7 @@ import { CommonModule } from "@angular/common";
   selector: 'Flyout',
   imports: [CommonModule],
   template: `<div class="backdrop" (click)="onBackdropClick($event)" *ngIf="IsOpen"></div>
-      <div class="container" [ngStyle]="containerStyle" [ngClass]="containerClass">
+    <div class="container" [ngStyle]="containerStyle" [ngClass]="containerClass">
       <div class="content" [ngStyle]="contentStyle"><ng-content/></div>
     </div>`,
   styleUrl: 'Flyout.scss'

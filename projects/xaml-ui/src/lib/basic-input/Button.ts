@@ -1,4 +1,4 @@
-import { Component, ContentChild, HostBinding, HostListener, Input } from "@angular/core";
+import { Component, ContentChild, EventEmitter, HostBinding, HostListener, Input, Output } from "@angular/core";
 import { BorderComponent } from "../layout/Border";
 import { Flyout } from "../dialogs-and-flyouts/Flyout";
 
@@ -9,6 +9,8 @@ import { Flyout } from "../dialogs-and-flyouts/Flyout";
 })
 export class ButtonComponent extends BorderComponent {
   @Input() IsEnabled: boolean = true;
+
+  @Output() Click = new EventEmitter();
 
   @HostBinding('attr.type')
   private readonly type = 'button';
@@ -28,6 +30,7 @@ export class ButtonComponent extends BorderComponent {
 
   @HostListener('click', ['$event'])
   private onHostPointerEvent(event: Event) {
-    this._flyout?.Show();
+    this.Click.emit();
+    this._flyout?.Show();    
   }
 }
