@@ -43,4 +43,7 @@ export abstract class FrameworkElementComponent {
         return 'stretch';
     }
   }
+
+  private static _nextId = 1;
+  protected readonly _id = FrameworkElementComponent._nextId++;
 }

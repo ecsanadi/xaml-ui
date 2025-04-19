@@ -1,10 +1,10 @@
-import { Component, ContentChild, EventEmitter, HostBinding, HostListener, Input, Output } from "@angular/core";
+import { Component, ContentChild, Directive, ElementRef, EventEmitter, HostBinding, HostListener, Input, Output } from "@angular/core";
 import { BorderComponent } from "../layout/Border";
-import { Flyout } from "../dialogs-and-flyouts/Flyout";
+import { PopupComponent } from "../primitives/Popup";
 
 @Component({
   selector: 'Button',
-  template: `<ng-content/><ng-content select="flyout"/>`,
+  template: `<ng-content/>`,
   styleUrl: 'Button.scss'
 })
 export class ButtonComponent extends BorderComponent {
@@ -20,17 +20,17 @@ export class ButtonComponent extends BorderComponent {
     return this.IsEnabled ? undefined : true;
   }
 
-  @HostBinding('class.flyout-open')
+  @HostBinding('class.popup-open')
   private get flyoutOpen() {
-    return this._flyout?.IsOpen;
+    return this._popup?.IsOpen;
   }
 
-  @ContentChild(Flyout)
-  private _flyout?: Flyout;
+  @ContentChild('ButtonFlyout')
+  private _popup?: PopupComponent;
 
   @HostListener('click', ['$event'])
   private onHostPointerEvent(event: Event) {
     this.Click.emit();
-    this._flyout?.Show();    
+    this._popup?.Show();    
   }
 }

@@ -1,49 +1,52 @@
-import { Component } from "@angular/core";
+import { AfterViewInit, ChangeDetectorRef, Component, ViewChild } from "@angular/core";
 import { ButtonComponent } from "./Button";
 import { SelectorComponent, SelectorFooterTemplate, SelectorHeaderTemplate, SelectorItemTemplate } from "../primitives/Selector";
 import { CommonModule } from "@angular/common";
 import { ListViewComponent } from "../collections/ListView";
+import { PopupComponent } from "../primitives/Popup";
 
 @Component({
   selector: 'ComboBox',
-  imports: [CommonModule, ButtonComponent, ListViewComponent],
-  template: `<Button (Click)="onButtonClick()">
+  imports: [CommonModule, ButtonComponent, PopupComponent, ListViewComponent],
+  template: `<Button>
     ${SelectorItemTemplate}
-    <div class="backdrop" (click)="onBackdropClick($event)" *ngIf="isOpen"></div>
-    <div class="container" [ngClass]="containerClass">
-      <ListView class="content" [ItemSource]="ItemSource" [(SelectedIndex)]="SelectedIndex"/>
-    </div>
+    <Popup #ButtonFlyout [VerticalOffset]="popupOffset">
+      <ListView [ItemSource]="ItemSource" [(SelectedIndex)]="SelectedIndex"/>
+    </Popup>
   </Button>`,
-  styleUrl: 'ComboBox.scss',
+  styleUrl: 'ComboBox.scss'
 })
-export class ComboBoxComponent extends SelectorComponent {
+export class ComboBoxComponent extends SelectorComponent implements AfterViewInit {
   get item() {
     return this.SelectedItem;
   }
 
-  isOpen = false;
-
-  get containerClass() {
-    return this.isOpen ? 'flyout-open' : undefined;
+  get index() {
+    return this.SelectedIndex;
   }
 
-  onButtonClick() {
-    this.isOpen = true;
-    console.log('open');
-  }
+  @ViewChild(ListViewComponent)
+  private _selector?: SelectorComponent;
 
-  onBackdropClick(event: Event) {
-    this.isOpen = false;
-    event.stopPropagation();
-  }
+  @ViewChild(PopupComponent)
+  private _popup?: PopupComponent;
 
-  constructor() {
+  constructor(private _changeDetector: ChangeDetectorRef) {
     super();
     this.SelectedIndexChange.subscribe(() => this.onSelectionChanged());
   }
 
+  ngAfterViewInit(): void {
+    //help the layout finish itself
+    this._changeDetector.detectChanges();
+  }
+
+  get popupOffset() {
+    console.log(-(this._selector?.GetElement(this.SelectedIndex)?.offsetTop ?? 0));
+    return -(this._selector?.GetElement(this.SelectedIndex)?.offsetTop ?? 0);
+  }
+
   onSelectionChanged() {
-    console.log('close');
-    this.isOpen = false;
+    if (this._popup) this._popup.IsOpen = false;
   }
 }

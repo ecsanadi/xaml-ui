@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { XamlRootComponent } from '../../../xaml-ui/src/public-api';
 import { StackPanelComponent } from "../../../xaml-ui/src/lib/layout/StackPanel";
 import { ButtonComponent } from "../../../xaml-ui/src/lib/basic-input/Button";
-import { Flyout } from "../../../xaml-ui/src/lib/dialogs-and-flyouts/Flyout";
+import { FlyoutComponent } from "../../../xaml-ui/src/lib/dialogs-and-flyouts/Flyout";
 import { ListBoxComponent } from "../../../xaml-ui/src/lib/collections/ListBox";
 import { ScrollViewerComponent } from "../../../xaml-ui/src/lib/scrolling/ScrollViewer";
 import { ScrollBarComponent } from "../../../xaml-ui/src/lib/scrolling/ScrollBar";
@@ -17,7 +17,7 @@ import { ComboBoxComponent } from "../../../xaml-ui/src/lib/basic-input/ComboBox
 
 @Component({
   selector: 'app-root',
-  imports: [XamlRootComponent, StackPanelComponent, ButtonComponent, Flyout, ListBoxComponent, ScrollViewerComponent, ScrollBarComponent, CheckBoxComponent, RadioButtonComponent, SliderComponent, ToggleSwitchComponent, TextBoxComponent, TextBlockComponent, ListViewComponent, ComboBoxComponent],
+  imports: [XamlRootComponent, StackPanelComponent, ButtonComponent, FlyoutComponent, ListBoxComponent, ScrollViewerComponent, ScrollBarComponent, CheckBoxComponent, RadioButtonComponent, SliderComponent, ToggleSwitchComponent, TextBoxComponent, TextBlockComponent, ListViewComponent, ComboBoxComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

@@ -1,7 +1,7 @@
 import { Component, ContentChild, EventEmitter, Input, Output, TemplateRef } from "@angular/core";
 import { FrameworkElementComponent } from "../FrameworkElement";
 
-export const SelectorHeaderTemplate = `<div *ngFor="let item of ItemSource; index as index; trackBy: getValue" class="item" [ngClass]="{'selected': index == SelectedIndex}" (click)="onItemClick(index, item)">`
+export const SelectorHeaderTemplate = `<div *ngFor="let item of ItemSource; index as index; trackBy: getValue" class="item" [ngClass]="{'selected': index == SelectedIndex}" (click)="onItemClick($event, index, item)" [id]="'xaml-selector-'+_id+'-item-'+index">`
 
 export const SelectorItemTemplate =
   `<ng-container *ngIf="ItemTemplate">
@@ -48,7 +48,7 @@ export abstract class SelectorComponent extends FrameworkElementComponent {
 
   //Selected value
   @Input() get SelectedValue() {
-    if (this.SelectedIndex < 0 || this.SelectedIndex >= this.ItemSource.length) return null;    
+    if (this.SelectedIndex < 0 || this.SelectedIndex >= this.ItemSource.length) return null;
     return this.getValue(-1, this.ItemSource[this.SelectedIndex]);
   }
   set SelectedValue(value: any) {
@@ -74,7 +74,14 @@ export abstract class SelectorComponent extends FrameworkElementComponent {
     return this.SelectedValuePath ? item[this.SelectedValuePath] : item;
   }
 
-  onItemClick(index: number, item: any) {
+  onItemClick(event: Event, index: number, item: any) {
+    if (this.SelectedIndex === index) return;
+
     this.SelectedIndex = index;
+    event.stopPropagation();
+  }
+
+  GetElement(index: number) {
+    return document.querySelector(`#xaml-selector-${this._id}-item-${index}`) as HTMLElement | null;
   }
 }

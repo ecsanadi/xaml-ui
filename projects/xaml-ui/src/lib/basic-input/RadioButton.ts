@@ -63,9 +63,6 @@ export class RadioButtonGroup extends StackPanelComponent implements AfterConten
   @ContentChildren(RadioButtonComponent)
   private _children!: QueryList<RadioButtonComponent>;
 
-  private static _nextId = 1;
-  private readonly _id = RadioButtonGroup._nextId++;
-
   ngAfterContentInit() {
     let index = 0;
     for (let item of this._children) {
