@@ -20,7 +20,15 @@
         <MenuFlyoutItem Text="Delete" [IsEnabled]="false"/>
       </MenuFlyout>
     </DropDownButton>
-    <ListView [ItemSource]="[1,2,3,4,5]"/>
+    <ListView [ItemSource]="[1,2,3,4,5]">
+      <ng-template let-item>
+        {{item}}
+        <MenuFlyout ContextFlyout>
+          <MenuFlyoutItem Text="Share" Icon="&#xE72D;"/>
+          <MenuFlyoutItem Text="Copy"/>
+        </MenuFlyout>
+      </ng-template>
+    </ListView>
     <ComboBox [ItemSource]="[1,2,3,4,5]" Margin="0 12px"/>
     
   </StackPanel>

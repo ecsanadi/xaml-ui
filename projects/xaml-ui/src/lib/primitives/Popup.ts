@@ -4,7 +4,7 @@ import { CommonModule } from "@angular/common";
 @Component({
   selector: 'Popup',
   imports: [CommonModule],
-  template: `<div class="popup-backdrop" (click)="onBackdropClick($event)" *ngIf="IsOpen"></div>
+  template: `<div class="popup-backdrop" (click)="onBackdropClick($event)" (contextmenu)="onBackdropClick($event)" *ngIf="IsOpen"></div>
     <div #container class="popup-container" [ngClass]="containerClass">
       <div class="popup-content" *ngIf="isRendered"><ng-content/></div>
     </div>`,

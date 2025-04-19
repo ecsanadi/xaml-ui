@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostBinding, Input, Output, output } from "@angular/core";
+import { Component, EventEmitter, HostBinding, HostListener, Input, Output, output } from "@angular/core";
 import { FrameworkElementComponent } from "../FrameworkElement";
 import { TextAlignment, TextWrapping } from "../Common";
 import { CommonModule } from "@angular/common";
@@ -22,5 +22,10 @@ export class TextBoxComponent extends FrameworkElementComponent {
   onChange(event: Event) {
     this.Text = ((event.target) as HTMLInputElement).value;
     this.TextChange.emit(this.Text);
+  }
+
+  @HostListener('contextmenu', ['$event'])
+  onContextMenu(event: Event) {
+    event.stopPropagation();
   }
 }
