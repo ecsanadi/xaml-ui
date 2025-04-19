@@ -1,5 +1,9 @@
 @use '../Common.scss' as *;
 
+:host {
+  z-index: 900;
+}
+
 .popup-container {
   background-color: transparent;
   display: grid;
@@ -33,7 +37,6 @@
 }
 
 .popup-backdrop {
-  z-index: 900;
   position: fixed;
   left: 0;
   right: 0;

@@ -1,0 +1,16 @@
+@use '../Common.scss' as *;
+
+:host {
+  display: table-row;
+  position: relative;
+
+  &>.separator {
+    position: absolute;
+    display: block;
+    left: -2px;
+    right: -2px;
+    top: -0.5px;
+    bottom: -0.5px;
+    background-color: var(--DividerStrokeColorDefault);    
+  }
+}

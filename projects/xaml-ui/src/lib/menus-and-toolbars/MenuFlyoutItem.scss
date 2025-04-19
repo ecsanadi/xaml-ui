@@ -1,0 +1,32 @@
+@use '../Common.scss' as *;
+
+:host {
+  display: table-row;
+
+  &:hover:not(.disabled)>* {
+    background-color: var(--SubtleFillColorSecondary);
+  }
+
+  &.disabled>* {
+    color: var(--TextFillColorDisabled);
+  }
+}
+
+.icon {
+  display: table-cell;
+  padding: 3px 6px;
+  border-radius: var(--ControlCornerRadius) 0 0 var(--ControlCornerRadius);
+  font-family: var(--SymbolFontFamily);
+}
+
+.text {
+  display: table-cell;
+  padding: 3px;
+  margin: 6px 0;
+}
+
+.submenu-indicator {
+  display: table-cell;
+  padding: 3px 6px;
+  border-radius: 0 var(--ControlCornerRadius) var(--ControlCornerRadius) 0;
+}

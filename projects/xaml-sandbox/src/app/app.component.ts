@@ -14,10 +14,15 @@ import { TextBoxComponent } from "../../../xaml-ui/src/lib/text/TextBox";
 import { TextBlockComponent } from "../../../xaml-ui/src/lib/text/TextBlock";
 import { ListViewComponent } from "../../../xaml-ui/src/lib/collections/ListView";
 import { ComboBoxComponent } from "../../../xaml-ui/src/lib/basic-input/ComboBox";
+import { DropDownButtonComponent } from "../../../xaml-ui/src/lib/basic-input/DropDownButton";
+import { MenuFlyoutComponent } from "../../../xaml-ui/src/lib/menus-and-toolbars/MenuFlyout";
+import { MenuFlyoutItemComponent } from "../../../xaml-ui/src/lib/menus-and-toolbars/MenuFlyoutItem";
+import { MenuFlyoutSeparator } from "../../../xaml-ui/src/lib/menus-and-toolbars/MenuFlyoutSeparator";
+import { ContextFlyoutDirective } from '../../../xaml-ui/src/lib/dialogs-and-flyouts/ContextFlyout';
 
 @Component({
   selector: 'app-root',
-  imports: [XamlRootComponent, StackPanelComponent, ButtonComponent, FlyoutComponent, ListBoxComponent, ScrollViewerComponent, ScrollBarComponent, CheckBoxComponent, RadioButtonComponent, SliderComponent, ToggleSwitchComponent, TextBoxComponent, TextBlockComponent, ListViewComponent, ComboBoxComponent],
+  imports: [XamlRootComponent, StackPanelComponent, ButtonComponent, FlyoutComponent, ListBoxComponent, ScrollViewerComponent, ScrollBarComponent, CheckBoxComponent, RadioButtonComponent, SliderComponent, ToggleSwitchComponent, TextBoxComponent, TextBlockComponent, ListViewComponent, ComboBoxComponent, DropDownButtonComponent, MenuFlyoutComponent, MenuFlyoutItemComponent, MenuFlyoutSeparator, ContextFlyoutDirective],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

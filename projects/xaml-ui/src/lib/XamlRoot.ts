@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, HostListener } from "@angular/core";
 
 @Component({
   selector: 'XamlRoot',
@@ -24,4 +24,11 @@ import { Component } from "@angular/core";
     }
   }`
 })
-export class XamlRootComponent { }
+export class XamlRootComponent {
+
+  @HostListener('contextmenu', ['$event'])
+  onContextMenu(event: Event) {
+    event.preventDefault();
+  }
+
+}

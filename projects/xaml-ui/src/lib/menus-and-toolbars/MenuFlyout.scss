@@ -1,0 +1,15 @@
+.popup-container {
+  left: 0;
+  right: 0;
+  top: 0;
+
+  &>.popup-content {
+    padding: 2px;
+
+    &>.menu-container {
+      margin: -3px 0;
+      display: table;
+      border-spacing: 0 3px;
+    }
+  }
+}

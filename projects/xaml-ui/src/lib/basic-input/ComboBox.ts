@@ -1,20 +1,19 @@
 import { AfterViewInit, ChangeDetectorRef, Component, Input, ViewChild } from "@angular/core";
-import { ButtonComponent } from "./Button";
 import { SelectorComponent, SelectorItemTemplate } from "../primitives/Selector";
 import { CommonModule } from "@angular/common";
 import { ListViewComponent } from "../collections/ListView";
 import { PopupComponent } from "../primitives/Popup";
+import { DropDownButtonComponent } from "./DropDownButton";
 
 @Component({
   selector: 'ComboBox',
-  imports: [CommonModule, ButtonComponent, PopupComponent, ListViewComponent],
-  template: `<Button [HorizontalContentAlignment]="HorizontalContentAlignment" [VerticalContentAlignment]="VerticalContentAlignment">
+  imports: [CommonModule, DropDownButtonComponent, PopupComponent, ListViewComponent],
+  template: `<DropDownButton [HorizontalContentAlignment]="HorizontalContentAlignment" [VerticalContentAlignment]="VerticalContentAlignment">
     ${SelectorItemTemplate}
-    <div class="drop-down-glyph">&#xE70D;</div>
     <Popup #ButtonFlyout [VerticalOffset]="popupOffset">
       <ListView [ItemSource]="ItemSource" [(SelectedIndex)]="SelectedIndex"  [HorizontalContentAlignment]="HorizontalContentAlignment" [VerticalContentAlignment]="VerticalContentAlignment"/>
     </Popup>
-  </Button>`,
+  </DropDownButton>`,
   styleUrl: 'ComboBox.scss'
 })
 export class ComboBoxComponent extends SelectorComponent implements AfterViewInit {
@@ -42,9 +41,12 @@ export class ComboBoxComponent extends SelectorComponent implements AfterViewIni
     this._changeDetector.detectChanges();
   }
 
+  private _popupOffset = -4;
   get popupOffset() {
-    console.log(-(this._selector?.GetElement(this.SelectedIndex)?.offsetTop ?? 0));
-    return -(this._selector?.GetElement(this.SelectedIndex)?.offsetTop ?? 0);
+    //Cache the value so the change detector will not complain    
+    let popupOffset = -(this._selector?.GetElement(this.SelectedIndex)?.offsetTop ?? 0);
+    if (popupOffset !== 0) this._popupOffset = popupOffset;
+    return this._popupOffset;
   }
 
   onSelectionChanged() {
