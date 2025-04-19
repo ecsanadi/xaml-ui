@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, HostBinding, Input, Output, ViewChild } from "@angular/core";
+import { ChangeDetectorRef, Component, ElementRef, EventEmitter, HostBinding, Input, Output, ViewChild } from "@angular/core";
 import { CommonModule } from "@angular/common";
 
 @Component({
@@ -6,7 +6,7 @@ import { CommonModule } from "@angular/common";
   imports: [CommonModule],
   template: `<div class="popup-backdrop" (click)="onBackdropClick($event)" *ngIf="IsOpen"></div>
     <div #container class="popup-container" [ngClass]="containerClass">
-      <div class="popup-content"><ng-content/></div>
+      <div class="popup-content" *ngIf="isRendered"><ng-content/></div>
     </div>`,
   styleUrl: 'Popup.scss',
   host: {
@@ -14,12 +14,23 @@ import { CommonModule } from "@angular/common";
   }
 })
 export class PopupComponent {
+  isRendered = false;
+
   private _isOpen = false;
   @Input() get IsOpen() {
     return this._isOpen;
   };
   set IsOpen(value: boolean) {
     this._isOpen = value;
+
+    if (value) {
+      this.isRendered = true;
+    }
+    else {
+      setTimeout(() => {
+        this.isRendered = false;
+      }, 250);
+    }
 
     if (value && this._container) {
       this._container.nativeElement.style.transform = `translate(${this.HorizontalOffset}px, ${this.VerticalOffset - 4}px)`;

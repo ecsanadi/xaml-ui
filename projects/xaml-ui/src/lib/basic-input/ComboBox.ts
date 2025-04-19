@@ -42,9 +42,12 @@ export class ComboBoxComponent extends SelectorComponent implements AfterViewIni
     this._changeDetector.detectChanges();
   }
 
+  private _popupOffset = -4;
   get popupOffset() {
-    console.log(-(this._selector?.GetElement(this.SelectedIndex)?.offsetTop ?? 0));
-    return -(this._selector?.GetElement(this.SelectedIndex)?.offsetTop ?? 0);
+    //Cache the value so the change detector will not complain    
+    let popupOffset = -(this._selector?.GetElement(this.SelectedIndex)?.offsetTop ?? 0);
+    if (popupOffset !== 0) this._popupOffset = popupOffset;
+    return this._popupOffset;
   }
 
   onSelectionChanged() {
