@@ -14,10 +14,11 @@ import { TextBoxComponent } from "../../../xaml-ui/src/lib/text/TextBox";
 import { TextBlockComponent } from "../../../xaml-ui/src/lib/text/TextBlock";
 import { ListViewComponent } from "../../../xaml-ui/src/lib/collections/ListView";
 import { ComboBoxComponent } from "../../../xaml-ui/src/lib/basic-input/ComboBox";
+import { DropDownButtonComponent } from "../../../xaml-ui/src/lib/basic-input/DropDownButton";
 
 @Component({
   selector: 'app-root',
-  imports: [XamlRootComponent, StackPanelComponent, ButtonComponent, FlyoutComponent, ListBoxComponent, ScrollViewerComponent, ScrollBarComponent, CheckBoxComponent, RadioButtonComponent, SliderComponent, ToggleSwitchComponent, TextBoxComponent, TextBlockComponent, ListViewComponent, ComboBoxComponent],
+  imports: [XamlRootComponent, StackPanelComponent, ButtonComponent, FlyoutComponent, ListBoxComponent, ScrollViewerComponent, ScrollBarComponent, CheckBoxComponent, RadioButtonComponent, SliderComponent, ToggleSwitchComponent, TextBoxComponent, TextBlockComponent, ListViewComponent, ComboBoxComponent, DropDownButtonComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
