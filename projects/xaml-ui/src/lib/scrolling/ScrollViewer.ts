@@ -8,8 +8,8 @@ import { ScrollBarComponent } from "./ScrollBar";
   selector: 'ScrollViewer',
   imports: [CommonModule, ScrollBarComponent],
   template: `<div #content class="content" [ngStyle]="contentStyle" (scroll)="onScroll()"><ng-content/></div>
-    <ScrollBar *ngIf="IsVerticalScrollBarVisible" class="scrollbar-vertical" Orientation="Vertical" [ScrollSize]="ExtentHeight" [ViewportSize]="ViewportHeight" [(Value)]="VerticalOffset"/>
-    <ScrollBar *ngIf="IsHorizontalScrollBarVisible" class="scrollbar-horizontal" Orientation="Horizontal" [ScrollSize]="ExtentWidth" [ViewportSize]="ViewportWidth" [(Value)]="HorizontalOffset"/>`,
+    <ScrollBar *ngIf="IsVerticalScrollBarVisible" HorizontalAlignment="Right" class="scrollbar" Orientation="Vertical" [ScrollSize]="ExtentHeight" [ViewportSize]="ViewportHeight" [(Value)]="VerticalOffset"/>
+    <ScrollBar *ngIf="IsHorizontalScrollBarVisible" VerticalAlignment="Bottom" class="scrollbar" Orientation="Horizontal" [ScrollSize]="ExtentWidth" [ViewportSize]="ViewportWidth" [(Value)]="HorizontalOffset"/>`,
   styleUrl: 'ScrollViewer.scss'
 })
 export class ScrollViewerComponent extends FrameworkElementComponent implements AfterViewInit {

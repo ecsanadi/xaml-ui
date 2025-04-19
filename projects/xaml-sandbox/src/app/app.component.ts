@@ -12,10 +12,11 @@ import { SliderComponent } from "../../../xaml-ui/src/lib/basic-input/Slider";
 import { ToggleSwitchComponent } from "../../../xaml-ui/src/lib/basic-input/ToggleSwitch";
 import { TextBoxComponent } from "../../../xaml-ui/src/lib/text/TextBox";
 import { TextBlockComponent } from "../../../xaml-ui/src/lib/text/TextBlock";
+import { ListViewComponent } from "../../../xaml-ui/src/lib/collections/ListView";
 
 @Component({
   selector: 'app-root',
-  imports: [XamlRootComponent, StackPanelComponent, ButtonComponent, Flyout, ListBoxComponent, ScrollViewerComponent, ScrollBarComponent, CheckBoxComponent, RadioButtonComponent, SliderComponent, ToggleSwitchComponent, TextBoxComponent, TextBlockComponent],
+  imports: [XamlRootComponent, StackPanelComponent, ButtonComponent, Flyout, ListBoxComponent, ScrollViewerComponent, ScrollBarComponent, CheckBoxComponent, RadioButtonComponent, SliderComponent, ToggleSwitchComponent, TextBoxComponent, TextBlockComponent, ListViewComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

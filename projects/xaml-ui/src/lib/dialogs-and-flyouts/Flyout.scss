@@ -10,6 +10,7 @@
   position: absolute;
   transition: transform var(--ControlNormalAnimationDuration);
   pointer-events: none;
+  z-index: 1000;
 
   &>.content {
     display: grid;
@@ -33,6 +34,7 @@
 }
 
 .backdrop {
+  z-index: 900;
   position: fixed;
   left: 0;
   right: 0;

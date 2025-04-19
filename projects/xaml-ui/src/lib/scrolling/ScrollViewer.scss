@@ -1,5 +1,6 @@
 :host {
-  position: relative;
+  display: grid;
+  overflow: auto;
 
   &>.content {
     //Hide scrollbar for IE, Edge and Firefox
@@ -13,39 +14,15 @@
     }
 
     display: grid;
-
-    position: absolute;
-    margin: 0;
-    padding: 0;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
+    grid-row-start: 1;
+    grid-column-start: 1;
     justify-self: stretch;
     align-self: stretch;
   }
 
-  &>.scrollbar-vertical {
-    position: absolute;
-    margin: 0;
-    padding: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-
-    justify-self: right;
-    align-self: stretch;
-  }
-
-  &>.scrollbar-horizontal {
-    position: absolute;
-    margin: 0;
-    padding: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-
-    justify-self: stretch;
-    align-self: flex-end;
+  &>.scrollbar {
+    display: grid;
+    grid-row-start: 1;
+    grid-column-start: 1;
   }
 }
