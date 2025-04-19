@@ -10,6 +10,7 @@ import { PopupComponent } from "../primitives/Popup";
   imports: [CommonModule, ButtonComponent, PopupComponent, ListViewComponent],
   template: `<Button [HorizontalContentAlignment]="HorizontalContentAlignment" [VerticalContentAlignment]="VerticalContentAlignment">
     ${SelectorItemTemplate}
+    <div class="drop-down-glyph">&#xE70D;</div>
     <Popup #ButtonFlyout [VerticalOffset]="popupOffset">
       <ListView [ItemSource]="ItemSource" [(SelectedIndex)]="SelectedIndex"  [HorizontalContentAlignment]="HorizontalContentAlignment" [VerticalContentAlignment]="VerticalContentAlignment"/>
     </Popup>

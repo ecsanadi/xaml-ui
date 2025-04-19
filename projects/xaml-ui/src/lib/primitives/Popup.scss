@@ -9,7 +9,7 @@
   pointer-events: none;
   position: absolute;
   pointer-events: none;
-  z-index: 1000;  
+  z-index: 1000;
 
   &>.popup-content {
     display: grid;
@@ -21,14 +21,14 @@
     transition: opacity var(--ControlNormalAnimationDuration);
     backdrop-filter: var(--AcrylicBlur);
     box-shadow: 0px 0px 15px 0px rgba(black, 0.1);
-    
+
     border-color: var(--SurfaceStrokeColorFlyout);
     background-color: var(--AcrylicInAppFillColorDefault);
   }
-  
+
   &.popup-open>.popup-content {
     opacity: 1.0;
-    pointer-events: all;    
+    pointer-events: all;
   }
 }
 
