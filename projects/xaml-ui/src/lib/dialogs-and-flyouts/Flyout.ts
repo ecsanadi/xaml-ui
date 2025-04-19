@@ -8,18 +8,18 @@ import { PopupComponent } from "../primitives/Popup";
   imports: [CommonModule],
   template: `<div class="popup-backdrop" (click)="onBackdropClick($event)" *ngIf="IsOpen"></div>
     <div class="popup-container" [ngStyle]="containerStyle" [ngClass]="containerClass">
-      <div class="popup-content" [ngStyle]="contentStyle"><ng-content/></div>
-    </div>`,
+    <div class="popup-content" [ngStyle]="contentStyle" *ngIf="isRendered"><ng-content/></div>
+  </div>`,
   styleUrl: '../primitives/Popup.scss'
 })
 export class FlyoutComponent extends PopupComponent {
-  @Input() PlacementMode: FlyoutPlacementMode = 'Top';
+  @Input() Placement: FlyoutPlacementMode = 'Top';
 
   get contentStyle() {
     let alignSelf: string | undefined;
     let justifySelf: string | undefined;
 
-    switch (this.PlacementMode) {
+    switch (this.Placement) {
       case 'Top':
       case 'Bottom':
         justifySelf = 'center';
@@ -77,7 +77,7 @@ export class FlyoutComponent extends PopupComponent {
       return result;
     }
 
-    switch (this.PlacementMode) {
+    switch (this.Placement) {
       case 'Top':
       case 'TopEdgeAlignedLeft':
       case 'TopEdgeAlignedRight':
@@ -109,7 +109,7 @@ export class FlyoutComponent extends PopupComponent {
 
     let margin: string | undefined;
 
-    switch (this.PlacementMode) {
+    switch (this.Placement) {
       case 'Top':
         margin = '0 -100vw -100vh -100vw';
         break;

@@ -68,6 +68,8 @@
   --AcrylicInAppFillColorDefault: #2C2C2C26; //15%
   --SystemChromeMediumLowColor: #2B2B2BFF;
 
+  --DividerStrokeColorDefault: #FFFFFF15;
+
   @media (prefers-color-scheme: light) {
 
     --ControlFillColorDefault: #FFFFFFB3;
@@ -116,5 +118,7 @@
     --SurfaceStrokeColorFlyout: #0000000F;
     --AcrylicInAppFillColorDefault: #FCFCFC26; //15%
     --SystemChromeMediumLowColor: #F2F2F2FF;
+
+    --DividerStrokeColorDefault: #0000000F;
   }
 }

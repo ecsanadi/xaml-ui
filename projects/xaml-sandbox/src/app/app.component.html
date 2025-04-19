@@ -9,8 +9,16 @@
     <Slider/>
     <ToggleSwitch>test</ToggleSwitch>
     <TextBox Text="test"/>
+    <Button>Test
+      <Flyout Placement="Bottom" #ButtonFlyout>test</Flyout>
+    </Button>
     <DropDownButton>Test
-      <Flyout PlacementMode="Bottom" #ButtonFlyout>test</Flyout>
+      <MenuFlyout Placement="Top" #ButtonFlyout>
+        <MenuFlyoutItem Text="Share" Icon="&#xE72D;"/>
+        <MenuFlyoutItem Text="Copy"/>
+        <MenuFlyoutSeparator/>
+        <MenuFlyoutItem Text="Delete"/>
+      </MenuFlyout>
     </DropDownButton>
     <ListView [ItemSource]="[1,2,3,4,5]"/>
     <ComboBox [ItemSource]="[1,2,3,4,5]" Margin="0 12px"/>

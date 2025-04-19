@@ -9,7 +9,7 @@
   align-content: center;
   transition: transform var(--ControlNormalAnimationDuration);
 
-  :host:active & {
+  :host:active:not(.popup-open) & {
     transform: translateY(3px);
   }
 }
