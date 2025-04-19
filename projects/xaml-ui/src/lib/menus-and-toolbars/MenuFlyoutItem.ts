@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, EventEmitter, HostListener, Input, Output, ViewChild } from "@angular/core";
+import { Component, EventEmitter, HostBinding, HostListener, Input, Output, ViewChild } from "@angular/core";
 import { MenuFlyoutItemBase } from "./MenuFlyoutItemBase";
 
 @Component({
@@ -11,13 +11,19 @@ import { MenuFlyoutItemBase } from "./MenuFlyoutItemBase";
   styleUrl: 'MenuFlyoutItem.scss'
 })
 export class MenuFlyoutItemComponent extends MenuFlyoutItemBase {
+  @Input() IsEnabled = true;
   @Input() Text = '';
   @Input() Icon?: string;
   @Input() Tag: any;
   @Output() Click = new EventEmitter<any>();
 
+  @HostBinding('class.disabled')
+  private get disabled() {
+    return !this.IsEnabled;
+  }
+
   @HostListener('click', [])
-  onClick() {
+  private onClick() {
     this.Click.emit(this.Tag);
   }
 }

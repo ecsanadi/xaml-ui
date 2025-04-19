@@ -3,10 +3,12 @@
 :host {
   display: table-row;
 
-  &:hover {
-    &>* {
-      background-color: var(--SubtleFillColorSecondary);
-    }
+  &:hover:not(.disabled)>* {
+    background-color: var(--SubtleFillColorSecondary);
+  }
+
+  &.disabled>* {
+    color: var(--TextFillColorDisabled);
   }
 }
 
