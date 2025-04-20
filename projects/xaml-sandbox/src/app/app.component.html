@@ -20,6 +20,14 @@
         <MenuFlyoutItem Text="Delete" [IsEnabled]="false"/>
       </MenuFlyout>
     </DropDownButton>
+    <DropDownButton [IsEnabled]="false">Test
+      <MenuFlyout Placement="Top" #ButtonFlyout>
+        <MenuFlyoutItem Text="Share" Icon="&#xE72D;"/>
+        <MenuFlyoutItem Text="Copy"/>
+        <MenuFlyoutSeparator/>
+        <MenuFlyoutItem Text="Delete" [IsEnabled]="false"/>
+      </MenuFlyout>
+    </DropDownButton>
     <ListView [ItemSource]="[1,2,3,4,5]">
       <ng-template let-item>
         {{item}}
@@ -29,7 +37,11 @@
         </MenuFlyout>
       </ng-template>
     </ListView>
-    <ComboBox [ItemSource]="[1,2,3,4,5]" Margin="0 12px"/>
+    <ToggleButton>Test</ToggleButton>
+    <ToggleButton [IsEnabled]="false" [IsChecked]="true">Test</ToggleButton>
+    <ToggleButton [IsEnabled]="false">Test</ToggleButton>
+    <ComboBox [ItemSource]="[1,2,3,4,5]" Margin="12px"/>
+    <ComboBox [ItemSource]="[1,2,3,4,5]" Margin="12px" [IsEnabled]="false"/>
     
   </StackPanel>
 </XamlRoot>

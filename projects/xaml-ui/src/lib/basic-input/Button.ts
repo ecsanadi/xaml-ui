@@ -30,6 +30,7 @@ export class ButtonComponent extends BorderComponent {
   private readonly type = 'button';
 
   @HostBinding('attr.disabled')
+  @HostBinding('class.disabled')
   private get disabled() {
     return this.IsEnabled ? undefined : true;
   }
@@ -44,7 +45,9 @@ export class ButtonComponent extends BorderComponent {
 
   @HostListener('click', ['$event'])
   private onHostPointerEvent(event: Event) {
+    if (!this.IsEnabled) return;
+
     this.Click.emit();
-    this._popup?.Show();    
+    this._popup?.Show();
   }
 }

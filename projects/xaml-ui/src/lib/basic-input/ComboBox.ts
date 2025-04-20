@@ -8,7 +8,7 @@ import { DropDownButtonComponent } from "./DropDownButton";
 @Component({
   selector: 'ComboBox',
   imports: [CommonModule, DropDownButtonComponent, PopupComponent, ListViewComponent],
-  template: `<DropDownButton [HorizontalContentAlignment]="HorizontalContentAlignment" [VerticalContentAlignment]="VerticalContentAlignment">
+  template: `<DropDownButton [HorizontalContentAlignment]="HorizontalContentAlignment" [VerticalContentAlignment]="VerticalContentAlignment" [IsEnabled]="IsEnabled">
     ${SelectorItemTemplate}
     <Popup #ButtonFlyout [VerticalOffset]="popupOffset">
       <ListView [ItemSource]="ItemSource" [(SelectedIndex)]="SelectedIndex"  [HorizontalContentAlignment]="HorizontalContentAlignment" [VerticalContentAlignment]="VerticalContentAlignment"/>
@@ -17,6 +17,8 @@ import { DropDownButtonComponent } from "./DropDownButton";
   styleUrl: 'ComboBox.scss'
 })
 export class ComboBoxComponent extends SelectorComponent implements AfterViewInit {
+  @Input() IsEnabled: boolean = true;
+
   get item() {
     return this.SelectedItem;
   }
