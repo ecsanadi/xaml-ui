@@ -24,10 +24,11 @@ import { SplitButtonComponent } from "../../../xaml-ui/src/lib/basic-input/Split
 import { ImageComponent } from "../../../xaml-ui/src/lib/media/Image";
 import { AppBarButtonComponent } from "../../../xaml-ui/src/lib/menus-and-toolbars/AppBarButton";
 import { CommandBarComponent } from "../../../xaml-ui/src/lib/menus-and-toolbars/CommandBar";
+import { NumberBox } from "../../../xaml-ui/src/lib/text/NumberBox";
 
 @Component({
   selector: 'app-root',
-  imports: [XamlRootComponent, StackPanelComponent, ButtonComponent, FlyoutComponent, ListBoxComponent, ScrollViewerComponent, ScrollBarComponent, CheckBoxComponent, RadioButtonComponent, SliderComponent, ToggleSwitchComponent, TextBoxComponent, TextBlockComponent, ListViewComponent, ComboBoxComponent, DropDownButtonComponent, MenuFlyoutComponent, MenuFlyoutItemComponent, MenuFlyoutSeparator, ContextFlyoutDirective, ToggleButtonComponent, SplitButtonComponent, ImageComponent, AppBarButtonComponent, CommandBarComponent],
+  imports: [XamlRootComponent, StackPanelComponent, ButtonComponent, FlyoutComponent, ListBoxComponent, ScrollViewerComponent, ScrollBarComponent, CheckBoxComponent, RadioButtonComponent, SliderComponent, ToggleSwitchComponent, TextBoxComponent, TextBlockComponent, ListViewComponent, ComboBoxComponent, DropDownButtonComponent, MenuFlyoutComponent, MenuFlyoutItemComponent, MenuFlyoutSeparator, ContextFlyoutDirective, ToggleButtonComponent, SplitButtonComponent, ImageComponent, AppBarButtonComponent, CommandBarComponent, NumberBox],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

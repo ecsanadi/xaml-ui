@@ -1,7 +1,10 @@
 <XamlRoot>
-  <CommandBar VerticalAlignment="Top">
-    <AppBarButton Icon="&#xE704;" Text="Wi-Fi"/>
-    <AppBarButton Icon="&#xE708;" Text="Moon phase"/>
-    <AppBarButton Icon="&#xE719;" Text="Shop" [IsEnabled]="false"/>
-  </CommandBar>
+  <StackPanel>
+    <NumberBox/>
+    <CommandBar VerticalAlignment="Top">
+      <AppBarButton Icon="&#xE704;" Text="Wi-Fi" />
+      <AppBarButton Icon="&#xE708;" Text="Moon phase" />
+      <AppBarButton Icon="&#xE719;" Text="Shop" [IsEnabled]="false" />
+    </CommandBar>
+  </StackPanel>
 </XamlRoot>
