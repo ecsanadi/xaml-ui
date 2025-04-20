@@ -1,6 +1,8 @@
 <XamlRoot>
   <StackPanel>
+    <Button Class="InlineButtonStyle" Margin="3px">Click here</Button>
     <NumberBox/>
+    <RepeatButton (Click)="onClick()" Class="InlineButtonStyle">Click and hold</RepeatButton>
     <CommandBar VerticalAlignment="Top">
       <AppBarButton Icon="&#xE704;" Text="Wi-Fi" />
       <AppBarButton Icon="&#xE708;" Text="Moon phase" />

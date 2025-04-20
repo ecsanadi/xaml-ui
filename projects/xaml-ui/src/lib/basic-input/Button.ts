@@ -44,7 +44,7 @@ export class ButtonComponent extends BorderComponent {
   private _popup?: PopupComponent;
 
   @HostListener('click', ['$event'])
-  private onHostPointerEvent(event: Event) {
+  protected onHostPointerEvent(event: Event) {
     if (!this.IsEnabled) return;
 
     this.Click.emit();

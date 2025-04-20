@@ -10,7 +10,7 @@ export type NumberFormatter = (value: number) => string;
   template: `<input type="text" [disabled]="!IsEnabled" [value]="Text" (change)="onChange($event)" [placeholder]="PlaceholderText" [style]="{'text-align': TextAlignment}" (blur)="onBlur($event)"/>`,
   styleUrl: 'TextBox.scss'
 })
-export class NumberBox extends FrameworkElementComponent {
+export class NumberBoxComponent extends FrameworkElementComponent {
   @Input() IsEnabled: boolean = true;
   @Input() PlaceholderText: string = '';
   @Input() TextAlignment?: TextAlignment = 'Left';

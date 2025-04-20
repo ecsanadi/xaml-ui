@@ -12,6 +12,12 @@
   border-color: var(--ControlStrokeColorDefault);
   color: var(--TextFillColorPrimary);
   transition: all var(--ControlFastAnimationDuration);
+
+  &.InlineButtonStyle {
+    border-style: none;
+    border-width: 0;
+    background-color: transparent;
+  }
   
   &::ng-deep * {
     color: var(--TextFillColorPrimary);
