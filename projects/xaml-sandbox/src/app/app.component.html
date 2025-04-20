@@ -5,6 +5,18 @@
   </StackPanel> -->
   <ScrollViewer HorizontalScrollMode="Disabled">
     <StackPanel>
+      <SplitButton Margin="4px">
+        Test
+        <Flyout #ButtonFlyout Placement="Bottom">
+          test
+        </Flyout>
+      </SplitButton>
+      <SplitButton Margin="4px" [IsEnabled]="false">
+        Test
+        <Flyout #ButtonFlyout Placement="Bottom">
+          test
+        </Flyout>
+      </SplitButton>
       <CheckBox>test</CheckBox>
       <RadioButton>test</RadioButton>
       <Slider />
