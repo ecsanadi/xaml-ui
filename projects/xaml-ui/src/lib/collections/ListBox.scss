@@ -4,35 +4,48 @@
   display: flex;
   flex-direction: column;
   background-color: var(--SystemChromeMediumLowColor);
-}
 
-.item {
-  display: grid;
-  padding: 12px;
-  margin: 0;
-
-  &:not(:hover):not(:active):not(.selected) {
-    background-color: transparent;
-    color: var(--TextFillColorPrimary);
+  & .item {
+    display: grid;
+    padding: 12px;
+    margin: 0;
   }
 
-  &:hover:not(.active):not(.selected) {
-    background-color: var(--SubtleFillColorSecondary);
+  &:not(.disabled) .item {
+
+    &:not(:hover):not(:active):not(.selected) {
+      color: var(--TextFillColorPrimary);
+    }
+
+    &:hover:not(.active):not(.selected) {
+      background-color: var(--SubtleFillColorSecondary);
+    }
+
+    &:active:not(.selected) {
+      background-color: var(--SubtleFillColorTertiary);
+    }
+
+    &:not(:hover):not(:active).selected {
+      background-color: var(--SystemControlHighlightListAccentLow);
+    }
+
+    &:hover:not(:active).selected {
+      background-color: var(--SystemControlHighlightListAccentMedium);
+    }
+
+    &:active.selected {
+      background-color: var(--SystemControlHighlightListAccentHigh);
+    }
   }
 
-  &:active:not(.selected) {
-    background-color: var(--SubtleFillColorTertiary);
-  }
+  &.disabled .item {
+    &:not(.selected) {
+      color: var(--TextFillColorDisabled);
+    }
 
-  &:not(:hover):not(:active).selected {
-    background-color: var(--SystemControlHighlightListAccentLow);
-  }
-
-  &:hover:not(:active).selected {
-    background-color: var(--SystemControlHighlightListAccentMedium);
-  }
-
-  &:active.selected {
-    background-color: var(--SystemControlHighlightListAccentHigh);
+    &.selected {
+      background-color: var(--SubtleFillColorSecondary);
+      color: var(--AccentFillColorDisabled);
+    }
   }
 }

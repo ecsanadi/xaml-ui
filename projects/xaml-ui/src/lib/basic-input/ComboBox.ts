@@ -17,8 +17,6 @@ import { DropDownButtonComponent } from "./DropDownButton";
   styleUrl: 'ComboBox.scss'
 })
 export class ComboBoxComponent extends SelectorComponent implements AfterViewInit {
-  @Input() IsEnabled: boolean = true;
-
   get item() {
     return this.SelectedItem;
   }

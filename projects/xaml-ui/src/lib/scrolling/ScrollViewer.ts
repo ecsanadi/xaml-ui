@@ -20,11 +20,25 @@ export class ScrollViewerComponent extends FrameworkElementComponent implements 
   private _content!: ElementRef<HTMLDivElement>;
 
   get IsHorizontalScrollBarVisible() {
-    return this.ViewportWidth < this.ExtentWidth;
+    switch (this.HorizontalScrollMode) {
+      case 'Disabled':
+        return false;
+      case 'Auto':
+        return this.ViewportWidth < this.ExtentWidth;
+      case 'Enabled':
+        return true;
+    }
   }
 
   get IsVerticalScrollBarVisible() {
-    return this.ViewportHeight < this.ExtentHeight;
+    switch (this.VerticalScrollMode) {
+      case 'Disabled':
+        return false;
+      case 'Auto':
+        return this.ViewportHeight < this.ExtentHeight;
+      case 'Enabled':
+        return true;
+    }
   }
 
   get ExtentWidth() {
@@ -84,7 +98,7 @@ export class ScrollViewerComponent extends FrameworkElementComponent implements 
   onScroll() {
     //trigger change detect on scroll
   }
-  
+
   ngAfterViewInit(): void {
     //help the layout finish itself
     this._changeDetector.detectChanges();

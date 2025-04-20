@@ -1,4 +1,4 @@
-import { Component, ContentChild, EventEmitter, Input, Output, TemplateRef } from "@angular/core";
+import { Component, ContentChild, EventEmitter, HostBinding, Input, Output, TemplateRef } from "@angular/core";
 import { FrameworkElementComponent } from "../FrameworkElement";
 import { HorizontalAlignment, toAlignment, toJustification, VerticalAlignment } from "../Common";
 
@@ -15,6 +15,7 @@ export const SelectorItemTemplate =
 export abstract class SelectorComponent extends FrameworkElementComponent {
   @ContentChild(TemplateRef) ItemTemplate!: TemplateRef<any>;
 
+  @Input() IsEnabled: boolean = true;
   @Input() HorizontalContentAlignment: HorizontalAlignment = 'Left';
   @Input() VerticalContentAlignment: VerticalAlignment = 'Center';
 
@@ -24,6 +25,11 @@ export abstract class SelectorComponent extends FrameworkElementComponent {
 
   get justifyContent() {
     return toJustification(this.HorizontalContentAlignment);
+  }
+
+  @HostBinding('class.disabled')
+  private get disabled() {
+    return !this.IsEnabled;
   }
 
   //ItemSource
@@ -83,7 +89,7 @@ export abstract class SelectorComponent extends FrameworkElementComponent {
   }
 
   onItemClick(event: Event, index: number, item: any) {
-    if (this.SelectedIndex === index) return;
+    if (this.SelectedIndex === index || !this.IsEnabled) return;
 
     this.SelectedIndex = index;
     event.stopPropagation();
