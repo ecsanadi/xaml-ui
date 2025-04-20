@@ -1,0 +1,50 @@
+label {
+  display: grid;
+  position: relative;
+}
+
+input {
+  grid-column-start: 1;
+  grid-row-start: 1;
+  padding-left: 24px;
+}
+
+.icon {
+  grid-column-start: 1;
+  grid-row-start: 1;
+  align-self: center;
+  justify-self: left;
+  font-family: var(--SymbolFontFamily);
+  margin-left: 6px;
+  color: var(--TextFillColorSecondary);
+}
+
+.popup {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: var(--OverlayCornerRadius);
+  border-color: var(--SurfaceStrokeColorFlyout);
+  background-color: var(--AcrylicInAppFillColorDefault);
+  backdrop-filter: var(--AcrylicBlur);
+  box-shadow: 0px 0px 15px 0px rgba(black, 0.1);
+  gap: 3px;
+  padding: 3px;
+  z-index: 1000;
+
+  & .InlineButtonStyle {
+    padding: 5px;
+  }
+}
+
+input {
+  &:focus + .popup, &:active + .popup {
+    display: flex;
+  }
+}

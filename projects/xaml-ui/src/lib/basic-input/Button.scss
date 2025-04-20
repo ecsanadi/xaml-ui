@@ -12,12 +12,6 @@
   border-color: var(--ControlStrokeColorDefault);
   color: var(--TextFillColorPrimary);
   transition: all var(--ControlFastAnimationDuration);
-
-  &.InlineButtonStyle {
-    border-style: none;
-    border-width: 0;
-    background-color: transparent;
-  }
   
   &::ng-deep * {
     color: var(--TextFillColorPrimary);
@@ -82,6 +76,34 @@
 
     &::ng-deep * {
       color: var(--TextOnAccentFillColorDisabled);
+    }
+  }
+  
+  &.InlineButtonStyle {
+    border-style: none;
+    border-width: 0;
+    background-color: transparent;
+
+    &:hover:not(.checked):not(.popup-open):not(.disabled) {
+      background: var(--SubtleFillColorSecondary);
+    }
+  
+    &:active:not(.checked):not(.popup-open):not(.disabled) {
+      background: var(--SubtleFillColorTertiary);
+      color: var(--TextFillColorSecondary);
+  
+      &::ng-deep * {
+        color: var(--TextFillColorSecondary);
+      }
+    }
+  
+    &.disabled:not(.checked) {
+      background: var(--SubtleFillColorDisabled);
+      color: var(--TextFillColorDisabled);
+  
+      &::ng-deep * {
+        color: var(--TextFillColorDisabled);
+      }
     }
   }
 }

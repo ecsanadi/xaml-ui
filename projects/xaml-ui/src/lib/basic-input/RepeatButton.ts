@@ -13,9 +13,12 @@ export class RepeatButtonComponent extends ButtonComponent {
   private _delayTimer: any;
   private _intervalTimer: any;
 
-  @HostListener('pointerdown')
-  private onPointerDown() {
+  @HostListener('pointerdown', ['$event'])
+  private onPointerDown(event: PointerEvent) {
     if (!this.IsEnabled) return;
+
+    (event.target as HTMLElement).setPointerCapture(event.pointerId);
+    this.Click.emit();
 
     this._delayTimer = setTimeout(() => {
       this.Click.emit();
@@ -26,7 +29,7 @@ export class RepeatButtonComponent extends ButtonComponent {
     }, this.Delay);
   }
 
-  @HostListener('pointerup')
+  @HostListener('pointerup', ['$event'])
   private onPointerUp() {
     if (this._delayTimer !== undefined) clearTimeout(this._delayTimer);
     if (this._intervalTimer !== undefined) clearInterval(this._intervalTimer);
