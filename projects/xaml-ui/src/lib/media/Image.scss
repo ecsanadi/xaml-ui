@@ -1,0 +1,25 @@
+:host {
+  display: grid;
+  overflow: hidden;
+}
+
+img {
+  place-self: stretch;  
+
+  &.None {
+    object-fit: none;
+  }
+  
+  &.Fill {
+    object-fit: fill;
+  }
+  
+  &.Uniform {
+    object-fit: contain;
+  }
+  
+  &.UniformToFill {
+    object-fit: cover;
+  }
+}
+
