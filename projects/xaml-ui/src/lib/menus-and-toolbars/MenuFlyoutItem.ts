@@ -14,8 +14,7 @@ export class MenuFlyoutItemComponent extends MenuFlyoutItemBase {
   @Input() IsEnabled = true;
   @Input() Text = '';
   @Input() Icon?: string;
-  @Input() Tag: any;
-  @Output() Click = new EventEmitter<any>();
+  @Output() Click = new EventEmitter();
 
   @HostBinding('class.disabled')
   private get disabled() {
@@ -24,6 +23,6 @@ export class MenuFlyoutItemComponent extends MenuFlyoutItemBase {
 
   @HostListener('click', [])
   private onClick() {
-    this.Click.emit(this.Tag);
+    this.Click.emit();
   }
 }

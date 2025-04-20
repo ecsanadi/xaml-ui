@@ -1,0 +1,45 @@
+@use '../Common.scss' as *;
+
+:host {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  transition: background-color var(--ControlNormalAnimationDuration);
+  border-radius: var(--ControlCornerRadius);
+  gap: 4px;
+  padding: 6px;
+
+  background-color: var(--SubtleFillColorTransparent);
+
+  & * {
+    color: var(--TextFillColorPrimary);
+  }
+  
+  &:hover {
+    background-color: var(--SubtleFillColorSecondary);
+
+    & * {
+      color: var(--TextFillColorPrimary);
+    }
+  }
+  
+  &:active {
+    background-color: var(--SubtleFillColorTertiary);
+    
+    & * {
+      color: var(--TextFillColorSecondary);
+    }
+  }
+  
+  &.disabled {
+    background-color: var(--SubtleFillColorDisabled);
+
+    & * {
+      color: var(--TextFillColorDisabled);
+    }
+  }
+
+  & .icon {
+    font-family: var(--SymbolFontFamily);
+  }
+}

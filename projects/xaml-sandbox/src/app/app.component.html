@@ -1,64 +1,7 @@
 <XamlRoot>
-  <!-- <StackPanel>
-    <ScrollBar Orientation="Horizontal" Width="300px" [ScrollSize]="500" [ViewportSize]="100" [Value]="200" HorizontalAlignment="Left"/>
-    <ScrollBar Orientation="Vertical" Height="300px" [ScrollSize]="500" [ViewportSize]="100" HorizontalAlignment="Left"/>
-  </StackPanel> -->
-  <ScrollViewer HorizontalScrollMode="Disabled">
-    <StackPanel>
-      <SplitButton Margin="4px">
-        Test
-        <Flyout #ButtonFlyout Placement="Bottom">
-          test
-        </Flyout>
-      </SplitButton>
-      <SplitButton Margin="4px" [IsEnabled]="false">
-        Test
-        <Flyout #ButtonFlyout Placement="Bottom">
-          test
-        </Flyout>
-      </SplitButton>
-      <Image Source="https://www.qries.com/images/banner_logo.png" Stretch="UniformToFill" Height="30px"/>
-      <CheckBox>test</CheckBox>
-      <RadioButton>test</RadioButton>
-      <Slider />
-      <ToggleSwitch>test</ToggleSwitch>
-      <TextBox Text="test" />
-      <Button>Test
-        <Flyout Placement="Bottom" #ButtonFlyout>test</Flyout>
-      </Button>
-      <DropDownButton>Test
-        <MenuFlyout Placement="Top" #ButtonFlyout>
-          <MenuFlyoutItem Text="Share" Icon="&#xE72D;" />
-          <MenuFlyoutItem Text="Copy" />
-          <MenuFlyoutSeparator />
-          <MenuFlyoutItem Text="Delete" [IsEnabled]="false" />
-        </MenuFlyout>
-      </DropDownButton>
-      <DropDownButton [IsEnabled]="false">Test
-        <MenuFlyout Placement="Top" #ButtonFlyout>
-          <MenuFlyoutItem Text="Share" Icon="&#xE72D;" />
-          <MenuFlyoutItem Text="Copy" />
-          <MenuFlyoutSeparator />
-          <MenuFlyoutItem Text="Delete" [IsEnabled]="false" />
-        </MenuFlyout>
-      </DropDownButton>
-      <ListView [ItemSource]="[1,2,3,4,5]">
-        <ng-template let-item>
-          {{item}}
-          <MenuFlyout ContextFlyout>
-            <MenuFlyoutItem Text="Share" Icon="&#xE72D;" />
-            <MenuFlyoutItem Text="Copy" />
-          </MenuFlyout>
-        </ng-template>
-      </ListView>
-      <ListBox [ItemSource]="[1,2,3,4,5]" [IsEnabled]="false" />
-      <ListView [ItemSource]="[1,2,3,4,5]" [IsEnabled]="false" />
-      <ToggleButton>Test</ToggleButton>
-      <ToggleButton [IsEnabled]="false" [IsChecked]="true">Test</ToggleButton>
-      <ToggleButton [IsEnabled]="false">Test</ToggleButton>
-      <ComboBox [ItemSource]="[1,2,3,4,5]" Margin="12px" />
-      <ComboBox [ItemSource]="[1,2,3,4,5]" Margin="12px" [IsEnabled]="false" />
-
-    </StackPanel>
-  </ScrollViewer>
+  <CommandBar VerticalAlignment="Top">
+    <AppBarButton Icon="&#xE704;" Text="Wi-Fi"/>
+    <AppBarButton Icon="&#xE708;" Text="Moon phase"/>
+    <AppBarButton Icon="&#xE719;" Text="Shop" [IsEnabled]="false"/>
+  </CommandBar>
 </XamlRoot>
