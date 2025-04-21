@@ -1,10 +1,6 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from "@angular/core";
 import { FrameworkElementComponent } from "../FrameworkElement";
-
-export type Color = number;
-export function toString(value: Color) {
-  return '#' + value.toString(16).padStart(8, '0');
-}
+import { Color, colorToRgb, rgbToHsl } from "../Color";
 
 @Component({
   selector: 'ColorPicker',
@@ -17,12 +13,18 @@ export class ColorPickerComponent extends FrameworkElementComponent implements A
   @Input() get Color() {
     return this._color;
   }
-  set Color(value: Color) {
+  set Color(value: Color) {    
+    this.setColor(value);
+    this.updateSelectorPosition();
+  }
+
+  private setColor(value: Color) {
     if(this._color === value) return;
 
     this._color = value;
     this.ColorChange.emit(value);
   }
+
   @Output() ColorChange = new EventEmitter<Color>();
 
   @ViewChild('canvas')
@@ -31,12 +33,14 @@ export class ColorPickerComponent extends FrameworkElementComponent implements A
   @ViewChild('selector')
   private _selector!: ElementRef<HTMLDivElement>;
 
+  private _context!: CanvasRenderingContext2D;
+
   ngAfterViewInit(): void {
     let canvas = this._canvas.nativeElement;
     canvas.width = parseInt(this.Width ?? '300');
     canvas.height = parseInt(this.Height ?? '300');
 
-    let context = canvas.getContext('2d')!;
+    let context = this._context = canvas.getContext('2d', { willReadFrequently: true })!;
     let radius = canvas.width / 2;
 
     // Draw hue circle
@@ -59,8 +63,7 @@ export class ColorPickerComponent extends FrameworkElementComponent implements A
     context.fillRect(0, 0, canvas.width, canvas.height);
 
     // Position sample
-    this._selector.nativeElement.style.left = radius + 'px';
-    this._selector.nativeElement.style.top = radius + 'px';
+    this.updateSelectorPosition();
   }
 
   onPointerDown(event: PointerEvent) {
@@ -81,9 +84,22 @@ export class ColorPickerComponent extends FrameworkElementComponent implements A
     this._selector.nativeElement.style.left = sampleX + 'px';
     this._selector.nativeElement.style.top = sampleY + 'px';
 
-    let context = this._canvas.nativeElement.getContext('2d')!;
-    let imageData = context.getImageData(sampleX, sampleY, 1, 1).data;
+    let imageData = this._context.getImageData(sampleX, sampleY, 1, 1).data;
     let [r, g, b] = imageData;
-    this.Color = ((r << 24) + (g << 16) + (b << 8) + 0xff) >>> 0;
+    let color = ((r << 24) + (g << 16) + (b << 8) + 0xff) >>> 0;
+    this.setColor(color);
+  }
+
+  updateSelectorPosition() {
+    let rgb = colorToRgb(this.Color);
+    let hsl = rgbToHsl(rgb);
+
+    let radius = this._canvas.nativeElement.width / 2;
+    let angle = hsl.h / 180 * Math.PI;
+    let length = hsl.s / 100 * radius;
+    let x = radius + Math.cos(angle) * length;
+    let y = radius + Math.sin(angle) * length;
+    this._selector.nativeElement.style.left = x + 'px';
+    this._selector.nativeElement.style.top = y + 'px';
   }
 }

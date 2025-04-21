@@ -51,7 +51,7 @@ export class NumberBoxComponent extends FrameworkElementComponent {
     this.updateText();
   }
 
-  setValue(value: number) {
+  private setValue(value: number) {
     value = this.clampValue(value);
     if (value == this.Value) return;
 

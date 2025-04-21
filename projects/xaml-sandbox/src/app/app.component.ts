@@ -27,6 +27,7 @@ import { CommandBarComponent } from "../../../xaml-ui/src/lib/menus-and-toolbars
 import { NumberBoxComponent } from "../../../xaml-ui/src/lib/text/NumberBox";
 import { RepeatButtonComponent } from "../../../xaml-ui/src/lib/basic-input/RepeatButton";
 import { ColorPickerComponent } from "../../../xaml-ui/src/lib/basic-input/ColorPicker";
+import { Color, colorToString } from '../../../xaml-ui/src/lib/Color';
 
 @Component({
   selector: 'app-root',
@@ -39,5 +40,9 @@ export class AppComponent {
 
   onClick() {
     console.log('click');
+  }
+
+  onColorSelected(value: Color) {
+    console.log(colorToString(value));
   }
 }
