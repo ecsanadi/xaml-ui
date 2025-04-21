@@ -1,0 +1,20 @@
+:host {
+  position: relative;
+}
+
+canvas {
+  clip-path: circle(50%);
+  position: relative;
+}
+
+.selector {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-color: white;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 10px;
+  mix-blend-mode: difference;
+}

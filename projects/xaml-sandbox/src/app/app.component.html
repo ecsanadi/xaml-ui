@@ -1,35 +1,13 @@
 <XamlRoot>
-  <!-- <StackPanel>
-    <ScrollBar Orientation="Horizontal" Width="300px" [ScrollSize]="500" [ViewportSize]="100" [Value]="200" HorizontalAlignment="Left"/>
-    <ScrollBar Orientation="Vertical" Height="300px" [ScrollSize]="500" [ViewportSize]="100" HorizontalAlignment="Left"/>
-  </StackPanel> -->
-  <StackPanel>    
-    <CheckBox>test</CheckBox>
-    <RadioButton>test</RadioButton>
-    <Slider/>
-    <ToggleSwitch>test</ToggleSwitch>
-    <TextBox Text="test"/>
-    <Button>Test
-      <Flyout Placement="Bottom" #ButtonFlyout>test</Flyout>
-    </Button>
-    <DropDownButton>Test
-      <MenuFlyout Placement="Top" #ButtonFlyout>
-        <MenuFlyoutItem Text="Share" Icon="&#xE72D;"/>
-        <MenuFlyoutItem Text="Copy"/>
-        <MenuFlyoutSeparator/>
-        <MenuFlyoutItem Text="Delete" [IsEnabled]="false"/>
-      </MenuFlyout>
-    </DropDownButton>
-    <ListView [ItemSource]="[1,2,3,4,5]">
-      <ng-template let-item>
-        {{item}}
-        <MenuFlyout ContextFlyout>
-          <MenuFlyoutItem Text="Share" Icon="&#xE72D;"/>
-          <MenuFlyoutItem Text="Copy"/>
-        </MenuFlyout>
-      </ng-template>
-    </ListView>
-    <ComboBox [ItemSource]="[1,2,3,4,5]" Margin="0 12px"/>
-    
+  <StackPanel>
+    <Button Class="InlineButtonStyle" Margin="3px">Click here</Button>
+    <NumberBox [Value]="0" [Minimum]="-100" [Maximum]="100"/>
+    <RepeatButton (Click)="onClick()" Class="InlineButtonStyle">Click and hold</RepeatButton>
+    <CommandBar VerticalAlignment="Top">
+      <AppBarButton Icon="&#xE704;" Text="Wi-Fi" />
+      <AppBarButton Icon="&#xE708;" Text="Moon phase" />
+      <AppBarButton Icon="&#xE719;" Text="Shop" [IsEnabled]="false" />
+    </CommandBar>
+    <ColorPicker Width="200px" Height="200px" (ColorChange)="onColorSelected($event)"/>
   </StackPanel>
 </XamlRoot>

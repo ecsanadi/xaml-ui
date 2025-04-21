@@ -19,13 +19,30 @@ import { MenuFlyoutComponent } from "../../../xaml-ui/src/lib/menus-and-toolbars
 import { MenuFlyoutItemComponent } from "../../../xaml-ui/src/lib/menus-and-toolbars/MenuFlyoutItem";
 import { MenuFlyoutSeparator } from "../../../xaml-ui/src/lib/menus-and-toolbars/MenuFlyoutSeparator";
 import { ContextFlyoutDirective } from '../../../xaml-ui/src/lib/dialogs-and-flyouts/ContextFlyout';
+import { ToggleButtonComponent } from "../../../xaml-ui/src/lib/basic-input/ToggleButton";
+import { SplitButtonComponent } from "../../../xaml-ui/src/lib/basic-input/SplitButton";
+import { ImageComponent } from "../../../xaml-ui/src/lib/media/Image";
+import { AppBarButtonComponent } from "../../../xaml-ui/src/lib/menus-and-toolbars/AppBarButton";
+import { CommandBarComponent } from "../../../xaml-ui/src/lib/menus-and-toolbars/CommandBar";
+import { NumberBoxComponent } from "../../../xaml-ui/src/lib/text/NumberBox";
+import { RepeatButtonComponent } from "../../../xaml-ui/src/lib/basic-input/RepeatButton";
+import { ColorPickerComponent } from "../../../xaml-ui/src/lib/basic-input/ColorPicker";
+import { Color, colorToString } from '../../../xaml-ui/src/lib/Color';
 
 @Component({
   selector: 'app-root',
-  imports: [XamlRootComponent, StackPanelComponent, ButtonComponent, FlyoutComponent, ListBoxComponent, ScrollViewerComponent, ScrollBarComponent, CheckBoxComponent, RadioButtonComponent, SliderComponent, ToggleSwitchComponent, TextBoxComponent, TextBlockComponent, ListViewComponent, ComboBoxComponent, DropDownButtonComponent, MenuFlyoutComponent, MenuFlyoutItemComponent, MenuFlyoutSeparator, ContextFlyoutDirective],
+  imports: [XamlRootComponent, StackPanelComponent, ButtonComponent, FlyoutComponent, ListBoxComponent, ScrollViewerComponent, ScrollBarComponent, CheckBoxComponent, RadioButtonComponent, SliderComponent, ToggleSwitchComponent, TextBoxComponent, TextBlockComponent, ListViewComponent, ComboBoxComponent, DropDownButtonComponent, MenuFlyoutComponent, MenuFlyoutItemComponent, MenuFlyoutSeparator, ContextFlyoutDirective, ToggleButtonComponent, SplitButtonComponent, ImageComponent, AppBarButtonComponent, CommandBarComponent, NumberBoxComponent, RepeatButtonComponent, ColorPickerComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'xaml-sandbox';
+
+  onClick() {
+    console.log('click');
+  }
+
+  onColorSelected(value: Color) {
+    console.log(colorToString(value));
+  }
 }

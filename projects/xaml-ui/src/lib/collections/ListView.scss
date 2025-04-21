@@ -2,60 +2,83 @@
 
 :host {
   display: grid;
-}
 
-.item {
-  display: grid;
-  margin: 2px 4px;
-  border-radius: 4px;
-
-  &>.item-selector, &>.item-content {
+  & .item {
     display: grid;
-    grid-row-start: 1;
-    grid-column-start: 1;
-    justify-self: stretch;
+    margin: 2px 4px;
+    border-radius: 4px;
+
+    &>.item-selector, &>.item-content {
+      display: grid;
+      grid-row-start: 1;
+      grid-column-start: 1;
+      justify-self: stretch;
+    }
+  
+    &>.item-selector {
+      justify-self: left;
+      align-self: center;
+      width: 4px;
+      height: 12px;
+      border-radius: 2px;
+      transition: height var(--ControlNormalAnimationDuration);
+    }
+
+    &>.item-content {
+      padding: 8px 12px;
+    }
+
+    &.selected>.item-selector {
+      height: 18px;
+    }
   }
 
-  &>.item-selector {
-    justify-self: left;
-    align-self: center;
-    width: 4px;
-    height: 12px;
-    border-radius: 2px;
-    transition: height var(--ControlNormalAnimationDuration);
+  &:not(.disabled) .item {
+    &:not(:hover):not(:active):not(.selected) {
+      background-color: transparent;
+      color: var(--TextFillColorPrimary);
+    }
+  
+    &:hover:not(.active):not(.selected) {
+      background-color: var(--SubtleFillColorSecondary);
+    }
+  
+    &:active:not(.selected) {
+      background-color: var(--SubtleFillColorTertiary);
+    }
+  
+    &:not(:hover):not(:active).selected {
+      background-color: var(--SubtleFillColorSecondary);
+    }
+  
+    &:hover:not(:active).selected {
+      background-color: var(--SubtleFillColorTertiary);
+    }
+  
+    &:active.selected {
+      background-color: var(--SubtleFillColorSecondary);
+    }
+
+    &.selected>.item-selector {
+      background-color: var(--AccentFillColorDefault);
+    }
   }
 
-  &>.item-content {
-    padding: 8px 12px;
-  }
+  &.disabled .item {
+    &>.item-content {
+      color: var(--TextFillColorDisabled);
+    }
 
-  &:not(:hover):not(:active):not(.selected) {
-    background-color: transparent;
-    color: var(--TextFillColorPrimary);
-  }
+    &:not(.selected) {
+      background-color: transparent;
+    }
+  
+    &.selected {
+      background-color: var(--SubtleFillColorSecondary);
 
-  &:hover:not(.active):not(.selected) {
-    background-color: var(--SubtleFillColorSecondary);
-  }
-
-  &:active:not(.selected) {
-    background-color: var(--SubtleFillColorTertiary);
-  }
-
-  &:not(:hover):not(:active).selected {
-    background-color: var(--SubtleFillColorSecondary);
-  }
-
-  &:hover:not(:active).selected {
-    background-color: var(--SubtleFillColorTertiary);
-  }
-
-  &:active.selected {
-    background-color: var(--SubtleFillColorSecondary);
-  }
-
-  &.selected>.item-selector {
-    background-color: var(--AccentFillColorDefault);
-    height: 18px;
+      &>.item-selector {
+        background-color: var(--AccentFillColorDisabled);
+      }
+    }    
   }
 }

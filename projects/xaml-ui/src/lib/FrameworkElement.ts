@@ -7,7 +7,13 @@ import { HorizontalAlignment, toAlignment, toJustification, VerticalAlignment } 
 })
 export abstract class FrameworkElementComponent {
   @Input() Width?: string;
+  @Input() @HostBinding('style.min-width') MinWidth?: string;
+  @Input() @HostBinding('style.max-width') MaxWidth?: string;
+  
   @Input() Height?: string;
+  @Input() @HostBinding('style.min-height') MinHeight?: string;
+  @Input() @HostBinding('style.max-height') MaxHeight?: string;
+
   @Input() HorizontalAlignment: HorizontalAlignment = 'Stretch';
   @Input() VerticalAlignment: VerticalAlignment = 'Stretch';
   @Input() @HostBinding('style.margin') Margin?: string;

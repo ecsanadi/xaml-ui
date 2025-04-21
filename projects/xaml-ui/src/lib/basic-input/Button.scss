@@ -17,11 +17,11 @@
     color: var(--TextFillColorPrimary);
   }
   
-  &:hover:not(.checked):not(.popup-open) {
+  &:hover:not(.checked):not(.popup-open):not(.disabled) {
     background: var(--ControlFillColorSecondary);
   }
 
-  &:active:not(.checked):not(.popup-open) {
+  &:active:not(.checked):not(.popup-open):not(.disabled) {
     background: var(--ControlFillColorTertiary);
     color: var(--TextFillColorSecondary);
 
@@ -30,7 +30,7 @@
     }
   }
 
-  &:disabled:not(.checked) {
+  &.disabled:not(.checked) {
     background: var(--ControlFillColorDisabled);
     color: var(--TextFillColorDisabled);
 
@@ -39,7 +39,7 @@
     }
   }
 
-  &.checked {
+  &.checked:not(.disabled) {
     background: var(--AccentFillColorDefault);
     border-color: var(--AccentFillColorDefault);
     color: var(--TextOnAccentFillColorPrimary);
@@ -49,7 +49,7 @@
     }
   }
 
-  &:hover.checked:not(.popup-open) {
+  &:hover.checked:not(.popup-open):not(.disabled) {
     background: var(--AccentFillColorSecondary);
     border-color: var(--AccentFillColorSecondary);
     color: var(--TextOnAccentFillColorPrimary);
@@ -59,13 +59,51 @@
     }
   }
 
-  &:active.checked:not(.popup-open) {
+  &:active.checked:not(.popup-open):not(.disabled) {
     background: var(--AccentFillColorTertiary);
     border-color: var(--ControlFillColorTransparent);
     color: var(--TextOnAccentFillColorSecondary);
 
     &::ng-deep * {
       color: var(--TextOnAccentFillColorSecondary);
+    }
+  }
+
+  &.checked.disabled {
+    background: var(--AccentFillColorDisabled);
+    border-color: var(--AccentFillColorDisabled);
+    color: var(--TextOnAccentFillColorDisabled);
+
+    &::ng-deep * {
+      color: var(--TextOnAccentFillColorDisabled);
+    }
+  }
+  
+  &.InlineButtonStyle {
+    border-style: none;
+    border-width: 0;
+    background-color: transparent;
+
+    &:hover:not(.checked):not(.popup-open):not(.disabled) {
+      background: var(--SubtleFillColorSecondary);
+    }
+  
+    &:active:not(.checked):not(.popup-open):not(.disabled) {
+      background: var(--SubtleFillColorTertiary);
+      color: var(--TextFillColorSecondary);
+  
+      &::ng-deep * {
+        color: var(--TextFillColorSecondary);
+      }
+    }
+  
+    &.disabled:not(.checked) {
+      background: var(--SubtleFillColorDisabled);
+      color: var(--TextFillColorDisabled);
+  
+      &::ng-deep * {
+        color: var(--TextFillColorDisabled);
+      }
     }
   }
 }

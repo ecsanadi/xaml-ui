@@ -8,7 +8,7 @@ import { DropDownButtonComponent } from "./DropDownButton";
 @Component({
   selector: 'ComboBox',
   imports: [CommonModule, DropDownButtonComponent, PopupComponent, ListViewComponent],
-  template: `<DropDownButton [HorizontalContentAlignment]="HorizontalContentAlignment" [VerticalContentAlignment]="VerticalContentAlignment">
+  template: `<DropDownButton [HorizontalContentAlignment]="HorizontalContentAlignment" [VerticalContentAlignment]="VerticalContentAlignment" [IsEnabled]="IsEnabled">
     ${SelectorItemTemplate}
     <Popup #ButtonFlyout [VerticalOffset]="popupOffset">
       <ListView [ItemSource]="ItemSource" [(SelectedIndex)]="SelectedIndex"  [HorizontalContentAlignment]="HorizontalContentAlignment" [VerticalContentAlignment]="VerticalContentAlignment"/>

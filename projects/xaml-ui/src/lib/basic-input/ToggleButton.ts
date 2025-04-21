@@ -12,6 +12,7 @@ export class ToggleButtonComponent extends ButtonComponent {
 
   @HostListener('pointerup', ['$event'])
   onPointerUp(event: PointerEvent) {
+    if (!this.IsEnabled) return;
     this.IsChecked = !this.IsChecked;
     this.IsCheckedChange.emit(this.IsChecked);
   }
