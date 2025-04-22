@@ -6,7 +6,7 @@ import { PanelComponent } from "./Panel";
   selector: 'StackPanel',
   template: `<ng-content/>`,
   styles: `:host { 
-    display: flex;
+    display: grid;
     position: relative;
   }`
 })
@@ -14,8 +14,8 @@ export class StackPanelComponent extends PanelComponent {
   @Input() Orientation: Orientation = 'Vertical';
   @Input() @HostBinding('style.gap') Spacing : number | string | undefined;
 
-  @HostBinding('style.flex-direction') 
-  private get flexDirection() {
-    return this.Orientation === 'Horizontal' ? 'row' : 'column';
+  @HostBinding('style.grid-auto-flow') 
+  private get gridAutoColumns() {
+    return this.Orientation === 'Horizontal' ? 'column' : 'row';
   }
 }
