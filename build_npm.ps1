@@ -16,7 +16,7 @@ Write-Host 'Installing dependencies...' -ForegroundColor Magenta
 npm install
 
 Write-Host 'Building xaml-ui...' -ForegroundColor Magenta
-npm run build
+npm run build xaml-ui
 
 if ($LastExitCode -eq 0) {
   Write-Host "Building xaml-ui succeeded!" -ForegroundColor Green
