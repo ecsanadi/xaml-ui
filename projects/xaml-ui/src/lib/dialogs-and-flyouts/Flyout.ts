@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { FlyoutPlacementMode } from "../Common";
 import { CommonModule } from "@angular/common";
 import { PopupComponent } from "../primitives/Popup";

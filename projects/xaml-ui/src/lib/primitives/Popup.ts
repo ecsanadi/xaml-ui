@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ElementRef, EventEmitter, HostBinding, Input, Output, ViewChild } from "@angular/core";
+import { Component, ElementRef, EventEmitter, HostBinding, Input, Output, ViewChild } from "@angular/core";
 import { CommonModule } from "@angular/common";
 
 @Component({
@@ -10,11 +10,15 @@ import { CommonModule } from "@angular/common";
     </div>`,
   styleUrl: 'Popup.scss',
   host: {
-    class: 'popup'
-  }
+    'class': 'popup',
+  },
+  providers: [{provide: 'xaml-flyout', useExisting: PopupComponent}]
 })
 export class PopupComponent {
-  isRendered = false;
+  @HostBinding('attr.title')
+  private readonly _title = '';
+
+  protected isRendered = false;
 
   private _isRenderedTimeout: any;
 
