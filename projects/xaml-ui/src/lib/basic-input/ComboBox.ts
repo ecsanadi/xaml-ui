@@ -42,14 +42,14 @@ export class ComboBoxComponent extends SelectorComponent implements AfterViewIni
   }
 
   private _popupOffset = -4;
-  get popupOffset() {
+  protected get popupOffset() {
     //Cache the value so the change detector will not complain    
     let popupOffset = -(this._selector?.GetElement(this.SelectedIndex)?.offsetTop ?? 0);
     if (popupOffset !== 0) this._popupOffset = popupOffset;
     return this._popupOffset;
   }
 
-  onSelectionChanged() {
+  private onSelectionChanged() {
     if (this._popup) this._popup.IsOpen = false;
   }
 }

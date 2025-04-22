@@ -16,7 +16,7 @@ import { CommonModule } from "@angular/common";
   styleUrls: ['../primitives/Popup.scss', 'MenuFlyout.scss']
 })
 export class MenuFlyoutComponent extends FlyoutComponent {
-  onMenuClick(event: Event) {
+  protected onMenuClick(event: Event) {
     this.IsOpen = false;
     event.stopPropagation();
   }

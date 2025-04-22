@@ -19,11 +19,11 @@ export abstract class SelectorComponent extends FrameworkElementComponent {
   @Input() HorizontalContentAlignment: HorizontalAlignment = 'Left';
   @Input() VerticalContentAlignment: VerticalAlignment = 'Center';
 
-  get alignContent() {
+  protected get alignContent() {
     return toAlignment(this.VerticalContentAlignment);
   }
 
-  get justifyContent() {
+  protected get justifyContent() {
     return toJustification(this.HorizontalContentAlignment);
   }
 
@@ -84,11 +84,11 @@ export abstract class SelectorComponent extends FrameworkElementComponent {
   @Input() DisplayMemberPath?: string;
   @Input() SelectedValuePath?: string;
 
-  getValue(index: number, item: any) {
+  protected getValue(index: number, item: any) {
     return this.SelectedValuePath ? item[this.SelectedValuePath] : item;
   }
 
-  onItemClick(event: Event, index: number, item: any) {
+  protected onItemClick(event: Event, index: number, item: any) {
     if (this.SelectedIndex === index || !this.IsEnabled) return;
 
     this.SelectedIndex = index;

@@ -14,7 +14,8 @@ export class StackPanelComponent extends PanelComponent {
   @Input() Orientation: Orientation = 'Vertical';
   @Input() @HostBinding('style.gap') Spacing : number | string = 0;
 
-  @HostBinding('style.flex-direction') private get flexDirection() {
+  @HostBinding('style.flex-direction') 
+  private get flexDirection() {
     return this.Orientation === 'Horizontal' ? 'row' : 'column';
   }
 }

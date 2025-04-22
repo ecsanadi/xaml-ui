@@ -28,12 +28,12 @@ export class TextBoxComponent extends FrameworkElementComponent {
     this.TextChange.emit(value);
   }
 
-  onChange(event: Event) {
+  protected onChange(event: Event) {
     this.Text = ((event.target) as HTMLInputElement).value;
   }
 
   @HostListener('contextmenu', ['$event'])
-  onContextMenu(event: Event) {
+  private onContextMenu(event: Event) {
     event.stopPropagation();
   }
 }

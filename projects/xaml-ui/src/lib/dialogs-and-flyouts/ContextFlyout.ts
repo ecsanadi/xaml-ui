@@ -1,4 +1,4 @@
-import { AfterViewInit, ContentChild, Directive, ElementRef, HostBinding, ViewChild, ViewContainerRef } from "@angular/core";
+import { AfterViewInit, Directive, ElementRef, HostBinding, ViewContainerRef } from "@angular/core";
 import { FlyoutComponent } from "./Flyout";
 import { MenuFlyoutComponent } from "../menus-and-toolbars/MenuFlyout";
 
@@ -20,7 +20,7 @@ export class ContextFlyoutDirective implements AfterViewInit {
   private _positionY = 0;
 
   @HostBinding('style')
-  get style() {
+  private get style() {
     return {
       'position': 'fixed',
       'left': this._positionX + 'px',
@@ -42,7 +42,7 @@ export class ContextFlyoutDirective implements AfterViewInit {
     }
   }
 
-  onContextMenu(event: MouseEvent) {
+  private onContextMenu(event: MouseEvent) {
     if (!this._flyout) return;
 
     if (!this._flyout.IsOpen) {

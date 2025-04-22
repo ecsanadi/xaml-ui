@@ -4,7 +4,7 @@ import { BorderComponent } from "../layout/Border";
 @Component({
   selector: 'CheckBox',
   template: `<label class="container">
-    <input type="checkbox" [checked]="IsChecked" (change)="onIsCheckedChange($event)" [disabled]="!IsEnabled">
+    <input type="checkbox" [checked]="IsChecked" (change)="onChange($event)" [disabled]="!IsEnabled">
     <div class="checkBox">
       <div class="checkMark">&#xE73E;</div>
     </div>
@@ -19,7 +19,7 @@ export class CheckBoxComponent extends BorderComponent {
   @Input() IsChecked = false;
   @Output() IsCheckedChange = new EventEmitter<boolean>();
 
-  onIsCheckedChange(event: Event) {
+  protected onChange(event: Event) {
     this.IsChecked = ((event.target) as HTMLInputElement).checked;
     this.IsCheckedChange.emit(this.IsChecked);
   }

@@ -15,7 +15,7 @@ import { PopupComponent } from "../primitives/Popup";
 export class FlyoutComponent extends PopupComponent {
   @Input() Placement: FlyoutPlacementMode = 'Top';
 
-  get contentStyle() {
+  protected get contentStyle() {
     let alignSelf: string | undefined;
     let justifySelf: string | undefined;
 
@@ -55,7 +55,7 @@ export class FlyoutComponent extends PopupComponent {
     };
   }
 
-  get containerStyle() {
+  protected get containerStyle() {
     let top: string | undefined = '0';
     let left: string | undefined = '0';
     let right: string | undefined = '0';

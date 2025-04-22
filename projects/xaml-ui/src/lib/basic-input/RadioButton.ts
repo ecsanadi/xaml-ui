@@ -5,7 +5,7 @@ import { StackPanelComponent } from "../layout/StackPanel";
 @Component({
   selector: 'RadioButton',
   template: `<label class="container">
-    <input type="radio" [name]="Group" [value]="Value" [checked]="IsChecked" (change)="onIsCheckedChange($event)" [disabled]="!IsEnabled">
+    <input type="radio" [name]="Group" [value]="Value" [checked]="IsChecked" (change)="onChange($event)" [disabled]="!IsEnabled">
     <div class="radioButton">
       <div class="circle"></div>
     </div>
@@ -24,7 +24,7 @@ export class RadioButtonComponent extends BorderComponent {
   @Input() Group = "";
   @Input() Value: any;
 
-  onIsCheckedChange(event: Event) {
+  protected onChange(event: Event) {
     this.IsChecked = ((event.target) as HTMLInputElement).checked;
     this.IsCheckedChange.emit(this.IsChecked);
   }

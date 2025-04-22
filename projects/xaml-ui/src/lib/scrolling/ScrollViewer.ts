@@ -84,7 +84,7 @@ export class ScrollViewerComponent extends FrameworkElementComponent implements 
     }
   }
 
-  get contentStyle() {
+  protected get contentStyle() {
     return {
       'overflow-x': ScrollViewerComponent.toOverflow(this.HorizontalScrollMode),
       'overflow-y': ScrollViewerComponent.toOverflow(this.VerticalScrollMode)
@@ -95,7 +95,7 @@ export class ScrollViewerComponent extends FrameworkElementComponent implements 
     super();
   }
 
-  onScroll() {
+  protected onScroll() {
     //trigger change detect on scroll
   }
 

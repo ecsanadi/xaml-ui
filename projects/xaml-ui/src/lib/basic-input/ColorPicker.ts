@@ -66,12 +66,12 @@ export class ColorPickerComponent extends FrameworkElementComponent implements A
     this.updateSelectorPosition();
   }
 
-  onPointerDown(event: PointerEvent) {
+  protected onPointerDown(event: PointerEvent) {
     this._canvas.nativeElement.setPointerCapture(event.pointerId);
     this.onPointerMove(event);
   }
 
-  onPointerMove(event: PointerEvent) {
+  protected onPointerMove(event: PointerEvent) {
     if (!this._canvas.nativeElement.hasPointerCapture(event.pointerId)) return;
     let radius = this._canvas.nativeElement.width / 2;
     let rawX = event.offsetX - radius;
@@ -90,7 +90,7 @@ export class ColorPickerComponent extends FrameworkElementComponent implements A
     this.setColor(color);
   }
 
-  updateSelectorPosition() {
+  private updateSelectorPosition() {
     let rgb = colorToRgb(this.Color);
     let hsl = rgbToHsl(rgb);
 

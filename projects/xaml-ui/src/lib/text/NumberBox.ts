@@ -64,7 +64,7 @@ export class NumberBoxComponent extends FrameworkElementComponent {
     this.TextAlignment = 'Right';
   }
 
-  onChange() {
+  protected onChange() {
     this._text = this._input.nativeElement.value;
 
     let value: number | undefined;
@@ -88,20 +88,20 @@ export class NumberBoxComponent extends FrameworkElementComponent {
     return value;
   }
 
-  onIncreaseClick() {
+  protected onIncreaseClick() {
     this.Value += this.SmallChange;
   }
 
-  onDecreaseClick() {
+  protected onDecreaseClick() {
     this.Value -= this.SmallChange;
   }
 
-  onBlur() {
+  protected onBlur() {
     this.updateText();
     this._input.nativeElement.value = this._text;
   }
 
-  onKeyDown(event: KeyboardEvent) {
+  protected onKeyDown(event: KeyboardEvent) {
     console.log(event.key);
     switch (event.key) {
       case 'ArrowUp':
@@ -124,7 +124,7 @@ export class NumberBoxComponent extends FrameworkElementComponent {
   }
 
   @HostListener('contextmenu', ['$event'])
-  onContextMenu(event: Event) {
+  private onContextMenu(event: Event) {
     event.stopPropagation();
   }
 }

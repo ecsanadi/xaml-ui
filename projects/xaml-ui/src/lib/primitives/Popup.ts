@@ -59,11 +59,11 @@ export class PopupComponent {
     this.IsOpen = false;
   }
 
-  get containerClass() {
+  protected get containerClass() {
     return this.IsOpen ? 'popup-open' : undefined;
   }
 
-  onBackdropClick(event: Event) {
+  protected onBackdropClick(event: Event) {
     this.Hide();
     event.stopPropagation();
   }

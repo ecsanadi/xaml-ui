@@ -4,7 +4,7 @@ import { CheckBoxComponent } from "./CheckBox";
 @Component({
   selector: 'ToggleSwitch',
   template: `<label class="container">
-    <input type="checkbox" [checked]="IsChecked" (change)="onIsCheckedChange($event)" [disabled]="!IsEnabled">
+    <input type="checkbox" [checked]="IsChecked" (change)="onChange($event)" [disabled]="!IsEnabled">
     <div class="slider">
       <div class="thumb"></div>
     </div>

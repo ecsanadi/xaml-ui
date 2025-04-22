@@ -49,28 +49,28 @@ export class ScrollBarComponent extends FrameworkElementComponent {
   private _startPointerPosition = 0;
   private _startScrollPosition = 0;
 
-  get decreaseGlyph() {
+  protected get decreaseGlyph() {
     return this.Orientation === 'Vertical' ? '\ueddb' : '\uedd9';
   }
 
-  get increaseGlyph() {
+  protected get increaseGlyph() {
     return this.Orientation === 'Vertical' ? '\ueddc' : '\uedda';
   }
 
   @HostBinding('class')
-  get class() {
+  private get class() {
     return this.Orientation.toLowerCase();
   }
 
-  getElementSize(element: HTMLElement) {
+  private getElementSize(element: HTMLElement) {
     return this.Orientation === 'Vertical' ? element.offsetHeight : element.offsetWidth;
   }
 
-  getPointerPosition(event: PointerEvent) {
+  private getPointerPosition(event: PointerEvent) {
     return this.Orientation === 'Vertical' ? event.clientY : event.clientX;
   }
 
-  get thumbStyle() {
+  protected get thumbStyle() {
     if (!this._track) return {};
 
     let trackLength = this.getElementSize(this._track.nativeElement);
@@ -94,7 +94,7 @@ export class ScrollBarComponent extends FrameworkElementComponent {
 
   private _interval?: any;
 
-  onButtonDown(event: PointerEvent, direction: boolean) {
+  protected onButtonDown(event: PointerEvent, direction: boolean) {
     (event.target as HTMLElement).setPointerCapture(event.pointerId);
 
     this._interval = setInterval(() => {
@@ -102,13 +102,13 @@ export class ScrollBarComponent extends FrameworkElementComponent {
     }, 50);
   }
 
-  onButtonUp(event: PointerEvent) {
+  protected onButtonUp(event: PointerEvent) {
     (event.target as HTMLElement).releasePointerCapture(event.pointerId);
 
     clearInterval(this._interval);
   }
 
-  onTrackDown(event: PointerEvent) {
+  protected onTrackDown(event: PointerEvent) {
     let direction: boolean | undefined;
 
     if (this.Orientation === 'Vertical') {
@@ -139,13 +139,13 @@ export class ScrollBarComponent extends FrameworkElementComponent {
     }, 250);
   }
 
-  onTrackUp(event: PointerEvent) {
+  protected onTrackUp(event: PointerEvent) {
     (event.target as HTMLElement).releasePointerCapture(event.pointerId);
 
     clearInterval(this._interval);
   }
 
-  onPointerDown(event: PointerEvent) {
+  protected onPointerDown(event: PointerEvent) {
     if (event.buttons !== 1) return;
 
     this._thumb.nativeElement.setPointerCapture(event.pointerId);
@@ -155,7 +155,7 @@ export class ScrollBarComponent extends FrameworkElementComponent {
     event.stopPropagation();
   }
 
-  onPointerMove(event: PointerEvent) {
+  protected onPointerMove(event: PointerEvent) {
     if (!this._isScrolling) return;
     if (event.buttons !== 1) {
       this._isScrolling = false;
@@ -171,7 +171,7 @@ export class ScrollBarComponent extends FrameworkElementComponent {
     event.stopPropagation();
   }
 
-  onPointerUp(event: PointerEvent) {
+  protected onPointerUp(event: PointerEvent) {
     if (event.buttons !== 1) return;
 
     this._isScrolling = false;

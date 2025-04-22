@@ -22,17 +22,17 @@ export class SplitButtonComponent extends FrameworkElementComponent {
   @ContentChild('ButtonFlyout')
   private _popup?: PopupComponent;
 
-  get buttonClass() {
+  protected get buttonClass() {
     return this._popup?.IsOpen ? 'popup-open' : undefined;
   }
 
-  onButtonClick() {
+  protected onButtonClick() {
     if (!this.IsEnabled) return;
 
     this.Click.emit();
   }
 
-  onDropDownClick() {
+  protected onDropDownClick() {
     if (!this._popup || !this.IsEnabled) return;
 
     this._popup.IsOpen = true;

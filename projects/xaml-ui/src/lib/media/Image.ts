@@ -13,7 +13,7 @@ export class ImageComponent extends FrameworkElementComponent {
   @Input() Source?: string;
   @Input() Stretch: Stretch = 'Uniform';
 
-  get imageStyle() {
+  protected get imageStyle() {
     return {
       width: this.Width,
       height: this.Height
