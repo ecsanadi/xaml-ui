@@ -102,7 +102,6 @@ export class NumberBoxComponent extends FrameworkElementComponent {
   }
 
   protected onKeyDown(event: KeyboardEvent) {
-    console.log(event.key);
     switch (event.key) {
       case 'ArrowUp':
         this.Value += this.SmallChange;

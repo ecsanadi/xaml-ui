@@ -60,11 +60,11 @@ export class PopupComponent {
   }
 
   protected get containerClass() {
-    return this.IsOpen ? 'popup-open' : undefined;
+    return this.IsOpen ? 'flyout-open' : undefined;
   }
 
   protected onBackdropClick(event: Event) {
     this.Hide();
-    event.stopPropagation();
+    event.stopImmediatePropagation();
   }
 }

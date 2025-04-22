@@ -17,11 +17,11 @@
     color: var(--TextFillColorPrimary);
   }
   
-  &:hover:not(.checked):not(.popup-open):not(.disabled) {
+  &:hover:not(.checked):not(.flyout-open):not(.disabled) {
     background: var(--ControlFillColorSecondary);
   }
 
-  &:active:not(.checked):not(.popup-open):not(.disabled) {
+  &:active:not(.checked):not(.flyout-open):not(.disabled) {
     background: var(--ControlFillColorTertiary);
     color: var(--TextFillColorSecondary);
 
@@ -49,7 +49,7 @@
     }
   }
 
-  &:hover.checked:not(.popup-open):not(.disabled) {
+  &:hover.checked:not(.flyout-open):not(.disabled) {
     background: var(--AccentFillColorSecondary);
     border-color: var(--AccentFillColorSecondary);
     color: var(--TextOnAccentFillColorPrimary);
@@ -59,7 +59,7 @@
     }
   }
 
-  &:active.checked:not(.popup-open):not(.disabled) {
+  &:active.checked:not(.flyout-open):not(.disabled) {
     background: var(--AccentFillColorTertiary);
     border-color: var(--ControlFillColorTransparent);
     color: var(--TextOnAccentFillColorSecondary);
@@ -84,11 +84,11 @@
     border-width: 0;
     background-color: transparent;
 
-    &:hover:not(.checked):not(.popup-open):not(.disabled) {
+    &:hover:not(.checked):not(.flyout-open):not(.disabled) {
       background: var(--SubtleFillColorSecondary);
     }
   
-    &:active:not(.checked):not(.popup-open):not(.disabled) {
+    &:active:not(.checked):not(.flyout-open):not(.disabled) {
       background: var(--SubtleFillColorTertiary);
       color: var(--TextFillColorSecondary);
   

@@ -35,19 +35,19 @@ export class ButtonComponent extends BorderComponent {
     return this.IsEnabled ? undefined : true;
   }
 
-  @HostBinding('class.popup-open')
+  @HostBinding('class.flyout-open')
   private get flyoutOpen() {
-    return this._popup?.IsOpen;
+    return this._flyout?.IsOpen;
   }
 
-  @ContentChild('ButtonFlyout')
-  private _popup?: PopupComponent;
+  @ContentChild('xaml-flyout')
+  private _flyout?: PopupComponent;
 
   @HostListener('click', ['$event'])
   protected onHostPointerEvent(event: Event) {
     if (!this.IsEnabled) return;
 
     this.Click.emit();
-    this._popup?.Show();
+    this._flyout?.Show();
   }
 }

@@ -6,6 +6,11 @@
       <RadioButton>C</RadioButton>
       <RadioButton>D</RadioButton>
     </RadioButtonGroup>
+    <Button Margin="6">Flyout
+      <Flyout>
+        test
+      </Flyout>
+    </Button>
     <Button Class="InlineButtonStyle" Margin="3px">Click here</Button>
     <NumberBox [Value]="0" [Minimum]="-100" [Maximum]="100" />
     <RepeatButton (Click)="onClick()" Class="InlineButtonStyle">Click and hold</RepeatButton>

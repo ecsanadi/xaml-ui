@@ -10,7 +10,8 @@ import { PopupComponent } from "../primitives/Popup";
     <div class="popup-container" [ngStyle]="containerStyle" [ngClass]="containerClass">
     <div class="popup-content" [ngStyle]="contentStyle" *ngIf="isRendered"><ng-content/></div>
   </div>`,
-  styleUrl: '../primitives/Popup.scss'
+  styleUrl: '../primitives/Popup.scss',
+  providers: [{provide: 'xaml-flyout', useExisting: FlyoutComponent}]
 })
 export class FlyoutComponent extends PopupComponent {
   @Input() Placement: FlyoutPlacementMode = 'Top';

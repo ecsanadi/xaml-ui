@@ -13,7 +13,8 @@ import { CommonModule } from "@angular/common";
       </div>
     </div>
   </div>`,
-  styleUrls: ['../primitives/Popup.scss', 'MenuFlyout.scss']
+  styleUrls: ['../primitives/Popup.scss', 'MenuFlyout.scss'],
+  providers: [{provide: 'xaml-flyout', useExisting: MenuFlyoutComponent}]
 })
 export class MenuFlyoutComponent extends FlyoutComponent {
   protected onMenuClick(event: Event) {
