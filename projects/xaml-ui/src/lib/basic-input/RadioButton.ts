@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ContentChildren, EventEmitter, Input, Output, QueryList } from "@angular/core";
+import { AfterContentInit, Component, ContentChildren, EventEmitter, Input, Optional, Output, QueryList } from "@angular/core";
 import { BorderComponent } from "../layout/Border";
 import { StackPanelComponent } from "../layout/StackPanel";
 
@@ -28,6 +28,11 @@ export class RadioButtonComponent extends BorderComponent {
     this.IsChecked = ((event.target) as HTMLInputElement).checked;
     this.IsCheckedChange.emit(this.IsChecked);
   }
+
+  constructor(@Optional() private _group: RadioButtonGroup) {
+    super();
+    if (this._group) this._group.registerOption(this);
+  }
 }
 
 @Component({
@@ -37,14 +42,14 @@ export class RadioButtonComponent extends BorderComponent {
     display: contents;
   }`
 })
-export class RadioButtonGroup extends StackPanelComponent implements AfterContentInit {
+export class RadioButtonGroup extends StackPanelComponent {
   private _value: any;
 
   @Input()
   set Value(value: any) {
     if (this._children) {
       for (let item of this._children) {
-        if (item.Value = value) {
+        if (item.Value === value) {
           item.IsChecked = true;
           break;
         }
@@ -58,23 +63,21 @@ export class RadioButtonGroup extends StackPanelComponent implements AfterConten
     return this._value;
   }
 
-  @Output() ValueChange = new EventEmitter<boolean>();
+  @Output() ValueChange = new EventEmitter<any>();
 
-  @ContentChildren(RadioButtonComponent)
-  private _children!: QueryList<RadioButtonComponent>;
+  private _children: RadioButtonComponent[] = [];
 
-  ngAfterContentInit() {
-    let index = 0;
-    for (let item of this._children) {
-      item.Group = 'xaml-radio-button-group-' + this._id;
+  registerOption(child: RadioButtonComponent) {
+    child.Group = 'xaml-radio-button-group-' + this._id;
+    
+    if (child.Value === undefined) child.Value = this._children.length;
+    if (child.Value === this.Value) child.IsChecked = true;
 
-      if (item.Value === undefined) item.Value = index++;
-      if (item.Value === this.Value) item.IsChecked = true;
+    child.IsCheckedChange.subscribe(p => {
+      this.Value = child.Value;
+      this.ValueChange.emit(child.Value);
+    });
 
-      item.IsCheckedChange.subscribe(p => {
-        this.Value = item.Value;
-        this.ValueChange.emit(item.Value);
-      });
-    }
+    this._children.push(child);
   }
 }

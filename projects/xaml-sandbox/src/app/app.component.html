@@ -1,13 +1,19 @@
 <XamlRoot>
   <StackPanel>
+    <RadioButtonGroup (ValueChange)="onValueChange($event)">
+      <RadioButton>A</RadioButton>
+      <RadioButton>B</RadioButton>
+      <RadioButton>C</RadioButton>
+      <RadioButton>D</RadioButton>
+    </RadioButtonGroup>
     <Button Class="InlineButtonStyle" Margin="3px">Click here</Button>
-    <NumberBox [Value]="0" [Minimum]="-100" [Maximum]="100"/>
+    <NumberBox [Value]="0" [Minimum]="-100" [Maximum]="100" />
     <RepeatButton (Click)="onClick()" Class="InlineButtonStyle">Click and hold</RepeatButton>
     <CommandBar VerticalAlignment="Top">
       <AppBarButton Icon="&#xE704;" Text="Wi-Fi" />
       <AppBarButton Icon="&#xE708;" Text="Moon phase" />
       <AppBarButton Icon="&#xE719;" Text="Shop" [IsEnabled]="false" />
     </CommandBar>
-    <ColorPicker Width="200px" Height="200px" (ColorChange)="onColorSelected($event)"/>
+    <ColorPicker Width="200px" Height="200px" (ColorChange)="onColorSelected($event)" />
   </StackPanel>
 </XamlRoot>

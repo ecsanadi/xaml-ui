@@ -7,7 +7,7 @@ import { ListBoxComponent } from "../../../xaml-ui/src/lib/collections/ListBox";
 import { ScrollViewerComponent } from "../../../xaml-ui/src/lib/scrolling/ScrollViewer";
 import { ScrollBarComponent } from "../../../xaml-ui/src/lib/scrolling/ScrollBar";
 import { CheckBoxComponent } from "../../../xaml-ui/src/lib/basic-input/CheckBox";
-import { RadioButtonComponent } from "../../../xaml-ui/src/lib/basic-input/RadioButton";
+import { RadioButtonComponent, RadioButtonGroup } from "../../../xaml-ui/src/lib/basic-input/RadioButton";
 import { SliderComponent } from "../../../xaml-ui/src/lib/basic-input/Slider";
 import { ToggleSwitchComponent } from "../../../xaml-ui/src/lib/basic-input/ToggleSwitch";
 import { TextBoxComponent } from "../../../xaml-ui/src/lib/text/TextBox";
@@ -31,12 +31,16 @@ import { Color, colorToString } from '../../../xaml-ui/src/lib/Color';
 
 @Component({
   selector: 'app-root',
-  imports: [XamlRootComponent, StackPanelComponent, ButtonComponent, FlyoutComponent, ListBoxComponent, ScrollViewerComponent, ScrollBarComponent, CheckBoxComponent, RadioButtonComponent, SliderComponent, ToggleSwitchComponent, TextBoxComponent, TextBlockComponent, ListViewComponent, ComboBoxComponent, DropDownButtonComponent, MenuFlyoutComponent, MenuFlyoutItemComponent, MenuFlyoutSeparator, ContextFlyoutDirective, ToggleButtonComponent, SplitButtonComponent, ImageComponent, AppBarButtonComponent, CommandBarComponent, NumberBoxComponent, RepeatButtonComponent, ColorPickerComponent],
+  imports: [XamlRootComponent, StackPanelComponent, ButtonComponent, FlyoutComponent, ListBoxComponent, ScrollViewerComponent, ScrollBarComponent, CheckBoxComponent, RadioButtonComponent, SliderComponent, ToggleSwitchComponent, TextBoxComponent, TextBlockComponent, ListViewComponent, ComboBoxComponent, DropDownButtonComponent, MenuFlyoutComponent, MenuFlyoutItemComponent, MenuFlyoutSeparator, ContextFlyoutDirective, ToggleButtonComponent, SplitButtonComponent, ImageComponent, AppBarButtonComponent, CommandBarComponent, NumberBoxComponent, RepeatButtonComponent, ColorPickerComponent, RadioButtonGroup],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'xaml-sandbox';
+
+  onValueChange(value: any) {
+    console.log(value);
+  }
 
   onClick() {
     console.log('click');
