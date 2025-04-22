@@ -6,6 +6,7 @@ import { PanelComponent } from "./Panel";
   template: `<ng-content/>`,
   styles: `:host { 
     display: grid;
+    position: relative;
   }`
 })
 export class BorderComponent extends PanelComponent {

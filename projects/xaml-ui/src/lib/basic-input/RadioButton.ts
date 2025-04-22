@@ -32,9 +32,9 @@ export class RadioButtonComponent extends BorderComponent {
 
 @Component({
   selector: 'RadioButtonGroup',
-  template: `<ng-container><ng-content/></ng-container>`,
+  template: `<ng-content/>`,
   styles: `:host { 
-    display: flex;
+    display: contents;
   }`
 })
 export class RadioButtonGroup extends StackPanelComponent implements AfterContentInit {

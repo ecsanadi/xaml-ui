@@ -7,6 +7,7 @@ import { PanelComponent } from "./Panel";
   template: `<ng-content/>`,
   styles: `:host { 
     display: flex;
+    position: relative;
   }`
 })
 export class StackPanelComponent extends PanelComponent {

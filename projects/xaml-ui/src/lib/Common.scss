@@ -7,6 +7,8 @@
 //accent -3: #FF001A68
 
 :host {
+  position: relative;
+
   //Invariant variables
   --ControlBorderThickness: 1px;
   --ControlCornerRadius: 4px;

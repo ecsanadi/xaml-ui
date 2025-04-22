@@ -6,6 +6,7 @@ import { FrameworkElementComponent } from "../FrameworkElement";
   template: `<ng-content/>`,
   styles: `:host { 
     display: grid;
+    position: relative;
   }`
 })
 export abstract class PanelComponent extends FrameworkElementComponent {
