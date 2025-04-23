@@ -23,10 +23,10 @@ export type ColorHSLA = {
 
 export function colorToRgb(value: Color): ColorRGBA {
   return {
-    r: value >> 24 & 0xff,
-    g: value >> 16 & 0xff,
-    b: value >> 8 & 0xff,
-    a: value & 0xff
+    r: value >> 16 & 0xff,
+    g: value >> 8 & 0xff,
+    b: value & 0xff,
+    a: value >> 24 & 0xff
   };
 }
 

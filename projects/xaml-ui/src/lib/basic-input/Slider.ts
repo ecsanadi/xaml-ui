@@ -5,10 +5,10 @@ import { Orientation } from "../Common";
 @Component({
   selector: 'Slider',
   template: `<input type="range" 
+    [step]="StepFrequency" 
     [min]="Minimum" 
     [max]="Maximum" 
     [value]="Value" 
-    [step]="StepFrequency" 
     (change)="onChange($event)" 
     [disabled]="!IsEnabled"
     [className]="Orientation.toLowerCase()">`,

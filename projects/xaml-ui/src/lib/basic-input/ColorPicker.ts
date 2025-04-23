@@ -86,11 +86,13 @@ export class ColorPickerComponent extends FrameworkElementComponent implements A
 
     let imageData = this._context.getImageData(sampleX, sampleY, 1, 1).data;
     let [r, g, b] = imageData;
-    let color = ((r << 24) + (g << 16) + (b << 8) + 0xff) >>> 0;
+    let color = ((0xff << 24) + (r << 16) + (g << 8) + b) >>> 0;
     this.setColor(color);
   }
 
   private updateSelectorPosition() {
+    if (!this._canvas) return;
+
     let rgb = colorToRgb(this.Color);
     let hsl = rgbToHsl(rgb);
 

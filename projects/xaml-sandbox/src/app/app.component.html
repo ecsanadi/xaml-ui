@@ -1,5 +1,6 @@
 <XamlRoot>
   <StackPanel>
+    <Slider [StepFrequency]="0.01" [Value]="0.5"/>
     <RadioButtonGroup (ValueChange)="onValueChange($event)">
       <RadioButton>A</RadioButton>
       <RadioButton>B</RadioButton>
