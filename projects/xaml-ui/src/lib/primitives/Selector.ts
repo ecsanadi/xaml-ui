@@ -48,7 +48,8 @@ export abstract class SelectorComponent extends FrameworkElementComponent {
     return this._selectedIndex;
   }
   set SelectedIndex(value: number) {
-    if (value < 0 && this.ItemSource.length > 0) value = 0;
+    if (this.ItemSource === undefined) return;
+    if (value < 0 && this.ItemSource.length > 0) value = -1;
     if (value >= this.ItemSource.length) value = this.ItemSource.length - 1;
     if (value == this._selectedIndex) return;
 
@@ -66,6 +67,7 @@ export abstract class SelectorComponent extends FrameworkElementComponent {
     return this.getValue(-1, this.ItemSource[this.SelectedIndex]);
   }
   set SelectedValue(value: any) {
+    if (this.ItemSource === undefined) return;
     this.SelectedIndex = this.ItemSource.findIndex(p => this.getValue(-1, p) == value);
   }
   @Output() SelectedValueChange = new EventEmitter<any>();
@@ -76,6 +78,7 @@ export abstract class SelectorComponent extends FrameworkElementComponent {
     return this.ItemSource[this.SelectedIndex];
   }
   set SelectedItem(value: any) {
+    if (this.ItemSource === undefined) return;
     this.SelectedIndex = this.ItemSource.findIndex(value);
   }
   @Output() SelectedItemChange = new EventEmitter<any>();
