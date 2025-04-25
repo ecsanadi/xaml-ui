@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostBinding, HostListener, Input, Output, output } from "@angular/core";
+import { Component, ElementRef, EventEmitter, HostBinding, HostListener, Input, Output, output, ViewChild } from "@angular/core";
 import { FrameworkElementComponent } from "../FrameworkElement";
 import { TextAlignment, TextWrapping } from "../Common";
 import { CommonModule } from "@angular/common";
@@ -6,7 +6,7 @@ import { CommonModule } from "@angular/common";
 @Component({
   selector: 'TextBox',
   imports: [CommonModule],
-  template: `<input *ngIf="TextWrapping === 'NoWrap'" type="text" [disabled]="!IsEnabled" [value]="Text" (change)="onChange($event)" [placeholder]="PlaceholderText" [style]="{'text-align': TextAlignment}"/>
+  template: `<input #input *ngIf="TextWrapping === 'NoWrap'" type="text" [disabled]="!IsEnabled" [value]="Text" (input)="onChange($event)" [placeholder]="PlaceholderText" [style]="{'text-align': TextAlignment}"/>
   <textarea *ngIf="TextWrapping === 'Wrap'" [disabled]="!IsEnabled" [value]="Text" (change)="onChange($event)" [placeholder]="PlaceholderText" [style]="{'text-align': TextAlignment}"></textarea>`,
   styleUrl: 'TextBox.scss'
 })
@@ -16,6 +16,9 @@ export class TextBoxComponent extends FrameworkElementComponent {
   @Output() TextChange = new EventEmitter<string>();
   @Input() TextAlignment?: TextAlignment = 'Left';
   @Input() TextWrapping: TextWrapping = 'NoWrap';
+
+  @ViewChild('input')
+  private _input!: ElementRef<HTMLInputElement>;
   
   private _text = '';
   @Input() get Text() {
@@ -35,5 +38,11 @@ export class TextBoxComponent extends FrameworkElementComponent {
   @HostListener('contextmenu', ['$event'])
   private onContextMenu(event: Event) {
     event.stopPropagation();
+  }
+
+  Focus() {
+    setTimeout(() => {
+      this._input.nativeElement.focus();
+    }, 0);
   }
 }

@@ -47,7 +47,7 @@ export class ButtonComponent extends BorderComponent {
   protected onHostPointerEvent(event: Event) {
     if (!this.IsEnabled) return;
 
-    this.Click.emit();
+    this.Click.emit(event);
     this._flyout?.Show();
   }
 }

@@ -40,6 +40,10 @@ export abstract class SelectorComponent extends FrameworkElementComponent {
   set ItemSource(value: any[]) {
     this._itemSource = value;
     this.SelectedIndex = this.SelectedIndex;
+
+    this.SelectedIndexChange.emit(this.SelectedIndex);
+    this.SelectedValueChange.emit(this.SelectedValue);
+    this.SelectedItemChange.emit(this.SelectedItem);
   }
 
   //Selected index
@@ -87,9 +91,7 @@ export abstract class SelectorComponent extends FrameworkElementComponent {
   @Input() DisplayMemberPath?: string;
   @Input() SelectedValuePath?: string;
 
-  protected getValue(index: number, item: any) {
-    return this.SelectedValuePath ? item[this.SelectedValuePath] : item;
-  }
+  protected getValue: (index: number, item: any) => any;
 
   protected onItemClick(event: Event, index: number, item: any) {
     if (this.SelectedIndex === index || !this.IsEnabled) return;
@@ -100,5 +102,14 @@ export abstract class SelectorComponent extends FrameworkElementComponent {
 
   GetElement(index: number) {
     return document.querySelector(`#xaml-selector-${this._id}-item-${index}`) as HTMLElement | null;
+  }
+
+  constructor() {
+    super();
+
+    //This is required otherwise the SelectedValuePath cannot be read
+    this.getValue = (index: number, item: any) => {
+      return this.SelectedValuePath !== undefined ? item[this.SelectedValuePath] : item;
+    };
   }
 }
