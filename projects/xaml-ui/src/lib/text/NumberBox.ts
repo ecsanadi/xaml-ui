@@ -3,6 +3,7 @@ import { FrameworkElementComponent } from "../FrameworkElement";
 import { TextAlignment } from "../Common";
 import { RepeatButtonComponent } from "../basic-input/RepeatButton";
 import { FontIconComponent } from "../icons/FontIcon";
+import { CommonModule } from "@angular/common";
 
 export type NumberInputMode = 'Float' | 'Integer';
 export type NumberFormatter = (value: number) => string;
@@ -10,19 +11,21 @@ export type NumberFormatter = (value: number) => string;
 @Component({
   selector: 'NumberBox',
   template: `<label>
+    <div class="icon">&#xEC8F;</div>
     <input #input type="text" [disabled]="!IsEnabled" [value]="Text" (change)="onChange()" [placeholder]="PlaceholderText" [style]="{'text-align': TextAlignment}" (blur)="onBlur()" (keydown)="onKeyDown($event)"/>
     <div class="popup">
       <RepeatButton Class="InlineButtonStyle" (Click)="onIncreaseClick()" [Delay]="500" [Interval]="50"><FontIcon Glyph="&#xE70E;"/></RepeatButton>
       <RepeatButton Class="InlineButtonStyle" (Click)="onDecreaseClick()" [Delay]="500" [Interval]="50"><FontIcon Glyph="&#xE70D;"/></RepeatButton>
     </div>
-    <div class="icon">&#xEC8F;</div>
+    <div class="unit" *ngIf="Unit !== undefined">{{Unit}}</div>    
   </label>`,
   styleUrls: ['TextBox.scss', 'NumberBox.scss'],
-  imports: [RepeatButtonComponent, FontIconComponent]
+  imports: [CommonModule, RepeatButtonComponent, FontIconComponent]
 })
 export class NumberBoxComponent extends FrameworkElementComponent {
   @Input() IsEnabled: boolean = true;
   @Input() PlaceholderText: string = '';
+  @Input() IsPlaceholderEditable: boolean = false;
   @Input() TextAlignment?: TextAlignment = 'Left';
 
   @Input() InputMode: NumberInputMode = 'Float';
@@ -31,6 +34,7 @@ export class NumberBoxComponent extends FrameworkElementComponent {
   @Input() SmallChange: number = 1;
   @Input() LargeChange: number = 10;
   @Input() NumberFormatter: NumberFormatter = (value: number) => value.toString();
+  @Input() Unit?: string;
 
   @Output() ValueChange = new EventEmitter<number>();
 
@@ -99,6 +103,11 @@ export class NumberBoxComponent extends FrameworkElementComponent {
   protected onBlur() {
     this.updateText();
     this._input.nativeElement.value = this._text;
+
+    if (this.IsPlaceholderEditable && this._input.nativeElement.value === this.PlaceholderText) {
+      this._input.nativeElement.value = '';
+      this.onChange();
+    }
   }
 
   protected onKeyDown(event: KeyboardEvent) {
@@ -116,6 +125,21 @@ export class NumberBoxComponent extends FrameworkElementComponent {
         this.Value -= this.LargeChange;
         break;
     }
+  }
+
+  @HostListener('click', [])
+  private onClick() {
+    this._input.nativeElement.focus();
+  }
+
+  @HostListener('focusin', [])
+  private onFocusIn() {    
+    if (this.IsPlaceholderEditable && Number.isNaN(this.Value)) {
+      this._input.nativeElement.value = this.PlaceholderText;
+      this.onChange();
+    }
+
+    this._input.nativeElement.select();
   }
 
   private updateText() {

@@ -1,22 +1,20 @@
 label {
   display: grid;
   position: relative;
-}
-
-input {
-  grid-column-start: 1;
-  grid-row-start: 1;
-  padding-left: 24px;
+  grid-template-columns: auto 1fr auto auto;
 }
 
 .icon {
-  grid-column-start: 1;
-  grid-row-start: 1;
   align-self: center;
-  justify-self: left;
   font-family: var(--SymbolFontFamily);
-  margin-left: 6px;
   color: var(--TextFillColorSecondary);
+  pointer-events: none;
+}
+
+.unit {
+  align-self: center;
+  color: var(--TextFillColorSecondary);
+  pointer-events: none;
 }
 
 .popup {
@@ -26,7 +24,7 @@ input {
   justify-content: center;
   left: 0;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%) translateX(-10px);
   border-width: 1px;
   border-style: solid;
   border-radius: var(--OverlayCornerRadius);

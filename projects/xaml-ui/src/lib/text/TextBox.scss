@@ -2,13 +2,8 @@
 
 :host {
   display: grid;
-}
+  cursor: text;
 
-textarea {
-  resize: none;
-}
-
-input, textarea {
   outline-style: none;
   border-style: solid;
   border-width: 1px;
@@ -18,25 +13,37 @@ input, textarea {
   background-color: var(--ControlFillColorDefault);
   border-color: var(--ControlStrokeColorDefault);
   border-bottom-color: var(--ControlStrongStrokeColorDefault);
-  color: var(--TextFillColorPrimary);
-
-  &::placeholder {
-    color: var(--TextFillColorSecondary);
-    opacity: 1;
-  }
 
   &:hover {
     background-color: var(--ControlFillColorSecondary);
   }
 
-  &:focus, &:active {
+  &:focus-within, &:active {
     background-color: var(--ControlFillColorInputActive);
     border-bottom-color: var(--AccentFillColorDefault);
   }
 
-  &:disabled {
+  &.disabled {
     background-color: var(--ControlFillColorDisabled);
     border-bottom-color: var(--ControlStrokeColorDefault);
+  }
+}
+
+textarea {
+  resize: none;
+}
+
+input, textarea {
+  background-color: transparent;
+  border: 0 none transparent;
+  outline: 0 none transparent;
+  color: var(--TextFillColorPrimary);
+
+  &::placeholder {
+    color: var(--TextFillColorSecondary);
+  }
+
+  &:disabled {
     color: var(--TextFillColorDisabled);
   }
 }

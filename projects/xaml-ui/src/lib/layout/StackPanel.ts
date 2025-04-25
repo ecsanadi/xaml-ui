@@ -15,7 +15,17 @@ export class StackPanelComponent extends PanelComponent {
   @Input() @HostBinding('style.gap') Spacing : number | string | undefined;
 
   @HostBinding('style.grid-auto-flow') 
-  private get gridAutoColumns() {
+  private get gridAutoFlow() {
     return this.Orientation === 'Horizontal' ? 'column' : 'row';
+  }
+
+  @HostBinding('style.grid-auto-rows') 
+  private get gridAutoRows() {
+    return this.Orientation === 'Vertical' ? 'min-content' : undefined;
+  }
+
+  @HostBinding('style.grid-auto-columns') 
+  private get gridAutoColumns() {
+    return this.Orientation === 'Horizontal' ? 'min-content' : undefined;
   }
 }

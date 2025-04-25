@@ -35,6 +35,16 @@ export class TextBoxComponent extends FrameworkElementComponent {
     this.Text = ((event.target) as HTMLInputElement).value;
   }
 
+  @HostBinding('class.disabled')
+  private get disabled() {
+    return !this.IsEnabled;
+  }
+
+  @HostListener('click', [])
+  private onClick() {
+    this._input.nativeElement.focus();
+  }
+
   @HostListener('contextmenu', ['$event'])
   private onContextMenu(event: Event) {
     event.stopPropagation();

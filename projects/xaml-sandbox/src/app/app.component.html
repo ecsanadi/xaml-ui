@@ -7,13 +7,14 @@
       <RadioButton>C</RadioButton>
       <RadioButton>D</RadioButton>
     </RadioButtonGroup>
+    <TextBox PlaceholderText="test" Margin="6px"/>
     <Button Margin="6">Flyout
       <Flyout>
         test
       </Flyout>
     </Button>
     <Button Class="InlineButtonStyle" Margin="3px">Click here</Button>
-    <NumberBox [Value]="0" [Minimum]="-100" [Maximum]="100" />
+    <NumberBox [Minimum]="-100" [Maximum]="100"  Margin="6px" Unit="kg" [IsPlaceholderEditable]="true" PlaceholderText="55"/>
     <RepeatButton (Click)="onClick()" Class="InlineButtonStyle">Click and hold</RepeatButton>
     <CommandBar VerticalAlignment="Top">
       <AppBarButton Icon="&#xE704;" Text="Wi-Fi" />
