@@ -6,8 +6,8 @@ import { CommonModule } from "@angular/common";
 @Component({
   selector: 'TextBox',
   imports: [CommonModule],
-  template: `<input #input *ngIf="TextWrapping === 'NoWrap'" type="text" [disabled]="!IsEnabled" [value]="Text" (input)="onChange($event)" [placeholder]="PlaceholderText" [style]="{'text-align': TextAlignment}"/>
-  <textarea *ngIf="TextWrapping === 'Wrap'" [disabled]="!IsEnabled" [value]="Text" (change)="onChange($event)" [placeholder]="PlaceholderText" [style]="{'text-align': TextAlignment}"></textarea>`,
+  template: `<input #input *ngIf="TextWrapping === 'NoWrap'" type="text" [disabled]="!IsEnabled" [value]="Text" (input)="onInput($event)" [placeholder]="PlaceholderText" [style]="{'text-align': TextAlignment}"/>
+  <textarea *ngIf="TextWrapping === 'Wrap'" [disabled]="!IsEnabled" [value]="Text" (change)="onInput($event)" [placeholder]="PlaceholderText" [style]="{'text-align': TextAlignment}"></textarea>`,
   styleUrl: 'TextBox.scss'
 })
 export class TextBoxComponent extends FrameworkElementComponent {
@@ -31,7 +31,7 @@ export class TextBoxComponent extends FrameworkElementComponent {
     this.TextChange.emit(value);
   }
 
-  protected onChange(event: Event) {
+  protected onInput(event: Event) {
     this.Text = ((event.target) as HTMLInputElement).value;
   }
 

@@ -9,7 +9,7 @@ import { Orientation } from "../Common";
     [min]="Minimum" 
     [max]="Maximum" 
     [value]="Value" 
-    (change)="onChange($event)" 
+    (input)="onInput($event)" 
     [disabled]="!IsEnabled"
     [className]="Orientation.toLowerCase()">`,
   styleUrl: 'Slider.scss'
@@ -23,7 +23,7 @@ export class SliderComponent extends FrameworkElementComponent {
   @Input() IsEnabled = true;
   @Input() Orientation: Orientation = 'Horizontal';
 
-  protected onChange(event: Event) {
+  protected onInput(event: Event) {
     this.Value = parseFloat((event.target as HTMLInputElement).value);
     this.ValueChange.emit(this.Value);
   }
