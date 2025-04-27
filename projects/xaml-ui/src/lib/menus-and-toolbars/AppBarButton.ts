@@ -1,6 +1,6 @@
 import { Component, ContentChild, EventEmitter, HostBinding, HostListener, Input, Output } from "@angular/core";
 import { FrameworkElementComponent } from "../FrameworkElement";
-import { PopupComponent } from "../primitives/Popup";
+import { FlyoutBaseComponent } from "../primitives/FlyoutBase";
 
 @Component({
   selector: 'AppBarButton',
@@ -19,7 +19,7 @@ export class AppBarButtonComponent extends FrameworkElementComponent {
   }
 
   @ContentChild('xaml-flyout')
-  private _flyout?: PopupComponent;
+  private _flyout?: FlyoutBaseComponent;
 
   @HostListener('click', ['$event'])
   protected onHostPointerEvent(event: Event) {

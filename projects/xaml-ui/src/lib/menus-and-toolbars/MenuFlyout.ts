@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { Flyout2Component } from "../dialogs-and-flyouts/Flyout2";
+import { FlyoutComponent } from "../dialogs-and-flyouts/Flyout";
 import { FlyoutPresenter, FlyoutPresenterAnimation } from "../primitives/FlyoutPresenter";
 import { PopupTemplate } from "../primitives/FlyoutBase";
 import { OverlayRef } from "@angular/cdk/overlay-module.d-CSrPj90C";
@@ -12,7 +12,7 @@ import { OverlayRef } from "@angular/cdk/overlay-module.d-CSrPj90C";
   styleUrls: ['../primitives/Popup.scss', 'MenuFlyout.scss'],
   providers: [{ provide: 'xaml-flyout', useExisting: MenuFlyoutComponent }]
 })
-export class MenuFlyoutComponent extends Flyout2Component implements AfterViewInit {
+export class MenuFlyoutComponent extends FlyoutComponent implements AfterViewInit {
 
   protected override get transitionAnimation(): FlyoutPresenterAnimation {
     return 'Default';

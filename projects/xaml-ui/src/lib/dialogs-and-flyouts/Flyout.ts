@@ -1,173 +1,42 @@
-import { Component, Input } from "@angular/core";
+import { AfterContentInit, AfterViewInit, Component, Input } from "@angular/core";
+import { FlyoutBaseComponent, PopupTemplate } from "../primitives/FlyoutBase";
 import { FlyoutPlacementMode } from "../Common";
-import { CommonModule } from "@angular/common";
-import { PopupComponent } from "../primitives/Popup";
+import { FlyoutPresenter, FlyoutPresenterAnimation } from "../primitives/FlyoutPresenter";
+import { ConnectedPosition } from "@angular/cdk/overlay";
 
 @Component({
-  selector: 'Flyout',
-  imports: [CommonModule],
-  template: `<div class="popup-backdrop" (click)="onBackdropClick($event)" *ngIf="IsOpen"></div>
-    <div class="popup-container" [ngStyle]="containerStyle" [ngClass]="containerClass">
-    <div class="popup-content" [ngStyle]="contentStyle" *ngIf="isRendered"><ng-content/></div>
-  </div>`,
-  styleUrl: '../primitives/Popup.scss',
-  providers: [{provide: 'xaml-flyout', useExisting: FlyoutComponent}]
+  selector: 'Flyout2',
+  imports: [FlyoutPresenter],
+  template: PopupTemplate,
+  providers: [{ provide: 'xaml-flyout', useExisting: FlyoutComponent }],
+  styles: `FlyoutPresenter { padding: 16px; }`
 })
-export class FlyoutComponent extends PopupComponent {
-  @Input() Placement: FlyoutPlacementMode = 'Top';
+export class FlyoutComponent extends FlyoutBaseComponent {
 
-  protected get contentStyle() {
-    let alignSelf: string | undefined;
-    let justifySelf: string | undefined;
-
+  protected override get transitionAnimation(): FlyoutPresenterAnimation {
     switch (this.Placement) {
-      case 'Top':
-      case 'Bottom':
-        justifySelf = 'center';
-        break;
+      case "Top":
+      case "TopEdgeAlignedLeft":
+      case "TopEdgeAlignedRight":
+        return 'SlideUp';
 
-      case 'TopEdgeAlignedLeft':
-      case 'BottomEdgeAlignedLeft':
-        justifySelf = 'left';
-        break;
+      case "Bottom":
+      case "BottomEdgeAlignedLeft":
+      case "BottomEdgeAlignedRight":
+        return 'SlideDown';
 
-      case 'TopEdgeAlignedRight':
-      case 'BottomEdgeAlignedRight':
-        justifySelf = 'right';
-        break;
+      case "Left":
+      case "LeftEdgeAlignedTop":
+      case "LeftEdgeAlignedBottom":
+        return 'SlideLeft';
 
-      case 'Left':
-      case 'Right':
-        alignSelf = 'center';
-        break;
+      case "Right":
+      case "RightEdgeAlignedTop":
+      case "RightEdgeAlignedBottom":
+        return 'SlideRight';
 
-      case 'LeftEdgeAlignedTop':
-      case 'RightEdgeAlignedTop':
-        alignSelf = 'flex-start';
-        break;
-      case 'LeftEdgeAlignedBottom':
-      case 'RightEdgeAlignedBottom':
-        alignSelf = 'flex-end';
-        break;
+      default:
+        return 'Default';
     }
-    return {
-      'align-self': alignSelf,
-      'justify-self': justifySelf,
-    };
-  }
-
-  protected get containerStyle() {
-    let top: string | undefined = '0';
-    let left: string | undefined = '0';
-    let right: string | undefined = '0';
-    let bottom: string | undefined = '0';
-    let transform: string | undefined;
-
-    function translate(x: number, y: number, isOpen: boolean) {
-      let result = '';
-      if (x !== 0) {
-        result += `translateX(${x > 0 ? '' : '-'}100%)`
-        if (!isOpen) { result += `translateX(${x > 0 ? '-' : ''}10px)`; }
-      }
-
-      if (y !== 0) {
-        result += `translateY(${y > 0 ? '' : '-'}100%)`;
-        if (!isOpen) { result += `translateY(${y > 0 ? '-' : ''}10px)`; }
-      }
-
-      return result;
-    }
-
-    switch (this.Placement) {
-      case 'Top':
-      case 'TopEdgeAlignedLeft':
-      case 'TopEdgeAlignedRight':
-        bottom = undefined;
-        transform = translate(0, -1, this.IsOpen);
-        break;
-
-      case 'Bottom':
-      case 'BottomEdgeAlignedLeft':
-      case 'BottomEdgeAlignedRight':
-        top = undefined;
-        transform = translate(0, 1, this.IsOpen);
-        break;
-
-      case 'Left':
-      case 'LeftEdgeAlignedBottom':
-      case 'LeftEdgeAlignedTop':
-        right = undefined;
-        transform = translate(-1, 0, this.IsOpen);
-        break;
-
-      case 'Right':
-      case 'RightEdgeAlignedBottom':
-      case 'RightEdgeAlignedTop':
-        left = undefined;
-        transform = translate(1, 0, this.IsOpen);
-        break;
-    }
-
-    let margin: string | undefined;
-
-    switch (this.Placement) {
-      case 'Top':
-        margin = '0 -100vw -100vh -100vw';
-        break;
-
-      case 'TopEdgeAlignedLeft':
-        margin = '0 -100vw -100vh 0';
-        break;
-
-      case 'TopEdgeAlignedRight':
-        margin = '0 0 -100vh -100vw';
-        break;
-
-      case 'Bottom':
-        margin = '-100vh -100vw 0 -100vw';
-        break;
-
-      case 'BottomEdgeAlignedLeft':
-        margin = '0 -100vw 0 0';
-        break;
-
-      case 'BottomEdgeAlignedRight':
-        margin = '0 0 0 -100vw';
-        break;
-
-      case 'Left':
-        margin = '-100vh -100vw -100vh 0';
-        break;
-
-      case 'LeftEdgeAlignedTop':
-        margin = '0 -100vw -100vh 0';
-        break;
-
-      case 'LeftEdgeAlignedBottom':
-        margin = '-100vh -100vw 0 0';
-        break;
-
-      case 'Right':
-        margin = '-100vh 0 -100vh -100vw';
-        break;
-
-      case 'RightEdgeAlignedTop':
-        margin = '0 0 -100vh -100vw';
-        break;
-
-      case 'RightEdgeAlignedBottom':
-        margin = '-100vh 0 0 -100vw';
-        break;
-    }
-
-    return {
-      'top': top,
-      'left': left,
-      'right': right,
-      'bottom': bottom,
-      'transform': transform,
-      'margin': margin,
-      'transition': 'transform var(--ControlNormalAnimationDuration)'
-    };
   }
 }

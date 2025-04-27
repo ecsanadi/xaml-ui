@@ -126,3 +126,7 @@
 .cdk-overlay-dark-backdrop {
   background: transparent !important;
 }
+
+.cdk-overlay-pane {
+  display: grid !important;
+}

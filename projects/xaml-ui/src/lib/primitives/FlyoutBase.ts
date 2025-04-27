@@ -1,4 +1,4 @@
-import { ConnectedPosition, FlexibleConnectedPositionStrategyOrigin, Overlay, OverlayConfig, OverlayRef } from "@angular/cdk/overlay";
+import { ConnectedPosition, FlexibleConnectedPositionStrategyOrigin, Overlay, OverlayConfig, OverlayRef, OverlaySizeConfig } from "@angular/cdk/overlay";
 import { TemplatePortal } from "@angular/cdk/portal";
 import { AfterViewInit, Component, ElementRef, EventEmitter, HostBinding, Input, Output, TemplateRef, ViewChild, ViewContainerRef } from "@angular/core";
 import { FlyoutPresenter, FlyoutPresenterAnimation } from "./FlyoutPresenter";
@@ -28,19 +28,8 @@ export abstract class FlyoutBaseComponent implements AfterViewInit {
     this._isOpen = value;
 
     if (value) {
-      let position = this.positioning;
-      position.offsetX = this.HorizontalOffset;
-      position.offsetY = this.VerticalOffset;
+      this.updatePlacement();
 
-      let positionStrategy = this._overlay
-        .position()
-        .flexibleConnectedTo(this.Target ?? this._hostElement)
-        .withPositions([position])
-        .withGrowAfterOpen(true)
-        .withFlexibleDimensions(true)
-        .withPush(true);
-
-      this._overlayRef.updatePositionStrategy(positionStrategy);
       this._overlayRef.attach(this._templatePortal);
 
       this._overlayRef.backdropElement?.addEventListener('contextmenu', p => { p.preventDefault(); this.Hide(); });
@@ -53,11 +42,36 @@ export abstract class FlyoutBaseComponent implements AfterViewInit {
     this.IsOpenChange.emit(value);
   }
 
+  private updatePlacement() {
+    if (!this._overlayRef) return;
+
+    let target = this.Target ?? this._hostElement;
+    let positionStrategy = this._overlay
+      .position()
+      .flexibleConnectedTo(target)
+      .withPositions([this.positioning])
+      .withGrowAfterOpen(true)
+      .withFlexibleDimensions(true)
+      .withPush(true);
+
+    this._overlayRef.updatePositionStrategy(positionStrategy);
+    if (this.Placement === 'Cover') {
+      this._overlayRef.updateSize(target as OverlaySizeConfig);
+    }
+  }
+
   protected isVisible = false;
 
   @Output() IsOpenChange = new EventEmitter<boolean>();
 
-  @Input() Target: FlexibleConnectedPositionStrategyOrigin | null = null;
+  private _target: FlexibleConnectedPositionStrategyOrigin | null = null;
+  get Target() {
+    return this._target;
+  }
+  @Input() set Target(value: FlexibleConnectedPositionStrategyOrigin | null) {
+    this._target = value;
+    this.updatePlacement();
+  }
 
   @ViewChild('template') private _template!: TemplateRef<any>;
 
@@ -72,9 +86,6 @@ export abstract class FlyoutBaseComponent implements AfterViewInit {
   protected get transitionAnimation(): FlyoutPresenterAnimation {
     return 'Default';
   }
-
-  @Input() VerticalOffset = 0;
-  @Input() HorizontalOffset = 0;
 
   private get positioning(): ConnectedPosition {
 

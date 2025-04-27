@@ -28,12 +28,10 @@ import { NumberBoxComponent } from "../../../xaml-ui/src/lib/text/NumberBox";
 import { RepeatButtonComponent } from "../../../xaml-ui/src/lib/basic-input/RepeatButton";
 import { ColorPickerComponent } from "../../../xaml-ui/src/lib/basic-input/ColorPicker";
 import { Color, colorToString } from '../../../xaml-ui/src/lib/Color';
-import { Popup2 } from "../../../xaml-ui/src/lib/primitives/Popup2";
-import { Flyout2Component } from '../../../xaml-ui/src/lib/dialogs-and-flyouts/Flyout2';
 
 @Component({
   selector: 'app-root',
-  imports: [XamlRootComponent, StackPanelComponent, ButtonComponent, FlyoutComponent, ListBoxComponent, ScrollViewerComponent, ScrollBarComponent, CheckBoxComponent, RadioButtonComponent, SliderComponent, ToggleSwitchComponent, TextBoxComponent, TextBlockComponent, ListViewComponent, ComboBoxComponent, DropDownButtonComponent, MenuFlyoutComponent, MenuFlyoutItemComponent, MenuFlyoutSeparator, ContextFlyoutDirective, ToggleButtonComponent, SplitButtonComponent, ImageComponent, AppBarButtonComponent, CommandBarComponent, NumberBoxComponent, RepeatButtonComponent, ColorPickerComponent, RadioButtonGroup, Popup2, Flyout2Component, ContextFlyoutDirective],
+  imports: [XamlRootComponent, StackPanelComponent, ButtonComponent, FlyoutComponent, ListBoxComponent, ScrollViewerComponent, ScrollBarComponent, CheckBoxComponent, RadioButtonComponent, SliderComponent, ToggleSwitchComponent, TextBoxComponent, TextBlockComponent, ListViewComponent, ComboBoxComponent, DropDownButtonComponent, MenuFlyoutComponent, MenuFlyoutItemComponent, MenuFlyoutSeparator, ContextFlyoutDirective, ToggleButtonComponent, SplitButtonComponent, ImageComponent, AppBarButtonComponent, CommandBarComponent, NumberBoxComponent, RepeatButtonComponent, ColorPickerComponent, RadioButtonGroup, FlyoutComponent, ContextFlyoutDirective],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

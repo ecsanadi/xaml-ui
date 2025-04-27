@@ -1,14 +1,13 @@
 import { AfterViewInit, Directive, ElementRef, HostBinding, ViewContainerRef } from "@angular/core";
 import { FlyoutComponent } from "./Flyout";
 import { MenuFlyoutComponent } from "../menus-and-toolbars/MenuFlyout";
-import { Flyout2Component } from "./Flyout2";
 
 @Directive({
   selector: '[ContextFlyout]'
 })
 export class ContextFlyoutDirective implements AfterViewInit {
 
-  private _flyout?: Flyout2Component;
+  private _flyout?: FlyoutComponent;
 
   constructor(
     private _hostComponent: ElementRef,
@@ -18,8 +17,8 @@ export class ContextFlyoutDirective implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this._flyout = this._viewContainer.injector.get(Flyout2Component, null) ||
-      this._viewContainer.injector.get(MenuFlyoutComponent, null) as Flyout2Component;
+    this._flyout = this._viewContainer.injector.get(FlyoutComponent, null) ||
+      this._viewContainer.injector.get(MenuFlyoutComponent, null) as FlyoutComponent;
 
     if (this._flyout) {
       this._flyout.Placement = 'BottomEdgeAlignedLeft';

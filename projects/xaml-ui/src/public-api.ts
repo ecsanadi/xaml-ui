@@ -44,7 +44,7 @@ export * from './lib/menus-and-toolbars/MenuFlyoutItemBase';
 export * from './lib/menus-and-toolbars/MenuFlyoutSeparator';
 
 //Primitives
-export * from './lib/primitives/Popup'
+export * from './lib/primitives/FlyoutBase'
 export * from './lib/primitives/Selector'
 
 //Scrolling

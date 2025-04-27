@@ -2,17 +2,17 @@ import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, ViewChi
 import { SelectorComponent, SelectorItemTemplate } from "../primitives/Selector";
 import { CommonModule } from "@angular/common";
 import { ListViewComponent } from "../collections/ListView";
-import { PopupComponent } from "../primitives/Popup";
 import { DropDownButtonComponent } from "./DropDownButton";
-import { Flyout2Component } from "../dialogs-and-flyouts/Flyout2";
+import { FlyoutComponent } from "../dialogs-and-flyouts/Flyout";
 import { FlexibleConnectedPositionStrategyOrigin } from "@angular/cdk/overlay";
+import { FlyoutBaseComponent } from "../primitives/FlyoutBase";
 
 @Component({
   selector: 'ComboBox',
-  imports: [CommonModule, DropDownButtonComponent, Flyout2Component, ListViewComponent],
+  imports: [CommonModule, DropDownButtonComponent, FlyoutComponent, ListViewComponent],
   template: `<DropDownButton [HorizontalContentAlignment]="HorizontalContentAlignment" [VerticalContentAlignment]="VerticalContentAlignment" [IsEnabled]="IsEnabled">
     ${SelectorItemTemplate}
-    <Flyout2 Placement="Bottom" Padding="0" [Target]="target">
+    <Flyout2 Placement="Cover" Padding="0" [Target]="target" (IsOpenChange)="onIsOpenChanged($event)">
       <ListView [ItemSource]="ItemSource" [(SelectedIndex)]="SelectedIndex"  [HorizontalContentAlignment]="HorizontalContentAlignment" [VerticalContentAlignment]="VerticalContentAlignment"/>
     </Flyout2>
   </DropDownButton>`,
@@ -30,8 +30,8 @@ export class ComboBoxComponent extends SelectorComponent implements AfterViewIni
   @ViewChild(ListViewComponent)
   private _selector?: SelectorComponent;
 
-  @ViewChild(PopupComponent)
-  private _popup?: PopupComponent;
+  @ViewChild('xaml-flyout')
+  private _popup?: FlyoutBaseComponent;
 
   constructor(
     private _changeDetector: ChangeDetectorRef,
@@ -40,12 +40,13 @@ export class ComboBoxComponent extends SelectorComponent implements AfterViewIni
     this.SelectedIndexChange.subscribe(() => this.onSelectionChanged());
   }
 
-  protected get target(): FlexibleConnectedPositionStrategyOrigin {
+  protected target: FlexibleConnectedPositionStrategyOrigin | null = null;
+
+  protected onIsOpenChanged(value: boolean) {
+    if (!value) return;
     let rect = this._host.nativeElement.getBoundingClientRect();
     let popupOffset = -(this._selector?.GetElement(this.SelectedIndex)?.offsetTop ?? 0);
-    console.log(popupOffset);
-
-    return {x: rect.left, y: rect.top + popupOffset, width: rect.width};
+    this.target = { x: rect.left, y: rect.top + popupOffset - 4, width: rect.width };
   }
 
   ngAfterViewInit(): void {
