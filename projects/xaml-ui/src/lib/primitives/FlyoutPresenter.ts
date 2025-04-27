@@ -11,6 +11,7 @@ export class FlyoutPresenter {
   static TransitionDuration = 250;
 
   @Input() TransitionAnimation: FlyoutPresenterAnimation = 'Default';
+  @Input() @HostBinding('style.padding') Padding?: string;
 
   @Input() IsVisible: boolean = false;
 

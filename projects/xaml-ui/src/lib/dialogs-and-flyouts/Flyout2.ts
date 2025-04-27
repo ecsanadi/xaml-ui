@@ -8,7 +8,8 @@ import { ConnectedPosition } from "@angular/cdk/overlay";
   selector: 'Flyout2',
   imports: [FlyoutPresenter],
   template: PopupTemplate,
-  providers: [{ provide: 'xaml-flyout', useExisting: Flyout2Component }]
+  providers: [{ provide: 'xaml-flyout', useExisting: Flyout2Component }],
+  styles: `FlyoutPresenter { padding: 16px; }`
 })
 export class Flyout2Component extends FlyoutBaseComponent {
 
@@ -33,6 +34,9 @@ export class Flyout2Component extends FlyoutBaseComponent {
       case "RightEdgeAlignedTop":
       case "RightEdgeAlignedBottom":
         return 'SlideRight';
+
+      default:
+        return 'Default';
     }
   }
 }

@@ -3,8 +3,9 @@ import { TemplatePortal } from "@angular/cdk/portal";
 import { AfterViewInit, Component, ElementRef, EventEmitter, HostBinding, Input, Output, TemplateRef, ViewChild, ViewContainerRef } from "@angular/core";
 import { FlyoutPresenter, FlyoutPresenterAnimation } from "./FlyoutPresenter";
 import { FlyoutPlacementMode } from "../Common";
+import { CommonModule } from "@angular/common";
 
-export const PopupTemplate = `<ng-template #template><FlyoutPresenter #presenter [IsVisible]="isVisible" [TransitionAnimation]="transitionAnimation"><ng-content/></FlyoutPresenter></ng-template>`;
+export const PopupTemplate = `<ng-template #template><FlyoutPresenter #presenter [IsVisible]="isVisible" [TransitionAnimation]="transitionAnimation" [Padding]="Padding"><ng-content/></FlyoutPresenter></ng-template>`;
 
 @Component({
   imports: [FlyoutPresenter],
@@ -15,6 +16,8 @@ export const PopupTemplate = `<ng-template #template><FlyoutPresenter #presenter
 export abstract class FlyoutBaseComponent implements AfterViewInit {
 
   @Input() Placement: FlyoutPlacementMode = 'Top';
+
+  @Input() Padding?: string;
 
   private _isOpen = false;
   @Input() get IsOpen() {
@@ -138,6 +141,12 @@ export abstract class FlyoutBaseComponent implements AfterViewInit {
         return {
           originX: 'end', originY: 'bottom',
           overlayX: 'start', overlayY: 'bottom'
+        };
+
+      case "Cover":
+        return {
+          originX: 'start', originY: 'top',
+          overlayX: 'start', overlayY: 'top'
         };
     }
   };

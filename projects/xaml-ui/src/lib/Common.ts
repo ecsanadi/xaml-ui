@@ -9,7 +9,7 @@ export type XamlBoolean = 'False' | 'True';
 export type TextDecorations = 'None' | 'Underline' | 'Strikethrough';
 export type TextTrimming = 'None' | 'CharacterEllipsis' | 'Clip';
 export type TextWrapping = 'NoWrap' | 'Wrap';
-export type FlyoutPlacementMode = 'Top' | 'Bottom' | 'Left' | 'Right' | 'TopEdgeAlignedLeft' | 'TopEdgeAlignedRight' | 'BottomEdgeAlignedLeft' | 'BottomEdgeAlignedRight' | 'LeftEdgeAlignedTop' | 'LeftEdgeAlignedBottom' | 'RightEdgeAlignedTop' | 'RightEdgeAlignedBottom';
+export type FlyoutPlacementMode = 'Top' | 'Bottom' | 'Left' | 'Right' | 'TopEdgeAlignedLeft' | 'TopEdgeAlignedRight' | 'BottomEdgeAlignedLeft' | 'BottomEdgeAlignedRight' | 'LeftEdgeAlignedTop' | 'LeftEdgeAlignedBottom' | 'RightEdgeAlignedTop' | 'RightEdgeAlignedBottom' | 'Cover';
 export type Stretch = 'None' | 'Fill' | 'Uniform' | 'UniformToFill';
 
 export function toJustification(value: HorizontalAlignment) {
