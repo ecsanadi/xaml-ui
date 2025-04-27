@@ -1,26 +1,35 @@
 <XamlRoot>
-  <StackPanel>
-    <Slider [StepFrequency]="0.01" [Value]="0.5"/>
-    <RadioButtonGroup (ValueChange)="onValueChange($event)">
-      <RadioButton>A</RadioButton>
-      <RadioButton>B</RadioButton>
-      <RadioButton>C</RadioButton>
-      <RadioButton>D</RadioButton>
-    </RadioButtonGroup>
-    <TextBox PlaceholderText="test" Margin="6px"/>
-    <Button Margin="6">Flyout
-      <Flyout>
+  <ScrollViewer>
+    <StackPanel>
+      <Slider [StepFrequency]="0.01" [Value]="0.5" />
+      <RadioButtonGroup (ValueChange)="onValueChange($event)">
+        <RadioButton>A</RadioButton>
+        <RadioButton>B</RadioButton>
+        <RadioButton>C</RadioButton>
+        <RadioButton>D</RadioButton>
+      </RadioButtonGroup>
+      <TextBox PlaceholderText="test" Margin="6px" />
+      <Button Margin="6px 120px">Flyout
+        <!-- <Flyout>
         test
-      </Flyout>
-    </Button>
-    <Button Class="InlineButtonStyle" Margin="3px">Click here</Button>
-    <NumberBox [Minimum]="-100" [Maximum]="100"  Margin="6px" Unit="kg" [IsPlaceholderEditable]="true" PlaceholderText="55"/>
-    <RepeatButton (Click)="onClick()" Class="InlineButtonStyle">Click and hold</RepeatButton>
-    <CommandBar VerticalAlignment="Top">
-      <AppBarButton Icon="&#xE704;" Text="Wi-Fi" />
-      <AppBarButton Icon="&#xE708;" Text="Moon phase" />
-      <AppBarButton Icon="&#xE719;" Text="Shop" [IsEnabled]="false" />
-    </CommandBar>
-    <ColorPicker Width="200px" Height="200px" (ColorChange)="onColorSelected($event)" />
-  </StackPanel>
+      </Flyout> -->
+        <Flyout2 Placement="Left">
+          Test
+        </Flyout2>
+      </Button>
+      <!-- <Popup2>
+      this is a {{title}} popup!
+    </Popup2> -->
+      <Button Class="InlineButtonStyle" Margin="3px">Click here</Button>
+      <NumberBox [Minimum]="-100" [Maximum]="100" Margin="6px" Unit="kg" [IsPlaceholderEditable]="true"
+        PlaceholderText="55" />
+      <RepeatButton (Click)="onClick()" Class="InlineButtonStyle">Click and hold</RepeatButton>
+      <CommandBar VerticalAlignment="Top">
+        <AppBarButton Icon="&#xE704;" Text="Wi-Fi" />
+        <AppBarButton Icon="&#xE708;" Text="Moon phase" />
+        <AppBarButton Icon="&#xE719;" Text="Shop" [IsEnabled]="false" />
+      </CommandBar>
+      <ColorPicker Width="200px" Height="200px" (ColorChange)="onColorSelected($event)" />
+    </StackPanel>
+  </ScrollViewer>
 </XamlRoot>

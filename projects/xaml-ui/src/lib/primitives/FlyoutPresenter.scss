@@ -1,0 +1,58 @@
+:host {
+  display: grid;
+  overflow: hidden;
+  user-select: none;
+
+  padding: 16px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: var(--OverlayCornerRadius);
+
+  backdrop-filter: var(--AcrylicBlur);
+  box-shadow: 0px 0px 15px 0px rgba(black, 0.5);
+
+  border-color: var(--SurfaceStrokeColorFlyout);
+  background-color: var(--AcrylicInAppFillColorDefault);
+
+  transition: opacity var(--ControlNormalAnimationDuration), transform var(--ControlNormalAnimationDuration);
+  opacity: 0;
+
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 10pt;
+  color: #ffffff;
+
+  &.transition-slideup {
+    transform: translateY(10px);
+  }
+
+  &.transition-slidedown {
+    transform: translateY(-10px);
+  }
+
+  &.transition-slideleft {
+    transform: translatex(10px);
+  }
+
+  &.transition-slideright {
+    transform: translatex(-10px);
+  }
+
+  &.visible {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  
+  @media (prefers-color-scheme: light) {
+    color: #000000;
+  }
+
+  &::ng-deep * {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 10pt;
+    color: #ffffff;
+    
+    @media (prefers-color-scheme: light) {
+      color: #000000;
+    }
+  }
+}

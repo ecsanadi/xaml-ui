@@ -122,3 +122,7 @@
     --DividerStrokeColorDefault: #0000000F;
   }
 }
+
+.cdk-overlay-dark-backdrop {
+  background: transparent !important;
+}
