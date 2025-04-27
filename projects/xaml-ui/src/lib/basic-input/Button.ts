@@ -1,7 +1,7 @@
 import { Component, ContentChild, Directive, ElementRef, EventEmitter, HostBinding, HostListener, Input, Output } from "@angular/core";
 import { BorderComponent } from "../layout/Border";
-import { PopupComponent } from "../primitives/Popup";
 import { HorizontalAlignment, toAlignment, toJustification, VerticalAlignment } from "../Common";
+import { FlyoutBaseComponent } from "../primitives/FlyoutBase";
 
 @Component({
   selector: 'Button',
@@ -41,7 +41,7 @@ export class ButtonComponent extends BorderComponent {
   }
 
   @ContentChild('xaml-flyout')
-  private _flyout?: PopupComponent;
+  private _flyout?: FlyoutBaseComponent;
 
   @HostListener('click', ['$event'])
   protected onHostPointerEvent(event: Event) {

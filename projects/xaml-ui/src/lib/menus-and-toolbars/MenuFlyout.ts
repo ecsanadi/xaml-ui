@@ -1,23 +1,28 @@
-import { Component } from "@angular/core";
-import { FlyoutComponent } from "../dialogs-and-flyouts/Flyout";
+import { AfterViewInit, Component, ElementRef, ViewChild } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { Flyout2Component } from "../dialogs-and-flyouts/Flyout2";
+import { FlyoutPresenter, FlyoutPresenterAnimation } from "../primitives/FlyoutPresenter";
+import { PopupTemplate } from "../primitives/FlyoutBase";
+import { OverlayRef } from "@angular/cdk/overlay-module.d-CSrPj90C";
 
 @Component({
   selector: 'MenuFlyout',
-  imports: [CommonModule],
-  template: `<div class="popup-backdrop" (click)="onBackdropClick($event)" *ngIf="IsOpen"></div>
-    <div class="popup-container" [ngStyle]="containerStyle" [ngClass]="containerClass">
-    <div class="popup-content" [ngStyle]="contentStyle" *ngIf="isRendered">
-      <div class="menu-container" (click)="onMenuClick($event)">
-        <ng-content/>
-      </div>
-    </div>
-  </div>`,
+  imports: [CommonModule, FlyoutPresenter],
+  template: PopupTemplate,
   styleUrls: ['../primitives/Popup.scss', 'MenuFlyout.scss'],
-  providers: [{provide: 'xaml-flyout', useExisting: MenuFlyoutComponent}]
+  providers: [{ provide: 'xaml-flyout', useExisting: MenuFlyoutComponent }]
 })
-export class MenuFlyoutComponent extends FlyoutComponent {
-  protected onMenuClick(event: Event) {
+export class MenuFlyoutComponent extends Flyout2Component implements AfterViewInit {
+
+  protected override get transitionAnimation(): FlyoutPresenterAnimation {
+    return 'Default';
+  }
+
+  protected override OnOverlay(overlay: OverlayRef): void {
+    overlay.overlayElement.addEventListener('click', p => this.onMenuClick(p));
+  }
+
+  private onMenuClick(event: Event) {
     this.IsOpen = false;
     event.stopPropagation();
   }

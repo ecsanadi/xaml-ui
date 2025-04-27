@@ -2,9 +2,9 @@ import { Component, ContentChild, EventEmitter, Input, Output } from "@angular/c
 import { ButtonComponent } from "./Button";
 import { DropDownButtonComponent } from "./DropDownButton";
 import { GridModule } from "../layout/Grid";
-import { PopupComponent } from "../primitives/Popup";
 import { CommonModule } from "@angular/common";
 import { FrameworkElementComponent } from "../FrameworkElement";
+import { FlyoutBaseComponent } from "../primitives/FlyoutBase";
 
 @Component({
   selector: 'SplitButton',
@@ -19,8 +19,8 @@ export class SplitButtonComponent extends FrameworkElementComponent {
 
   @Output() Click = new EventEmitter();
 
-  @ContentChild('ButtonFlyout')
-  private _popup?: PopupComponent;
+  @ContentChild('xaml-flyout')
+  private _popup?: FlyoutBaseComponent;
 
   protected get buttonClass() {
     return this._popup?.IsOpen ? 'flyout-open' : undefined;

@@ -1,36 +1,25 @@
 import { AfterViewInit, Directive, ElementRef, HostBinding, ViewContainerRef } from "@angular/core";
 import { FlyoutComponent } from "./Flyout";
 import { MenuFlyoutComponent } from "../menus-and-toolbars/MenuFlyout";
+import { Flyout2Component } from "./Flyout2";
 
 @Directive({
   selector: '[ContextFlyout]'
 })
 export class ContextFlyoutDirective implements AfterViewInit {
 
-  private _flyout?: FlyoutComponent;
+  private _flyout?: Flyout2Component;
 
   constructor(
     private _hostComponent: ElementRef,
     private _viewContainer: ViewContainerRef
   ) {
-
-  }
-
-  private _positionX = 0;
-  private _positionY = 0;
-
-  @HostBinding('style')
-  private get style() {
-    return {
-      'position': 'fixed',
-      'left': this._positionX + 'px',
-      'top': this._positionY + 'px'
-    };
+ 
   }
 
   ngAfterViewInit(): void {
-    this._flyout = this._viewContainer.injector.get(FlyoutComponent, null) ||
-      this._viewContainer.injector.get(MenuFlyoutComponent, null) as FlyoutComponent;
+    this._flyout = this._viewContainer.injector.get(Flyout2Component, null) ||
+      this._viewContainer.injector.get(MenuFlyoutComponent, null) as Flyout2Component;
 
     if (this._flyout) {
       this._flyout.Placement = 'BottomEdgeAlignedLeft';
@@ -46,8 +35,7 @@ export class ContextFlyoutDirective implements AfterViewInit {
     if (!this._flyout) return;
 
     if (!this._flyout.IsOpen) {
-      this._positionX = event.clientX;
-      this._positionY = event.clientY;
+      this._flyout.Target = { x: event.clientX, y: event.clientY }
       this._flyout.IsOpen = true;
     }
     else {

@@ -5,7 +5,12 @@
       <RadioButtonGroup (ValueChange)="onValueChange($event)">
         <RadioButton>A</RadioButton>
         <RadioButton>B</RadioButton>
-        <RadioButton>C</RadioButton>
+        <RadioButton>C
+          <MenuFlyout ContextFlyout>
+            <MenuFlyoutItem Text="test A" Icon="&#xE713;" />
+            <MenuFlyoutItem Text="test B" Icon="&#xE714;"/>
+          </MenuFlyout>
+        </RadioButton>
         <RadioButton>D</RadioButton>
       </RadioButtonGroup>
       <TextBox PlaceholderText="test" Margin="6px" />
