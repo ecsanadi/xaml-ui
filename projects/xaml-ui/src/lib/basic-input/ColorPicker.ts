@@ -10,10 +10,10 @@ import { Color, colorToRgb, rgbToHsl } from "../Color";
 export class ColorPickerComponent extends FrameworkElementComponent implements AfterViewInit {
 
   private _color: Color = 0xffffffff;
-  @Input() get Color() {
+  get Color() {
     return this._color;
   }
-  set Color(value: Color) {    
+  @Input() set Color(value: Color) {    
     this.setColor(value);
     this.updateSelectorPosition();
   }
