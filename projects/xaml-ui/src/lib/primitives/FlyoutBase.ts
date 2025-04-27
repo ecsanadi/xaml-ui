@@ -20,10 +20,10 @@ export abstract class FlyoutBaseComponent implements AfterViewInit {
   @Input() Padding?: string;
 
   private _isOpen = false;
-  @Input() get IsOpen() {
+  get IsOpen() {
     return this._isOpen;
   }
-  set IsOpen(value: boolean) {
+  @Input() set IsOpen(value: boolean) {
     if (value === this._isOpen) return;
     this._isOpen = value;
 

@@ -13,7 +13,6 @@ import { CommonModule } from "@angular/common";
 export class TextBoxComponent extends FrameworkElementComponent {
   @Input() IsEnabled: boolean = true;
   @Input() PlaceholderText: string = '';
-  @Output() TextChange = new EventEmitter<string>();
   @Input() TextAlignment?: TextAlignment = 'Left';
   @Input() TextWrapping: TextWrapping = 'NoWrap';
 
@@ -21,15 +20,16 @@ export class TextBoxComponent extends FrameworkElementComponent {
   private _input!: ElementRef<HTMLInputElement>;
   
   private _text = '';
-  @Input() get Text() {
+  get Text() {
     return this._text;
   }
-  set Text(value: string) {
+  @Input() set Text(value: string) {
     if(value == this._text) return;
 
     this._text = value;
     this.TextChange.emit(value);
   }
+  @Output() TextChange = new EventEmitter<string>();
 
   protected onInput(event: Event) {
     this.Text = ((event.target) as HTMLInputElement).value;

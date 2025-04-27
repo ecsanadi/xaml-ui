@@ -34,10 +34,10 @@ export abstract class SelectorComponent extends FrameworkElementComponent {
 
   //ItemSource
   private _itemSource: any[] = [];
-  @Input() get ItemSource() {
+  get ItemSource() {
     return this._itemSource;
   }
-  set ItemSource(value: any[]) {
+  @Input() set ItemSource(value: any[]) {
     this._itemSource = value;
     this.SelectedIndex = this.SelectedIndex;
 
@@ -48,10 +48,10 @@ export abstract class SelectorComponent extends FrameworkElementComponent {
 
   //Selected index
   private _selectedIndex = -1;
-  @Input() get SelectedIndex() {
+  get SelectedIndex() {
     return this._selectedIndex;
   }
-  set SelectedIndex(value: number) {
+  @Input() set SelectedIndex(value: number) {
     if (this.ItemSource === undefined) return;
     if (value < 0 && this.ItemSource.length > 0) value = -1;
     if (value >= this.ItemSource.length) value = this.ItemSource.length - 1;
@@ -66,22 +66,22 @@ export abstract class SelectorComponent extends FrameworkElementComponent {
   @Output() SelectedIndexChange = new EventEmitter<number>();
 
   //Selected value
-  @Input() get SelectedValue() {
+  get SelectedValue() {
     if (this.SelectedIndex < 0 || this.SelectedIndex >= this.ItemSource.length) return null;
     return this.getValue(-1, this.ItemSource[this.SelectedIndex]);
   }
-  set SelectedValue(value: any) {
+  @Input() set SelectedValue(value: any) {
     if (this.ItemSource === undefined) return;
     this.SelectedIndex = this.ItemSource.findIndex(p => this.getValue(-1, p) == value);
   }
   @Output() SelectedValueChange = new EventEmitter<any>();
 
   //Selected item
-  @Input() get SelectedItem() {
+  get SelectedItem() {
     if (this.SelectedIndex < 0 || this.SelectedIndex >= this.ItemSource.length) return null;
     return this.ItemSource[this.SelectedIndex];
   }
-  set SelectedItem(value: any) {
+  @Input() set SelectedItem(value: any) {
     if (this.ItemSource === undefined) return;
     this.SelectedIndex = this.ItemSource.findIndex(value);
   }

@@ -21,13 +21,10 @@ export class ScrollBarComponent extends FrameworkElementComponent {
   @Input() StepSize: number = 5;
 
   private _value = 0;
-  @Input() get Value() {
+  get Value() {
     return this._value;
   };
-
-  @Output() ValueChange = new EventEmitter<number>();
-
-  set Value(value: number) {
+  @Input() set Value(value: number) {
     let scrollRange = this.ScrollSize - this.ViewportSize;
 
     if (value > scrollRange) value = scrollRange;
@@ -36,6 +33,7 @@ export class ScrollBarComponent extends FrameworkElementComponent {
     this._value = value;
     this.ValueChange.emit(value);
   }
+  @Output() ValueChange = new EventEmitter<number>();
 
   @Input() IsEnabled = true;
 

@@ -47,10 +47,10 @@ export class NumberBoxComponent extends FrameworkElementComponent {
   }
 
   private _value: number = NaN;
-  @Input() get Value() {
+  get Value() {
     return this._value;
   }
-  set Value(value: number) {
+  @Input() set Value(value: number) {
     this.setValue(value);
     this.updateText();
   }
