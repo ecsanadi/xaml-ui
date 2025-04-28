@@ -38,12 +38,19 @@ export abstract class SelectorComponent extends FrameworkElementComponent {
     return this._itemSource;
   }
   @Input() set ItemSource(value: any[]) {
-    this._itemSource = value;
-    this.SelectedIndex = this.SelectedIndex;
+    let oldIndex = this.SelectedIndex;
+    let oldValue = this.SelectedValue;
+    let oldItem = this.SelectedItem;
+    let newIndex = value.findIndex(p => this.getValue(-1, p) == oldValue);
+    let newValue = newIndex !== -1 ? oldValue : null;
+    let newItem = newIndex !== -1 ? value[newIndex] : null;
 
-    this.SelectedIndexChange.emit(this.SelectedIndex);
-    this.SelectedValueChange.emit(this.SelectedValue);
-    this.SelectedItemChange.emit(this.SelectedItem);
+    this._itemSource = value;
+    this._selectedIndex = newIndex;
+    
+    if (oldIndex !== newIndex) this.SelectedIndexChange.emit(this.SelectedIndex);
+    if (oldValue !== newValue) this.SelectedValueChange.emit(this.SelectedValue);
+    if (oldItem !== newItem) this.SelectedItemChange.emit(this.SelectedItem);
   }
 
   //Selected index
@@ -55,13 +62,18 @@ export abstract class SelectorComponent extends FrameworkElementComponent {
     if (this.ItemSource === undefined) return;
     if (value < 0 && this.ItemSource.length > 0) value = -1;
     if (value >= this.ItemSource.length) value = this.ItemSource.length - 1;
-    if (value == this._selectedIndex) return;
 
+    let oldIndex = this._selectedIndex;
+    let oldValue = this.SelectedValue;
+    let oldItem = this.SelectedItem;
     this._selectedIndex = value;
+    let newIndex = this._selectedIndex;
+    let newValue = this.SelectedValue;
+    let newItem = this.SelectedItem;
 
-    this.SelectedIndexChange.emit(this.SelectedIndex);
-    this.SelectedValueChange.emit(this.SelectedValue);
-    this.SelectedItemChange.emit(this.SelectedItem);
+    if (oldIndex !== newIndex) this.SelectedIndexChange.emit(this.SelectedIndex);
+    if (oldValue !== newValue) this.SelectedValueChange.emit(this.SelectedValue);
+    if (oldItem !== newItem) this.SelectedItemChange.emit(this.SelectedItem);
   }
   @Output() SelectedIndexChange = new EventEmitter<number>();
 
