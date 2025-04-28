@@ -12,9 +12,9 @@ import { FlyoutBaseComponent } from "../primitives/FlyoutBase";
   imports: [CommonModule, DropDownButtonComponent, FlyoutComponent, ListViewComponent],
   template: `<DropDownButton [HorizontalContentAlignment]="HorizontalContentAlignment" [VerticalContentAlignment]="VerticalContentAlignment" [IsEnabled]="IsEnabled">
     ${SelectorItemTemplate}
-    <Flyout2 Placement="Cover" Padding="0" [Target]="target" (IsOpenChange)="onIsOpenChanged($event)">
+    <Flyout Placement="Cover" Padding="0" [Target]="target" (IsOpenChange)="onIsOpenChanged($event)">
       <ListView [ItemSource]="ItemSource" [(SelectedIndex)]="SelectedIndex"  [HorizontalContentAlignment]="HorizontalContentAlignment" [VerticalContentAlignment]="VerticalContentAlignment"/>
-    </Flyout2>
+    </Flyout>
   </DropDownButton>`,
   styleUrl: 'ComboBox.scss'
 })

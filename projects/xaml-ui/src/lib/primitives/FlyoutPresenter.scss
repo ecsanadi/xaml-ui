@@ -16,9 +16,8 @@
   transition: opacity var(--ControlNormalAnimationDuration), transform var(--ControlNormalAnimationDuration);
   opacity: 0;
 
-  font-family: 'Segoe UI', Arial, sans-serif;
-  font-size: 10pt;
-  color: #ffffff;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100vh - 32px);
 
   &.transition-slideup {
     transform: translateY(10px);
@@ -39,19 +38,5 @@
   &.visible {
     opacity: 1;
     transform: translate(0, 0);
-  }
-  
-  @media (prefers-color-scheme: light) {
-    color: #000000;
-  }
-
-  &::ng-deep * {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    font-size: 10pt;
-    color: #ffffff;
-    
-    @media (prefers-color-scheme: light) {
-      color: #000000;
-    }
   }
 }

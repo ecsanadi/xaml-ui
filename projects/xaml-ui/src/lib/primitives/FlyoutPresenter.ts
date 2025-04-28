@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input } from "@angular/core";
+import { Component, HostBinding, HostListener, Input } from "@angular/core";
 
 export type FlyoutPresenterAnimation = 'Default' | 'SlideLeft' | 'SlideRight' | 'SlideUp' | 'SlideDown';
 
@@ -23,5 +23,10 @@ export class FlyoutPresenter {
   @HostBinding('class.visible')
   private get visible() {
     return this.IsVisible;
+  }
+
+  @HostListener('contextmenu', ['$event'])
+  private onContextMenu(event: Event) {
+    event.preventDefault();
   }
 }

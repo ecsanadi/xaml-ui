@@ -78,9 +78,10 @@ export abstract class FlyoutBaseComponent implements AfterViewInit {
   @HostBinding('style')
   private get style() {
     return {
-      position: 'absolute',
-      inset: 0
-    }
+      'position': 'absolute',
+      'inset': 0,
+      'pointer-events': 'none'
+    };
   }
 
   protected get transitionAnimation(): FlyoutPresenterAnimation {

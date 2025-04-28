@@ -7,17 +7,34 @@ import { HorizontalAlignment, toAlignment, toJustification, VerticalAlignment } 
 })
 export abstract class FrameworkElementComponent {
   @Input() Width?: string;
-  @Input() @HostBinding('style.min-width') MinWidth?: string;
+  @Input() MinWidth?: string;
   @Input() @HostBinding('style.max-width') MaxWidth?: string;
-  
+
   @Input() Height?: string;
-  @Input() @HostBinding('style.min-height') MinHeight?: string;
+  @Input() MinHeight?: string;
   @Input() @HostBinding('style.max-height') MaxHeight?: string;
 
   @Input() HorizontalAlignment: HorizontalAlignment = 'Stretch';
   @Input() VerticalAlignment: VerticalAlignment = 'Stretch';
   @Input() @HostBinding('style.margin') Margin?: string;
   @Input() @HostBinding('style.padding') Padding?: string;
+
+  @HostBinding('style.overflow')
+  private get overflow() {
+    return 'hidden';
+  }
+
+  @HostBinding('style.min-width')
+  private get minWidth() {
+    if (this.MinWidth !== undefined) return this.MinWidth;
+    return this.MaxWidth === undefined && this.HorizontalAlignment === 'Stretch' ? 'min-content' : undefined;
+  }
+
+  @HostBinding('style.min-height')
+  private get minHeight() {
+    if (this.MinHeight !== undefined) return this.MinHeight;
+    return this.MaxHeight === undefined && this.VerticalAlignment === 'Stretch' ? 'min-content' : undefined;
+  }
 
   @HostBinding('style.width')
   private get width() {

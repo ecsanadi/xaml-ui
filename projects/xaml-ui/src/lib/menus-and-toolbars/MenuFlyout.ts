@@ -9,7 +9,7 @@ import { OverlayRef } from "@angular/cdk/overlay-module.d-CSrPj90C";
   selector: 'MenuFlyout',
   imports: [CommonModule, FlyoutPresenter],
   template: PopupTemplate,
-  styleUrls: ['../primitives/Popup.scss', 'MenuFlyout.scss'],
+  styleUrls: ['MenuFlyout.scss'],
   providers: [{ provide: 'xaml-flyout', useExisting: MenuFlyoutComponent }]
 })
 export class MenuFlyoutComponent extends FlyoutComponent implements AfterViewInit {

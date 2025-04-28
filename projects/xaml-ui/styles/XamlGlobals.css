@@ -130,3 +130,9 @@
 .cdk-overlay-pane {
   display: grid !important;
 }
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 10pt;
+  color: var(--TextFillColorPrimary);
+}

@@ -5,7 +5,7 @@ import { FlyoutPresenter, FlyoutPresenterAnimation } from "../primitives/FlyoutP
 import { ConnectedPosition } from "@angular/cdk/overlay";
 
 @Component({
-  selector: 'Flyout2',
+  selector: 'Flyout',
   imports: [FlyoutPresenter],
   template: PopupTemplate,
   providers: [{ provide: 'xaml-flyout', useExisting: FlyoutComponent }],
