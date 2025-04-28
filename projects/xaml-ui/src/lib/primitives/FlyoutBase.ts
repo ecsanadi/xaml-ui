@@ -1,9 +1,8 @@
 import { ConnectedPosition, FlexibleConnectedPositionStrategyOrigin, Overlay, OverlayConfig, OverlayRef, OverlaySizeConfig } from "@angular/cdk/overlay";
 import { TemplatePortal } from "@angular/cdk/portal";
-import { AfterViewInit, Component, ElementRef, EventEmitter, HostBinding, Input, Output, TemplateRef, ViewChild, ViewContainerRef } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, EventEmitter, HostBinding, Input, OnDestroy, Output, Renderer2, TemplateRef, ViewChild, ViewContainerRef } from "@angular/core";
 import { FlyoutPresenter, FlyoutPresenterAnimation } from "./FlyoutPresenter";
 import { FlyoutPlacementMode } from "../Common";
-import { CommonModule } from "@angular/common";
 
 export const PopupTemplate = `<ng-template #template><FlyoutPresenter #presenter [IsVisible]="isVisible" [TransitionAnimation]="transitionAnimation" [Padding]="Padding"><ng-content/></FlyoutPresenter></ng-template>`;
 
@@ -13,11 +12,14 @@ export const PopupTemplate = `<ng-template #template><FlyoutPresenter #presenter
   template: PopupTemplate,
   providers: [{ provide: 'xaml-flyout', useExisting: FlyoutBaseComponent }]
 })
-export abstract class FlyoutBaseComponent implements AfterViewInit {
+export abstract class FlyoutBaseComponent implements AfterViewInit, OnDestroy {
 
   @Input() Placement: FlyoutPlacementMode = 'Top';
 
   @Input() Padding?: string;
+  @Input() HasBackdrop = true;
+
+  private _backdropContextMenuSubscription?: () => void;
 
   private _isOpen = false;
   get IsOpen() {
@@ -32,12 +34,14 @@ export abstract class FlyoutBaseComponent implements AfterViewInit {
 
       this._overlayRef.attach(this._templatePortal);
 
-      this._overlayRef.backdropElement?.addEventListener('contextmenu', p => { p.preventDefault(); this.Hide(); });
+      if (this.HasBackdrop) this._backdropContextMenuSubscription = this._renderer.listen(this._overlayRef.backdropElement, 'contextmenu', p => { p.preventDefault(); this.Hide(); });
       setTimeout(() => this.isVisible = true, 0);
     }
     else {
       this.isVisible = false;
       setTimeout(() => this._overlayRef.detach(), FlyoutPresenter.TransitionDuration);
+
+      if (this._backdropContextMenuSubscription) this._backdropContextMenuSubscription();
     }
     this.IsOpenChange.emit(value);
   }
@@ -169,9 +173,14 @@ export abstract class FlyoutBaseComponent implements AfterViewInit {
   constructor(
     private _viewContainerRef: ViewContainerRef,
     private _overlay: Overlay,
-    private _hostElement: ElementRef
+    private _hostElement: ElementRef,
+    protected _renderer: Renderer2
   ) {
 
+  }
+
+  ngOnDestroy(): void {
+    if (this._backdropContextMenuSubscription) this._backdropContextMenuSubscription();
   }
 
   ngAfterViewInit(): void {
@@ -181,7 +190,8 @@ export abstract class FlyoutBaseComponent implements AfterViewInit {
     );
 
     let config = new OverlayConfig({
-      hasBackdrop: true,
+      hasBackdrop: this.HasBackdrop,
+      scrollStrategy: this._overlay.scrollStrategies.reposition()
     });
     this._overlayRef = this._overlay.create(config);
     this._overlayRef.backdropClick().subscribe(() => this.Hide());

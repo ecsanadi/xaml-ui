@@ -4,6 +4,7 @@ import { TextAlignment } from "../Common";
 import { RepeatButtonComponent } from "../basic-input/RepeatButton";
 import { FontIconComponent } from "../icons/FontIcon";
 import { CommonModule } from "@angular/common";
+import { FlyoutComponent } from "../dialogs-and-flyouts/Flyout";
 
 export type NumberInputMode = 'Float' | 'Integer';
 export type NumberFormatter = (value: number) => string;
@@ -13,14 +14,14 @@ export type NumberFormatter = (value: number) => string;
   template: `<label>
     <div class="icon">&#xEC8F;</div>
     <input #input type="text" [disabled]="!IsEnabled" [value]="Text" (change)="onChange()" [placeholder]="PlaceholderText" [style]="{'text-align': TextAlignment}" (blur)="onBlur()" (keydown)="onKeyDown($event)"/>
-    <div class="popup">
-      <RepeatButton Class="InlineButtonStyle" (Click)="onIncreaseClick()" [Delay]="500" [Interval]="50"><FontIcon Glyph="&#xE70E;"/></RepeatButton>
-      <RepeatButton Class="InlineButtonStyle" (Click)="onDecreaseClick()" [Delay]="500" [Interval]="50"><FontIcon Glyph="&#xE70D;"/></RepeatButton>
-    </div>
+    <Flyout #flyout Padding="2px" Placement="Left" [HasBackdrop]="false">
+      <RepeatButton Class="InlineButtonStyle" (Click)="onIncreaseClick()" [Delay]="500" [Interval]="50"  (pointerdown)="onButtonPress()" (pointerup)="onButtonPress()"><FontIcon Glyph="&#xE70E;"/></RepeatButton>
+      <RepeatButton Class="InlineButtonStyle" (Click)="onDecreaseClick()" [Delay]="500" [Interval]="50"  (pointerdown)="onButtonPress()" (pointerup)="onButtonPress()"><FontIcon Glyph="&#xE70D;"/></RepeatButton>
+    </Flyout>
     <div class="unit" *ngIf="Unit !== undefined">{{Unit}}</div>    
   </label>`,
   styleUrls: ['TextBox.scss', 'NumberBox.scss'],
-  imports: [CommonModule, RepeatButtonComponent, FontIconComponent]
+  imports: [CommonModule, RepeatButtonComponent, FontIconComponent, FlyoutComponent]
 })
 export class NumberBoxComponent extends FrameworkElementComponent {
   @Input() IsEnabled: boolean = true;
@@ -40,6 +41,9 @@ export class NumberBoxComponent extends FrameworkElementComponent {
 
   @ViewChild('input')
   private _input!: ElementRef<HTMLInputElement>;
+
+  @ViewChild('flyout')
+  private _flyout!: FlyoutComponent;
 
   private _text = '';
   get Text() {
@@ -100,6 +104,29 @@ export class NumberBoxComponent extends FrameworkElementComponent {
     this.Value -= this.SmallChange;
   }
 
+  protected onButtonPress() {
+    this._input.nativeElement.focus();
+    setTimeout(() => this.cancelFlyoutDismiss(), 0);
+  }
+
+  private _blurTimeout: any;
+
+  private cancelFlyoutDismiss() {
+    if (this._blurTimeout) {
+
+      clearTimeout(this._blurTimeout);
+      this._blurTimeout = undefined;
+    }
+  }
+
+  private scheduleFlyoutDismiss() {
+    this.cancelFlyoutDismiss();
+
+    this._blurTimeout = setTimeout(() => {
+      this._flyout.Hide();
+    }, 0);
+  }
+
   protected onBlur() {
     this.updateText();
     this._input.nativeElement.value = this._text;
@@ -108,6 +135,8 @@ export class NumberBoxComponent extends FrameworkElementComponent {
       this._input.nativeElement.value = '';
       this.onChange();
     }
+
+    this.scheduleFlyoutDismiss();
   }
 
   protected onKeyDown(event: KeyboardEvent) {
@@ -133,12 +162,13 @@ export class NumberBoxComponent extends FrameworkElementComponent {
   }
 
   @HostListener('focusin', [])
-  private onFocusIn() {    
+  private onFocusIn() {
     if (this.IsPlaceholderEditable && Number.isNaN(this.Value)) {
       this._input.nativeElement.value = this.PlaceholderText;
       this.onChange();
     }
 
+    this._flyout.Show();
     this._input.nativeElement.select();
   }
 

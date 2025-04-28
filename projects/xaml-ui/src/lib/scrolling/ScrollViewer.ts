@@ -3,11 +3,12 @@ import { FrameworkElementComponent } from "../FrameworkElement";
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, ViewChild } from "@angular/core";
 import { ScrollMode } from "../Common";
 import { ScrollBarComponent } from "./ScrollBar";
+import { CdkScrollable } from "@angular/cdk/scrolling";
 
 @Component({
   selector: 'ScrollViewer',
-  imports: [CommonModule, ScrollBarComponent],
-  template: `<div #content class="content" [ngStyle]="contentStyle" (scroll)="onScroll()"><ng-content/></div>
+  imports: [CommonModule, ScrollBarComponent, CdkScrollable],
+  template: `<div #content class="content" [ngStyle]="contentStyle" (scroll)="onScroll()" cdkScrollable><ng-content/></div>
     <ScrollBar *ngIf="IsVerticalScrollBarVisible" HorizontalAlignment="Right" class="scrollbar" Orientation="Vertical" [ScrollSize]="ExtentHeight" [ViewportSize]="ViewportHeight" [(Value)]="VerticalOffset"/>
     <ScrollBar *ngIf="IsHorizontalScrollBarVisible" VerticalAlignment="Bottom" class="scrollbar" Orientation="Horizontal" [ScrollSize]="ExtentWidth" [ViewportSize]="ViewportWidth" [(Value)]="HorizontalOffset"/>`,
   styleUrl: 'ScrollViewer.scss'
