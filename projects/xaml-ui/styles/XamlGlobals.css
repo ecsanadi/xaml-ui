@@ -13,6 +13,8 @@
   --OverlayCornerRadius: 8px;
   --AcrylicBlur: blur(12px);
 
+  --SystemFontSize: 10pt;
+  --SystemFontFamily: 'Segoe UI', Arial, sans-serif;
   --SymbolFontFamily: 'Segoe Fluent Icons', 'Segoe MDL2 Assets';
   --SystemAccentColor: #0078d4;
   
@@ -131,8 +133,10 @@
   display: grid !important;
 }
 
-body {
-  font-family: 'Segoe UI', Arial, sans-serif;
-  font-size: 10pt;
-  color: var(--TextFillColorPrimary);
+:root{
+  &, & * {
+    font-family: var(--SystemFontFamily);
+    font-size: var(--SystemFontSize);
+    color: var(--TextFillColorPrimary);
+  }
 }
