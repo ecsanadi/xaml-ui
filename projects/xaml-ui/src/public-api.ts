@@ -9,6 +9,7 @@ export * from './lib/basic-input/ColorPicker';
 export * from './lib/basic-input/ComboBox';
 export * from './lib/basic-input/DropDownButton';
 export * from './lib/basic-input/RadioButton';
+export * from './lib/basic-input/RadioToggleButton';
 export * from './lib/basic-input/RepeatButton';
 export * from './lib/basic-input/Slider';
 export * from './lib/basic-input/SplitButton';

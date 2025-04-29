@@ -29,7 +29,7 @@ export class RadioButtonComponent extends BorderComponent {
     this.IsCheckedChange.emit(this.IsChecked);
   }
 
-  constructor(@Optional() private _group: RadioButtonGroup) {
+  constructor(@Optional() private _group: RadioButtonGroupComponent) {
     super();
     if (this._group) this._group.registerOption(this);
   }
@@ -42,17 +42,14 @@ export class RadioButtonComponent extends BorderComponent {
     display: contents;
   }`
 })
-export class RadioButtonGroup extends StackPanelComponent {
+export class RadioButtonGroupComponent extends StackPanelComponent {
   private _value: any;
 
   @Input()
   set Value(value: any) {
     if (this._children) {
       for (let item of this._children) {
-        if (item.Value === value) {
-          item.IsChecked = true;
-          break;
-        }
+        item.IsChecked = item.Value === value;
       }
     } else {
       this._value = value;
@@ -69,7 +66,7 @@ export class RadioButtonGroup extends StackPanelComponent {
 
   registerOption(child: RadioButtonComponent) {
     child.Group = 'xaml-radio-button-group-' + this._id;
-    
+
     if (child.Value === undefined) child.Value = this._children.length;
     if (child.Value === this.Value) child.IsChecked = true;
 

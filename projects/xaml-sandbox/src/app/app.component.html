@@ -3,15 +3,15 @@
     <StackPanel>
       <Slider [StepFrequency]="0.01" [Value]="0.5" />
       <RadioButtonGroup (ValueChange)="onValueChange($event)">
-        <RadioButton>A</RadioButton>
-        <RadioButton>B</RadioButton>
-        <RadioButton>C
+        <RadioToggleButton>A</RadioToggleButton>
+        <RadioToggleButton>B</RadioToggleButton>
+        <RadioToggleButton>C
           <MenuFlyout ContextFlyout>
             <MenuFlyoutItem Text="test A" Icon="&#xE713;" />
             <MenuFlyoutItem Text="test B" Icon="&#xE714;"/>
           </MenuFlyout>
-        </RadioButton>
-        <RadioButton>D</RadioButton>
+        </RadioToggleButton>
+        <RadioToggleButton>D</RadioToggleButton>
       </RadioButtonGroup>
       <ComboBox [ItemSource]="[1,2,3,4,5,6]" [SelectedValue]="1" Margin="12px"/>
       <TextBox PlaceholderText="test" Margin="6px" />
