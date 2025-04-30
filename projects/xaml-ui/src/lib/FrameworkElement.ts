@@ -20,41 +20,41 @@ export abstract class FrameworkElementComponent {
   @Input() @HostBinding('style.padding') Padding?: string;
 
   @HostBinding('style.overflow')
-  private get overflow() {
+  protected get overflow() {
     return 'hidden';
   }
 
   @HostBinding('style.min-width')
-  private get minWidth() {
+  protected get minWidth() {
     if (this.MinWidth !== undefined) return this.MinWidth;
     return this.MaxWidth === undefined && this.HorizontalAlignment === 'Stretch' ? 'min-content' : undefined;
   }
 
   @HostBinding('style.min-height')
-  private get minHeight() {
+  protected get minHeight() {
     if (this.MinHeight !== undefined) return this.MinHeight;
     return this.MaxHeight === undefined && this.VerticalAlignment === 'Stretch' ? 'min-content' : undefined;
   }
 
   @HostBinding('style.width')
-  private get width() {
+  protected get width() {
     if (this.Width !== undefined) return this.Width;
     return this.HorizontalAlignment === 'Stretch' ? undefined : 'min-content';
   }
 
   @HostBinding('style.height')
-  private get height() {
+  protected get height() {
     if (this.Height !== undefined) return this.Height;
     return this.VerticalAlignment === 'Stretch' ? undefined : 'min-content';
   }
 
   @HostBinding('style.justify-self')
-  private get justifySelf() {
+  protected get justifySelf() {
     return toJustification(this.HorizontalAlignment);
   }
 
   @HostBinding('style.align-self')
-  private get alignSelf() {
+  protected get alignSelf() {
     return toAlignment(this.VerticalAlignment);
   }
 

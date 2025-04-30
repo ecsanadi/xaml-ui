@@ -21,8 +21,18 @@ export class TextBlockComponent extends FrameworkElementComponent {
   @Input() @HostBinding('style.text-align') TextAlignment?: TextAlignment = 'Left';
   @Input() IsTextSelectionEnabled?: XamlBoolean;
   @Input() TextDecorations?: TextDecorations;
-  @Input() TextTrimming?: TextTrimming;
+  @Input() TextTrimming: TextTrimming = 'None';
   @Input() TextWrapping: TextWrapping = 'NoWrap';
+
+  protected override get width() {
+    if (this.Width !== undefined) return this.Width;
+    return this.HorizontalAlignment === 'Stretch' || this.TextTrimming !== 'None' ? undefined : 'min-content';
+  }
+
+  protected override get minWidth() {
+    if (this.MinWidth !== undefined) return this.MinWidth;
+    return this.MaxWidth === undefined && this.HorizontalAlignment === 'Stretch' && this.TextTrimming === 'None' ? 'min-content' : undefined;
+  }
 
   @HostBinding('style.font-weight')
   private get fontWeight() {
