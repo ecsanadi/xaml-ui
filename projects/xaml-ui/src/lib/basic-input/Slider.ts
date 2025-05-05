@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { FrameworkElementComponent } from "../FrameworkElement";
 import { Orientation } from "../Common";
+import { CommonModule } from "@angular/common";
 
 @Component({
   selector: 'Slider',
@@ -11,7 +12,9 @@ import { Orientation } from "../Common";
     [value]="Value" 
     (input)="onInput($event)" 
     [disabled]="!IsEnabled"
-    [className]="Orientation.toLowerCase()">`,
+    [className]="Orientation.toLowerCase()"
+    [ngStyle]="inputStyle">`,
+  imports: [CommonModule],
   styleUrl: 'Slider.scss'
 })
 export class SliderComponent extends FrameworkElementComponent {
@@ -26,5 +29,18 @@ export class SliderComponent extends FrameworkElementComponent {
   protected onInput(event: Event) {
     this.Value = parseFloat((event.target as HTMLInputElement).value);
     this.ValueChange.emit(this.Value);
+  }
+
+  protected get inputStyle() {
+    let style: { [key: string]: string } = {};
+    if (this.Orientation === 'Horizontal' && this.Width !== undefined) {
+      style['width'] = this.Width;
+    }
+
+    if (this.Orientation === 'Vertical' && this.Height !== undefined) {
+      style['height'] = this.Height;
+    }
+
+    return style;
   }
 }

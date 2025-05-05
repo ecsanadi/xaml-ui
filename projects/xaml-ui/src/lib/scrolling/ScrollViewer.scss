@@ -1,6 +1,7 @@
 :host {
   display: grid;
   overflow: auto;
+  touch-action: pan-x pan-y;
 
   &>.content {
     //Hide scrollbar for IE, Edge and Firefox
