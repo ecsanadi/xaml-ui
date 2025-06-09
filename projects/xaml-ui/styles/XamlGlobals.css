@@ -16,7 +16,9 @@
   --SystemFontSize: 10pt;
   --SystemFontFamily: 'Segoe UI', Arial, sans-serif;
   --SymbolFontFamily: 'Segoe Fluent Icons', 'Segoe MDL2 Assets';
-  --SystemAccentColor: #0078d4;
+
+  --SystemAccentColor: #0078d4;      
+  --SmokeFillColorDefault: #0000004D;
 
   --ControlNormalAnimationDuration: 0.25s;
   --ControlFastAnimationDuration: 0.167s;
@@ -129,8 +131,12 @@
   }
 }
 
-.cdk-overlay-dark-backdrop {
-  background: transparent !important;
+.xaml-flyout-overlay-backdrop {
+  background: transparent;
+}
+
+.xaml-dialog-overlay-backdrop {
+  background: var(--SmokeFillColorDefault);
 }
 
 .cdk-overlay-pane {

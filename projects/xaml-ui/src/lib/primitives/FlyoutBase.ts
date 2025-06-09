@@ -64,7 +64,8 @@ export abstract class FlyoutBaseComponent implements OnDestroy {
     //Create overlay
     let config = new OverlayConfig({
       hasBackdrop: this.HasBackdrop,
-      scrollStrategy: this._overlay.scrollStrategies.reposition()
+      scrollStrategy: this._overlay.scrollStrategies.reposition(),
+      backdropClass: 'xaml-flyout-overlay-backdrop'
     });
     this._overlayRef = this._overlay.create(config);
     this.OnOverlay(this._overlayRef);

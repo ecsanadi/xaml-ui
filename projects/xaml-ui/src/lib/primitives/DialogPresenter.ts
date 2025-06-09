@@ -1,4 +1,4 @@
-import { Component, ContentChild, ElementRef, ViewChild } from "@angular/core";
+import { Component, ContentChild, ElementRef, HostBinding, Input, ViewChild } from "@angular/core";
 import { XamlRootComponent } from "../XamlRoot";
 import { CommonModule } from "@angular/common";
 
@@ -8,11 +8,21 @@ import { CommonModule } from "@angular/common";
   <div class="body"><ng-content/></div>
   <div #footer class="footer" [ngStyle]="{'display': isFooterVisible ? 'grid' : 'none'}"><ng-content select="[Footer]"/></div>`,
   styleUrls: ['../XamlRoot.scss', 'DialogPresenter.scss'],
-  imports: [CommonModule]
+  imports: [CommonModule],
+  providers: [{ provide: 'xaml-dialog-presenter', useExisting: DialogPresenter }]
 })
 export class DialogPresenter extends XamlRootComponent {
+  static TransitionDuration = 250;
+
   @ViewChild('header') private _header?: ElementRef<HTMLDivElement>;
   @ViewChild('footer') private _footer?: ElementRef<HTMLDivElement>;
+
+  @Input() IsVisible: boolean = false;
+
+  @HostBinding('class.visible')
+  private get visible() {
+    return this.IsVisible;
+  }
 
   protected get isHeaderVisible() {
     return this._header?.nativeElement.children.length ?? 0 > 0;

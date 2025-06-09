@@ -1,7 +1,8 @@
 import { Overlay, OverlayConfig } from "@angular/cdk/overlay";
-import { Component, EventEmitter, Output, TemplateRef, ViewChild, ViewContainerRef } from "@angular/core";
+import { Component, ContentChild, EventEmitter, Output, Renderer2, TemplateRef, ViewChild, ViewContainerRef } from "@angular/core";
 import { resume_after, resume_on_event } from "../Common";
 import { TemplatePortal } from "@angular/cdk/portal";
+import { DialogPresenter } from "../primitives/DialogPresenter";
 
 @Component({
   template: ''
@@ -13,6 +14,7 @@ export abstract class Dialog {
 
   private _overlay!: Overlay;
   private _viewContainerRef!: ViewContainerRef;
+  @ViewChild('xaml-dialog-presenter') private _dialogPresenter?: DialogPresenter;
 
   static Create<T extends Dialog>(type: { new(...args: any[]): T }, container: ViewContainerRef): T {
     let component = container.createComponent(type);
@@ -35,7 +37,8 @@ export abstract class Dialog {
 
     let config = new OverlayConfig({
       hasBackdrop: true,
-      positionStrategy: positionStrategy
+      positionStrategy: positionStrategy,
+      backdropClass: 'xaml-dialog-overlay-backdrop'
     });
 
     let overlayRef = this._overlay.create(config);
@@ -48,9 +51,27 @@ export abstract class Dialog {
 
     overlayRef.attach(templatePortal);
 
+    //Wait for UI to instantiate
+    await resume_after(0);
+
+    //Disable backdrop menu
+    let renderer = this._viewContainerRef.injector.get(Renderer2);
+    let backdropContextMenuSubscription = renderer.listen(overlayRef.backdropElement, 'contextmenu', p => p.preventDefault());
+
+    //Fade-in
+    if (this._dialogPresenter) this._dialogPresenter.IsVisible = true;
+
     //Wait for close
     await resume_on_event(this.Closed);
 
+    //Fade-out
+    if (this._dialogPresenter) {
+      this._dialogPresenter.IsVisible = false;
+      await resume_after(DialogPresenter.TransitionDuration);
+    }
+
+    //Cleanup
+    backdropContextMenuSubscription();
     overlayRef.detach();
   }
 
