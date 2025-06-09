@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewContainerRef } from '@angular/core';
 import { RadioToggleButtonComponent, XamlRootComponent } from '../../../xaml-ui/src/public-api';
 import { StackPanelComponent } from "../../../xaml-ui/src/lib/layout/StackPanel";
 import { ButtonComponent } from "../../../xaml-ui/src/lib/basic-input/Button";
@@ -28,15 +28,22 @@ import { NumberBoxComponent } from "../../../xaml-ui/src/lib/text/NumberBox";
 import { RepeatButtonComponent } from "../../../xaml-ui/src/lib/basic-input/RepeatButton";
 import { ColorPickerComponent } from "../../../xaml-ui/src/lib/basic-input/ColorPicker";
 import { Color, colorToString } from '../../../xaml-ui/src/lib/Color';
+import { DialogPresenter } from "../../../xaml-ui/src/lib/primitives/DialogPresenter";
+import { ContentDialog, ContentDialogButton } from '../../../xaml-ui/src/lib/dialogs-and-flyouts/ContentDialog';
+import { Dialog } from '../../../xaml-ui/src/lib/dialogs-and-flyouts/Dialog';
 
 @Component({
   selector: 'app-root',
-  imports: [XamlRootComponent, StackPanelComponent, ButtonComponent, FlyoutComponent, ListBoxComponent, ScrollViewerComponent, ScrollBarComponent, CheckBoxComponent, RadioButtonComponent, SliderComponent, ToggleSwitchComponent, TextBoxComponent, TextBlockComponent, ListViewComponent, ComboBoxComponent, DropDownButtonComponent, MenuFlyoutComponent, MenuFlyoutItemComponent, MenuFlyoutSeparator, ContextFlyoutDirective, ToggleButtonComponent, SplitButtonComponent, ImageComponent, AppBarButtonComponent, CommandBarComponent, NumberBoxComponent, RepeatButtonComponent, ColorPickerComponent, RadioButtonGroupComponent, FlyoutComponent, ContextFlyoutDirective, RadioToggleButtonComponent],
+  imports: [XamlRootComponent, StackPanelComponent, ButtonComponent, FlyoutComponent, ListBoxComponent, ScrollViewerComponent, ScrollBarComponent, CheckBoxComponent, RadioButtonComponent, SliderComponent, ToggleSwitchComponent, TextBoxComponent, TextBlockComponent, ListViewComponent, ComboBoxComponent, DropDownButtonComponent, MenuFlyoutComponent, MenuFlyoutItemComponent, MenuFlyoutSeparator, ContextFlyoutDirective, ToggleButtonComponent, SplitButtonComponent, ImageComponent, AppBarButtonComponent, CommandBarComponent, NumberBoxComponent, RepeatButtonComponent, ColorPickerComponent, RadioButtonGroupComponent, FlyoutComponent, ContextFlyoutDirective, RadioToggleButtonComponent, DialogPresenter],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'xaml-sandbox';
+
+  constructor(private _viewContainerRef: ViewContainerRef) {
+
+  }
 
   onValueChange(value: any) {
     console.log(value);
@@ -48,5 +55,17 @@ export class AppComponent {
 
   onColorSelected(value: Color) {
     console.log(colorToString(value));
+  }
+
+  async onDialogClick() {
+    let dialog = Dialog.Create(ContentDialog, this._viewContainerRef);
+    dialog.Title = "Something";
+    dialog.Content = "Hello world!";
+    dialog.PrimaryButtonText = "OK";
+    dialog.SecondaryButtonText = "Cancel";
+    dialog.DefaultButton = ContentDialogButton.Primary;
+    
+    let result = await dialog.ShowAsync();
+    console.log(`Dialog result: ${result}`);
   }
 }
