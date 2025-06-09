@@ -16,6 +16,8 @@ export abstract class Dialog {
   private _viewContainerRef!: ViewContainerRef;
   @ViewChild('xaml-dialog-presenter') private _dialogPresenter?: DialogPresenter;
 
+  IsBackdropDismissEnabled = false;
+
   static Create<T extends Dialog>(type: { new(...args: any[]): T }, container: ViewContainerRef): T {
     let component = container.createComponent(type);
     component.instance._overlay = container.injector.get(Overlay);
@@ -57,6 +59,9 @@ export abstract class Dialog {
     //Disable backdrop menu
     let renderer = this._viewContainerRef.injector.get(Renderer2);
     let backdropContextMenuSubscription = renderer.listen(overlayRef.backdropElement, 'contextmenu', p => p.preventDefault());
+
+    //Backdrop dismiss
+    if(this.IsBackdropDismissEnabled) overlayRef.backdropClick().subscribe(() => this.Hide());
 
     //Fade-in
     if (this._dialogPresenter) this._dialogPresenter.IsVisible = true;

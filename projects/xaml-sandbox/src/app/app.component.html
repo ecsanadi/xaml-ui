@@ -2,12 +2,8 @@
   <ScrollViewer>
     <StackPanel>
       <Button (Click)="onDialogClick()">Open dialog</Button>
+      <Button (Click)="onCustomDialogClick()">Open custom dialog</Button>
       <ToggleButton>test A</ToggleButton>
-      <DialogPresenter Style="margin:12px">
-        <div Header>Title</div>
-        <div>This is a text dialog.</div>
-        <div Footer>Footer.</div>
-      </DialogPresenter>
       <Slider [StepFrequency]="0.01" [Value]="0.5" />
       <RadioButtonGroup (ValueChange)="onValueChange($event)">
         <RadioToggleButton>A</RadioToggleButton>
