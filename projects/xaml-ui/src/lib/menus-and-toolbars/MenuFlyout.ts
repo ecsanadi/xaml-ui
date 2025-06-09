@@ -12,7 +12,7 @@ import { OverlayRef } from "@angular/cdk/overlay-module.d-CSrPj90C";
   styleUrls: ['MenuFlyout.scss'],
   providers: [{ provide: 'xaml-flyout', useExisting: MenuFlyoutComponent }]
 })
-export class MenuFlyoutComponent extends FlyoutComponent implements AfterViewInit {
+export class MenuFlyoutComponent extends FlyoutComponent {
 
   private _menuClickSubscription?: () => void;
 

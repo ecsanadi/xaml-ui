@@ -46,7 +46,7 @@ export class ComboBoxComponent extends SelectorComponent implements AfterViewIni
     if (!value) return;
     let rect = this._host.nativeElement.getBoundingClientRect();
     let popupOffset = -(this._selector?.GetElement(this.SelectedIndex)?.offsetTop ?? 0);
-    this.target = { x: rect.left, y: rect.top + popupOffset - 4, width: rect.width };
+    this.target = { x: rect.left + 3, y: rect.top + popupOffset - 4, width: rect.width };
   }
 
   ngAfterViewInit(): void {
