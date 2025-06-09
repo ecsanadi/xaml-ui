@@ -1,3 +1,5 @@
+import { EventEmitter } from "@angular/core";
+
 export type HorizontalAlignment = 'Left' | 'Center' | 'Right' | 'Stretch';
 export type VerticalAlignment = 'Top' | 'Center' | 'Bottom' | 'Stretch';
 export type Orientation = 'Horizontal' | 'Vertical';
@@ -27,4 +29,12 @@ export function toAlignment(value: VerticalAlignment) {
     case 'Stretch':
       return 'stretch';
   }
+}
+
+export async function resume_after(timeout: number) {
+  await new Promise<void>(p => setTimeout(p, timeout));
+}
+
+export async function resume_on_event<T>(event: EventEmitter<T>) {
+  await new Promise<T>(p => event.subscribe(q => p(q)));  
 }
