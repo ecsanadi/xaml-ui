@@ -14,7 +14,7 @@
   & * {
     color: var(--TextFillColorPrimary);
   }
-  
+
   &:hover {
     background-color: var(--SubtleFillColorSecondary);
 
@@ -22,15 +22,15 @@
       color: var(--TextFillColorPrimary);
     }
   }
-  
+
   &:active {
     background-color: var(--SubtleFillColorTertiary);
-    
+
     & * {
       color: var(--TextFillColorSecondary);
     }
   }
-  
+
   &.disabled {
     background-color: var(--SubtleFillColorDisabled);
 
@@ -42,5 +42,9 @@
   & .icon {
     padding-top: 2px;
     font-family: var(--SymbolFontFamily);
+  }
+
+  & .text {
+    white-space: nowrap;
   }
 }

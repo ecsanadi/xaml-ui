@@ -1,19 +1,24 @@
-import { Component } from "@angular/core";
+import { Component, Injector } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { SelectorComponent, SelectorItemTemplate } from "../primitives/Selector";
 import { ScrollViewerComponent } from "../scrolling/ScrollViewer";
 import { StackPanelComponent } from "../layout/StackPanel";
 import { animate, keyframes, style, transition, trigger } from "@angular/animations";
+import { ItemContainerComponent } from "../primitives/ItemContainer";
 
 @Component({
   selector: 'ListView',
-  imports: [CommonModule, ScrollViewerComponent, StackPanelComponent],
+  imports: [CommonModule, ScrollViewerComponent, StackPanelComponent, ItemContainerComponent],
   template: `<ScrollViewer>
     <StackPanel Padding="2px 0">
-      <div *ngFor="let item of ItemSource; index as index; trackBy: getValue" class="item" [ngClass]="{'selected': index == SelectedIndex}" (click)="onItemClick($event, index, item)" [id]="'xaml-selector-'+_id+'-item-'+index" @itemFading>
+      <ItemContainer #container *ngFor="let item of ItemSource; index as index; trackBy: getValue" class="item" [ngClass]="{'selected': index == SelectedIndex}" (click)="onItemClick($event, index, item)" [id]="'xaml-selector-'+_id+'-item-'+index" @itemFading>
         <div class="item-selector"></div>
-        <div class="item-content" [ngStyle]="{'align-content': alignContent, 'justify-content': justifyContent}">${SelectorItemTemplate}</div>
-      </div>
+        <div class="item-content" [ngStyle]="{'align-content': alignContent, 'justify-content': justifyContent}">
+        <ng-container *ngIf="ItemTemplate">
+          <ng-container [ngTemplateOutlet]="ItemTemplate" [ngTemplateOutletContext]="{ $implicit: item }" [ngTemplateOutletInjector]="container.Injector" />
+        </ng-container>
+        <ng-container *ngIf="!ItemTemplate">{{ DisplayMemberPath ? item[DisplayMemberPath] : item }}</ng-container></div>
+      </ItemContainer>
     </StackPanel>
   </ScrollViewer>`,
   animations: [
@@ -39,5 +44,7 @@ import { animate, keyframes, style, transition, trigger } from "@angular/animati
   styleUrl: 'ListView.scss'
 })
 export class ListViewComponent extends SelectorComponent {
-
+  constructor(protected Injector : Injector) {
+    super()
+  }
 }
