@@ -12,11 +12,13 @@ export abstract class FlyoutDirective implements AfterViewInit {
     private _viewContainer: ViewContainerRef
   ) { }
 
-  protected abstract get HostElement() : HTMLElement | null;
+  protected abstract get HostElement(): HTMLElement | null;
 
   ngAfterViewInit(): void {
-    this._flyout = this._viewContainer.injector.get(FlyoutComponent, null) ||
-      this._viewContainer.injector.get(MenuFlyoutComponent, null) as FlyoutComponent;
+    for (let type of [FlyoutComponent, MenuFlyoutComponent]) {
+      this._flyout = this._viewContainer.injector.get(type, null, { self: true }) as FlyoutComponent;
+      if (this._flyout) break;
+    }
 
     if (this._flyout) {
       this._flyout.Placement = 'BottomEdgeAlignedLeft';

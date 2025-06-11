@@ -44,7 +44,7 @@ export class CustomDialog extends Dialog {
 
 @Component({
   selector: 'app-root',
-  imports: [XamlRootComponent, StackPanelComponent, ButtonComponent, FlyoutComponent, ScrollViewerComponent, SliderComponent, TextBoxComponent, TextBlockComponent, ListViewComponent, ComboBoxComponent, MenuFlyoutComponent, MenuFlyoutItemComponent, ContextFlyoutDirective, AppBarButtonComponent, CommandBarComponent, NumberBoxComponent, GridModule, RepeatButtonComponent, ColorPickerComponent, RadioButtonGroupComponent, FlyoutComponent, ContextFlyoutDirective, RadioToggleButtonComponent, ToggleButtonComponent],
+  imports: [XamlRootComponent, StackPanelComponent, ButtonComponent, FlyoutComponent, ScrollViewerComponent, SliderComponent, TextBoxComponent, TextBlockComponent, ListViewComponent, ComboBoxComponent, MenuFlyoutComponent, MenuFlyoutItemComponent, ContextFlyoutDirective, AppBarButtonComponent, CommandBarComponent, NumberBoxComponent, GridModule, RepeatButtonComponent, ColorPickerComponent, RadioButtonGroupComponent, FlyoutComponent, ContextFlyoutDirective, RadioToggleButtonComponent, ToggleButtonComponent, ItemFlyoutDirective],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
