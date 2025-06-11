@@ -1,8 +1,8 @@
 import { ConnectedPosition, FlexibleConnectedPositionStrategyOrigin, Overlay, OverlayConfig, OverlayRef, OverlaySizeConfig } from "@angular/cdk/overlay";
 import { TemplatePortal } from "@angular/cdk/portal";
-import { AfterViewInit, Component, ElementRef, EventEmitter, HostBinding, Input, OnDestroy, Output, Renderer2, TemplateRef, ViewChild, ViewContainerRef } from "@angular/core";
+import { Component, ElementRef, EventEmitter, HostBinding, Input, OnDestroy, Output, Renderer2, TemplateRef, ViewChild, ViewContainerRef } from "@angular/core";
 import { FlyoutPresenter, FlyoutPresenterAnimation } from "./FlyoutPresenter";
-import { FlyoutPlacementMode } from "../Common";
+import { resume_after, FlyoutPlacementMode } from "../Common";
 
 export const PopupTemplate = `<ng-template #template><FlyoutPresenter #presenter [IsVisible]="isVisible" [TransitionAnimation]="transitionAnimation" [Padding]="Padding"><ng-content/></FlyoutPresenter></ng-template>`;
 
@@ -12,7 +12,7 @@ export const PopupTemplate = `<ng-template #template><FlyoutPresenter #presenter
   template: PopupTemplate,
   providers: [{ provide: 'xaml-flyout', useExisting: FlyoutBaseComponent }]
 })
-export abstract class FlyoutBaseComponent implements AfterViewInit, OnDestroy {
+export abstract class FlyoutBaseComponent implements OnDestroy {
 
   @Input() Placement: FlyoutPlacementMode = 'Top';
 
@@ -30,21 +30,17 @@ export abstract class FlyoutBaseComponent implements AfterViewInit, OnDestroy {
     this._isOpen = value;
 
     if (value) {
-      this.updatePlacement();
-
-      this._overlayRef.attach(this._templatePortal);
-
-      if (this.HasBackdrop) this._backdropContextMenuSubscription = this._renderer.listen(this._overlayRef.backdropElement, 'contextmenu', p => { p.preventDefault(); this.Hide(); });
-      setTimeout(() => this.isVisible = true, 0);
+      this.showOverlay();
     }
     else {
-      this.isVisible = false;
-      setTimeout(() => this._overlayRef.detach(), FlyoutPresenter.TransitionDuration);
-
-      if (this._backdropContextMenuSubscription) this._backdropContextMenuSubscription();
+      this.hideOverlay();
     }
     this.IsOpenChange.emit(value);
   }
+  @Output() IsOpenChange = new EventEmitter<boolean>();
+
+  private _overlayRef?: OverlayRef;
+  protected isVisible = false;
 
   private updatePlacement() {
     if (!this._overlayRef) return;
@@ -64,9 +60,52 @@ export abstract class FlyoutBaseComponent implements AfterViewInit, OnDestroy {
     }
   }
 
-  protected isVisible = false;
+  private async showOverlay() {
+    //Create overlay
+    let config = new OverlayConfig({
+      hasBackdrop: this.HasBackdrop,
+      scrollStrategy: this._overlay.scrollStrategies.reposition(),
+      backdropClass: 'xaml-flyout-overlay-backdrop'
+    });
+    this._overlayRef = this._overlay.create(config);
+    this.OnOverlay(this._overlayRef);
 
-  @Output() IsOpenChange = new EventEmitter<boolean>();
+    //Configure overlay placement
+    this.updatePlacement();
+
+    //Display overlay
+    let templatePortal = new TemplatePortal(
+      this._template,
+      this._viewContainerRef
+    );
+
+    this._overlayRef.attach(templatePortal);
+
+    //Ensure backdrop event handling
+    this._overlayRef.backdropClick().subscribe(() => this.Hide());
+    if (this.HasBackdrop) this._backdropContextMenuSubscription = this._renderer.listen(this._overlayRef.backdropElement, 'contextmenu', p => { p.preventDefault(); this.Hide(); });
+
+    //Make content visible - after next layout
+    await resume_after(0);
+
+    this.isVisible = true;
+  }
+
+  private async hideOverlay() {
+    //Start hide animation
+    this.isVisible = false;
+
+    //Remove event handlers
+    if (this._backdropContextMenuSubscription) this._backdropContextMenuSubscription();
+
+    //Dispose overlay after hidden
+    if (this._overlayRef === undefined) return;
+    await resume_after(FlyoutPresenter.TransitionDuration);
+
+    this._overlayRef.detach();
+    this._overlayRef.dispose();
+    this._overlayRef = undefined;
+  }
 
   private _target: FlexibleConnectedPositionStrategyOrigin | null = null;
   get Target() {
@@ -167,35 +206,15 @@ export abstract class FlyoutBaseComponent implements AfterViewInit, OnDestroy {
     }
   };
 
-  private _overlayRef!: OverlayRef;
-  private _templatePortal!: TemplatePortal;
-
   constructor(
     private _viewContainerRef: ViewContainerRef,
     private _overlay: Overlay,
     private _hostElement: ElementRef,
     protected _renderer: Renderer2
-  ) {
-
-  }
+  ) { }
 
   ngOnDestroy(): void {
-    if (this._backdropContextMenuSubscription) this._backdropContextMenuSubscription();
-  }
-
-  ngAfterViewInit(): void {
-    this._templatePortal = new TemplatePortal(
-      this._template,
-      this._viewContainerRef
-    );
-
-    let config = new OverlayConfig({
-      hasBackdrop: this.HasBackdrop,
-      scrollStrategy: this._overlay.scrollStrategies.reposition()
-    });
-    this._overlayRef = this._overlay.create(config);
-    this._overlayRef.backdropClick().subscribe(() => this.Hide());
-    this.OnOverlay(this._overlayRef);
+    this.hideOverlay();
   }
 
   protected OnOverlay(overlay: OverlayRef) {

@@ -16,8 +16,10 @@
   --SystemFontSize: 10pt;
   --SystemFontFamily: 'Segoe UI', Arial, sans-serif;
   --SymbolFontFamily: 'Segoe Fluent Icons', 'Segoe MDL2 Assets';
-  --SystemAccentColor: #0078d4;
-  
+
+  --SystemAccentColor: #0078d4;      
+  --SmokeFillColorDefault: #0000004D;
+
   --ControlNormalAnimationDuration: 0.25s;
   --ControlFastAnimationDuration: 0.167s;
   --ControlFasterAnimationDuration: 0.083s;
@@ -43,7 +45,7 @@
   --SubtleFillColorTransparent: #FFFFFF00;
   --SubtleFillColorSecondary: #FFFFFF0F;
   --SubtleFillColorTertiary: #FFFFFF0A;
-  
+
   --AccentFillColorDefault: #4CC2FFFF; /*+2*/
   --AccentFillColorSecondary: #4CC2FFE6; /*+2 90%*/
   --AccentFillColorTertiary: #4CC2FFCC; /*+2 80%*/
@@ -71,6 +73,8 @@
   --SystemChromeMediumLowColor: #2B2B2BFF;
 
   --DividerStrokeColorDefault: #FFFFFF15;
+  --LayerFillColorAlt: #FFFFFF0D;
+  --SurfaceStrokeColorDefault: #75757566;
 
   @media (prefers-color-scheme: light) {
 
@@ -122,21 +126,25 @@
     --SystemChromeMediumLowColor: #F2F2F2FF;
 
     --DividerStrokeColorDefault: #0000000F;
+    --LayerFillColorAlt: #FFFFFF;
+    --SurfaceStrokeColorDefault: #75757566;
   }
 }
 
-.cdk-overlay-dark-backdrop {
-  background: transparent !important;
+.xaml-flyout-overlay-backdrop {
+  background: transparent;
+}
+
+.xaml-dialog-overlay-backdrop {
+  background: var(--SmokeFillColorDefault);
 }
 
 .cdk-overlay-pane {
   display: grid !important;
 }
 
-:root{
-  &, & * {
-    font-family: var(--SystemFontFamily);
-    font-size: var(--SystemFontSize);
-    color: var(--TextFillColorPrimary);
-  }
+body, button {
+  font-family: var(--SystemFontFamily);
+  font-size: var(--SystemFontSize);
+  color: var(--TextFillColorPrimary);
 }

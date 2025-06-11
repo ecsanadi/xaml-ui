@@ -21,7 +21,9 @@ export * from './lib/collections/ListBox';
 export * from './lib/collections/ListView';
 
 //Dialogs and flyouts
+export * from './lib/dialogs-and-flyouts/ContentDialog';
 export * from './lib/dialogs-and-flyouts/ContextFlyout';
+export * from './lib/dialogs-and-flyouts/Dialog';
 export * from './lib/dialogs-and-flyouts/Flyout';
 
 //Icons
@@ -45,6 +47,7 @@ export * from './lib/menus-and-toolbars/MenuFlyoutItemBase';
 export * from './lib/menus-and-toolbars/MenuFlyoutSeparator';
 
 //Primitives
+export * from './lib/primitives/DialogPresenter'
 export * from './lib/primitives/FlyoutBase'
 export * from './lib/primitives/FlyoutPresenter'
 export * from './lib/primitives/Selector'

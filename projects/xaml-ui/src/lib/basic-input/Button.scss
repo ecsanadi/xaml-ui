@@ -1,5 +1,47 @@
 @use '../Common.scss' as *;
 
+@mixin highlight-button {
+  &:not(.disabled) {
+    background: var(--AccentFillColorDefault);
+    border-color: var(--AccentFillColorDefault);
+    color: var(--TextOnAccentFillColorPrimary);
+
+    &::ng-deep * {
+      color: var(--TextOnAccentFillColorPrimary);
+    }
+  }
+
+  &:hover:not(.flyout-open):not(.disabled) {
+    background: var(--AccentFillColorSecondary);
+    border-color: var(--AccentFillColorSecondary);
+    color: var(--TextOnAccentFillColorPrimary);
+
+    &::ng-deep * {
+      color: var(--TextOnAccentFillColorPrimary);
+    }
+  }
+
+  &:active:not(.flyout-open):not(.disabled) {
+    background: var(--AccentFillColorTertiary);
+    border-color: var(--ControlFillColorTransparent);
+    color: var(--TextOnAccentFillColorSecondary);
+
+    &::ng-deep * {
+      color: var(--TextOnAccentFillColorSecondary);
+    }
+  }
+
+  &.disabled {
+    background: var(--AccentFillColorDisabled);
+    border-color: var(--AccentFillColorDisabled);
+    color: var(--TextOnAccentFillColorDisabled);
+
+    &::ng-deep * {
+      color: var(--TextOnAccentFillColorDisabled);
+    }
+  }
+}
+
 :host {
   display: grid;
   padding: 5px 11px;
@@ -12,73 +54,39 @@
   border-color: var(--ControlStrokeColorDefault);
   color: var(--TextFillColorPrimary);
   transition: all var(--ControlFastAnimationDuration);
-  
+
   &::ng-deep * {
     color: var(--TextFillColorPrimary);
   }
-  
-  &:hover:not(.checked):not(.flyout-open):not(.disabled) {
-    background: var(--ControlFillColorSecondary);
-  }
 
-  &:active:not(.checked):not(.flyout-open):not(.disabled) {
-    background: var(--ControlFillColorTertiary);
-    color: var(--TextFillColorSecondary);
+  &:not(.checked) {
+    &:hover:not(.flyout-open):not(.disabled) {
+      background: var(--ControlFillColorSecondary);
+    }
 
-    &::ng-deep * {
+    &:active:not(.flyout-open):not(.disabled) {
+      background: var(--ControlFillColorTertiary);
       color: var(--TextFillColorSecondary);
+
+      &::ng-deep * {
+        color: var(--TextFillColorSecondary);
+      }
     }
-  }
 
-  &.disabled:not(.checked) {
-    background: var(--ControlFillColorDisabled);
-    color: var(--TextFillColorDisabled);
-
-    &::ng-deep * {
+    &.disabled {
+      background: var(--ControlFillColorDisabled);
       color: var(--TextFillColorDisabled);
+
+      &::ng-deep * {
+        color: var(--TextFillColorDisabled);
+      }
     }
   }
 
-  &.checked:not(.disabled) {
-    background: var(--AccentFillColorDefault);
-    border-color: var(--AccentFillColorDefault);
-    color: var(--TextOnAccentFillColorPrimary);
-
-    &::ng-deep * {
-      color: var(--TextOnAccentFillColorPrimary);
-    }
+  &.checked {
+    @include highlight-button();
   }
 
-  &:hover.checked:not(.flyout-open):not(.disabled) {
-    background: var(--AccentFillColorSecondary);
-    border-color: var(--AccentFillColorSecondary);
-    color: var(--TextOnAccentFillColorPrimary);
-
-    &::ng-deep * {
-      color: var(--TextOnAccentFillColorPrimary);
-    }
-  }
-
-  &:active.checked:not(.flyout-open):not(.disabled) {
-    background: var(--AccentFillColorTertiary);
-    border-color: var(--ControlFillColorTransparent);
-    color: var(--TextOnAccentFillColorSecondary);
-
-    &::ng-deep * {
-      color: var(--TextOnAccentFillColorSecondary);
-    }
-  }
-
-  &.checked.disabled {
-    background: var(--AccentFillColorDisabled);
-    border-color: var(--AccentFillColorDisabled);
-    color: var(--TextOnAccentFillColorDisabled);
-
-    &::ng-deep * {
-      color: var(--TextOnAccentFillColorDisabled);
-    }
-  }
-  
   &.InlineButtonStyle {
     border-style: none;
     border-width: 0;
@@ -87,23 +95,27 @@
     &:hover:not(.checked):not(.flyout-open):not(.disabled) {
       background: var(--SubtleFillColorSecondary);
     }
-  
+
     &:active:not(.checked):not(.flyout-open):not(.disabled) {
       background: var(--SubtleFillColorTertiary);
       color: var(--TextFillColorSecondary);
-  
+
       &::ng-deep * {
         color: var(--TextFillColorSecondary);
       }
     }
-  
+
     &.disabled:not(.checked) {
       background: var(--SubtleFillColorDisabled);
       color: var(--TextFillColorDisabled);
-  
+
       &::ng-deep * {
         color: var(--TextFillColorDisabled);
       }
     }
+  }
+
+  &.AccentButtonStyle {
+    @include highlight-button();
   }
 }

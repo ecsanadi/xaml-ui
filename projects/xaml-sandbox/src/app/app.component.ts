@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewContainerRef } from '@angular/core';
 import { RadioToggleButtonComponent, XamlRootComponent } from '../../../xaml-ui/src/public-api';
 import { StackPanelComponent } from "../../../xaml-ui/src/lib/layout/StackPanel";
 import { ButtonComponent } from "../../../xaml-ui/src/lib/basic-input/Button";
@@ -19,16 +19,41 @@ import { NumberBoxComponent } from "../../../xaml-ui/src/lib/text/NumberBox";
 import { RepeatButtonComponent } from "../../../xaml-ui/src/lib/basic-input/RepeatButton";
 import { ColorPickerComponent } from "../../../xaml-ui/src/lib/basic-input/ColorPicker";
 import { Color, colorToString } from '../../../xaml-ui/src/lib/Color';
+import { DialogPresenter } from "../../../xaml-ui/src/lib/primitives/DialogPresenter";
+import { ContentDialog, ContentDialogButton } from '../../../xaml-ui/src/lib/dialogs-and-flyouts/ContentDialog';
+import { Dialog } from '../../../xaml-ui/src/lib/dialogs-and-flyouts/Dialog';
 import { GridModule } from "../../../xaml-ui/src/lib/layout/Grid";
+import { ToggleButtonComponent } from "../../../xaml-ui/src/lib/basic-input/ToggleButton";
+
+@Component({
+  template: `<ng-template #template>
+    <DialogPresenter>
+      <div Header>Title</div>
+      <div>This is a text dialog.</div>
+      <div Footer>Footer.</div>
+    </DialogPresenter>
+  </ng-template>`,
+  imports: [DialogPresenter]
+})
+export class CustomDialog extends Dialog {
+  constructor() {
+    super();
+    this.IsBackdropDismissEnabled = true;
+  }
+}
 
 @Component({
   selector: 'app-root',
-  imports: [XamlRootComponent, StackPanelComponent, ButtonComponent, FlyoutComponent, ScrollViewerComponent, SliderComponent, TextBoxComponent, TextBlockComponent, ListViewComponent, ComboBoxComponent, MenuFlyoutComponent, MenuFlyoutItemComponent, ContextFlyoutDirective, AppBarButtonComponent, CommandBarComponent, NumberBoxComponent, RepeatButtonComponent, ColorPickerComponent, RadioButtonGroupComponent, FlyoutComponent, ContextFlyoutDirective, RadioToggleButtonComponent, GridModule, ItemFlyoutDirective],
+  imports: [XamlRootComponent, StackPanelComponent, ButtonComponent, FlyoutComponent, ScrollViewerComponent, SliderComponent, TextBoxComponent, TextBlockComponent, ListViewComponent, ComboBoxComponent, MenuFlyoutComponent, MenuFlyoutItemComponent, ContextFlyoutDirective, AppBarButtonComponent, CommandBarComponent, NumberBoxComponent, GridModule, RepeatButtonComponent, ColorPickerComponent, RadioButtonGroupComponent, FlyoutComponent, ContextFlyoutDirective, RadioToggleButtonComponent, ToggleButtonComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'xaml-sandbox';
+
+  constructor(private _viewContainerRef: ViewContainerRef) {
+
+  }
 
   onValueChange(value: any) {
     console.log(value);
@@ -40,5 +65,23 @@ export class AppComponent {
 
   onColorSelected(value: Color) {
     console.log(colorToString(value));
+  }
+
+  async onDialogClick() {
+    let dialog = Dialog.Create(ContentDialog, this._viewContainerRef);
+    dialog.Title = "Something";
+    dialog.Content = "Hello world!";
+    dialog.PrimaryButtonText = "OK";
+    dialog.SecondaryButtonText = "Cancel";
+    dialog.DefaultButton = ContentDialogButton.Primary;
+
+    let result = await dialog.ShowAsync();
+    console.log(`Dialog result: ${result}`);
+  }
+
+  async onCustomDialogClick() {
+    let dialog = Dialog.Create(CustomDialog, this._viewContainerRef);
+
+    await dialog.ShowAsync();
   }
 }

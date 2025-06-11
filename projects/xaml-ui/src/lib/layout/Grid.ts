@@ -14,13 +14,15 @@ import { PanelComponent } from "./Panel";
 export class GridComponent extends PanelComponent {
   @Input() @HostBinding('style.grid-template-columns') ColumnDefinitions?: string;
   @Input() @HostBinding('style.grid-template-rows') RowDefinitions?: string;
+  @Input() @HostBinding('style.grid-auto-columns') AutoColumnDefinition?: string;
+  @Input() @HostBinding('style.grid-auto-rows') AutoRowDefinition?: string;
   @Input() @HostBinding('style.column-gap') ColumnSpacing?: string;
   @Input() @HostBinding('style.row-gap') RowSpacing?: string;
   @Input() Orientation: Orientation = 'Horizontal';
 
   @HostBinding('style.grid-auto-flow')
   private get gridAutoFlow() {
-    return this.Orientation == 'Horizontal' ? 'row' : 'column';
+    return this.Orientation === 'Horizontal' ? 'column' : 'row';
   }
 }
 
