@@ -1,8 +1,10 @@
 <XamlRoot>
   <ScrollViewer>
     <StackPanel>
-      <Button (Click)="onDialogClick()">Open dialog</Button>
-      <Button (Click)="onCustomDialogClick()">Open custom dialog</Button>
+      <Grid>
+        <Button (Click)="onDialogClick()">Open dialog</Button>
+        <Button (Click)="onCustomDialogClick()">Open custom dialog</Button>
+      </Grid>
       <ToggleButton>test A</ToggleButton>
       <Slider [StepFrequency]="0.01" [Value]="0.5" />
       <RadioButtonGroup (ValueChange)="onValueChange($event)">
