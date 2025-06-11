@@ -10,7 +10,7 @@ import { Component, ElementRef, Injector } from "@angular/core";
 })
 export class ItemContainerComponent {
   constructor(
-    public Element : ElementRef,
+    public Element: ElementRef,
     public Injector: Injector
   ) {
 

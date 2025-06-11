@@ -1,8 +1,6 @@
-import { AfterContentInit, AfterViewInit, Component, Directive, Input, ViewContainerRef } from "@angular/core";
+import { Component } from "@angular/core";
 import { FlyoutBaseComponent, PopupTemplate } from "../primitives/FlyoutBase";
-import { FlyoutPlacementMode } from "../Common";
 import { FlyoutPresenter, FlyoutPresenterAnimation } from "../primitives/FlyoutPresenter";
-import { ConnectedPosition } from "@angular/cdk/overlay";
 
 @Component({
   selector: 'Flyout',

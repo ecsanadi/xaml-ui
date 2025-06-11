@@ -40,7 +40,4 @@ import { ItemContainerComponent } from "../primitives/ItemContainer";
   styleUrl: 'ListView.scss'
 })
 export class ListViewComponent extends SelectorComponent {
-  constructor(protected Injector : Injector) {
-    super()
-  }
 }
