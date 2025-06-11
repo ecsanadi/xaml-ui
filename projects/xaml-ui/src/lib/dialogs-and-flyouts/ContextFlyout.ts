@@ -1,32 +1,32 @@
 import { AfterViewInit, Directive, ElementRef, HostBinding, ViewContainerRef } from "@angular/core";
 import { FlyoutComponent } from "./Flyout";
 import { MenuFlyoutComponent } from "../menus-and-toolbars/MenuFlyout";
+import { ItemContainerComponent } from "../primitives/ItemContainer";
 
-@Directive({
-  selector: '[ContextFlyout]'
-})
-export class ContextFlyoutDirective implements AfterViewInit {
+@Directive()
+export abstract class FlyoutDirective implements AfterViewInit {
 
   private _flyout?: FlyoutComponent;
 
   constructor(
-    private _hostComponent: ElementRef,
     private _viewContainer: ViewContainerRef
-  ) {
- 
-  }
+  ) { }
+
+  protected abstract get HostElement(): HTMLElement | null;
 
   ngAfterViewInit(): void {
-    this._flyout = this._viewContainer.injector.get(FlyoutComponent, null) ||
-      this._viewContainer.injector.get(MenuFlyoutComponent, null) as FlyoutComponent;
+    for (let type of [FlyoutComponent, MenuFlyoutComponent]) {
+      this._flyout = this._viewContainer.injector.get(type, null, { self: true }) as FlyoutComponent;
+      if (this._flyout) break;
+    }
 
     if (this._flyout) {
       this._flyout.Placement = 'BottomEdgeAlignedLeft';
     }
 
-    let parentElement = (this._hostComponent.nativeElement as HTMLElement).parentElement;
-    if (parentElement) {
-      parentElement.oncontextmenu = p => this.onContextMenu(p);
+    let hostElement = this.HostElement;
+    if (hostElement) {
+      hostElement.oncontextmenu = p => this.onContextMenu(p);
     }
   }
 
@@ -43,5 +43,38 @@ export class ContextFlyoutDirective implements AfterViewInit {
 
     event.preventDefault();
     event.stopPropagation();
+  }
+}
+
+@Directive({
+  selector: '[ContextFlyout]'
+})
+export class ContextFlyoutDirective extends FlyoutDirective {
+  constructor(
+    private _hostComponent: ElementRef,
+    viewContainer: ViewContainerRef
+  ) {
+    super(viewContainer);
+  }
+
+  protected override get HostElement() {
+    return (this._hostComponent.nativeElement as HTMLElement).parentElement;
+  }
+}
+
+@Directive({
+  selector: '[ItemFlyout]'
+})
+export class ItemFlyoutDirective extends FlyoutDirective {
+
+  constructor(
+    private _hostComponent: ItemContainerComponent,
+    viewContainer: ViewContainerRef
+  ) {
+    super(viewContainer);
+  }
+
+  protected override get HostElement() {
+    return this._hostComponent.Element.nativeElement as HTMLElement;
   }
 }

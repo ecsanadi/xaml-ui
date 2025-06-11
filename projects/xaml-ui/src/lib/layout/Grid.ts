@@ -5,7 +5,7 @@ import { PanelComponent } from "./Panel";
 @Component({
   selector: 'Grid',
   template: `<ng-content/>`,
-  styles: `:host { 
+  styles: `:host {
     display: grid;
     position: relative;
   }`,
@@ -18,7 +18,7 @@ export class GridComponent extends PanelComponent {
   @Input() @HostBinding('style.grid-auto-rows') AutoRowDefinition?: string;
   @Input() @HostBinding('style.column-gap') ColumnSpacing?: string;
   @Input() @HostBinding('style.row-gap') RowSpacing?: string;
-  @Input() Orientation: Orientation = 'Horizontal';
+  @Input() Orientation: Orientation = 'Vertical';
 
   @HostBinding('style.grid-auto-flow')
   private get gridAutoFlow() {

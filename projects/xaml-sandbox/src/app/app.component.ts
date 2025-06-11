@@ -3,25 +3,16 @@ import { RadioToggleButtonComponent, XamlRootComponent } from '../../../xaml-ui/
 import { StackPanelComponent } from "../../../xaml-ui/src/lib/layout/StackPanel";
 import { ButtonComponent } from "../../../xaml-ui/src/lib/basic-input/Button";
 import { FlyoutComponent } from "../../../xaml-ui/src/lib/dialogs-and-flyouts/Flyout";
-import { ListBoxComponent } from "../../../xaml-ui/src/lib/collections/ListBox";
 import { ScrollViewerComponent } from "../../../xaml-ui/src/lib/scrolling/ScrollViewer";
-import { ScrollBarComponent } from "../../../xaml-ui/src/lib/scrolling/ScrollBar";
-import { CheckBoxComponent } from "../../../xaml-ui/src/lib/basic-input/CheckBox";
-import { RadioButtonComponent, RadioButtonGroupComponent } from "../../../xaml-ui/src/lib/basic-input/RadioButton";
+import { RadioButtonGroupComponent } from "../../../xaml-ui/src/lib/basic-input/RadioButton";
 import { SliderComponent } from "../../../xaml-ui/src/lib/basic-input/Slider";
-import { ToggleSwitchComponent } from "../../../xaml-ui/src/lib/basic-input/ToggleSwitch";
 import { TextBoxComponent } from "../../../xaml-ui/src/lib/text/TextBox";
 import { TextBlockComponent } from "../../../xaml-ui/src/lib/text/TextBlock";
 import { ListViewComponent } from "../../../xaml-ui/src/lib/collections/ListView";
 import { ComboBoxComponent } from "../../../xaml-ui/src/lib/basic-input/ComboBox";
-import { DropDownButtonComponent } from "../../../xaml-ui/src/lib/basic-input/DropDownButton";
 import { MenuFlyoutComponent } from "../../../xaml-ui/src/lib/menus-and-toolbars/MenuFlyout";
 import { MenuFlyoutItemComponent } from "../../../xaml-ui/src/lib/menus-and-toolbars/MenuFlyoutItem";
-import { MenuFlyoutSeparator } from "../../../xaml-ui/src/lib/menus-and-toolbars/MenuFlyoutSeparator";
-import { ContextFlyoutDirective } from '../../../xaml-ui/src/lib/dialogs-and-flyouts/ContextFlyout';
-import { ToggleButtonComponent } from "../../../xaml-ui/src/lib/basic-input/ToggleButton";
-import { SplitButtonComponent } from "../../../xaml-ui/src/lib/basic-input/SplitButton";
-import { ImageComponent } from "../../../xaml-ui/src/lib/media/Image";
+import { ContextFlyoutDirective, ItemFlyoutDirective } from '../../../xaml-ui/src/lib/dialogs-and-flyouts/ContextFlyout';
 import { AppBarButtonComponent } from "../../../xaml-ui/src/lib/menus-and-toolbars/AppBarButton";
 import { CommandBarComponent } from "../../../xaml-ui/src/lib/menus-and-toolbars/CommandBar";
 import { NumberBoxComponent } from "../../../xaml-ui/src/lib/text/NumberBox";
@@ -31,6 +22,8 @@ import { Color, colorToString } from '../../../xaml-ui/src/lib/Color';
 import { DialogPresenter } from "../../../xaml-ui/src/lib/primitives/DialogPresenter";
 import { ContentDialog, ContentDialogButton } from '../../../xaml-ui/src/lib/dialogs-and-flyouts/ContentDialog';
 import { Dialog } from '../../../xaml-ui/src/lib/dialogs-and-flyouts/Dialog';
+import { GridModule } from "../../../xaml-ui/src/lib/layout/Grid";
+import { ToggleButtonComponent } from "../../../xaml-ui/src/lib/basic-input/ToggleButton";
 
 @Component({
   template: `<ng-template #template>
@@ -51,7 +44,7 @@ export class CustomDialog extends Dialog {
 
 @Component({
   selector: 'app-root',
-  imports: [XamlRootComponent, StackPanelComponent, ButtonComponent, FlyoutComponent, ListBoxComponent, ScrollViewerComponent, ScrollBarComponent, CheckBoxComponent, RadioButtonComponent, SliderComponent, ToggleSwitchComponent, TextBoxComponent, TextBlockComponent, ListViewComponent, ComboBoxComponent, DropDownButtonComponent, MenuFlyoutComponent, MenuFlyoutItemComponent, MenuFlyoutSeparator, ContextFlyoutDirective, ToggleButtonComponent, SplitButtonComponent, ImageComponent, AppBarButtonComponent, CommandBarComponent, NumberBoxComponent, RepeatButtonComponent, ColorPickerComponent, RadioButtonGroupComponent, FlyoutComponent, ContextFlyoutDirective, RadioToggleButtonComponent, DialogPresenter],
+  imports: [XamlRootComponent, StackPanelComponent, ButtonComponent, FlyoutComponent, ScrollViewerComponent, SliderComponent, TextBoxComponent, TextBlockComponent, ListViewComponent, ComboBoxComponent, MenuFlyoutComponent, MenuFlyoutItemComponent, ContextFlyoutDirective, AppBarButtonComponent, CommandBarComponent, NumberBoxComponent, GridModule, RepeatButtonComponent, ColorPickerComponent, RadioButtonGroupComponent, FlyoutComponent, ContextFlyoutDirective, RadioToggleButtonComponent, ToggleButtonComponent, ItemFlyoutDirective],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

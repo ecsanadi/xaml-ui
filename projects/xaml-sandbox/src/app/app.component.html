@@ -1,8 +1,10 @@
 <XamlRoot>
   <ScrollViewer>
     <StackPanel>
-      <Button (Click)="onDialogClick()">Open dialog</Button>
-      <Button (Click)="onCustomDialogClick()">Open custom dialog</Button>
+      <Grid>
+        <Button (Click)="onDialogClick()">Open dialog</Button>
+        <Button (Click)="onCustomDialogClick()">Open custom dialog</Button>
+      </Grid>
       <ToggleButton>test A</ToggleButton>
       <Slider [StepFrequency]="0.01" [Value]="0.5" />
       <RadioButtonGroup (ValueChange)="onValueChange($event)">
@@ -11,12 +13,12 @@
         <RadioToggleButton>C
           <MenuFlyout ContextFlyout>
             <MenuFlyoutItem Text="test A" Icon="&#xE713;" />
-            <MenuFlyoutItem Text="test B" Icon="&#xE714;"/>
+            <MenuFlyoutItem Text="test B" Icon="&#xE714;" />
           </MenuFlyout>
         </RadioToggleButton>
         <RadioToggleButton>D</RadioToggleButton>
       </RadioButtonGroup>
-      <ComboBox [ItemSource]="[1,2,3,4,5,6]" [SelectedValue]="1" Margin="12px"/>
+      <ComboBox [ItemSource]="[1,2,3,4,5,6]" [SelectedValue]="1" Margin="12px" />
       <TextBox PlaceholderText="test" Margin="6px" />
       <Button Margin="6px 120px">Flyout
         <!-- <Flyout>
@@ -47,6 +49,23 @@
         <AppBarButton Icon="&#xE719;" Text="Shop" [IsEnabled]="false" />
       </CommandBar>
       <ColorPicker Width="200px" Height="200px" (ColorChange)="onColorSelected($event)" />
+
+      <Button> MenuFlyout from Flyout
+        <Flyout>
+          <ListView [ItemSource]="[1,2,3,4,5,6]" SelectedValuePath="1" MaxHeight="300px">
+            <ng-template let-item>
+              <Grid RowDefinitions="auto" ColumnDefinitions="auto 1fr" RowSpacing="6px" ColumnSpacing="12px">
+                <TextBlock [Text]="item" />
+                <TextBlock [Text]="item" Class="DetailTextBlockStyle" FontStyle="Italic" />
+              </Grid>
+              <MenuFlyout ItemFlyout>
+                <MenuFlyoutItem Text="test {{item}}" Icon="&#xE713;" />
+                <MenuFlyoutItem Text="test B" Icon="&#xE714;" />
+              </MenuFlyout>
+            </ng-template>
+          </ListView>
+        </Flyout>
+      </Button>
     </StackPanel>
   </ScrollViewer>
 </XamlRoot>
