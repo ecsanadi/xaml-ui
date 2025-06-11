@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewInit, Component, Input } from "@angular/core";
+import { AfterContentInit, AfterViewInit, Component, Directive, Input, ViewContainerRef } from "@angular/core";
 import { FlyoutBaseComponent, PopupTemplate } from "../primitives/FlyoutBase";
 import { FlyoutPlacementMode } from "../Common";
 import { FlyoutPresenter, FlyoutPresenterAnimation } from "../primitives/FlyoutPresenter";
@@ -40,3 +40,4 @@ export class FlyoutComponent extends FlyoutBaseComponent {
     }
   }
 }
+

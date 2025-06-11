@@ -4,8 +4,8 @@ import { HorizontalAlignment, toAlignment, toJustification, VerticalAlignment } 
 
 export const SelectorItemTemplate =
   `<ng-container *ngIf="ItemTemplate">
-    <ng-container *ngTemplateOutlet="ItemTemplate; context: { $implicit: item }"/>
-  </ng-container>
+    <ng-container [ngTemplateOutlet]="ItemTemplate" [ngTemplateOutletContext]="{ $implicit: item }" [ngTemplateOutletInjector]="container.Injector" />
+    </ng-container>
   <ng-container *ngIf="!ItemTemplate">{{ DisplayMemberPath ? item[DisplayMemberPath] : item }}</ng-container>`;
 
 @Component({
@@ -47,7 +47,7 @@ export abstract class SelectorComponent extends FrameworkElementComponent {
 
     this._itemSource = value;
     this._selectedIndex = newIndex;
-    
+
     if (oldIndex !== newIndex) this.SelectedIndexChange.emit(this.SelectedIndex);
     if (oldValue !== newValue) this.SelectedValueChange.emit(this.SelectedValue);
     if (oldItem !== newItem) this.SelectedItemChange.emit(this.SelectedItem);

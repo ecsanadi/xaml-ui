@@ -13,11 +13,7 @@ import { ItemContainerComponent } from "../primitives/ItemContainer";
     <StackPanel Padding="2px 0">
       <ItemContainer #container *ngFor="let item of ItemSource; index as index; trackBy: getValue" class="item" [ngClass]="{'selected': index == SelectedIndex}" (click)="onItemClick($event, index, item)" [id]="'xaml-selector-'+_id+'-item-'+index" @itemFading>
         <div class="item-selector"></div>
-        <div class="item-content" [ngStyle]="{'align-content': alignContent, 'justify-content': justifyContent}">
-        <ng-container *ngIf="ItemTemplate">
-          <ng-container [ngTemplateOutlet]="ItemTemplate" [ngTemplateOutletContext]="{ $implicit: item }" [ngTemplateOutletInjector]="container.Injector" />
-        </ng-container>
-        <ng-container *ngIf="!ItemTemplate">{{ DisplayMemberPath ? item[DisplayMemberPath] : item }}</ng-container></div>
+        <div class="item-content" [ngStyle]="{'align-content': alignContent, 'justify-content': justifyContent}">${SelectorItemTemplate}</div>
       </ItemContainer>
     </StackPanel>
   </ScrollViewer>`,

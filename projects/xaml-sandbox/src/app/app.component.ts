@@ -18,7 +18,7 @@ import { DropDownButtonComponent } from "../../../xaml-ui/src/lib/basic-input/Dr
 import { MenuFlyoutComponent } from "../../../xaml-ui/src/lib/menus-and-toolbars/MenuFlyout";
 import { MenuFlyoutItemComponent } from "../../../xaml-ui/src/lib/menus-and-toolbars/MenuFlyoutItem";
 import { MenuFlyoutSeparator } from "../../../xaml-ui/src/lib/menus-and-toolbars/MenuFlyoutSeparator";
-import { ContextFlyoutDirective } from '../../../xaml-ui/src/lib/dialogs-and-flyouts/ContextFlyout';
+import { ContextFlyoutDirective, ItemFlyoutDirective } from '../../../xaml-ui/src/lib/dialogs-and-flyouts/ContextFlyout';
 import { ToggleButtonComponent } from "../../../xaml-ui/src/lib/basic-input/ToggleButton";
 import { SplitButtonComponent } from "../../../xaml-ui/src/lib/basic-input/SplitButton";
 import { ImageComponent } from "../../../xaml-ui/src/lib/media/Image";
@@ -30,7 +30,6 @@ import { ColorPickerComponent } from "../../../xaml-ui/src/lib/basic-input/Color
 import { Color, colorToString } from '../../../xaml-ui/src/lib/Color';
 import { FontIconComponent } from "../../../xaml-ui/src/lib/icons/FontIcon";
 import { GridModule } from "../../../xaml-ui/src/lib/layout/Grid";
-import { ItemFlyoutDirective } from '../../../xaml-ui/src/lib/dialogs-and-flyouts/ItemFlyout';
 
 @Component({
   selector: 'app-root',
