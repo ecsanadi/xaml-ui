@@ -4,7 +4,7 @@ import { FlyoutBaseComponent } from "../primitives/FlyoutBase";
 
 @Component({
   selector: 'AppBarButton',
-  template: `<div class="icon">{{Icon}}</div><div class="text">{{Text}}</div><ng-content/>`,
+  template: `<div class="icon">{{Icon}}<ng-content select="[Icon]"/></div><div class="text">{{Text}}</div><ng-content/>`,
   styleUrl: 'AppBarButton.scss'
 })
 export class AppBarButtonComponent extends FrameworkElementComponent {

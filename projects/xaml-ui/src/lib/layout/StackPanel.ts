@@ -5,14 +5,14 @@ import { PanelComponent } from "./Panel";
 @Component({
   selector: 'StackPanel',
   template: `<ng-content/>`,
-  styles: `:host { 
+  styles: `:host {
     display: grid;
     position: relative;
   }`
 })
 export class StackPanelComponent extends PanelComponent {
   @Input() Orientation: Orientation = 'Vertical';
-  @Input() @HostBinding('style.gap') Spacing : number | string | undefined;
+  @Input() @HostBinding('style.gap') Spacing? : string;
 
   @HostBinding('style.grid-auto-flow') 
   private get gridAutoFlow() {
