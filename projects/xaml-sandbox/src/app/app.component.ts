@@ -24,6 +24,7 @@ import { ContentDialog, ContentDialogButton } from '../../../xaml-ui/src/lib/dia
 import { Dialog } from '../../../xaml-ui/src/lib/dialogs-and-flyouts/Dialog';
 import { GridModule } from "../../../xaml-ui/src/lib/layout/Grid";
 import { ToggleButtonComponent } from "../../../xaml-ui/src/lib/basic-input/ToggleButton";
+import { ToggleMenuFlyoutItemComponent } from '../../../xaml-ui/src/lib/menus-and-toolbars/ToggleMenuFlyoutItem';
 
 @Component({
   template: `<ng-template #template>
@@ -44,7 +45,7 @@ export class CustomDialog extends Dialog {
 
 @Component({
   selector: 'app-root',
-  imports: [XamlRootComponent, StackPanelComponent, ButtonComponent, FlyoutComponent, ScrollViewerComponent, SliderComponent, TextBoxComponent, TextBlockComponent, ListViewComponent, ComboBoxComponent, MenuFlyoutComponent, MenuFlyoutItemComponent, ContextFlyoutDirective, AppBarButtonComponent, CommandBarComponent, NumberBoxComponent, GridModule, RepeatButtonComponent, ColorPickerComponent, RadioButtonGroupComponent, FlyoutComponent, ContextFlyoutDirective, RadioToggleButtonComponent, ToggleButtonComponent, ItemFlyoutDirective],
+  imports: [XamlRootComponent, StackPanelComponent, ButtonComponent, FlyoutComponent, ScrollViewerComponent, SliderComponent, TextBoxComponent, TextBlockComponent, ListViewComponent, ComboBoxComponent, MenuFlyoutComponent, MenuFlyoutItemComponent, ContextFlyoutDirective, AppBarButtonComponent, CommandBarComponent, NumberBoxComponent, GridModule, RepeatButtonComponent, ColorPickerComponent, RadioButtonGroupComponent, FlyoutComponent, ContextFlyoutDirective, RadioToggleButtonComponent, ToggleButtonComponent, ToggleMenuFlyoutItemComponent, ItemFlyoutDirective],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
