@@ -14,6 +14,8 @@ export class FontIconComponent extends FrameworkElementComponent {
   @Input() @HostBinding('style.font-family') FontFamily?: string;
   @Input() @HostBinding('style.font-size') FontSize?: string;
   @Input() @HostBinding('style.font-style') FontStyle?: FontStyle;  
+  @Input() @HostBinding('style.color') Foreground?: string;
+  
   @Input() FontWeight: FontWeights = 'Normal';
   @Input() Glyph?: string;
   
