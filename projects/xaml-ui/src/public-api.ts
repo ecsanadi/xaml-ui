@@ -43,6 +43,7 @@ export * from './lib/menus-and-toolbars/AppBarButton';
 export * from './lib/menus-and-toolbars/CommandBar';
 export * from './lib/menus-and-toolbars/MenuFlyout';
 export * from './lib/menus-and-toolbars/MenuFlyoutItem';
+export * from './lib/menus-and-toolbars/ToggleMenuFlyoutItem';
 export * from './lib/menus-and-toolbars/MenuFlyoutItemBase';
 export * from './lib/menus-and-toolbars/MenuFlyoutSeparator';
 
