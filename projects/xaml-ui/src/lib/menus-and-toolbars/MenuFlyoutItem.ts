@@ -23,6 +23,7 @@ export class MenuFlyoutItemComponent extends MenuFlyoutItemBase {
 
   @HostListener('click', [])
   private onClick() {
+    if (!this.IsEnabled) return;
     this.Click.emit();
   }
 }
