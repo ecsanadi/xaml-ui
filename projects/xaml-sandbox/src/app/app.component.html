@@ -12,7 +12,9 @@
         <RadioToggleButton>B</RadioToggleButton>
         <RadioToggleButton>C
           <MenuFlyout ContextFlyout>
-            <MenuFlyoutItem Text="test A" Icon="&#xE713;" />
+            <MenuFlyoutItem Text="test A">
+              <FontIcon Icon Glyph="&#xE713;" Foreground="Red"/>
+            </MenuFlyoutItem>
             <MenuFlyoutItem Text="test B" Icon="&#xE714;" />
           </MenuFlyout>
         </RadioToggleButton>
@@ -45,7 +47,9 @@
       <RepeatButton (Click)="onClick()" Class="InlineButtonStyle">Click and hold</RepeatButton>
       <CommandBar VerticalAlignment="Top">
         <AppBarButton Icon="&#xE704;" Text="Wi-Fi" />
-        <AppBarButton Icon="&#xE708;" Text="Moon phase" />
+        <AppBarButton Text="Moon phase">
+          <FontIcon Icon Glyph="&#xE708;" Foreground="Cyan"/>
+        </AppBarButton>
         <AppBarButton Icon="&#xE719;" Text="Shop" [IsEnabled]="false" />
       </CommandBar>
       <ColorPicker Width="200px" Height="200px" (ColorChange)="onColorSelected($event)" />
