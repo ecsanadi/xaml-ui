@@ -26,6 +26,8 @@ import { GridModule } from "../../../xaml-ui/src/lib/layout/Grid";
 import { ToggleButtonComponent } from "../../../xaml-ui/src/lib/basic-input/ToggleButton";
 import { GridView } from '../../../xaml-ui/src/lib/collections/GridView';
 import { CommonModule } from '@angular/common';
+import { ToggleMenuFlyoutItemComponent } from '../../../xaml-ui/src/lib/menus-and-toolbars/ToggleMenuFlyoutItem';
+import { FontIconComponent } from "../../../xaml-ui/src/lib/icons/FontIcon";
 
 @Component({
   template: `<ng-template #template>
@@ -71,8 +73,10 @@ export class CustomDialog extends Dialog {
     ContextFlyoutDirective,
     RadioToggleButtonComponent,
     ToggleButtonComponent,
+    ToggleMenuFlyoutItemComponent, 
     ItemFlyoutDirective,
-    GridView
+    GridView,
+    FontIconComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

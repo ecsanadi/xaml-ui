@@ -4,6 +4,7 @@ import { GridModule } from "../layout/Grid";
 import { ButtonComponent } from "../basic-input/Button";
 import { CommonModule } from "@angular/common";
 import { Dialog } from "./Dialog";
+import { TextBlockComponent } from "../text/TextBlock";
 
 export enum ContentDialogResult {
   None,
@@ -23,7 +24,7 @@ export enum ContentDialogButton {
   template: `<ng-template #template>
     <DialogPresenter>
       <div Header>{{Title}}</div>
-      {{Content}}
+      <TextBlock TextWrapping="Wrap">{{Content}}</TextBlock>
       <ng-content/>
       <Grid RowDefinitions="auto" Orientation="Horizontal" ColumnSpacing="6px" AutoColumnDefinition="minmax(0, 1fr)" Footer>
         <Button *ngIf="PrimaryButtonText !== undefined" [IsEnabled]="IsPrimaryButtonEnabled" (Click)="onPrimaryButtonClicked()" [class.AccentButtonStyle]="isPrimaryButtonDefault">{{PrimaryButtonText}}</Button>
@@ -33,7 +34,7 @@ export enum ContentDialogButton {
     </DialogPresenter>
   </ng-template>`,
   styles: ``,
-  imports: [DialogPresenter, GridModule, ButtonComponent, CommonModule]
+  imports: [DialogPresenter, GridModule, ButtonComponent, CommonModule, TextBlockComponent]
 })
 export class ContentDialog extends Dialog {
   @Input() Title?: string;

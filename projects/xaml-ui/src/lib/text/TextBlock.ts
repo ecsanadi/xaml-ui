@@ -104,7 +104,7 @@ export class TextBlockComponent extends FrameworkElementComponent {
       case 'NoWrap':
         return 'nowrap';
       case 'Wrap':
-        return 'normal';
+        return 'pre-line';
     }
   }
 }
