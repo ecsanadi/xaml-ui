@@ -59,6 +59,7 @@ export * from './lib/scrolling/ScrollViewer';
 
 //Status and info
 export * from './lib/status-and-info/ToolTipService';
+export * from './lib/status-and-info/ProgressBar';
 
 //Text
 export * from './lib/text/NumberBox';
