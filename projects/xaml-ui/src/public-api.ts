@@ -60,6 +60,7 @@ export * from './lib/scrolling/ScrollViewer';
 //Status and info
 export * from './lib/status-and-info/ToolTipService';
 export * from './lib/status-and-info/ProgressBar';
+export * from './lib/status-and-info/ProgressRing';
 
 //Text
 export * from './lib/text/NumberBox';

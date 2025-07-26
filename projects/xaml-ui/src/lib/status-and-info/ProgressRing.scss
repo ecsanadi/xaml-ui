@@ -1,0 +1,27 @@
+:host {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+
+  &.indeterminate .progress-ring-indicator {
+    animation: progress-ring-spin 1s linear infinite;
+    stroke-dasharray: 20 100;
+    stroke-dashoffset: 0;
+    transform-origin: center;
+  }
+  
+  @keyframes progress-ring-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  } 
+}
+
+.progress-ring-svg {
+  transform: rotate(-90deg); /* Start progress at top */
+}
+
+.progress-ring-indicator {
+  stroke: var(--AccentFillColorDefault);
+  transition: stroke-dashoffset var(--ControlNormalAnimationDuration) cubic-bezier(0.4,0,0.2,1);
+  stroke-linecap: round;
+}
