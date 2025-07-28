@@ -1,4 +1,4 @@
-import { Component, HostBinding, input } from "@angular/core";
+import { Component, HostBinding, Input, input } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { ItemContainerComponent } from "../primitives/ItemContainer";
 import { SelectorComponent, SelectorItemTemplate } from "../primitives/Selector";
@@ -34,10 +34,13 @@ import { trigger, transition, animate, keyframes, style } from "@angular/animati
   styleUrl: 'GridView.scss'
 })
 export class GridView extends SelectorComponent {
-  ColumnCount = input.required<number>();
+  @Input({
+    required: true
+  })
+  ColumnCount: number = 1;
 
   @HostBinding('style.grid-template-columns')
   get Columns() {
-    return `repeat(${this.ColumnCount()}, ${100 / this.ColumnCount()}%)`;
+    return `repeat(${this.ColumnCount}, ${100 / this.ColumnCount}%)`;
   }
 }
