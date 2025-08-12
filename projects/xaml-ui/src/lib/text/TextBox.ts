@@ -6,8 +6,8 @@ import { CommonModule } from "@angular/common";
 @Component({
   selector: 'TextBox',
   imports: [CommonModule],
-  template: `<input #input *ngIf="TextWrapping === 'NoWrap'" type="text" [disabled]="!IsEnabled" [value]="Text" (input)="onInput($event)" (blur)="onBlur($event)" [placeholder]="PlaceholderText" [style]="{'text-align': TextAlignment}"/>
-  <textarea *ngIf="TextWrapping === 'Wrap'" [disabled]="!IsEnabled" [value]="Text" (change)="onInput($event)" (blur)="onBlur($event)" [placeholder]="PlaceholderText" [style]="{'text-align': TextAlignment}"></textarea>`,
+  template: `<input class="text-box" #input *ngIf="TextWrapping === 'NoWrap'" type="text" [disabled]="!IsEnabled" [value]="Text" (input)="onInput($event)" (blur)="onBlur($event)" [placeholder]="PlaceholderText" [style]="{'text-align': TextAlignment}"/>
+  <textarea class="text-box" #input *ngIf="TextWrapping === 'Wrap'" [disabled]="!IsEnabled" [value]="Text" (input)="onInput($event)" (blur)="onBlur($event)" [placeholder]="PlaceholderText" [style]="{'text-align': TextAlignment}"></textarea>`,
   styleUrl: 'TextBox.scss'
 })
 export class TextBoxComponent extends FrameworkElementComponent {

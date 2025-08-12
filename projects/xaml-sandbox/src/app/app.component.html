@@ -35,6 +35,8 @@
       <TextBox PlaceholderText="test" Margin="6px" />
       <TextBox PlaceholderText="property change" Margin="6px" UpdateTrigger="PropertyChanged" (TextChange)="onValueChange($event)" />
       <TextBox PlaceholderText="lost focus" Margin="6px" UpdateTrigger="LostFocus" (TextChange)="onValueChange($event)"/>
+      <TextBox PlaceholderText="property change" Margin="6px" UpdateTrigger="PropertyChanged" (TextChange)="onValueChange($event)" TextWrapping="Wrap" />
+      <TextBox PlaceholderText="lost focus" Margin="6px" UpdateTrigger="LostFocus" (TextChange)="onValueChange($event)" TextWrapping="Wrap"/>
       <Button Margin="6px 120px">Flyout
         <!-- <Flyout>
         test
