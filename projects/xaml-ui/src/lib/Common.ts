@@ -13,6 +13,7 @@ export type TextTrimming = 'None' | 'CharacterEllipsis' | 'Clip';
 export type TextWrapping = 'NoWrap' | 'Wrap';
 export type FlyoutPlacementMode = 'Top' | 'Bottom' | 'Left' | 'Right' | 'TopEdgeAlignedLeft' | 'TopEdgeAlignedRight' | 'BottomEdgeAlignedLeft' | 'BottomEdgeAlignedRight' | 'LeftEdgeAlignedTop' | 'LeftEdgeAlignedBottom' | 'RightEdgeAlignedTop' | 'RightEdgeAlignedBottom' | 'Cover';
 export type Stretch = 'None' | 'Fill' | 'Uniform' | 'UniformToFill';
+export type UpdateTrigger = 'PropertyChanged' | 'LostFocus';
 
 export function toJustification(value: HorizontalAlignment) {
   return value.toLowerCase();
