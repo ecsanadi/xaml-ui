@@ -11,7 +11,10 @@ import { trigger, transition, animate, keyframes, style } from "@angular/animati
   imports: [CommonModule, ItemContainerComponent, ScrollViewerComponent, StackPanelComponent],
   template: `
   <ScrollViewer>
-    <StackPanel Padding="2px 0">
+    <StackPanel Padding="2px 0" [ngStyle]="{
+        'display': 'grid',
+        'grid-template-columns': 'repeat(' + ColumnCount + ', ' + (100 / ColumnCount) + '%)'
+      }">
       <ItemContainer #container *ngFor="let item of ItemSource; index as index; trackBy: getValue" class="item" (click)="onItemClick($event, index, item)" [id]="'xaml-selector-'+_id+'-item-'+index" @itemFading>
         <div class="item-content" [ngStyle]="{'align-content': alignContent, 'justify-content': justifyContent}">${SelectorItemTemplate}</div>
         <div class="selection-indicator" *ngIf="index == SelectedIndex"></div>
@@ -44,10 +47,6 @@ export class GridView extends SelectorComponent {
   @Input({
     required: true
   })
-  ColumnCount: number = 1;
 
-  @HostBinding('style.grid-template-columns')
-  get Columns() {
-    return `repeat(${this.ColumnCount}, ${100 / this.ColumnCount}%)`;
-  }
+  ColumnCount: number = 1;
 }
