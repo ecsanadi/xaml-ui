@@ -21,7 +21,7 @@ import { FrameworkElementComponent } from "../FrameworkElement";
   styleUrl: 'PersonPicture.scss',
   imports: [CommonModule]
 })
-export class PersonPictureComponent extends FrameworkElementComponent{
+export class PersonPictureComponent extends FrameworkElementComponent {
   @Input() @HostBinding('style.color') Foreground?: string;
 
   @Input() DisplayName?: string;
