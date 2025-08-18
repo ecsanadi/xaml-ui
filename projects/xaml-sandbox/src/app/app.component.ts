@@ -30,6 +30,8 @@ import { ProgressBarComponent } from '../../../xaml-ui/src/public-api';
 import { ProgressRingComponent } from '../../../xaml-ui/src/public-api';
 import { GridView } from '../../../xaml-ui/src/lib/collections/GridView';
 import { CommonModule } from '@angular/common';
+import { PersonPictureComponent } from '../../../xaml-ui/src/lib/media/PersonPicture';
+import { EllipseComponent } from '../../../xaml-ui/src/lib/media/Ellipse';
 
 @Component({
   template: `<ng-template #template>
@@ -50,7 +52,7 @@ export class CustomDialog extends Dialog {
 
 @Component({
   selector: 'app-root',
-  imports: [AppBarButtonComponent, ButtonComponent, ColorPickerComponent, ComboBoxComponent, CommandBarComponent, ContextFlyoutDirective, FlyoutComponent, FontIconComponent, GridModule, GridView, ItemFlyoutDirective, ListViewComponent, MenuFlyoutComponent, MenuFlyoutItemComponent, NumberBoxComponent, ProgressBarComponent, ProgressRingComponent, RadioToggleButtonComponent, RadioButtonGroupComponent, RepeatButtonComponent, ScrollViewerComponent, SliderComponent, StackPanelComponent, TextBlockComponent, TextBoxComponent, ToggleButtonComponent, ToggleMenuFlyoutItemComponent, XamlRootComponent],
+  imports: [AppBarButtonComponent, ButtonComponent, ColorPickerComponent, ComboBoxComponent, CommandBarComponent, ContextFlyoutDirective, EllipseComponent, FlyoutComponent, FontIconComponent, GridModule, GridView, ItemFlyoutDirective, ListViewComponent, MenuFlyoutComponent, MenuFlyoutItemComponent, NumberBoxComponent, PersonPictureComponent, ProgressBarComponent, ProgressRingComponent, RadioToggleButtonComponent, RadioButtonGroupComponent, RepeatButtonComponent, ScrollViewerComponent, SliderComponent, StackPanelComponent, TextBlockComponent, TextBoxComponent, ToggleButtonComponent, ToggleMenuFlyoutItemComponent, XamlRootComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
