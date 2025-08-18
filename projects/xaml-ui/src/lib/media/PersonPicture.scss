@@ -1,0 +1,49 @@
+:host {
+  display: inline-block;
+  position: relative;
+  width: 48px;
+  height: 48px;
+}
+
+.person-picture {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: var(--AccentFillColorDefault);
+
+  .avatar {
+    width: 100%;
+    height: 100%;
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+    .initials {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      font-size: 1rem;
+      //color: var(--ForegroundColorBase); 
+    }
+  }
+
+  .badge {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: var(--AccentFillColorSecondary);
+    border-radius: 50%;
+    padding: 2px;
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    img { width: 1em; height: 1em; }
+    .glyph { font-family: 'Segoe MDL2 Assets'; }
+  }
+}
