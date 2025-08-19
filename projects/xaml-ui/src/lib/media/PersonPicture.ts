@@ -23,6 +23,7 @@ import { FrameworkElementComponent } from "../FrameworkElement";
 })
 export class PersonPictureComponent extends FrameworkElementComponent {
   @Input() @HostBinding('style.color') Foreground?: string;
+  @Input() @HostBinding('style.background-color') Background: string = 'transparent';
 
   @Input() DisplayName?: string;
   @Input() ProfilePicture?: string;

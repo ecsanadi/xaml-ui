@@ -37,7 +37,9 @@ export * from './lib/layout/Panel';
 export * from './lib/layout/StackPanel';
 
 //Media
+export * from './lib/media/Ellipse';
 export * from './lib/media/Image';
+export * from './lib/media/PersonPicture';
 
 //Menus and toolbars
 export * from './lib/menus-and-toolbars/AppBarButton';
