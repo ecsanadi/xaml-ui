@@ -100,7 +100,7 @@
     <GridView [ItemSource]="['AB', 'BC', 'CD', 'EF', 'GH', 'HI', 'IJ', 'JK', 'KL', 'LM', 'MN', 'NO', 'OP']"
       [ColumnCount]="2"  HideSelection>
       <ng-template let-item>
-        <Grid ColumnDefinitions="auto 1fr">
+        <Grid ColumnDefinitions="auto 1fr" Opacity="0.5">
           <Ellipse Grid-Column="0" Width="50px" Height="50px" Fill="lightblue" Stroke="darkblue"
             [StrokeThickness]="3" />
           <TextBlock Grid-Column="1" [Text]="item" VerticalAlignment="Center"/>
