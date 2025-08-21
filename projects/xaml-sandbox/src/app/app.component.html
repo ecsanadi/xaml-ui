@@ -7,6 +7,7 @@
       </Grid>
       <ToggleButton>test A</ToggleButton>
       <Slider [StepFrequency]="0.01" [Value]="0.5" />
+      <Slider Height="200px" Orientation="Vertical" HorizontalAlignment="Center" [Value]="0.5"/>
       <ProgressBar />
       <ProgressBar [Value]="0.3" />
       <ProgressBar [Value]="0.7" />
@@ -34,24 +35,18 @@
       <ComboBox [ItemSource]="[1,2,3,4,5,6]" [SelectedValue]="1" Margin="12px" />
       <TextBox PlaceholderText="test" Margin="6px" />
       <Button Margin="6px 120px">Flyout
-        <!-- <Flyout>
-        test
-      </Flyout> -->
+        <!-- <Flyout>  test </Flyout> -->
         <Flyout Placement="Left">
           Test
         </Flyout>
       </Button>
       <Button Margin="6px 120px">Flyout2
-        <!-- <Flyout>
-        test
-      </Flyout> -->
+        <!-- <Flyout> test </Flyout> -->
         <Flyout Placement="Left">
           Test2
         </Flyout>
       </Button>
-      <!-- <Popup2>
-      this is a {{title}} popup!
-    </Popup2> -->
+      <!-- <Popup2> this is a {{title}} popup! </Popup2> -->
       <Button Class="InlineButtonStyle" Margin="3px">Click here</Button>
       <NumberBox [Minimum]="-100" [Maximum]="100" Margin="48px" Unit="kg" [IsPlaceholderEditable]="true"
         PlaceholderText="55" />
@@ -89,7 +84,6 @@
       <ToggleMenuFlyoutItem Text="test B" [IsChecked]="true" />
     </MenuFlyout>
   </Button>
-  <PersonPicture Initials="XU" Width="64px" Height="64px" Foreground="Red" />
   <PersonPicture Initials="XU" Width="64px" Height="64px" Foreground="Red" Background='var(--AccentFillColorDefault)' />
   <PersonPicture ProfilePicture='https://cdn.pixabay.com/photo/2024/09/28/08/22/ai-generated-9080579_640.jpg' />
   <Ellipse Width="50px" Height="50px" Fill="lightblue" Stroke="darkblue" [StrokeThickness]="3" />
@@ -103,4 +97,14 @@
       <img src="{{ item }}" />
     </ng-template>
   </GridView>
+    <GridView [ItemSource]="['AB', 'BC', 'CD', 'EF', 'GH', 'HI', 'IJ', 'JK', 'KL', 'LM', 'MN', 'NO', 'OP']"
+      [ColumnCount]="2"  HideSelection>
+      <ng-template let-item>
+        <Grid ColumnDefinitions="auto 1fr">
+          <Ellipse Grid-Column="0" Width="50px" Height="50px" Fill="lightblue" Stroke="darkblue"
+            [StrokeThickness]="3" />
+          <TextBlock Grid-Column="1" [Text]="item" VerticalAlignment="Center"/>
+        </Grid>
+      </ng-template>
+    </GridView>
 </XamlRoot>

@@ -1,10 +1,16 @@
-import { Component, HostBinding, Input, input } from "@angular/core";
+import { Component, Input, Directive, Optional, Self } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { ItemContainerComponent } from "../primitives/ItemContainer";
 import { SelectorComponent, SelectorItemTemplate } from "../primitives/Selector";
 import { ScrollViewerComponent } from "../scrolling/ScrollViewer";
 import { StackPanelComponent } from "../layout/StackPanel";
 import { trigger, transition, animate, keyframes, style } from "@angular/animations";
+
+@Directive({
+  selector: '[HideSelection]',
+  standalone: true
+})
+export class HideSelectionDirective {}
 
 @Component({
   selector: 'GridView',
@@ -17,7 +23,7 @@ import { trigger, transition, animate, keyframes, style } from "@angular/animati
       }">
       <ItemContainer #container *ngFor="let item of ItemSource; index as index; trackBy: getValue" class="item" (click)="onItemClick($event, index, item)" [id]="'xaml-selector-'+_id+'-item-'+index" @itemFading>
         <div class="item-content" [ngStyle]="{'align-content': alignContent, 'justify-content': justifyContent}">${SelectorItemTemplate}</div>
-        <div class="selection-indicator" *ngIf="index == SelectedIndex"></div>
+        <div class="selection-indicator" *ngIf="!hideSelection && index === SelectedIndex"></div>
       </ItemContainer>
     <StackPanel/>
   <ScrollViewer/>`,
@@ -43,10 +49,11 @@ import { trigger, transition, animate, keyframes, style } from "@angular/animati
   ],
   styleUrl: 'GridView.scss'
 })
-export class GridView extends SelectorComponent {
-  @Input({
-    required: true
-  })
 
-  ColumnCount: number = 1;
+export class GridView extends SelectorComponent {
+  @Input({ required: true }) ColumnCount: number = 1;
+  constructor(@Optional() @Self() public hideSelection?: HideSelectionDirective) {
+    super();
+  }
 }
+

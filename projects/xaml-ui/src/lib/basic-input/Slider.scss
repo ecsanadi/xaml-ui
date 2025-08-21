@@ -1,5 +1,9 @@
 @use '../Common.scss' as *;
 
+$thumb-size: 16px;
+$track-thickness: 4px;
+$thumb-offset: calc(($thumb-size - $track-thickness) / 2);
+
 :host {
   display: grid;
 }
@@ -15,21 +19,21 @@ input {
   outline: none;
 
   &.horizontal {
-    height: 4px;
+    height: $track-thickness;
     margin: 7px 0px;
   }
 
   &.vertical {
-    width: 4px;
+    width: $track-thickness;
     margin: 0px 7px;
 
     writing-mode: vertical-lr;
-    direction: rtl;
+    direction: rtl;          
     vertical-align: middle;
   }
 
   &::-webkit-slider-runnable-track {
-    height: 4px;
+    height: $track-thickness;
     border-radius: 2px;
     background:
       linear-gradient(
@@ -40,7 +44,7 @@ input {
   }
 
   &.vertical::-webkit-slider-runnable-track {
-    width: 4px;
+    width: $track-thickness;
     background:
       linear-gradient(
         to top,
@@ -50,16 +54,19 @@ input {
   }
 
   &::-moz-range-track {
-    height: 4px;
+    height: $track-thickness;
     border-radius: 2px;
     background: var(--ControlStrongFillColorDefault);
   }
 
   &::-moz-range-progress {
-    height: 4px;
+    height: $track-thickness;
     border-radius: 2px;
     background: var(--AccentFillColorDefault);
   }
+
+  &.vertical::-moz-range-track    { width: $track-thickness; }
+  &.vertical::-moz-range-progress { width: $track-thickness; }
 
   @mixin slider-thumb {
     -webkit-appearance: none;
@@ -67,8 +74,8 @@ input {
 
     box-sizing: border-box;
     border-radius: 50%;
-    width: 16px;
-    height: 16px;
+    width: $thumb-size;
+    height: $thumb-size;
     border-style: solid;
     border-width: 4px;
     box-shadow: none;
@@ -81,11 +88,22 @@ input {
 
   &::-webkit-slider-thumb {
     @include slider-thumb;
-    margin-top: calc((16px - 4px) / -2);
+    margin-top: calc(#{$thumb-size} - #{$track-thickness});
+    margin-top: calc((#{$thumb-size} - #{$track-thickness}) / -2); 
+  }
+
+  &.vertical::-webkit-slider-thumb {
+    @include slider-thumb;
+    margin-top: 0; 
+    margin-left: calc((#{$thumb-size} - #{$track-thickness}) / -2);
   }
 
   &::-moz-range-thumb {
     @include slider-thumb;
+  }
+
+  &.vertical::-moz-range-thumb {
+    transform: translateX(-#{$thumb-offset});
   }
 
   @mixin enabled-thumb {
@@ -100,13 +118,8 @@ input {
     }
   }
 
-  &:not(:disabled)::-webkit-slider-thumb {
-    @include enabled-thumb;
-  }
-
-  &:not(:disabled)::-moz-range-thumb {
-    @include enabled-thumb;
-  }
+  &:not(:disabled)::-webkit-slider-thumb { @include enabled-thumb; }
+  &:not(:disabled)::-moz-range-thumb     { @include enabled-thumb; }
 
   &:disabled {
     &::-webkit-slider-runnable-track {
@@ -118,8 +131,8 @@ input {
         );
     }
 
-    &::-moz-range-track   { background: var(--ControlStrongFillColorDisabled); }
-    &::-moz-range-progress{ background: var(--AccentFillColorDisabled); }
+    &::-moz-range-track    { background: var(--ControlStrongFillColorDisabled); }
+    &::-moz-range-progress { background: var(--AccentFillColorDisabled); }
 
     @mixin disabled-thumb {
       border-width: 2px;
