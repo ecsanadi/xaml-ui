@@ -7,7 +7,7 @@
       </Grid>
       <ToggleButton>test A</ToggleButton>
       <Slider [StepFrequency]="0.01" [Value]="0.5" />
-      <Slider Height="200px" Orientation="Vertical" HorizontalAlignment="Center" [Value]="0.5"/>
+      <Slider Height="200px" Orientation="Vertical" HorizontalAlignment="Center" [Value]="0.5" />
       <ProgressBar />
       <ProgressBar [Value]="0.3" />
       <ProgressBar [Value]="0.7" />
@@ -32,6 +32,11 @@
         </RadioToggleButton>
         <RadioToggleButton>D</RadioToggleButton>
       </RadioButtonGroup>
+      <RadioButtonGroup>
+        <RadioButton>Objects</RadioButton>
+        <RadioButton>Materials</RadioButton>
+        <RadioButton>Albedo</RadioButton>
+      </RadioButtonGroup>
       <ComboBox [ItemSource]="[1,2,3,4,5,6]" [SelectedValue]="1" Margin="12px" />
       <TextBox PlaceholderText="test" Margin="6px" />
       <Button Margin="6px 120px">Flyout
@@ -50,6 +55,8 @@
       <Button Class="InlineButtonStyle" Margin="3px">Click here</Button>
       <NumberBox [Minimum]="-100" [Maximum]="100" Margin="48px" Unit="kg" [IsPlaceholderEditable]="true"
         PlaceholderText="55" />
+      <NumberBox [Minimum]="0" Margin="48px" Unit="kg" [IsPlaceholderEditable]="true" PlaceholderText="66"
+        [FitToContent]="true" />
       <RepeatButton (Click)="onClick()" Class="InlineButtonStyle">Click and hold</RepeatButton>
       <CommandBar VerticalAlignment="Top">
         <AppBarButton Icon="&#xE704;" Text="Wi-Fi" />
@@ -97,14 +104,16 @@
       <img src="{{ item }}" />
     </ng-template>
   </GridView>
-    <GridView [ItemSource]="['AB', 'BC', 'CD', 'EF', 'GH', 'HI', 'IJ', 'JK', 'KL', 'LM', 'MN', 'NO', 'OP']"
-      [ColumnCount]="2"  HideSelection>
-      <ng-template let-item>
+  <GridView [ItemSource]="['AB', 'BC', 'CD', 'EF', 'GH', 'HI', 'IJ', 'JK', 'KL', 'LM', 'MN', 'NO', 'OP']"
+    [ColumnCount]="2" HideSelection>
+    <ng-template let-item>
+      <StackPanel Orientation="Horizontal">
         <Grid ColumnDefinitions="auto 1fr" Opacity="0.5">
           <Ellipse Grid-Column="0" Width="50px" Height="50px" Fill="lightblue" Stroke="darkblue"
             [StrokeThickness]="3" />
-          <TextBlock Grid-Column="1" [Text]="item" VerticalAlignment="Center"/>
+          <TextBlock Grid-Column="1" [Text]="item" VerticalAlignment="Center" />
         </Grid>
-      </ng-template>
-    </GridView>
+      </StackPanel>
+    </ng-template>
+  </GridView>
 </XamlRoot>

@@ -1,7 +1,26 @@
+:host.fit-host {
+  display: inline-block !important;
+  width: auto !important;
+  max-width: none !important;
+  flex: 0 0 auto !important;
+  align-self: start;
+}
+
 label {
   display: grid;
   position: relative;
   grid-template-columns: auto 1fr auto auto;
+}
+
+label.fit {
+  grid-template-columns: auto max-content auto auto;
+}
+
+label.fit input {
+  box-sizing: content-box;
+  justify-self: start;
+  width: auto !important;
+  min-width: 0;
 }
 
 .icon {
@@ -22,7 +41,8 @@ label {
 }
 
 input {
-
+  min-width: 0;
+  width: auto;
   &:focus+.popup,
   &:active+.popup {
     display: flex;

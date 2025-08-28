@@ -4,7 +4,7 @@ import { StackPanelComponent } from "../../../xaml-ui/src/lib/layout/StackPanel"
 import { ButtonComponent } from "../../../xaml-ui/src/lib/basic-input/Button";
 import { FlyoutComponent } from "../../../xaml-ui/src/lib/dialogs-and-flyouts/Flyout";
 import { ScrollViewerComponent } from "../../../xaml-ui/src/lib/scrolling/ScrollViewer";
-import { RadioButtonGroupComponent } from "../../../xaml-ui/src/lib/basic-input/RadioButton";
+import { RadioButtonComponent, RadioButtonGroupComponent } from "../../../xaml-ui/src/lib/basic-input/RadioButton";
 import { SliderComponent } from "../../../xaml-ui/src/lib/basic-input/Slider";
 import { TextBoxComponent } from "../../../xaml-ui/src/lib/text/TextBox";
 import { TextBlockComponent } from "../../../xaml-ui/src/lib/text/TextBlock";
@@ -52,7 +52,7 @@ export class CustomDialog extends Dialog {
 
 @Component({
   selector: 'app-root',
-  imports: [AppBarButtonComponent, ButtonComponent, ColorPickerComponent, ComboBoxComponent, CommandBarComponent, ContextFlyoutDirective, EllipseComponent, FlyoutComponent, FontIconComponent, GridModule, GridView, HideSelectionDirective, ItemFlyoutDirective, ListViewComponent, MenuFlyoutComponent, MenuFlyoutItemComponent, NumberBoxComponent, PersonPictureComponent, ProgressBarComponent, ProgressRingComponent, RadioToggleButtonComponent, RadioButtonGroupComponent, RepeatButtonComponent, ScrollViewerComponent, SliderComponent, StackPanelComponent, TextBlockComponent, TextBoxComponent, ToggleButtonComponent, ToggleMenuFlyoutItemComponent, XamlRootComponent ],
+  imports: [AppBarButtonComponent, ButtonComponent, ColorPickerComponent, ComboBoxComponent, CommandBarComponent, ContextFlyoutDirective, EllipseComponent, FlyoutComponent, FontIconComponent, GridModule, GridView, HideSelectionDirective, ItemFlyoutDirective, ListViewComponent, MenuFlyoutComponent, MenuFlyoutItemComponent, NumberBoxComponent, PersonPictureComponent, ProgressBarComponent, ProgressRingComponent, RadioButtonComponent, RadioToggleButtonComponent, RadioButtonGroupComponent, RepeatButtonComponent, ScrollViewerComponent, SliderComponent, StackPanelComponent, TextBlockComponent, TextBoxComponent, ToggleButtonComponent, ToggleMenuFlyoutItemComponent, XamlRootComponent ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

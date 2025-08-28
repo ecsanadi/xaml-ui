@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, HostListener, Input, Output, ViewChild } from "@angular/core";
+import { Component, ElementRef, EventEmitter, HostBinding, HostListener, Input, Output, ViewChild } from "@angular/core";
 import { FrameworkElementComponent } from "../FrameworkElement";
 import { TextAlignment } from "../Common";
 import { RepeatButtonComponent } from "../basic-input/RepeatButton";
@@ -11,9 +11,9 @@ export type NumberFormatter = (value: number) => string;
 
 @Component({
   selector: 'NumberBox',
-  template: `<label>
+  template: `<label [class.fit]="FitToContent">
     <div class="icon">&#xEC8F;</div>
-    <input #input type="text" [disabled]="!IsEnabled" [value]="Text" (change)="onChange()" [placeholder]="PlaceholderText" [style]="{'text-align': TextAlignment}" (blur)="onBlur()" (keydown)="onKeyDown($event)"/>
+    <input #input type="text" [disabled]="!IsEnabled" [value]="Text" (change)="onChange()" [placeholder]="PlaceholderText" [style]="{'text-align': TextAlignment}" (blur)="onBlur()" (keydown)="onKeyDown($event)" [attr.size]="FitToContent ? computedCharSize : null"/>
     <Flyout #flyout Padding="2px" Placement="Left" [HasBackdrop]="false" [Target]="flyoutTarget">
       <RepeatButton Class="InlineButtonStyle" (Click)="onIncreaseClick()" [Delay]="500" [Interval]="50"  (pointerdown)="onButtonPress()" (pointerup)="onButtonPress()"><FontIcon Glyph="&#xE70E;"/></RepeatButton>
       <RepeatButton Class="InlineButtonStyle" (Click)="onDecreaseClick()" [Delay]="500" [Interval]="50"  (pointerdown)="onButtonPress()" (pointerup)="onButtonPress()"><FontIcon Glyph="&#xE70D;"/></RepeatButton>
@@ -28,6 +28,9 @@ export class NumberBoxComponent extends FrameworkElementComponent {
   @Input() PlaceholderText: string = '';
   @Input() IsPlaceholderEditable: boolean = false;
   @Input() TextAlignment?: TextAlignment = 'Left';
+  @Input() FitToContent: boolean = false;
+  @Input() MinChars: number = 1;
+  @Input() MaxChars: number = 14;
 
   @Input() InputMode: NumberInputMode = 'Float';
   @Input() Minimum: number = -Infinity;
@@ -41,6 +44,12 @@ export class NumberBoxComponent extends FrameworkElementComponent {
 
   protected get flyoutTarget() {
     return this._input?.nativeElement;
+  }
+
+  get computedCharSize(): number {
+    const s = (this._input?.nativeElement.value ?? this._text ?? '') || this.PlaceholderText || '';
+    const len = Math.max(s.length, this.MinChars);
+    return Math.min(len, this.MaxChars);
   }
 
   @ViewChild('input')
@@ -184,4 +193,26 @@ export class NumberBoxComponent extends FrameworkElementComponent {
   private onContextMenu(event: Event) {
     event.stopPropagation();
   }
+
+  @HostBinding('class.fit-host')
+  get fitHost() { return this.FitToContent; }
+
+  @HostBinding('style.width')
+  get hostWidth() { return this.FitToContent ? 'auto' : null; }
+
+  @HostBinding('style.maxWidth')
+  get hostMaxWidth() { return this.FitToContent ? null : null; }
+
+  @HostBinding('style.display')
+  get hostDisplay() { return this.FitToContent ? 'inline-grid' : null; }
+
+  @HostBinding('style.flex')
+  get hostFlex() { return this.FitToContent ? '0 0 auto' : null; }
+
+  @HostBinding('style.alignSelf')
+  get hostAlignSelf() { return this.FitToContent ? 'start' : null; }
+
+  @HostBinding('style.justifySelf')
+  get hostJustifySelf() { return this.FitToContent ? 'start' : null; }
+
 }
