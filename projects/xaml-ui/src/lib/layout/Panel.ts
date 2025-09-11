@@ -23,11 +23,11 @@ export abstract class PanelComponent extends FrameworkElementComponent {
       this._opacity = undefined; 
       return;
     }
-    const n = typeof value === 'string' ? Number(value) : value;
-    if (Number.isNaN(n)) {
+    const numericOpacity = typeof value === 'string' ? Number(value) : value;
+    if (Number.isNaN(numericOpacity)) {
       return;
     }
-    this._opacity = Math.max(0, Math.min(1, n));
+    this._opacity = Math.max(0, Math.min(1, numericOpacity));
   }
 
   @HostBinding('style.opacity')

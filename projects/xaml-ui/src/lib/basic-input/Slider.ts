@@ -41,11 +41,11 @@ export class SliderComponent extends FrameworkElementComponent {
       style['height'] = this.Height;
     }
 
-    const min = Number(this.Minimum) ?? 0;
-    const max = Number(this.Maximum) ?? 1;
-    const val = Math.min(Math.max(Number(this.Value) ?? min, min), max);
-    const pct = (val - min) / Math.max(1e-9, (max - min));
-    style['--progress'] = (pct * 100).toFixed(4) + '%';
+    const minimum = Number(this.Minimum) ?? 0;
+    const maximum = Number(this.Maximum) ?? 1;
+    const clamped = Math.min(Math.max(Number(this.Value) ?? minimum, minimum), maximum);
+    const fillRatio = (clamped - minimum) / Math.max(1e-9, (maximum - minimum));
+    style['--progress'] = (fillRatio * 100).toFixed(4) + '%';
 
     return style;
   }

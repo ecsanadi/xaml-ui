@@ -52,7 +52,7 @@ export class CustomDialog extends Dialog {
 
 @Component({
   selector: 'app-root',
-  imports: [AppBarButtonComponent, ButtonComponent, ColorPickerComponent, ComboBoxComponent, CommandBarComponent, ContextFlyoutDirective, EllipseComponent, FlyoutComponent, FontIconComponent, GridModule, GridView, HideSelectionDirective, ItemFlyoutDirective, ListViewComponent, MenuFlyoutComponent, MenuFlyoutItemComponent, NumberBoxComponent, PersonPictureComponent, ProgressBarComponent, ProgressRingComponent, RadioToggleButtonComponent, RadioButtonGroupComponent, RepeatButtonComponent, ScrollViewerComponent, SliderComponent, StackPanelComponent, TextBlockComponent, TextBoxComponent, ToggleButtonComponent, ToggleMenuFlyoutItemComponent, XamlRootComponent ],
+  imports: [AppBarButtonComponent, ButtonComponent, ColorPickerComponent, ComboBoxComponent, CommandBarComponent, ContextFlyoutDirective, EllipseComponent, FlyoutComponent, FontIconComponent, GridModule, GridView, HideSelectionDirective, ItemFlyoutDirective, ListViewComponent, MenuFlyoutComponent, MenuFlyoutItemComponent, NumberBoxComponent, PersonPictureComponent, ProgressBarComponent, ProgressRingComponent, RadioToggleButtonComponent, RadioButtonGroupComponent, RepeatButtonComponent, ScrollViewerComponent, SliderComponent, StackPanelComponent, TextBlockComponent, TextBoxComponent, ToggleButtonComponent, ToggleMenuFlyoutItemComponent, XamlRootComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
