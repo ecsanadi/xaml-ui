@@ -53,6 +53,26 @@ input {
       );
   }
 
+  &::-moz-range-track {
+    height: $track-thickness;
+    border-radius: 2px;
+    background: var(--ControlStrongFillColorDefault);
+  }
+
+  &::-moz-range-progress {
+    height: $track-thickness;
+    border-radius: 2px;
+    background: var(--AccentFillColorDefault);
+  }
+
+  &.vertical::-moz-range-track { 
+    width: $track-thickness; 
+  }
+
+  &.vertical::-moz-range-progress {
+     width: $track-thickness; 
+  }
+
   @mixin slider-thumb {
     -webkit-appearance: none;
     appearance: none;
@@ -121,8 +141,13 @@ input {
         );
     }
 
-    &::-moz-range-track    { background: var(--ControlStrongFillColorDisabled); }
-    &::-moz-range-progress { background: var(--AccentFillColorDisabled); }
+    &::-moz-range-track { 
+      background: var(--ControlStrongFillColorDisabled); 
+    }
+
+    &::-moz-range-progress { 
+      background: var(--AccentFillColorDisabled); 
+    }
 
     @mixin disabled-thumb {
       border-width: 2px;
