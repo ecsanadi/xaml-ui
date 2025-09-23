@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, HostListener, Input, Output, ViewChild } from "@angular/core";
+import { Component, ElementRef, EventEmitter, HostListener, HostBinding, Input, Output, ViewChild } from "@angular/core";
 import { FrameworkElementComponent } from "../FrameworkElement";
 import { TextAlignment } from "../Common";
 import { RepeatButtonComponent } from "../basic-input/RepeatButton";
@@ -13,7 +13,7 @@ export type NumberFormatter = (value: number) => string;
   selector: 'NumberBox',
   template: `<label>
     <div class="icon">&#xEC8F;</div>
-    <input #input type="text" [disabled]="!IsEnabled" [value]="Text" (change)="onChange()" [placeholder]="PlaceholderText" [style]="{'text-align': TextAlignment}" (blur)="onBlur()" (keydown)="onKeyDown($event)"/>
+    <input #input type="text" [disabled]="!IsEnabled" [value]="Text" (change)="onChange()" [placeholder]="PlaceholderText" [style]="{'text-align': TextAlignment}" (blur)="onBlur()" (keydown)="onKeyDown($event)" [attr.size]="_fitWidth ? _fitCharWidth : null" />
     <Flyout #flyout Padding="2px" Placement="Left" [HasBackdrop]="false" [Target]="flyoutTarget">
       <RepeatButton Class="InlineButtonStyle" (Click)="onIncreaseClick()" [Delay]="500" [Interval]="50"  (pointerdown)="onButtonPress()" (pointerup)="onButtonPress()"><FontIcon Glyph="&#xE70E;"/></RepeatButton>
       <RepeatButton Class="InlineButtonStyle" (Click)="onDecreaseClick()" [Delay]="500" [Interval]="50"  (pointerdown)="onButtonPress()" (pointerup)="onButtonPress()"><FontIcon Glyph="&#xE70D;"/></RepeatButton>
@@ -183,5 +183,16 @@ export class NumberBoxComponent extends FrameworkElementComponent {
   @HostListener('contextmenu', ['$event'])
   private onContextMenu(event: Event) {
     event.stopPropagation();
+  }
+
+  @HostBinding('class.fit-width')
+  get _fitWidth(): boolean {
+    return this.VerticalAlignment === 'Center';
+  }
+
+  get _fitCharWidth(): number {
+    const current = this._input?.nativeElement?.value ?? this._text ?? '';
+    const baseLen = Math.max(1, Math.max(current.length, this.PlaceholderText?.length ?? 0));
+    return baseLen + 1;
   }
 }

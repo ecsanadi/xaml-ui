@@ -4,6 +4,21 @@ label {
   grid-template-columns: auto 1fr auto auto;
 }
 
+:host(.fit-width) {
+  width: max-content;
+  flex: 0 0 auto;
+  min-width: 0;
+}
+
+:host(.fit-width) label {
+  grid-template-columns: auto max-content auto auto;
+}
+
+:host(.fit-width) input {
+  width: auto;
+  min-width: 0;
+}
+
 .icon {
   align-self: center;
   font-family: var(--SymbolFontFamily);
