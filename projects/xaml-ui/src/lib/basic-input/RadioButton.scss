@@ -77,17 +77,16 @@ input[type="radio"]:checked:disabled+.radioButton {
   border-radius: 11px;
   border-style: solid;
   border-width: var(--ControlBorderThickness);
+  place-items: center;
 
   transition: border-color var(--ControlFastAnimationDuration);
   transition: background-color var(--ControlFastAnimationDuration);
 }
 
 .circle {
-  width: 11px;
-  height: 11px;
-  border-radius: 6.5px;
-  align-self: center;
-  justify-self: center;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
   background-color: var(--TextOnAccentFillColorPrimary);
   transition: transform var(--ControlNormalAnimationDuration);
   transform: scale(0);
