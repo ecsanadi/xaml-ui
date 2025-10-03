@@ -4,6 +4,7 @@
   display: grid;
   grid-template-columns: auto 1fr;
   column-gap: 6px;
+  align-items: center;
 }
 
 input {
@@ -81,6 +82,7 @@ input[type="checkbox"]:checked:disabled + .checkBox {
   border-radius: var(--ControlCornerRadius);
   border-style: solid;
   border-width: var(--ControlBorderThickness);
+  align-self: center;
 }
 
 .checkMark {
