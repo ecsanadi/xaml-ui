@@ -123,8 +123,8 @@ input {
     }
   }
 
-  &:not(:disabled)::-webkit-slider-thumb { 
-    @include enabled-thumb; 
+  &:not(:disabled)::-webkit-slider-thumb {
+    @include enabled-thumb;
   }
 
   &:not(:disabled)::-moz-range-thumb {
@@ -154,8 +154,8 @@ input {
       background-color: var(--AccentFillColorDisabled);
     }
 
-    &::-webkit-slider-thumb { 
-      @include disabled-thumb; 
+    &::-webkit-slider-thumb {
+      @include disabled-thumb;
     }
 
     &::-moz-range-thumb {
