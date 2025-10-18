@@ -1,0 +1,27 @@
+:host {
+  width: 100%;
+  height: 4px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+
+  & .indicator {
+    height: 100%;
+    background: var(--AccentFillColorDefault);
+    border-radius: var(--ControlCornerRadius);
+    transition: width var(--ControlNormalAnimationDuration, 0.25s) cubic-bezier(0.4,0,0.2,1);
+  }
+
+  &.indeterminate .indicator {
+    position: absolute;
+    left: 0;
+    width: 30%;
+    animation: indeterminate-bar 1.2s infinite linear;
+
+    @keyframes indeterminate-bar {
+      0% { left: -30%; }
+      100% { left: 100%; }
+    } 
+  }
+}

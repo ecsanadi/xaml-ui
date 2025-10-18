@@ -1,13 +1,13 @@
 import { Component, ElementRef, EventEmitter, HostBinding, HostListener, Input, Output, output, ViewChild } from "@angular/core";
 import { FrameworkElementComponent } from "../FrameworkElement";
-import { TextAlignment, TextWrapping } from "../Common";
+import { TextAlignment, TextWrapping, UpdateTrigger } from "../Common";
 import { CommonModule } from "@angular/common";
 
 @Component({
   selector: 'TextBox',
   imports: [CommonModule],
-  template: `<input #input *ngIf="TextWrapping === 'NoWrap'" type="text" [disabled]="!IsEnabled" [value]="Text" (input)="onInput($event)" [placeholder]="PlaceholderText" [style]="{'text-align': TextAlignment}"/>
-  <textarea *ngIf="TextWrapping === 'Wrap'" [disabled]="!IsEnabled" [value]="Text" (change)="onInput($event)" [placeholder]="PlaceholderText" [style]="{'text-align': TextAlignment}"></textarea>`,
+  template: `<input class="text-box" #input *ngIf="TextWrapping === 'NoWrap'" type="text" [disabled]="!IsEnabled" [value]="Text" (input)="onInput($event)" (blur)="onBlur($event)" [placeholder]="PlaceholderText" [style]="{'text-align': TextAlignment}"/>
+  <textarea class="text-box" #input *ngIf="TextWrapping === 'Wrap'" [disabled]="!IsEnabled" [value]="Text" (input)="onInput($event)" (blur)="onBlur($event)" [placeholder]="PlaceholderText" [style]="{'text-align': TextAlignment}"></textarea>`,
   styleUrl: 'TextBox.scss'
 })
 export class TextBoxComponent extends FrameworkElementComponent {
@@ -15,16 +15,17 @@ export class TextBoxComponent extends FrameworkElementComponent {
   @Input() PlaceholderText: string = '';
   @Input() TextAlignment?: TextAlignment = 'Left';
   @Input() TextWrapping: TextWrapping = 'NoWrap';
+  @Input() UpdateTrigger: UpdateTrigger = 'PropertyChanged';
 
   @ViewChild('input')
   private _input!: ElementRef<HTMLInputElement>;
-  
+
   private _text = '';
   get Text() {
     return this._text;
   }
   @Input() set Text(value: string) {
-    if(value == this._text) return;
+    if (value == this._text) return;
 
     this._text = value;
     this.TextChange.emit(value);
@@ -32,6 +33,14 @@ export class TextBoxComponent extends FrameworkElementComponent {
   @Output() TextChange = new EventEmitter<string>();
 
   protected onInput(event: Event) {
+    if (this.UpdateTrigger == 'PropertyChanged') this.update(event);
+  }
+
+  protected onBlur(event: FocusEvent) {
+    if (this.UpdateTrigger == 'LostFocus') this.update(event);
+  }
+
+  protected update(event: Event) {
     this.Text = ((event.target) as HTMLInputElement).value;
   }
 

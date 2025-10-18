@@ -33,11 +33,13 @@ textarea {
   resize: none;
 }
 
-input, textarea {
+.text-box {
   background-color: transparent;
   border: 0 none transparent;
   outline: 0 none transparent;
   color: var(--TextFillColorPrimary);
+  font-family: var(--SystemFontFamily);
+  font-size: var(--SystemFontSize);
 
   &::placeholder {
     color: var(--TextFillColorSecondary);
