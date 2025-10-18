@@ -1,5 +1,5 @@
 import { Component, ViewContainerRef } from '@angular/core';
-import { RadioToggleButtonComponent, XamlRootComponent } from '../../../xaml-ui/src/public-api';
+import { RadioToggleButtonComponent, XamlRootComponent, ImageComponent } from '../../../xaml-ui/src/public-api';
 import { StackPanelComponent } from "../../../xaml-ui/src/lib/layout/StackPanel";
 import { ButtonComponent } from "../../../xaml-ui/src/lib/basic-input/Button";
 import { FlyoutComponent } from "../../../xaml-ui/src/lib/dialogs-and-flyouts/Flyout";
@@ -25,7 +25,6 @@ import { Dialog } from '../../../xaml-ui/src/lib/dialogs-and-flyouts/Dialog';
 import { GridModule } from "../../../xaml-ui/src/lib/layout/Grid";
 import { ToggleButtonComponent } from "../../../xaml-ui/src/lib/basic-input/ToggleButton";
 import { GridView } from '../../../xaml-ui/src/lib/collections/GridView';
-import { CommonModule } from '@angular/common';
 import { ToggleMenuFlyoutItemComponent } from '../../../xaml-ui/src/lib/menus-and-toolbars/ToggleMenuFlyoutItem';
 import { FontIconComponent } from "../../../xaml-ui/src/lib/icons/FontIcon";
 import { ProgressBarComponent } from '../../../xaml-ui/src/public-api';
