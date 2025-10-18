@@ -1,0 +1,73 @@
+@use "../Common.scss" as *;
+
+:host {
+  display: grid;
+
+  .item {
+    border-radius: var(--ControlCornerRadius);
+
+    &>.item-content {
+      display: grid;
+      grid-row: 1;
+      grid-column: 1;
+      padding: 8px 12px;
+    }
+
+    &>.selection-indicator{
+      border-radius: var(--ControlCornerRadius);
+      border-style: solid;
+      border-color: var(--AccentFillColorDefault);
+      grid-row: 1;
+      grid-column: 1;
+    }
+  }
+
+  &:not(.disabled) .item {
+    &:not(:hover):not(:active):not(.selected) {
+      background-color: transparent;
+      color: var(--TextFillColorPrimary);
+    }
+  
+    &:hover:not(.active):not(.selected) {
+      background-color: var(--SubtleFillColorSecondary);
+    }
+  
+    &:active:not(.selected) {
+      background-color: var(--SubtleFillColorTertiary);
+    }
+  
+    &:not(:hover):not(:active).selected {
+      background-color: var(--SubtleFillColorSecondary);
+    }
+  
+    &:hover:not(:active).selected {
+      background-color: var(--SubtleFillColorTertiary);
+    }
+  
+    &:active.selected {
+      background-color: var(--SubtleFillColorSecondary);
+    }
+
+    &.selected>.item-selector {
+      background-color: var(--AccentFillColorDefault);
+    }
+  }
+
+  &.disabled .item {
+    &>.item-content {
+      color: var(--TextFillColorDisabled);
+    }
+
+    &:not(.selected) {
+      background-color: transparent;
+    }
+  
+    &.selected {
+      background-color: var(--SubtleFillColorSecondary);
+
+      &>.item-selector {
+        background-color: var(--AccentFillColorDisabled);
+      }
+    }    
+  }
+}

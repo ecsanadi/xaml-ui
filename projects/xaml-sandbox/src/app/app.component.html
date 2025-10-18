@@ -31,34 +31,20 @@
         </RadioToggleButton>
         <RadioToggleButton>D</RadioToggleButton>
       </RadioButtonGroup>
-      <ComboBox [ItemSource]="[1,2,3,4,5,6]" [SelectedValue]="1" Margin="12px" />
+      <ComboBox [ItemSource]="[1, 2, 3, 4, 5, 6]" [SelectedValue]="1" Margin="12px" />
       <TextBox PlaceholderText="test" Margin="6px" />
       <TextBox PlaceholderText="property change" Margin="6px" UpdateTrigger="PropertyChanged" (TextChange)="onValueChange($event)" />
       <TextBox PlaceholderText="lost focus" Margin="6px" UpdateTrigger="LostFocus" (TextChange)="onValueChange($event)"/>
       <TextBox PlaceholderText="property change" Margin="6px" UpdateTrigger="PropertyChanged" (TextChange)="onValueChange($event)" TextWrapping="Wrap" />
       <TextBox PlaceholderText="lost focus" Margin="6px" UpdateTrigger="LostFocus" (TextChange)="onValueChange($event)" TextWrapping="Wrap"/>
       <Button Margin="6px 120px">Flyout
-        <!-- <Flyout>
-        test
-      </Flyout> -->
-        <Flyout Placement="Left">
-          Test
-        </Flyout>
+        <Flyout Placement="Left">Test</Flyout>
       </Button>
       <Button Margin="6px 120px">Flyout2
-        <!-- <Flyout>
-        test
-      </Flyout> -->
-        <Flyout Placement="Left">
-          Test2
-        </Flyout>
+        <Flyout Placement="Left">Test2</Flyout>
       </Button>
-      <!-- <Popup2>
-      this is a {{title}} popup!
-    </Popup2> -->
       <Button Class="InlineButtonStyle" Margin="3px">Click here</Button>
-      <NumberBox [Minimum]="-100" [Maximum]="100" Margin="48px" Unit="kg" [IsPlaceholderEditable]="true"
-        PlaceholderText="55" />
+      <NumberBox [Minimum]="-100" [Maximum]="100" Margin="48px" Unit="kg" [IsPlaceholderEditable]="true" PlaceholderText="55" />
       <RepeatButton (Click)="onClick()" Class="InlineButtonStyle">Click and hold</RepeatButton>
       <CommandBar VerticalAlignment="Top">
         <AppBarButton Icon="&#xE704;" Text="Wi-Fi" />
@@ -68,7 +54,6 @@
         <AppBarButton Icon="&#xE719;" Text="Shop" [IsEnabled]="false" />
       </CommandBar>
       <ColorPicker Width="200px" Height="200px" (ColorChange)="onColorSelected($event)" />
-
       <Button> MenuFlyout from Flyout
         <Flyout>
           <ListView [ItemSource]="[1,2,3,4,5,6]" SelectedValuePath="1" MaxHeight="300px">
@@ -85,6 +70,14 @@
           </ListView>
         </Flyout>
       </Button>
+      <GridView  Margin="3px"
+        [ItemSource]="['A','B','C','D','E','F']"
+        [MaximumRowsOrColumns]="2"
+        Orientation="Horizontal">
+        <ng-template let-item>
+          <TextBlock [Text]="item" />
+        </ng-template>
+      </GridView>
     </StackPanel>
   </ScrollViewer>
   <Button>ToggleMenuFlyout
@@ -93,4 +86,10 @@
       <ToggleMenuFlyoutItem Text="test B" [IsChecked]="true" />
     </MenuFlyout>
   </Button>
+  <Grid Orientation="Vertical">
+    <Button>A</Button>
+    <Button>B</Button>
+    <Button>C</Button>
+    <Button>D</Button>
+  </Grid>
 </XamlRoot>

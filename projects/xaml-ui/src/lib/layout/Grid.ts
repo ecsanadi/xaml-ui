@@ -22,7 +22,14 @@ export class GridComponent extends PanelComponent {
 
   @HostBinding('style.grid-auto-flow')
   private get gridAutoFlow() {
-    return this.Orientation === 'Horizontal' ? 'column' : 'row';
+    if (this.ColumnDefinitions == undefined && this.RowDefinitions == undefined) {
+      //Make it work like equal with stack panel
+      return this.Orientation === 'Horizontal' ? 'column' : 'row';
+    }
+    else {
+      //Use proper flow logic
+      return this.Orientation === 'Horizontal' ? 'row' : 'column';
+    }
   }
 }
 
@@ -33,7 +40,7 @@ export class GridProperty {
   RowSpan?: number;
 }
 
-@Directive ({
+@Directive({
   selector: '[Grid]',
   standalone: false
 })
@@ -61,7 +68,7 @@ export class GridDirective {
   }
 }
 
-@Directive ({
+@Directive({
   selector: '[Grid-Row]',
   standalone: false
 })
@@ -74,7 +81,7 @@ export class GridRowDirective {
   }
 }
 
-@Directive ({
+@Directive({
   selector: '[Grid-Column]',
   standalone: false
 })
@@ -113,7 +120,7 @@ export class GridColumnSpanDirective {
   }
 }
 
-const GridComponents : any[] = [
+const GridComponents: any[] = [
   GridComponent,
   GridDirective,
   GridRowDirective,
