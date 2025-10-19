@@ -1,0 +1,19 @@
+<Grid [ToolTipService-ToolTip]="DisplayName || Initials">
+  <Border Grid-Row="0" Grid-Column="0" 
+          BorderThickness="1px" BorderBrush="var(--ControlAltFillColorSecondary)" 
+          Background="var(--ControlAltFillColorQuarternary)" CornerRadius="50%">
+    <Image *ngIf="ProfilePicture; else initialsTemplate" [Source]="ProfilePicture" Stretch="UniformToFill" Width="100%" Height="100%" />
+    <ng-template #initialsTemplate>
+      <TextBlock [Text]="Initials || fallbackInitials" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40cqw"/>
+    </ng-template>
+  </Border>
+
+  <Border *ngIf="BadgeText || BadgeGlyph || BadgeImageSource"
+          Grid-Row="0" Grid-Column="0"
+          VerticalAlignment="Top" HorizontalAlignment="Right"
+          Background="var(--AccentFillColorDefault)" CornerRadius="50%" MinWidth="30cqw" Height="30cqw">
+    <Image *ngIf="BadgeImageSource" [Source]="BadgeImageSource" Width="30cqw" Height="30cqw" Stretch="UniformToFill"/>
+    <TextBlock *ngIf="BadgeText" [Text]="BadgeText" TextAlignment="Center" FontSize="20cqw" Foreground="var(--TextOnAccentFillColorPrimary)"/>
+    <FontIcon *ngIf="BadgeGlyph" [Glyph]="BadgeGlyph" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20cqw" Foreground="var(--TextOnAccentFillColorPrimary)"/>
+  </Border>
+</Grid>
