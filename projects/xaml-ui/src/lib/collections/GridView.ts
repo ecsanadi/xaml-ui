@@ -40,7 +40,7 @@ import { Orientation } from "../Common";
   ],
   styleUrl: 'GridView.scss'
 })
-export class GridView extends SelectorComponent {
+export class GridViewComponent extends SelectorComponent {
   @Input() MaximumRowsOrColumns: number = 2;
   @Input() Orientation: Orientation = "Horizontal";
 
