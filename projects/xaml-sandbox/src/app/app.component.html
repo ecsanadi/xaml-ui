@@ -34,6 +34,10 @@
       </RadioButtonGroup>
       <ComboBox [ItemSource]="[1,2,3,4,5,6]" [SelectedValue]="1" Margin="12px" />
       <TextBox PlaceholderText="test" Margin="6px" />
+      <TextBox PlaceholderText="property change" Margin="6px" UpdateTrigger="PropertyChanged" (TextChange)="onValueChange($event)" />
+      <TextBox PlaceholderText="lost focus" Margin="6px" UpdateTrigger="LostFocus" (TextChange)="onValueChange($event)"/>
+      <TextBox PlaceholderText="property change" Margin="6px" UpdateTrigger="PropertyChanged" (TextChange)="onValueChange($event)" TextWrapping="Wrap" />
+      <TextBox PlaceholderText="lost focus" Margin="6px" UpdateTrigger="LostFocus" (TextChange)="onValueChange($event)" TextWrapping="Wrap"/>
       <Button Margin="6px 120px">Flyout
         <!-- <Flyout>  test </Flyout> -->
         <Flyout Placement="Left">
