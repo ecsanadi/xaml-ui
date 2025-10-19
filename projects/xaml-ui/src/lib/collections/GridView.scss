@@ -1,50 +1,73 @@
 @use "../Common.scss" as *;
-@use "sass:math" as math;
-
-$SelectedItemBorderWidth: 3px;
-
-$ItemContentHorizontalPadding: 12px;
-$ItemContentVerticalPadding: 8px;
 
 :host {
   display: grid;
-  width: 100%;
-  height: 100%;
 
   .item {
-    margin: 2px 4px;
-    border-radius: 4px;
+    border-radius: var(--ControlCornerRadius);
 
-    &:hover {
-      background-color: var(--SubtleFillColorSecondary);
-      cursor: pointer;
+    &>.item-content {
+      display: grid;
+      grid-row: 1;
+      grid-column: 1;
+      padding: 8px 12px;
     }
 
-    > .item-content {
-      padding: $ItemContentVerticalPadding $ItemContentHorizontalPadding;
-      width: 100%;
-      > * {
-        width: 100%;
-      }
-    }
-
-    .selection-indicator {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      border: $SelectedItemBorderWidth solid var(--AccentFillColorDefault);
-      border-radius: 4px;
+    &>.selection-indicator{
+      border-radius: var(--ControlCornerRadius);
+      border-style: solid;
+      border-color: var(--AccentFillColorDefault);
+      grid-row: 1;
+      grid-column: 1;
     }
   }
-  
-  ::ng-deep {
-    ItemContainer {
-      display: block;
-      * {
-        width: calc(100% - $ItemContentHorizontalPadding * 2);
-      }
+
+  &:not(.disabled) .item {
+    &:not(:hover):not(:active):not(.selected) {
+      background-color: transparent;
+      color: var(--TextFillColorPrimary);
     }
+  
+    &:hover:not(.active):not(.selected) {
+      background-color: var(--SubtleFillColorSecondary);
+    }
+  
+    &:active:not(.selected) {
+      background-color: var(--SubtleFillColorTertiary);
+    }
+  
+    &:not(:hover):not(:active).selected {
+      background-color: var(--SubtleFillColorSecondary);
+    }
+  
+    &:hover:not(:active).selected {
+      background-color: var(--SubtleFillColorTertiary);
+    }
+  
+    &:active.selected {
+      background-color: var(--SubtleFillColorSecondary);
+    }
+
+    &.selected>.item-selector {
+      background-color: var(--AccentFillColorDefault);
+    }
+  }
+
+  &.disabled .item {
+    &>.item-content {
+      color: var(--TextFillColorDisabled);
+    }
+
+    &:not(.selected) {
+      background-color: transparent;
+    }
+  
+    &.selected {
+      background-color: var(--SubtleFillColorSecondary);
+
+      &>.item-selector {
+        background-color: var(--AccentFillColorDisabled);
+      }
+    }    
   }
 }

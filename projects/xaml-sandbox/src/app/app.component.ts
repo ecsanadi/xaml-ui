@@ -1,5 +1,5 @@
 import { Component, ViewContainerRef } from '@angular/core';
-import { RadioToggleButtonComponent, XamlRootComponent } from '../../../xaml-ui/src/public-api';
+import { RadioToggleButtonComponent, XamlRootComponent, ImageComponent } from '../../../xaml-ui/src/public-api';
 import { StackPanelComponent } from "../../../xaml-ui/src/lib/layout/StackPanel";
 import { ButtonComponent } from "../../../xaml-ui/src/lib/basic-input/Button";
 import { FlyoutComponent } from "../../../xaml-ui/src/lib/dialogs-and-flyouts/Flyout";
@@ -24,6 +24,7 @@ import { ContentDialog, ContentDialogButton } from '../../../xaml-ui/src/lib/dia
 import { Dialog } from '../../../xaml-ui/src/lib/dialogs-and-flyouts/Dialog';
 import { GridModule } from "../../../xaml-ui/src/lib/layout/Grid";
 import { ToggleButtonComponent } from "../../../xaml-ui/src/lib/basic-input/ToggleButton";
+import { GridView } from '../../../xaml-ui/src/lib/collections/GridView';
 import { ToggleMenuFlyoutItemComponent } from '../../../xaml-ui/src/lib/menus-and-toolbars/ToggleMenuFlyoutItem';
 import { FontIconComponent } from "../../../xaml-ui/src/lib/icons/FontIcon";
 import { ProgressBarComponent } from '../../../xaml-ui/src/public-api';
@@ -52,7 +53,7 @@ export class CustomDialog extends Dialog {
 
 @Component({
   selector: 'app-root',
-  imports: [AppBarButtonComponent, ButtonComponent, ColorPickerComponent, ComboBoxComponent, CommandBarComponent, ContextFlyoutDirective, EllipseComponent, FlyoutComponent, FontIconComponent, GridModule, GridView, HideSelectionDirective, ItemFlyoutDirective, ListViewComponent, MenuFlyoutComponent, MenuFlyoutItemComponent, NumberBoxComponent, PersonPictureComponent, ProgressBarComponent, ProgressRingComponent, RadioToggleButtonComponent, RadioButtonGroupComponent, RepeatButtonComponent, ScrollViewerComponent, SliderComponent, StackPanelComponent, TextBlockComponent, TextBoxComponent, ToggleButtonComponent, ToggleMenuFlyoutItemComponent, XamlRootComponent],
+  imports: [XamlRootComponent, StackPanelComponent, ButtonComponent, FlyoutComponent, ScrollViewerComponent, SliderComponent, TextBoxComponent, TextBlockComponent, ListViewComponent, ComboBoxComponent, MenuFlyoutComponent, MenuFlyoutItemComponent, ContextFlyoutDirective, AppBarButtonComponent, CommandBarComponent, NumberBoxComponent, GridModule, RepeatButtonComponent, ColorPickerComponent, RadioButtonGroupComponent, FlyoutComponent, ContextFlyoutDirective, RadioToggleButtonComponent, ToggleButtonComponent, ToggleMenuFlyoutItemComponent, ItemFlyoutDirective, FontIconComponent, ProgressBarComponent, ProgressRingComponent, GridView],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
