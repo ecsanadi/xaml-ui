@@ -1,37 +1,32 @@
 import { Component, HostBinding, Input } from '@angular/core';
 import { CommonModule } from "@angular/common";
 import { FrameworkElementComponent } from "../FrameworkElement";
-import { GridModule } from "../layout/Grid";
-import { ImageComponent } from "./Image";
-import { ToolTipServiceModule } from "../status-and-info/ToolTipService";
-import { TextBlockComponent } from "../text/TextBlock";
-import { BorderComponent } from "../layout/Border";
-import { FontIconComponent } from "../icons/FontIcon";
 
 @Component({
-  selector: 'PersonPicture',
-  templateUrl: 'PersonPicture.html',
-  styles: `:host {
-    container-type: inline-size;
-    display: grid;
-  }`,
-  imports: [CommonModule, GridModule, ImageComponent, ToolTipServiceModule, TextBlockComponent, BorderComponent, FontIconComponent]
+  selector: 'PersonPicture2',
+  template: `<div class="avatar">
+    <img *ngIf="ProfilePicture; else initialsTemplate"
+         [src]="ProfilePicture" alt="{{ DisplayName || Initials }}" />
+    <ng-template #initialsTemplate>
+      <span class="initials">{{ Initials || fallbackInitials }}</span>
+    </ng-template>
+  </div>
+  <div *ngIf="BadgeText || BadgeGlyph || BadgeImageSource" class="badge">
+    <img *ngIf="BadgeImageSource" [src]="BadgeImageSource" />
+    <span *ngIf="BadgeText">{{ BadgeText }}</span>
+    <span *ngIf="BadgeGlyph" class="glyph">{{ BadgeGlyph }}</span>
+  </div>`,
+  styleUrl: 'PersonPicture.scss',
+  imports: [CommonModule]
 })
 export class PersonPictureComponent extends FrameworkElementComponent {
   @Input() DisplayName?: string;
   @Input() ProfilePicture?: string;
   @Input() Initials?: string;
-
+  
   @Input() BadgeText?: string;
   @Input() BadgeGlyph?: string;
   @Input() BadgeImageSource?: string;
-
-  constructor() {
-    super();
-
-    this.Width = "96px";
-    this.Height = "96px";
-  }
 
   protected get fallbackInitials(): string {
     if (this.DisplayName) {
