@@ -37,7 +37,6 @@ export * from './lib/layout/Panel';
 export * from './lib/layout/StackPanel';
 
 //Media
-export * from './lib/shapes/Ellipse';
 export * from './lib/media/Image';
 export * from './lib/media/PersonPicture';
 
@@ -55,6 +54,9 @@ export * from './lib/primitives/DialogPresenter'
 export * from './lib/primitives/FlyoutBase'
 export * from './lib/primitives/FlyoutPresenter'
 export * from './lib/primitives/Selector'
+
+//Shapes
+export * from './lib/shapes/Ellipse';
 
 //Scrolling
 export * from './lib/scrolling/ScrollBar';

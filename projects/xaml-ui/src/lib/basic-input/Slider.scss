@@ -2,7 +2,7 @@
 
 $thumb-size: 16px;
 $track-thickness: 4px;
-$thumb-offset: calc(($thumb-size - $track-thickness) / 2);
+$thumb-offset: calc(-0.5 * (#{$thumb-size} - #{$track-thickness}));
 
 :host {
   display: grid;
@@ -21,6 +21,20 @@ input {
   &.horizontal {
     height: $track-thickness;
     margin: 7px 0px;
+
+    &::-webkit-slider-runnable-track {
+      height: $track-thickness;
+      border-radius: 2px;
+      background:
+        linear-gradient(to right,
+          var(--AccentFillColorDefault) 0 var(--progress),
+          var(--ControlStrongFillColorDefault) var(--progress) 100%);
+    }
+
+    &::-moz-range-track,
+    &::-moz-range-progress {
+      height: $track-thickness;
+    }
   }
 
   &.vertical {
@@ -30,47 +44,33 @@ input {
     writing-mode: vertical-lr;
     direction: rtl;
     vertical-align: middle;
+
+    &::-webkit-slider-runnable-track {
+      width: $track-thickness;
+      border-radius: 2px;
+      background:
+        linear-gradient(to top,
+          var(--AccentFillColorDefault) 0 var(--progress),
+          var(--ControlStrongFillColorDefault) var(--progress) 100%);
+    }
+
+    &::-moz-range-track,
+    &::-moz-range-progress {
+      width: $track-thickness;
+    }
   }
 
-  &::-webkit-slider-runnable-track {
-    height: $track-thickness;
+  &::-moz-range-track,
+  &::-moz-range-progress {
     border-radius: 2px;
-    background:
-      linear-gradient(
-        to right,
-        var(--AccentFillColorDefault) 0 var(--progress),
-        var(--ControlStrongFillColorDefault) var(--progress) 100%
-      );
-  }
-
-  &.vertical::-webkit-slider-runnable-track {
-    width: $track-thickness;
-    background:
-      linear-gradient(
-        to top,
-        var(--AccentFillColorDefault) 0 var(--progress),
-        var(--ControlStrongFillColorDefault) var(--progress) 100%
-      );
   }
 
   &::-moz-range-track {
-    height: $track-thickness;
-    border-radius: 2px;
     background: var(--ControlStrongFillColorDefault);
   }
 
   &::-moz-range-progress {
-    height: $track-thickness;
-    border-radius: 2px;
     background: var(--AccentFillColorDefault);
-  }
-
-  &.vertical::-moz-range-track { 
-    width: $track-thickness; 
-  }
-
-  &.vertical::-moz-range-progress {
-     width: $track-thickness; 
   }
 
   @mixin slider-thumb {
@@ -93,60 +93,50 @@ input {
 
   &::-webkit-slider-thumb {
     @include slider-thumb;
-    margin-top: calc(#{$thumb-size} - #{$track-thickness});
-    margin-top: calc((#{$thumb-size} - #{$track-thickness}) / -2); 
   }
 
   &::-moz-range-thumb {
     @include slider-thumb;
   }
 
+  &.horizontal::-webkit-slider-thumb {
+    transform: translateY($thumb-offset);
+  }
+
   &.vertical::-webkit-slider-thumb {
-    @include slider-thumb;
-    margin-top: 0; 
-    margin-left: calc((#{$thumb-size} - #{$track-thickness}) / -2);
+    transform: translateX($thumb-offset);
   }
 
-  &.vertical::-moz-range-thumb {
-    transform: translateX(-#{$thumb-offset});
-  }
+  &:not(:disabled) {
+    @mixin enabled-thumb {
+      &:hover {
+        border-width: 3px;
+        background-color: var(--AccentFillColorSecondary);
+      }
 
-  @mixin enabled-thumb {
-    &:hover {
-      border-width: 3px;
-      background-color: var(--AccentFillColorSecondary);
+      &:active {
+        border-width: 5px;
+        background-color: var(--AccentFillColorTertiary);
+      }
     }
 
-    &:active {
-      border-width: 5px;
-      background-color: var(--AccentFillColorTertiary);
+    &::-webkit-slider-thumb {
+      @include enabled-thumb;
     }
-  }
 
-  &:not(:disabled)::-webkit-slider-thumb {
-    @include enabled-thumb;
-  }
-
-  &:not(:disabled)::-moz-range-thumb {
-    @include enabled-thumb;
+    &::-moz-range-thumb {
+      @include enabled-thumb;
+    }
   }
 
   &:disabled {
-    &::-webkit-slider-runnable-track {
-      background:
-        linear-gradient(
-          to right,
-          var(--AccentFillColorDisabled) 0 var(--progress),
-          var(--ControlStrongFillColorDisabled) var(--progress) 100%
-        );
+    &::-webkit-slider-runnable-track,
+    &::-moz-range-track {
+      background: var(--ControlStrongFillColorDisabled);
     }
 
-    &::-moz-range-track { 
-      background: var(--ControlStrongFillColorDisabled); 
-    }
-
-    &::-moz-range-progress { 
-      background: var(--AccentFillColorDisabled); 
+    &::-moz-range-progress {
+      background: var(--AccentFillColorDisabled);
     }
 
     @mixin disabled-thumb {
