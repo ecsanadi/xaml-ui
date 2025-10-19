@@ -4,35 +4,30 @@ import { FrameworkElementComponent } from "../FrameworkElement";
 
 @Component({
   selector: 'PersonPicture',
-  template: `<div class="person-picture">
-  <div class="avatar">
+  template: `<div class="avatar">
     <img *ngIf="ProfilePicture; else initialsTemplate"
          [src]="ProfilePicture" alt="{{ DisplayName || Initials }}" />
     <ng-template #initialsTemplate>
-      <span class="initials">{{ Initials || fallbackInitials() }}</span>
+      <span class="initials">{{ Initials || fallbackInitials }}</span>
     </ng-template>
   </div>
-  <div *ngIf="BadgeText || BadgeGlyph || BadgeImageSrc" class="badge">
-    <img *ngIf="BadgeImageSrc" [src]="BadgeImageSrc" />
+  <div *ngIf="BadgeText || BadgeGlyph || BadgeImageSource" class="badge">
+    <img *ngIf="BadgeImageSource" [src]="BadgeImageSource" />
     <span *ngIf="BadgeText">{{ BadgeText }}</span>
     <span *ngIf="BadgeGlyph" class="glyph">{{ BadgeGlyph }}</span>
-  </div>
-</div>`,
+  </div>`,
   styleUrl: 'PersonPicture.scss',
   imports: [CommonModule]
 })
 export class PersonPictureComponent extends FrameworkElementComponent {
-  @Input() @HostBinding('style.color') Foreground?: string;
-  @Input() @HostBinding('style.background-color') Background: string = 'transparent';
-
   @Input() DisplayName?: string;
   @Input() ProfilePicture?: string;
   @Input() Initials?: string;
   @Input() BadgeText?: string;
   @Input() BadgeGlyph?: string;
-  @Input() BadgeImageSrc?: string;
+  @Input() BadgeImageSource?: string;
 
-  fallbackInitials(): string {
+  protected get fallbackInitials(): string {
     if (this.DisplayName) {
       return this.DisplayName
         .split(' ')

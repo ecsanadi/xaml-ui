@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, HostListener, HostBinding, Input, Output, ViewChild } from "@angular/core";
+import { Component, ElementRef, EventEmitter, HostListener, Input, Output, ViewChild } from "@angular/core";
 import { FrameworkElementComponent } from "../FrameworkElement";
 import { TextAlignment } from "../Common";
 import { RepeatButtonComponent } from "../basic-input/RepeatButton";
@@ -183,16 +183,5 @@ export class NumberBoxComponent extends FrameworkElementComponent {
   @HostListener('contextmenu', ['$event'])
   private onContextMenu(event: Event) {
     event.stopPropagation();
-  }
-
-  @HostBinding('class.fit-width')
-  get _fitWidth(): boolean {
-    return this.VerticalAlignment === 'Center';
-  }
-
-  get _fitCharWidth(): number {
-    const current = this._input?.nativeElement?.value ?? this._text ?? '';
-    const baseLen = Math.max(1, Math.max(current.length, this.PlaceholderText?.length ?? 0));
-    return baseLen + 1;
   }
 }

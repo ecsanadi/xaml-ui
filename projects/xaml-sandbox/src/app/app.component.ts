@@ -1,5 +1,5 @@
 import { Component, ViewContainerRef } from '@angular/core';
-import { RadioToggleButtonComponent, XamlRootComponent, ImageComponent } from '../../../xaml-ui/src/public-api';
+import { RadioToggleButtonComponent, XamlRootComponent, ImageComponent, CheckBoxComponent, RadioButtonComponent } from '../../../xaml-ui/src/public-api';
 import { StackPanelComponent } from "../../../xaml-ui/src/lib/layout/StackPanel";
 import { ButtonComponent } from "../../../xaml-ui/src/lib/basic-input/Button";
 import { FlyoutComponent } from "../../../xaml-ui/src/lib/dialogs-and-flyouts/Flyout";
@@ -29,9 +29,8 @@ import { ToggleMenuFlyoutItemComponent } from '../../../xaml-ui/src/lib/menus-an
 import { FontIconComponent } from "../../../xaml-ui/src/lib/icons/FontIcon";
 import { ProgressBarComponent } from '../../../xaml-ui/src/public-api';
 import { ProgressRingComponent } from '../../../xaml-ui/src/public-api';
-import { CommonModule } from '@angular/common';
 import { PersonPictureComponent } from '../../../xaml-ui/src/lib/media/PersonPicture';
-import { EllipseComponent } from '../../../xaml-ui/src/lib/media/Ellipse';
+import { EllipseComponent } from '../../../xaml-ui/src/lib/shapes/Ellipse';
 
 @Component({
   template: `<ng-template #template>
@@ -52,7 +51,7 @@ export class CustomDialog extends Dialog {
 
 @Component({
   selector: 'app-root',
-  imports: [XamlRootComponent, StackPanelComponent, ButtonComponent, FlyoutComponent, ScrollViewerComponent, SliderComponent, TextBoxComponent, TextBlockComponent, ListViewComponent, ComboBoxComponent, MenuFlyoutComponent, MenuFlyoutItemComponent, ContextFlyoutDirective, AppBarButtonComponent, CommandBarComponent, NumberBoxComponent, GridModule, RepeatButtonComponent, ColorPickerComponent, RadioButtonGroupComponent, FlyoutComponent, ContextFlyoutDirective, RadioToggleButtonComponent, ToggleButtonComponent, ToggleMenuFlyoutItemComponent, ItemFlyoutDirective, FontIconComponent, ProgressBarComponent, ProgressRingComponent, GridViewComponent, PersonPictureComponent, EllipseComponent],
+  imports: [XamlRootComponent, StackPanelComponent, ButtonComponent, FlyoutComponent, ScrollViewerComponent, SliderComponent, TextBoxComponent, TextBlockComponent, ListViewComponent, ComboBoxComponent, MenuFlyoutComponent, MenuFlyoutItemComponent, ContextFlyoutDirective, AppBarButtonComponent, CommandBarComponent, NumberBoxComponent, GridModule, RepeatButtonComponent, ColorPickerComponent, RadioButtonGroupComponent, FlyoutComponent, ContextFlyoutDirective, RadioToggleButtonComponent, ToggleButtonComponent, ToggleMenuFlyoutItemComponent, ItemFlyoutDirective, FontIconComponent, ProgressBarComponent, ProgressRingComponent, GridViewComponent, PersonPictureComponent, EllipseComponent, CheckBoxComponent, RadioButtonComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

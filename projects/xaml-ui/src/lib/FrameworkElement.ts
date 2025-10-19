@@ -18,6 +18,7 @@ export abstract class FrameworkElementComponent {
   @Input() VerticalAlignment: VerticalAlignment = 'Stretch';
   @Input() @HostBinding('style.margin') Margin?: string;
   @Input() @HostBinding('style.padding') Padding?: string;
+  @Input() @HostBinding('style.opacity') Opacity?: string | number;
 
   @HostBinding('style.overflow')
   protected get overflow() {

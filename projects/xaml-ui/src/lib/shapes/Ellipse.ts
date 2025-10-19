@@ -8,8 +8,6 @@ import { FrameworkElementComponent } from '../FrameworkElement';
 })
 export class EllipseComponent extends FrameworkElementComponent {
   @Input() @HostBinding('style.background') Fill?: string;
-  @Input() @HostBinding('style.borderColor') Stroke?: string;
-  @Input() @HostBinding('style.borderWidth.px') StrokeThickness: number = 0;
-  @HostBinding('style.borderStyle') borderStyle = 'solid';
-  @HostBinding('style.borderRadius') borderRadius = '50%';
+  @Input() @HostBinding('style.border-color') Stroke?: string;
+  @Input() @HostBinding('style.border-width') StrokeThickness?: string;
 }
