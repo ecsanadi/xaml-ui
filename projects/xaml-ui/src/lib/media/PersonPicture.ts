@@ -3,7 +3,7 @@ import { CommonModule } from "@angular/common";
 import { FrameworkElementComponent } from "../FrameworkElement";
 
 @Component({
-  selector: 'PersonPicture2',
+  selector: 'PersonPicture',
   template: `<div class="avatar">
     <img *ngIf="ProfilePicture; else initialsTemplate"
          [src]="ProfilePicture" alt="{{ DisplayName || Initials }}" />
