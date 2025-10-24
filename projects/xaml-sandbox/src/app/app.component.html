@@ -6,8 +6,17 @@
         <Button (Click)="onCustomDialogClick()">Open custom dialog</Button>
       </Grid>
       <ToggleButton>test A</ToggleButton>
-      <Slider [StepFrequency]="0.01" [Value]="0.5" />
-      <Slider Height="200px" Orientation="Vertical" HorizontalAlignment="Center" [Value]="0.5" />
+      <Slider [Value]="0.0" />
+      <Slider [Value]="0.1" />
+      <Slider [StepFrequency]="0.01" [Value]="0.5" [IsEnabled]="false" />
+      <Slider [StepFrequency]="0.01" [Value]="1.0" />
+      <StackPanel Orientation="Horizontal">
+        <Slider Height="200px" Orientation="Vertical" [Value]="0.0" />
+        <Slider Height="200px" Orientation="Vertical" [Value]="0.1" />
+        <Slider Height="200px" Orientation="Vertical" [Value]="0.5" [IsEnabled]="false" />
+        <Slider Height="200px" Orientation="Vertical" [Value]="1.0" />
+      </StackPanel>
+
       <ProgressBar />
       <ProgressBar [Value]="0.3" />
       <ProgressBar [Value]="0.7" />

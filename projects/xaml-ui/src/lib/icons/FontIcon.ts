@@ -8,6 +8,7 @@ import { TextBlockComponent } from "../text/TextBlock";
   template: `{{Glyph}}`,
   styles: `:host {
     font-family: 'Segoe Fluent Icons', 'Segoe MDL2 Assets';
+    align-content: center;
   }`
 })
 export class FontIconComponent extends FrameworkElementComponent {

@@ -1,155 +1,99 @@
 @use '../Common.scss' as *;
 
-$thumb-size: 16px;
+$thumb-radius: 8px;
+$thumb-size: calc(2 * $thumb-radius);
 $track-thickness: 4px;
-$thumb-offset: calc(-0.5 * (#{$thumb-size} - #{$track-thickness}));
+$track-margin: calc(0.5 * ($thumb-size - $track-thickness));
+$thumb-offset: calc(-#{$track-margin});
 
 :host {
   display: grid;
 }
 
-input {
+.track {
   display: grid;
-  -webkit-appearance: none;
-  appearance: none;
-
   background-color: var(--ControlStrongFillColorDefault);
-  border-radius: 2px;
+  border-radius: calc(0.5 * $track-thickness);
 
-  outline: none;
+  &>.usable-range {
+    container-type: size;
+  }
 
   &.horizontal {
     height: $track-thickness;
-    margin: 7px 0px;
+    margin: $track-margin 0;
 
-    &::-webkit-slider-runnable-track {
-      height: $track-thickness;
-      border-radius: 2px;
-      background:
-        linear-gradient(to right,
-          var(--AccentFillColorDefault) 0 var(--progress),
-          var(--ControlStrongFillColorDefault) var(--progress) 100%);
-    }
+    background:
+      linear-gradient(to right,
+        var(--AccentFillColorDefault) 0 var(--progress-percent),
+        var(--ControlStrongFillColorDefault) var(--progress-percent) 100%);
 
-    &::-moz-range-track,
-    &::-moz-range-progress {
-      height: $track-thickness;
+    &>.usable-range {
+      margin: 0 $thumb-radius;
     }
   }
 
   &.vertical {
     width: $track-thickness;
-    margin: 0px 7px;
+    margin: 0 $track-margin;
 
-    writing-mode: vertical-lr;
-    direction: rtl;
-    vertical-align: middle;
+    background:
+      linear-gradient(to top,
+        var(--AccentFillColorDefault) 0 var(--progress-percent),
+        var(--ControlStrongFillColorDefault) var(--progress-percent) 100%);
 
-    &::-webkit-slider-runnable-track {
-      width: $track-thickness;
-      border-radius: 2px;
-      background:
-        linear-gradient(to top,
-          var(--AccentFillColorDefault) 0 var(--progress),
-          var(--ControlStrongFillColorDefault) var(--progress) 100%);
-    }
-
-    &::-moz-range-track,
-    &::-moz-range-progress {
-      width: $track-thickness;
+    &>.usable-range {
+      margin: $thumb-radius 0;
     }
   }
 
-  &::-moz-range-track,
-  &::-moz-range-progress {
-    border-radius: 2px;
+  &.disabled {
+    background: var(--ControlStrongFillColorDisabled);
+  }
+}
+
+.thumb {
+  display: grid;
+  box-sizing: border-box;
+  border-radius: 50%;
+  width: $thumb-size;
+  height: $thumb-size;
+  box-sizing: border-box;
+
+  border: 1px solid var(--ControlStrokeColorOnAccentDefaultDark);
+  background-color: var(--ControlSolidFillColorDefault);
+
+  &.horizontal {
+    transform: translate(calc(var(--progress-size) - $thumb-radius), $thumb-offset);
   }
 
-  &::-moz-range-track {
-    background: var(--ControlStrongFillColorDefault);
+  &.vertical {
+    transform: translate($thumb-offset, calc(100cqh - var(--progress-size) - $thumb-radius));
   }
 
-  &::-moz-range-progress {
-    background: var(--AccentFillColorDefault);
-  }
-
-  @mixin slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-
-    box-sizing: border-box;
-    border-radius: 50%;
-    width: $thumb-size;
-    height: $thumb-size;
-    border-style: solid;
-    border-width: 4px;
-    box-shadow: none;
-
-    outline: 1px solid var(--ControlStrokeColorOnAccentDefaultDark);
-    border-color: var(--ControlSolidFillColorDefault);
+  &>.handle {
+    place-self: center;
     background-color: var(--AccentFillColorDefault);
-    transition: border-width var(--ControlFastAnimationDuration);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    transition: transform var(--ControlFastAnimationDuration), background-color var(--ControlFastAnimationDuration);
   }
 
-  &::-webkit-slider-thumb {
-    @include slider-thumb;
-  }
-
-  &::-moz-range-thumb {
-    @include slider-thumb;
-  }
-
-  &.horizontal::-webkit-slider-thumb {
-    transform: translateY($thumb-offset);
-  }
-
-  &.vertical::-webkit-slider-thumb {
-    transform: translateX($thumb-offset);
-  }
-
-  &:not(:disabled) {
-    @mixin enabled-thumb {
-      &:hover {
-        border-width: 3px;
-        background-color: var(--AccentFillColorSecondary);
-      }
-
-      &:active {
-        border-width: 5px;
-        background-color: var(--AccentFillColorTertiary);
-      }
+  &:not(.disabled) {
+    &:hover>.handle {
+      transform: scale(125%);
+      background-color: var(--AccentFillColorSecondary);
     }
 
-    &::-webkit-slider-thumb {
-      @include enabled-thumb;
-    }
-
-    &::-moz-range-thumb {
-      @include enabled-thumb;
+    &:active>.handle {
+      transform: scale(75%);
+      background-color: var(--AccentFillColorTertiary);
     }
   }
 
-  &:disabled {
-    &::-webkit-slider-runnable-track,
-    &::-moz-range-track {
-      background: var(--ControlStrongFillColorDisabled);
-    }
-
-    &::-moz-range-progress {
-      background: var(--AccentFillColorDisabled);
-    }
-
-    @mixin disabled-thumb {
-      border-width: 2px;
-      background-color: var(--AccentFillColorDisabled);
-    }
-
-    &::-webkit-slider-thumb {
-      @include disabled-thumb;
-    }
-
-    &::-moz-range-thumb {
-      @include disabled-thumb;
-    }
+  &.disabled>.handle {
+    transform: scale(125%);
+    background-color: var(--AccentFillColorDisabled);
   }
 }
