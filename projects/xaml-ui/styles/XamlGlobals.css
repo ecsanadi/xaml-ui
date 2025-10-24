@@ -64,6 +64,7 @@
   --TextFillColorSecondary: #FFFFFFC5;
   --TextFillColorDisabled: #FFFFFF5D;
 
+  --TextOnAccentFillColorSelected: #FFFFFFFF;
   --TextOnAccentFillColorPrimary: #000000;
   --TextOnAccentFillColorSecondary: #00000080;
   --TextOnAccentFillColorDisabled: #FFFFFF87;
@@ -117,6 +118,7 @@
     --TextFillColorSecondary: #0000009E;
     --TextFillColorDisabled: #0000005C;
 
+    --TextOnAccentFillColorSelected: #FFFFFFFF;
     --TextOnAccentFillColorPrimary: #FFFFFF;
     --TextOnAccentFillColorSecondary: #FFFFFFB3;
     --TextOnAccentFillColorDisabled: #FFFFFF;

@@ -26,6 +26,7 @@
   &.disabled {
     background-color: var(--ControlFillColorDisabled);
     border-bottom-color: var(--ControlStrokeColorDefault);
+    pointer-events: none;
   }
 }
 
@@ -52,5 +53,5 @@ textarea {
 
 ::selection {
   background-color: var(--SystemAccentColor);
-  //color: var(--TextOnAccentFillColorPrimary);
+  color: var(--TextOnAccentFillColorSelected);
 }

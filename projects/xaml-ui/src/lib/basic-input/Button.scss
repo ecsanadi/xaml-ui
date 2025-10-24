@@ -76,6 +76,7 @@
     &.disabled {
       background: var(--ControlFillColorDisabled);
       color: var(--TextFillColorDisabled);
+      pointer-events: none;
 
       &::ng-deep * {
         color: var(--TextFillColorDisabled);

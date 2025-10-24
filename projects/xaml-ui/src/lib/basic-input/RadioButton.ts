@@ -39,7 +39,8 @@ export class RadioButtonComponent extends BorderComponent {
   selector: 'RadioButtonGroup',
   template: `<ng-content/>`,
   styles: `:host { 
-    display: contents;
+    display: grid;
+    position: relative;
   }`
 })
 export class RadioButtonGroupComponent extends StackPanelComponent {
