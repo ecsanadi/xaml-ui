@@ -18,7 +18,7 @@ export class GridComponent extends PanelComponent {
   @Input() @HostBinding('style.grid-auto-rows') AutoRowDefinition?: string;
   @Input() @HostBinding('style.column-gap') ColumnSpacing?: string;
   @Input() @HostBinding('style.row-gap') RowSpacing?: string;
-  @Input() Orientation: Orientation = 'Vertical';
+  @Input() Orientation: Orientation = 'Horizontal';
 
   @HostBinding('style.grid-auto-flow')
   private get gridAutoFlow() {

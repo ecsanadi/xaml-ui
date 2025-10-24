@@ -7,6 +7,11 @@ import { PanelComponent } from "./Panel";
   styles: `:host { 
     display: grid;
     position: relative;
+    grid-template-areas: "children";
+
+    &::ng-deep > * {
+      grid-area: children;
+    }
   }`
 })
 export class BorderComponent extends PanelComponent {
