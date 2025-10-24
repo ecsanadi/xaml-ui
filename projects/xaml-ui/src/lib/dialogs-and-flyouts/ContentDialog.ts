@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { Component, EventEmitter, Injectable, Input, Output } from "@angular/core";
 import { DialogPresenter } from "../primitives/DialogPresenter";
 import { GridModule } from "../layout/Grid";
 import { ButtonComponent } from "../basic-input/Button";
@@ -20,21 +20,69 @@ export enum ContentDialogButton {
 }
 
 @Component({
+  selector: 'ContentDialogPresenter',
+  template: `<div #header class="header">{{_dialog.Title}}</div>
+    <div class="body">
+      <TextBlock TextWrapping="Wrap">{{_dialog.Content}}</TextBlock>
+      <ng-content/>
+    </div>
+    <div #footer class="footer" [ngStyle]="{'display': isFooterVisible ? 'grid' : 'none'}">
+      <Grid Orientation="Horizontal" ColumnSpacing="6px" AutoColumnDefinition="minmax(0, 1fr)" Footer>
+        <Button *ngIf="_dialog.PrimaryButtonText !== undefined" [IsEnabled]="_dialog.IsPrimaryButtonEnabled" (Click)="onPrimaryButtonClicked()" [class.AccentButtonStyle]="isPrimaryButtonDefault">{{_dialog.PrimaryButtonText}}</Button>
+        <Button *ngIf="_dialog.SecondaryButtonText !== undefined" [IsEnabled]="_dialog.IsSecondaryButtonEnabled" (Click)="onSecondaryButtonClicked()" [class.AccentButtonStyle]="isSecondaryButtonDefault">{{_dialog.SecondaryButtonText}}</Button>
+        <Button *ngIf="_dialog.CloseButtonText !== undefined" (Click)="onCloseButtonClicked()" [class.AccentButtonStyle]="isCloseButtonDefault">{{_dialog.CloseButtonText}}</Button>
+      </Grid>
+    </div>`,
+  styles: ``,
+  imports: [GridModule, ButtonComponent, CommonModule, TextBlockComponent],
+  styleUrls: ['../XamlRoot.scss', '../Primitives/DialogPresenter.scss'],
+  providers: [{ provide: 'xaml-dialog-presenter', useExisting: ContentDialogPresenter }]
+})
+export class ContentDialogPresenter extends DialogPresenter {
+  protected _dialog: ContentDialog;
+
+  constructor(
+    dialog : ContentDialog)
+  {
+    super();
+    this._dialog = dialog;
+  }
+
+  protected onPrimaryButtonClicked() {
+    this._dialog.PrimaryButtonClicked.emit();
+    this._dialog.Result = ContentDialogResult.Primary;
+  }
+
+  protected onSecondaryButtonClicked() {
+    this._dialog.SecondaryButtonClicked.emit();
+    this._dialog.Result = ContentDialogResult.Secondary;
+  }
+
+  protected onCloseButtonClicked() {
+    this._dialog.CloseButtonClicked.emit();
+    this._dialog.Result = ContentDialogResult.None;
+  }
+
+  protected get isPrimaryButtonDefault() {
+    return this._dialog.DefaultButton === ContentDialogButton.Primary;
+  }
+
+  protected get isSecondaryButtonDefault() {
+    return this._dialog.DefaultButton === ContentDialogButton.Secondary;
+  }
+
+  protected get isCloseButtonDefault() {
+    return this._dialog.DefaultButton === ContentDialogButton.Close;
+  }
+}
+
+@Component({
   selector: 'ContentDialog',
   template: `<ng-template #template>
-    <DialogPresenter>
-      <div Header>{{Title}}</div>
-      <TextBlock TextWrapping="Wrap">{{Content}}</TextBlock>
-      <ng-content/>
-      <Grid RowDefinitions="auto" Orientation="Horizontal" ColumnSpacing="6px" AutoColumnDefinition="minmax(0, 1fr)" Footer>
-        <Button *ngIf="PrimaryButtonText !== undefined" [IsEnabled]="IsPrimaryButtonEnabled" (Click)="onPrimaryButtonClicked()" [class.AccentButtonStyle]="isPrimaryButtonDefault">{{PrimaryButtonText}}</Button>
-        <Button *ngIf="SecondaryButtonText !== undefined" [IsEnabled]="IsSecondaryButtonEnabled" (Click)="onSecondaryButtonClicked()" [class.AccentButtonStyle]="isSecondaryButtonDefault">{{SecondaryButtonText}}</Button>
-        <Button *ngIf="CloseButtonText !== undefined" (Click)="onCloseButtonClicked()" [class.AccentButtonStyle]="isCloseButtonDefault">{{CloseButtonText}}</Button>
-      </Grid>
-    </DialogPresenter>
+    <ContentDialogPresenter/>
   </ng-template>`,
   styles: ``,
-  imports: [DialogPresenter, GridModule, ButtonComponent, CommonModule, TextBlockComponent]
+  imports: [CommonModule, ContentDialogPresenter]
 })
 export class ContentDialog extends Dialog {
   @Input() Title?: string;
@@ -63,33 +111,6 @@ export class ContentDialog extends Dialog {
   set Result(value: ContentDialogResult) {
     this._result = value;
     this.Hide();
-  }
-
-  protected onPrimaryButtonClicked() {
-    this.PrimaryButtonClicked.emit();
-    this.Result = ContentDialogResult.Primary;
-  }
-
-  protected onSecondaryButtonClicked() {
-    this.SecondaryButtonClicked.emit();
-    this.Result = ContentDialogResult.Secondary;
-  }
-
-  protected onCloseButtonClicked() {
-    this.CloseButtonClicked.emit();
-    this.Result = ContentDialogResult.None;
-  }
-
-  protected get isPrimaryButtonDefault() {
-    return this.DefaultButton === ContentDialogButton.Primary;
-  }
-
-  protected get isSecondaryButtonDefault() {
-    return this.DefaultButton === ContentDialogButton.Secondary;
-  }
-
-  protected get isCloseButtonDefault() {
-    return this.DefaultButton === ContentDialogButton.Close;
   }
 
   override async ShowAsync() {
