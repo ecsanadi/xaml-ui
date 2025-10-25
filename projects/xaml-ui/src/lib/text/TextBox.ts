@@ -12,7 +12,7 @@ import { CommonModule } from "@angular/common";
 })
 export class TextBoxComponent extends FrameworkElementComponent {
   @Input() IsEnabled: boolean = true;
-  @Input() PlaceholderText: string = '';
+  @Input() PlaceholderText?: string;
   @Input() IsPlaceholderEditable: boolean = false;
   @Input() TextAlignment?: TextAlignment = 'Left';
   @Input() TextWrapping: TextWrapping = 'NoWrap';
@@ -54,7 +54,7 @@ export class TextBoxComponent extends FrameworkElementComponent {
 
   protected onBlur() {
 
-    if (this.IsPlaceholderEditable && this._input.nativeElement.value === this.PlaceholderText) {
+    if (this.IsPlaceholderEditable && this.PlaceholderText && this._input.nativeElement.value === this.PlaceholderText) {
       this._input.nativeElement.value = '';
       this.update();
     }
@@ -89,7 +89,7 @@ export class TextBoxComponent extends FrameworkElementComponent {
 
   @HostListener('focusin', [])
   private onFocusIn() {
-    if (this.IsPlaceholderEditable && this.Text === '') {
+    if (this.IsPlaceholderEditable && this.PlaceholderText && this.Text === '') {
       this._input.nativeElement.value = this.PlaceholderText;
       this.update();
     }

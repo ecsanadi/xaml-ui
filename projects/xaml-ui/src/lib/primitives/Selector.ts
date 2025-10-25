@@ -6,7 +6,7 @@ export const SelectorItemTemplate =
   `<ng-container *ngIf="ItemTemplate">
     <ng-container [ngTemplateOutlet]="ItemTemplate" [ngTemplateOutletContext]="{ $implicit: item }" [ngTemplateOutletInjector]="container.Injector" />
     </ng-container>
-  <ng-container *ngIf="!ItemTemplate">{{ DisplayMemberPath ? item[DisplayMemberPath] : item }}</ng-container>`;
+  <ng-container *ngIf="!ItemTemplate">{{ DisplayMemberPath && item !== null ? item[DisplayMemberPath] : item }}</ng-container>`;
 
 @Component({
   selector: 'Selector',

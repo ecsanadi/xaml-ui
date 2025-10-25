@@ -36,16 +36,15 @@ export class NumberBoxComponent extends FrameworkElementComponent {
   @Input() SmallChange: number = 1;
   @Input() LargeChange: number = 10;
   @Input() Unit?: string;
-  
+
   @Output() ValueChange = new EventEmitter<number>();
-  
+
   private _numberFormatter = (value: number) => value.toString();
   get NumberFormatter() {
     return this._numberFormatter;
   }
 
-  @Input() set NumberFormatter(value: NumberFormatter)
-  {
+  @Input() set NumberFormatter(value: NumberFormatter) {
     this._numberFormatter = value;
     this.updateText();
   }
@@ -146,7 +145,7 @@ export class NumberBoxComponent extends FrameworkElementComponent {
     this.updateText();
     this._input.nativeElement.value = this._text;
 
-    if (this.IsPlaceholderEditable && this._input.nativeElement.value === this.PlaceholderText) {
+    if (this.IsPlaceholderEditable && this.PlaceholderText && this._input.nativeElement.value === this.PlaceholderText) {
       this._input.nativeElement.value = '';
       this.onChange();
     }
@@ -178,7 +177,7 @@ export class NumberBoxComponent extends FrameworkElementComponent {
 
   @HostListener('focusin', [])
   private onFocusIn() {
-    if (this.IsPlaceholderEditable && Number.isNaN(this.Value)) {
+    if (this.IsPlaceholderEditable && this.PlaceholderText && Number.isNaN(this.Value)) {
       this._input.nativeElement.value = this.PlaceholderText;
       this.onChange();
     }

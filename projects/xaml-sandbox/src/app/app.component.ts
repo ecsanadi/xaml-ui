@@ -49,6 +49,12 @@ export class CustomDialog extends Dialog {
   }
 }
 
+export class KeyValuePair {
+  constructor(
+    public Key: string,
+    public Value: string) { }
+}
+
 @Component({
   selector: 'app-root',
   imports: [XamlRootComponent, StackPanelComponent, ButtonComponent, FlyoutComponent, ScrollViewerComponent, SliderComponent, TextBoxComponent, TextBlockComponent, ListViewComponent, ComboBoxComponent, MenuFlyoutComponent, MenuFlyoutItemComponent, ContextFlyoutDirective, AppBarButtonComponent, CommandBarComponent, NumberBoxComponent, GridModule, RepeatButtonComponent, ColorPickerComponent, RadioButtonGroupComponent, FlyoutComponent, ContextFlyoutDirective, RadioToggleButtonComponent, ToggleButtonComponent, ToggleMenuFlyoutItemComponent, ItemFlyoutDirective, FontIconComponent, ProgressBarComponent, ProgressRingComponent, GridViewComponent, PersonPictureComponent, EllipseComponent, CheckBoxComponent, RadioButtonComponent],
@@ -57,6 +63,12 @@ export class CustomDialog extends Dialog {
 })
 export class AppComponent {
   title = 'xaml-sandbox';
+
+  protected TestCollection = [
+    new KeyValuePair('A', 'Aladár'),
+    new KeyValuePair('B', 'Béla'),
+    new KeyValuePair('C', 'Cecília')
+  ];
 
   constructor(private _viewContainerRef: ViewContainerRef) {
 

@@ -17,6 +17,8 @@
         <Slider Height="200px" Orientation="Vertical" [Value]="1.0" />
       </StackPanel>
 
+      <ComboBox [ItemSource]="TestCollection" DisplayMemberPath="Value" SelectedValuePath="Key"/>
+
       <ProgressBar />
       <ProgressBar [Value]="0.3" />
       <ProgressBar [Value]="0.7" />
