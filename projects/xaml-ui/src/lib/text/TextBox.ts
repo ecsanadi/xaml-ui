@@ -6,16 +6,18 @@ import { CommonModule } from "@angular/common";
 @Component({
   selector: 'TextBox',
   imports: [CommonModule],
-  template: `<input class="text-box" #input *ngIf="TextWrapping === 'NoWrap'" type="text" [disabled]="!IsEnabled" [value]="Text" (input)="onInput($event)" (blur)="onBlur($event)" [placeholder]="PlaceholderText" [style]="{'text-align': TextAlignment}"/>
-  <textarea class="text-box" #input *ngIf="TextWrapping === 'Wrap'" [disabled]="!IsEnabled" [value]="Text" (input)="onInput($event)" (blur)="onBlur($event)" [placeholder]="PlaceholderText" [style]="{'text-align': TextAlignment}"></textarea>`,
+  template: `<input class="text-box" #input *ngIf="TextWrapping === 'NoWrap'" type="text" size="1" [disabled]="!IsEnabled" [value]="Text" (input)="onInput()" (blur)="onBlur()" [placeholder]="PlaceholderText" [style]="{'text-align': TextAlignment}"/>
+  <textarea class="text-box" #input *ngIf="TextWrapping === 'Wrap'" [disabled]="!IsEnabled" [value]="Text" (input)="onInput()" (blur)="onBlur()" [placeholder]="PlaceholderText" [style]="{'text-align': TextAlignment}"></textarea>`,
   styleUrl: 'TextBox.scss'
 })
 export class TextBoxComponent extends FrameworkElementComponent {
   @Input() IsEnabled: boolean = true;
   @Input() PlaceholderText: string = '';
+  @Input() IsPlaceholderEditable: boolean = false;
   @Input() TextAlignment?: TextAlignment = 'Left';
   @Input() TextWrapping: TextWrapping = 'NoWrap';
   @Input() UpdateTrigger: UpdateTrigger = 'PropertyChanged';
+  @Input() Pattern?: string;
 
   @ViewChild('input')
   private _input!: ElementRef<HTMLInputElement>;
@@ -28,20 +30,40 @@ export class TextBoxComponent extends FrameworkElementComponent {
     if (value == this._text) return;
 
     this._text = value;
+    this._validatedValue = value;
     this.TextChange.emit(value);
   }
   @Output() TextChange = new EventEmitter<string>();
 
-  protected onInput(event: Event) {
-    if (this.UpdateTrigger == 'PropertyChanged') this.update(event);
+  private _validatedValue = '';
+  protected onInput() {
+    //Validate input
+    if (this.Pattern) {
+      let element = this._input.nativeElement;
+      let regex = new RegExp(this.Pattern);
+      if (!element.value.match(regex)) {
+        element.value = this._validatedValue;
+        return;
+      }
+
+      this._validatedValue = element.value;
+    }
+
+    if (this.UpdateTrigger == 'PropertyChanged') this.update();
   }
 
-  protected onBlur(event: FocusEvent) {
-    if (this.UpdateTrigger == 'LostFocus') this.update(event);
+  protected onBlur() {
+
+    if (this.IsPlaceholderEditable && this._input.nativeElement.value === this.PlaceholderText) {
+      this._input.nativeElement.value = '';
+      this.update();
+    }
+
+    if (this.UpdateTrigger == 'LostFocus') this.update();
   }
 
-  protected update(event: Event) {
-    this.Text = ((event.target) as HTMLInputElement).value;
+  protected update() {
+    this.Text = this._input.nativeElement.value;
   }
 
   @HostBinding('class.disabled')
@@ -63,5 +85,13 @@ export class TextBoxComponent extends FrameworkElementComponent {
     setTimeout(() => {
       this._input.nativeElement.focus();
     }, 0);
+  }
+
+  @HostListener('focusin', [])
+  private onFocusIn() {
+    if (this.IsPlaceholderEditable && this.Text === '') {
+      this._input.nativeElement.value = this.PlaceholderText;
+      this.update();
+    }
   }
 }

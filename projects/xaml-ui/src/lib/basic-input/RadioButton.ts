@@ -52,9 +52,12 @@ export class RadioButtonGroupComponent extends StackPanelComponent {
       for (let item of this._children) {
         item.IsChecked = item.Value === value;
       }
-    } else {
-      this._value = value;
     }
+
+    if (this._value === value) return;
+
+    this._value = value;
+    this.ValueChange.emit(value);
   }
 
   get Value() {
@@ -73,7 +76,6 @@ export class RadioButtonGroupComponent extends StackPanelComponent {
 
     child.IsCheckedChange.subscribe(p => {
       this.Value = child.Value;
-      this.ValueChange.emit(child.Value);
     });
 
     this._children.push(child);

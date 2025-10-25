@@ -35,10 +35,20 @@ export class NumberBoxComponent extends FrameworkElementComponent {
   @Input() Maximum: number = Infinity;
   @Input() SmallChange: number = 1;
   @Input() LargeChange: number = 10;
-  @Input() NumberFormatter: NumberFormatter = (value: number) => value.toString();
   @Input() Unit?: string;
-
+  
   @Output() ValueChange = new EventEmitter<number>();
+  
+  private _numberFormatter = (value: number) => value.toString();
+  get NumberFormatter() {
+    return this._numberFormatter;
+  }
+
+  @Input() set NumberFormatter(value: NumberFormatter)
+  {
+    this._numberFormatter = value;
+    this.updateText();
+  }
 
   protected get flyoutTarget() {
     return this._input?.nativeElement;
@@ -178,7 +188,7 @@ export class NumberBoxComponent extends FrameworkElementComponent {
   }
 
   private updateText() {
-    this._text = Number.isNaN(this.Value) ? '' : this.NumberFormatter(this.Value);
+    this._text = Number.isNaN(this.Value) ? '' : this._numberFormatter(this.Value);
   }
 
   @HostListener('contextmenu', ['$event'])

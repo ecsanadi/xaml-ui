@@ -47,6 +47,8 @@
       <TextBox PlaceholderText="lost focus" Margin="6px" UpdateTrigger="LostFocus" (TextChange)="onValueChange($event)"/>
       <TextBox PlaceholderText="property change" Margin="6px" UpdateTrigger="PropertyChanged" (TextChange)="onValueChange($event)" TextWrapping="Wrap" />
       <TextBox PlaceholderText="lost focus" Margin="6px" UpdateTrigger="LostFocus" (TextChange)="onValueChange($event)" TextWrapping="Wrap"/>
+      <TextBox PlaceholderText="patterned" Margin="6px" UpdateTrigger="LostFocus" (TextChange)="onValueChange($event)" Pattern="^((\d{0,2}|[1-9])|(\d{1,2}|[1-9])[c-hj-np-xC-HJ-NP-X]|0{0,1}1[abyzABYX]|[a-hj-np-zA-HJ-NP-Z])$" />
+      <TextBox PlaceholderText="editable placeholder" Margin="6px" (TextChange)="onValueChange($event)" [IsPlaceholderEditable]="true" />
       <Button Margin="6px 120px">Flyout
         <Flyout Placement="Left">Test</Flyout>
       </Button>
