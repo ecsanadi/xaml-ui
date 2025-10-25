@@ -61,4 +61,9 @@ export abstract class FrameworkElementComponent {
 
   private static _nextId = 1;
   protected readonly _id = FrameworkElementComponent._nextId++;
+
+  static readonly DefaultStyles = `:host {
+    display: grid;
+    position: relative;
+  }`;
 }

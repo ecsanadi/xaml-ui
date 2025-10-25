@@ -12,7 +12,7 @@ import { CommonModule } from "@angular/common";
 })
 export class TextBoxComponent extends FrameworkElementComponent {
   @Input() IsEnabled: boolean = true;
-  @Input() PlaceholderText?: string;
+  @Input() PlaceholderText: string = '';
   @Input() IsPlaceholderEditable: boolean = false;
   @Input() TextAlignment?: TextAlignment = 'Left';
   @Input() TextWrapping: TextWrapping = 'NoWrap';
