@@ -95,6 +95,7 @@ export class SliderComponent extends FrameworkElementComponent {
 
     //Update value
     this.Value = value;
+    this.ValueChange.emit(this.Value);
   }
 
   @HostListener('pointerup', ['$event'])
