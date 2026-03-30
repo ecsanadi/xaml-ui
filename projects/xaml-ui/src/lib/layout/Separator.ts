@@ -6,23 +6,16 @@ import { FrameworkElementComponent } from "../FrameworkElement";
   selector: 'Separator',
   template: '',
   styles: `:host {
-    display: block;
-    border-radius: 1px;
+    display: grid;
+    position: relative;
+    border-radius: min(50cqw, 50cqh);
     background: var(--DividerStrokeColorDefault);
   }`
 })
 export class SeparatorComponent extends FrameworkElementComponent {
-  @Input() Orientation: Orientation = 'Horizontal';
-
-  @HostBinding('style.height')
-  protected override get height() {
-    if (this.Height !== undefined) return this.Height;
-    return this.Orientation === 'Horizontal' ? '2px' : undefined;
-  }
-
-  @HostBinding('style.width')
-  protected override get width() {
-    if (this.Width !== undefined) return this.Width;
-    return this.Orientation === 'Vertical' ? '2px' : undefined;
+  constructor() {
+    super();
+    this.MinWidth = '2px';
+    this.MinHeight = '2px';
   }
 }
