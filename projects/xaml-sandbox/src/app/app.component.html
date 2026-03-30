@@ -26,10 +26,11 @@
       <Slider [Value]="0.1" />
       <Slider [StepFrequency]="0.01" [Value]="0.5" [IsEnabled]="false" />
       <Slider [StepFrequency]="0.01" [Value]="1.0" />
-      <StackPanel Orientation="Horizontal">
+      <StackPanel Orientation="Horizontal" Spacing="4px">
         <Slider Height="200px" Orientation="Vertical" [Value]="0.0" />
         <Slider Height="200px" Orientation="Vertical" [Value]="0.1" />
         <Slider Height="200px" Orientation="Vertical" [Value]="0.5" [IsEnabled]="false" />
+        <Separator Width="10px"/>
         <Slider Height="200px" Orientation="Vertical" [Value]="1.0" />
       </StackPanel>
 
@@ -143,6 +144,7 @@
   </Button>
   <Grid Orientation="Vertical">
     <Button>A</Button>
+    <Separator Height="10px"/>
     <Button>B</Button>
     <Button>C</Button>
     <Button>D</Button>

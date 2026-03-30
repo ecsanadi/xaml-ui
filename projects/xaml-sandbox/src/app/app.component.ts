@@ -33,6 +33,7 @@ import { PersonPictureComponent } from '../../../xaml-ui/src/lib/media/PersonPic
 import { EllipseComponent } from '../../../xaml-ui/src/lib/shapes/Ellipse';
 import { HyperlinkButtonComponent } from '../../../xaml-ui/src/lib/basic-input/HyperlinkButton';
 import { OpenFilePicker } from '../../../xaml-ui/src/lib/dialogs-and-flyouts/OpenFilePicker';
+import { SeparatorComponent } from '../../../xaml-ui/src/lib/layout/Separator';
 
 @Component({
   template: `<ng-template #template>
@@ -59,7 +60,7 @@ export class KeyValuePair {
 
 @Component({
   selector: 'app-root',
-  imports: [XamlRootComponent, StackPanelComponent, ButtonComponent, FlyoutComponent, ScrollViewerComponent, SliderComponent, TextBoxComponent, TextBlockComponent, ListViewComponent, ComboBoxComponent, MenuFlyoutComponent, MenuFlyoutItemComponent, ContextFlyoutDirective, AppBarButtonComponent, CommandBarComponent, NumberBoxComponent, GridModule, RepeatButtonComponent, ColorPickerComponent, RadioButtonGroupComponent, FlyoutComponent, ContextFlyoutDirective, RadioToggleButtonComponent, ToggleButtonComponent, ToggleMenuFlyoutItemComponent, ItemFlyoutDirective, FontIconComponent, ProgressBarComponent, ProgressRingComponent, GridViewComponent, PersonPictureComponent, EllipseComponent, CheckBoxComponent, RadioButtonComponent, HyperlinkButtonComponent, ImageComponent, BorderComponent],
+  imports: [XamlRootComponent, StackPanelComponent, ButtonComponent, FlyoutComponent, ScrollViewerComponent, SliderComponent, TextBoxComponent, TextBlockComponent, ListViewComponent, ComboBoxComponent, MenuFlyoutComponent, MenuFlyoutItemComponent, ContextFlyoutDirective, AppBarButtonComponent, CommandBarComponent, NumberBoxComponent, GridModule, RepeatButtonComponent, ColorPickerComponent, RadioButtonGroupComponent, FlyoutComponent, ContextFlyoutDirective, RadioToggleButtonComponent, ToggleButtonComponent, ToggleMenuFlyoutItemComponent, ItemFlyoutDirective, FontIconComponent, ProgressBarComponent, ProgressRingComponent, GridViewComponent, PersonPictureComponent, EllipseComponent, CheckBoxComponent, RadioButtonComponent, HyperlinkButtonComponent, ImageComponent, BorderComponent, SeparatorComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
