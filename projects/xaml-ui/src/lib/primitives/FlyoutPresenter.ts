@@ -5,7 +5,7 @@ export type FlyoutPresenterAnimation = 'Default' | 'SlideLeft' | 'SlideRight' | 
 @Component({
   selector: 'FlyoutPresenter',
   template: `<ng-content/>`,
-  styleUrl: 'FlyoutPresenter.scss'
+  styleUrls: ['../XamlRoot.scss', 'FlyoutPresenter.scss']
 })
 export class FlyoutPresenter {
   static TransitionDuration = 250;

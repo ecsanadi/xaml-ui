@@ -12,7 +12,7 @@ export const ButtonTemplate = `<ng-content *ngIf="Content === undefined"/>
   selector: 'Button',
   imports: [CommonModule, TextBlockComponent],
   template: ButtonTemplate,
-  styleUrl: 'Button.scss'
+  styleUrls: ['../XamlRoot.scss', 'Button.scss']
 })
 export class ButtonComponent extends BorderComponent {
   @Input() IsEnabled: boolean = true;

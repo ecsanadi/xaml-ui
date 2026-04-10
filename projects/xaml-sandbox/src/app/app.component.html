@@ -95,6 +95,7 @@
       <ColorPicker Width="200px" Height="200px" (ColorChange)="onColorSelected($event)" />
       <Button> MenuFlyout from Flyout
         <Flyout>
+          <FontIcon Icon Glyph="&#xE713;" Foreground="Red" />
           <ListView [ItemSource]="[1,2,3,4,5,6]" SelectedValuePath="1" MaxHeight="300px">
             <ng-template let-item>
               <Grid RowDefinitions="auto" ColumnDefinitions="auto 1fr" RowSpacing="6px" ColumnSpacing="12px">
