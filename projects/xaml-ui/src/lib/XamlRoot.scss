@@ -25,7 +25,9 @@ XamlRoot {
   color: var(--TextFillColorPrimary);
 
   background: var(--WindowFillColorDefault);
-  
+}
+
+.xaml-themed {
   @include theme-variables;
 }
 
@@ -37,7 +39,7 @@ XamlRoot {
   background: transparent;
 }
 
-.xaml-dialog-overlay-backdrop {
+.xaml-dialog-overlay-backdrop {  
   background: var(--SmokeFillColorDefault);
 }
 

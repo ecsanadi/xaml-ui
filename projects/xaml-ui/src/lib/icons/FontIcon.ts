@@ -7,13 +7,12 @@ import { TextBlockComponent } from "../text/TextBlock";
   selector: 'FontIcon',
   template: `{{Glyph}}`,
   styles: `:host {
-    font-family: 'Segoe Fluent Icons', 'Segoe MDL2 Assets';
     align-content: center;
   }`
 })
 export class FontIconComponent extends FrameworkElementComponent {
-  @Input() @HostBinding('style.font-family') FontFamily?: string;
-  @Input() @HostBinding('style.font-size') FontSize?: string;
+  @Input() @HostBinding('style.font-family') FontFamily?: string = 'var(--SymbolFontFamily)';
+  @Input() @HostBinding('style.font-size') FontSize?: string = 'var(--SymbolFontSize)';
   @Input() @HostBinding('style.font-style') FontStyle?: FontStyle;  
   @Input() @HostBinding('style.color') Foreground?: string;
   

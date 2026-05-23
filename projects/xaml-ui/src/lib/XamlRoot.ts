@@ -4,7 +4,10 @@ import { Component, HostListener, ViewEncapsulation } from "@angular/core";
   selector: 'XamlRoot',
   template: `<ng-content/>`,
   styleUrl: 'XamlRoot.scss',
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  host: {
+    'class': 'xaml-themed'
+  }
 })
 export class XamlRootComponent {
 
