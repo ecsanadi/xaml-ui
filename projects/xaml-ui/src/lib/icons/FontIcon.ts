@@ -8,11 +8,13 @@ import { TextBlockComponent } from "../text/TextBlock";
   template: `{{Glyph}}`,
   styles: `:host {
     align-content: center;
+    font-size: var(--SymbolFontSize);
+    font-family: var(--SymbolFontFamily);
   }`
 })
 export class FontIconComponent extends FrameworkElementComponent {
-  @Input() @HostBinding('style.font-family') FontFamily?: string = 'var(--SymbolFontFamily)';
-  @Input() @HostBinding('style.font-size') FontSize?: string = 'var(--SymbolFontSize)';
+  @Input() @HostBinding('style.font-family') FontFamily?: string;
+  @Input() @HostBinding('style.font-size') FontSize?: string;
   @Input() @HostBinding('style.font-style') FontStyle?: FontStyle;  
   @Input() @HostBinding('style.color') Foreground?: string;
   
